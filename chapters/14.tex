@@ -3,7 +3,7 @@
 \section{引言}
 到目前为止，我们并没有过多地涉及效率与性能，而主要关注操作的正确性。在本章及接下来的两章中，我们不仅讨论 TCP执行的基本任务，还关心其执行效率。由于下层网络
 层（IP）可能出现丢失、重复或失序包的情况，TCP 协议提供可靠数据传输服务。为保证数据传输的正确性，TCP重传其认为已丢失的包。TCP根据按收端返回至发送端的一系列确认
-信息来判断是否出现丢包。当数据段或确认信息丢失，TCP启动重传操作，重传尚未确认的数据。TCP拥有两套独立机制来完成重传，一是基于时间，二是基于确认信息的构成。第二
+信息来判断是否出现丢包。当数据段或确认信息丢失，TCP启动重传操作，重传尚未确认的数据。TCP拥有两套独立机制来完成重传，一是\textbf{基于时间}，二是\textbf{基于确认信息的构成}。第二
 种方法通常比第一种更高效。
 
 TCP 在发送数据时会设置一个计时器，若至计时器超时仍未收到数据确认信息，则会引发相应的超时或基于计时器的重传操作，计时器超时称为重传超时（RTO）。另一种方式的重
@@ -15,39 +15,40 @@ TCP 在发送数据时会设置一个计时器，若至计时器超时仍未收�
 
 \section{简单的超时与重传举例}
 我们已经看到一些超时和重传的例子。
-\begin{enumerate}
-    \item 在第8章ICMP 目的不可达（端口不可达）的例子中，采用UDP 的TFTP 客户端使用简单（且低效）的超时和重传策略：设置足够大的超时间隔，每与秒进行一次重传。
-    \item 第13章的尝试与不存在的主机建立连接中，我们看到TCP 在尝试建立连接的过程中，在每次重传时采用比上次更大的延时间隔。
-    \item 在第3章的以太网冲突中，我们也可以看到相关操作。
-\end{enumerate}
+\begin{tcolorbox}
+    \begin{enumerate}
+        \item 在第8章ICMP 目的不可达（端口不可达）的例子中，采用UDP 的TFTP 客户端使用简单（且低效）的超时和重传策略：设置足够大的超时间隔，每5秒进行一次重传。
+        \item 第13章的尝试与不存在的主机建立连接中，我们看到TCP 在尝试建立连接的过程中，在每次重传时采用比上次更大的延时间隔。
+        \item 在第3章的以太网冲突中，我们也可以看到相关操作。
+    \end{enumerate}
+\end{tcolorbox}
+
 上述机制都是由计时器超时引发的。
 
 我们首先来看 TCP的基于计时器的重传策略。先建立一个连接，并发送一些数据验证连接正常。然后断开连接的一端，这时再发送一些数据，观察 TCP 的操作。这里我们采用
 Wireshark 来跟踪记录连接状况（见图14-1）。
 
-报文段1、2、3为TCP建立连接的握手过程。连接建立完成后，Web 服务器处于等待 Web 请求的状态。在发出请求前，我们先断开服务器端主机的连接。在客户端输人如下命令：
+\begin{figure}[!htb]
+	\includegraphics[width=1.0\textwidth]{imgs/14/14-1.png}
+	\caption{tcp重传简单的例子}
+\end{figure}
+
+报文段1、2、3为TCP建立连接的握手过程。连接建立完成后，Web 服务器处于等待 Web 请求的状态。在发出请求前，我们先断开服务器端主机的连接。在客户端输入如下命令：
 \begin{verbatim}
-    Linux® telnet 10.0.0.10 80
-Trying 10.0.0.10...
-Connected to 10.0.0.10.
-Escape character is '^]'.
-GET / HTTP /1.0
-Connection closed by foreign host.
+    Linux% telnet 10.0.0.10 80
+    Trying 10.0.0.10...
+    Connected to 10.0.0.10.
+    Escape character is '^]'.
+    GET / HTTP /1.0
+    Connection closed by foreign host.
 \end{verbatim}
 
 该请求无法传输至服务器端，因此它会在客户端的TCP 队列中存储一段时间。此时采用 netstat 命令读取客户端队列状态显示为非空：
 
 \begin{verbatim}
-    Active Internet connections (w/o servers)
-Proto Recv-Q Send-Q
-Local Address
-Foreign Address
-State
-tcp
-18
-10.0.0.9:1043
-10.0.0.10:wwW
-ESTABLISHED
+Active Internet connections (w/o servers)
+Proto Recv-Q Send-Q     Local Address       Foreign Address     State
+tcp        0     18     10.0.0.9:1043       10.0.0.10:www       ESTABLISHED
 \end{verbatim}
 
 可以看到发送队列中有18字节的数据，等待被传送至Web 服务器。这18个字节包含了之前显示的请求命令以及回车换行。其他的输出细节（包括地址和状态信息）会在下面涉及。
@@ -55,7 +56,7 @@ ESTABLISHED
 报文段4为客户端首次尝试发送 Web 请求，时间为 42.748s。0.206s 以后，在42.9545发送了第二次请求。接着在 43.374S，即 0.420s后，再次尝试请求。后续的请求（重传）时刻
 分别为 44.215、45.895以及 49.255s，间隔分别为1.680和 3.360s。
 
-每次重传间隔时间加倍称为二进制指数退避（binary exponential backoff），我们在第13章的TCP 尝试建立连接失败时提到过，后面将会详细讨论。自首次请求至连接完全失效，
+每次重传间隔时间加倍称为\textcolor{red}{二进制指数退避}（binary exponential backoff），我们在第13章的TCP 尝试建立连接失败时提到过，后面将会详细讨论。自首次请求至连接完全失效，
 总时间为15.5min。随后，客户端会显示如下错误信息：
 \begin{verbatim}
     Connection closed by foreign host.
@@ -66,8 +67,8 @@ ESTABLISHED
 SYN 报文段），阈值设置与数据段传输有所区别，针对SYN报文段的R2应最少设为3分钟。
 
 Linux 系统中，对一般数据段来说，R1 和 R2的值可以通过应用程序，或使用系统配置变量 \verb|net.ipv4.tcp_retries1| 和 \verb|net.ipv4.tcp_retries2|设置。变量值为重传次数，而不是以时间为
-单位。\verb|tcp_retries2|默认值为15，对应约为13~30分钟，根据具体连接的 RTO而定。\verb|net.ipv4.tcp_retries1| 默认值为3。对于SYN报文段，变量 \verb|net.ipv4.top_syn_retries| 和 \verb|net.ipv4.top_synack_retries|
- 限定重传次数，默认值为5（约180秒）。Windows 也有相应控制 TCP行为的变量，包括R1 和 R2。通过下列注册表项可以修改对应值 ［WINREG］：
+单位。\verb|tcp_retries2|默认值为15，对应约为\(13-30\)分钟，根据具体连接的 RTO而定。\verb|net.ipv4.tcp_retries1| 默认值为3。对于SYN报文段，变量 \verb|net.ipv4.tcp_syn_retries|
+和 \verb|net.ipv4.tcp_synack_retries| 限定重传次数，默认值为5（约180秒）。Windows 也有相应控制 TCP行为的变量，包括R1 和 R2。通过下列注册表项可以修改对应值 ［WINREG］：
 
 \begin{verbatim}
     HKLM\System\CurrentControlSet\Services\Tcpip\Parameters
@@ -90,18 +91,18 @@ sample）。TCP 首先需要根据一段时间内的样本值建立好的估计�
 来也取得了一些成果。本章节将探讨计算 RTO 计算方法在演进历程中的一些重要里程碑。首先我们介绍第一个（“经典”）方法，详见［RFCO793］。
 
 \subsection{经典方法}
-最初的 TCP 规范 ［RFC0793］采用如下公式计算得到平滑的 RTT 估计值（称为 SRTT）：
+最初的 TCP 规范 ［\href{https://datatracker.ietf.org/doc/html/rfc0793#section-3.7}{RFC0793}］采用如下公式计算得到平滑的 RTT 估计值（称为 SRTT）：
 \begin{equation}
-    SRTT = a(SRTT) + (1 - a) RTT,
+    SRTT = \alpha(SRTT) + (1 - \alpha) RTT,
 \end{equation}
 
 这里，SRTT 是基于现存值和新的样本值 RTT.得到更新结果的。常量a为平滑因子，推荐值0.8~0.9。每当得到新的样本值，SRTT 就会做出相应的更新。从a的设定值可以看
 到，新的估计值有80\% ~90\%来自现存值，10\% ~20\%来自新测量值。这种估算方法称为指数加权移动平均（Exponentially Weighted Moving Average, EWMA）或低通过滤器 （low-
 pass filter）。该方法实现起来较为简单，只要保存SRTT 的先前值即可得到新的估计值。
 
-考虑到 SRTT 估计器得到的估计值会随 RTT 而变化，［RFC0793］ 推荐根据如下公式设置RTO:
+考虑到 SRTT 估计器得到的估计值会随 RTT 而变化，［\href{https://datatracker.ietf.org/doc/html/rfc0793#section-3.7}{RFC0793}］ 推荐根据如下公式设置RTO:
 \begin{equation}
-    RTO = min(ubound, maxIbound, (SRTT)B))
+    RTO = min(ubound, max(lbound, (SRTT)B))
 \end{equation}
 
 这里的B为时延离散因子，推荐值为1.3~2.0。ubound为RTO 的上边界（可设定建议值，如1分钟），lbound为 RTO 的下边界（可设定建议值，如1秒）。我们称该方法为经典方法，
@@ -118,14 +119,42 @@ RTO，将比仅使用均值的常数倍来计算 RTO更能适应 RTT 变化幅�
 均值和方差（或标准差）能更好地估计将来值。对 RTT的可能值范围做出好的预测可以帮助TCP 设定一个能适应大多数情况的 RTO值。
 
 正如 Jacobson 所述，平均偏差（mean deviation）是对标准差的一种好的逼近，但计算起来却更容易、更快捷。计算标准差需要对方差进行平方根运算，对于快速 TCP 实现来说代
-价较大。（但这并非全部原因，可参见［G04］ 中所述的有趣的“争论”历史。）因此我们需要结合平均值和平均偏差来进行估算。可对每个 RTT 测量值 M前面称为 RTT.）采用如下算式：
+价较大。（但这并非全部原因，可参见［G04］ 中所述的有趣的“争论”历史。）因此我们需要结合平均值和平均偏差来进行估算。可对每个 RTT 测量值 M（前面称为 RTT.）采用如下算式：
+
+\begin{equation}
+    srtt \leftarrow (1-g)(srtt) + (g)M
+\end{equation}
+\begin{equation}
+    rttvar \leftarrow (1-h)(rttvar) + (h)(|M-srtt|)    
+\end{equation}
+\begin{equation}
+    Rto = srtt + 4(rttvar)
+\end{equation}
 
 这里，srt 值替代了之前的SRTT，且rttvar 为平均偏差的EWMA，而非采用先前的B来设置 RTO。这组等式也可以写成另一种形式，对计算机实现来说操作较为方便：
+\begin{equation}
+    Err = M - srtt
+\end{equation}
+\begin{equation}
+    srtt \leftarrow srtt + g(Err)
+\end{equation}
+\begin{equation}
+    rttvar \leftarrow rttvar + h(|Err| - rttvar)
+\end{equation}
+\begin{equation}
+    RTO = srtt + 4(rttvar)
+\end{equation}
 
 如前所述，srtt 为均值的EWMA,rttvar 为绝对误差IBrrl的EWMA。Err 为测量值 M与当前 RTT 估计值 srtt之间的偏差。srtt与 rttvar 均用于计算 RTO 且随时间变化。增量g为新
 RTT 样本M占 srtt估计值的权重，取为1/8。增量h为新平均偏差样本（新样本M与当前平均值 srtt 之间的绝对误差）占偏差估计值 rttvar 的权重，取为1/4。当RTT变化时，偏差的增
 量越大，RTO增长越快。8和及的值取为2的（负的）多少次方，使得整个计算过程较为简单，对计算机来说只要采用定点整型数的移位和加法操作即可，而无须复杂的乘除法运算。
 
+\begin{tcolorbox}
+    标准差公式：
+    \begin{equation}
+        \sigma = \sqrt\frac{\sum{(X-\mu)^2}}{N}
+    \end{equation}
+\end{tcolorbox}
 比较经典方法与 Jacobson 的计算方法，平均 RTT 的计算过程类似（a等于1减增量g），只是采用的增量不同。另外，Jacobson 同时基于平滑 RTT 和平滑偏差计算RTO，而经典方
 法简单采用平滑 RTT 的倍数。这是迄今为止许多 TCP 实现计算 RTO 的方法，并且由于其作为［RFC6298］ 的基础，我们称其为标准方法，尽管在［RFC6298］中有一些改进。下面我们就
 讨论这个问题。
@@ -242,8 +271,8 @@ TCP 时间戳选项携带了发送端 TCP 时钟的副本。接着 ACK 将该值
 TCP 按如下步骤更新连接变量：
 
 \begin{itemize}
-    \item mdev = mdev (3/4) + m - srtt| (1/4) = 8(3/4) + 80|1/4) = 26ms
-    \item \verb|mdev_max| = \verb|maxmdev_max|, mdev) = max(50, 26) = 50ms
+    \item \verb|mdev = mdev (3/4) + m - srtt| (1/4) = 8(3/4) + 80|1/4) = 26ms|
+    \item \verb|mdev_max = max(mdev_max, mdev) = max(50, 26) = 50ms|
     \item srtt = srtt （7/8） +m（1/8） =16（7/8） +96（1/8）=14+12=26ms
     \item rttvar = mdev max = 50ms
     \item RTO = srtt + 4(rttvar) = 26 + 4(50) = 226ms
@@ -259,17 +288,24 @@ TCP 按如下步骤更新连接变量：
 标准方法中 rttvar 所占权重较大（系数为4），因此即使当 RTT 减小时，也会导致 RTO增长。在时钟粒度较粗时（如500ms），这种情况不会有很大影响，因为 RTO 可用值很少。
 然而，若时钟粒度较细，如Linux的1ms，就可能出现问题。针对 RTT 减小的情况，若新样本值小于 RTT估计范围的下界（srtt -mdev），则减小新样本的权重。完整的关系式如下：
 
-\begin{verbatim}
+\begin{lstlisting}[]
 if (m < (stt - mdev))
-mdev = (31/32) * mdev + (1/32) * |srtt - m|
+    mdev = (31/32) * mdev + (1/32) * |srtt - m|
 else
-mdev = （3/4） * mdev + （1/4） * |srtt -mnl
-\end{verbatim}
+    mdev = （3/4） * mdev + （1/4） * |srtt -mn|
+\end{lstlisting}
 
 该条件语句只在新 RTT样本值小于期望的RTT测量范围下界的前提下成立。若该条件成立，则表明该连接的 RTT 正处于急剧减小的状态。为避免该情况下的 mdev 增大（以及由
 此导致的 rttvar 和RTO增大），新的平均偏差样本 Isrtt-ml，将其权重减小为原来的1/8。整体来看，该结果可以避免 RTT减小导致的RTO增大问题。对该问题的进一步讨论，请参见
 ［LS00］及［SK02］。在［RKS07］中，作者在280万个 TCP流的多个系统上运行了 RTT 估算算法，运行结果表明 Linux 估计器性能最优，这很大程度上是由于其相对快速收敛，但也可能
 是减小了 RTT 变动对 RTO 的影响。
+
+\begin{figure}[!htb]
+    \centering
+	\includegraphics[width=0.7\textwidth]{imgs/14/14-3.png}
+	\caption{对于200个伪随机的样本点采用 Linux 方法和标准方法来设置 RTO 和估算 RTT。前100个点是基于分布 N（200,50），后100个则基于N（50,50），且对负值进行了符号变换。Linux 将最小
+    RTO设为200ms，而标准方法在样本120之后则变得更为密集。Linux 避免 RTO 设置过小就是防止这种情况的发生。标准方法在样本 78 和191 出现潜在问题}
+\end{figure}
 
 现在回到图 14-2，当接收端生成 ACK 7001时，我们看到其 TSER 包含了一个 TSV 副本，该值并非来自最新到达的报文段，而是最早的一个未经确认的报文段。当该ACK 返回
 至发送端，通过计算得到的 RTT样本是基于第一个报文段，而非第二个。这说明了时间戳算法在延时或不稳定的ACK 下的工作情况。若计算最早的包对应的RTT，得到的样本值为
@@ -278,9 +314,6 @@ mdev = （3/4） * mdev + （1/4） * |srtt -mnl
 \subsection{RTT 估计器行为}
 我们已经看到，设置 RTO 与估算 RTT有大量的设计和改进方法。图14-3显示了其中主要的估算方法，即基于标准方法和 Linux 算法得到的综合数据集。图中［RFC6298］ 推荐的标
 准算法最小 RTO 值1s 已被移除。目前的大多数 TCP 实现方法都不再采用该值［RKS07］。
-
-对于200个伪随机的样本点采用 Linux 方法和标准方法来设置 RTO 和估算 RTT。前100个点是基于分布 N（200,50），后100个则基于N（50,50），且对负值进行了符号变换。Linux 将最小
-RTO设为200ms，而标准方法在样本120之后则变得更为密集。Linux 避免 RTO 设置过小就是防止这种情况的发生。标准方法在样本 78 和191 出现潜在问题
 
 图中显示了两个在高斯概率分布 N（200,50） 和 N（50,50）上的200个值对应的时间序列图。第一个分布对应前100个点，第二个对应后100个点。负的样本值通过符号变换转化为
 正值（只针对第二个分布）。每个加号（+）表示一个具体的样本值。很明显可以看到，在第100个样本值之后出现了巨幅下降，另外 Linux 方法在第100个样本值之后 RTO 立即减小，
@@ -370,7 +403,13 @@ ACK 可包含额外信息，使得发送端在每个 RTT 时间内可以填补�
 端为 Linux 2.6 系统，接收端为 FreeBSD 5.4 系统。图14-6可通过 Wireshark 的“统计ITCP流图| 时间序列图”（Statistics | TCP Stream Graph | Time-Sequence Graph）功能（toptrace）得
 到，该图显示了快速重传行为。
 
-本图中， 轴为TCP序列号，x轴为时间。发出的报文段用较深的黑色线段标出，收到的ACK 号用浅灰线。在0.993s到达的第三个重复 ACK 触发快速重传。该连接未采用SACK，所以每个 RTT 内至多只能填补一个空缺。之后到达的重复ACK 使得发送端发送新报文段（非重传报文段）。在1.32s 时刻到达的“部分ACK”再次触发了重传
+
+\begin{figure}[!htb]
+	\includegraphics[width=1.0\textwidth]{imgs/14/14-6.png}
+	\caption{本图中， 轴为TCP序列号，x轴为时间。发出的报文段用较深的黑色线段标出，收到的ACK 号用浅灰线。在0.993s到达的第三个重复 ACK 触发快速重传。该连接未采用SACK，所以每个 RTT 内至多只能填补一个空缺。
+    之后到达的重复ACK 使得发送端发送新报文段（非重传报文段）。在1.32s 时刻到达的“部分ACK”再次触发了重传}
+\end{figure}
+
 
 该图y轴表示相对发送序列号，x轴表示时间。黑色的I形线段表示传输报文段的序列号范围。Wireshark 中的蓝色（图14-6中的浅灰色）线段为返回的ACK号。约1.0s时刻，序
 列号 23801发生了快速重传（初始传输不可见，因为被发送端 TCP 下层丢弃）。第三个重复ACK 的到达触发了快速重传，图中表现为重叠的浅灰色线段。通过 Wireshark 的基本分析窗
@@ -383,7 +422,10 @@ ACK 可包含额外信息，使得发送端在每个 RTT 时间内可以填补�
 0.8908、0.9268 以及 0.964s时刻到达的均为序列号为23801 的重复ACK。第三个重复ACK 的到达触发了报文段23801的快速重传，时间为0.993S。该过程也可通过 Witreshark 的
 “统计|流图”（Statistics | Flow Graph）功能来观测（见图14-8）。
 
-TCP 交换的相对序列号。包50和66为重传。包50是由三次重复ACK 引发的快速重传。由于没有重传计时器超时，所以恢复过程相对较快
+\begin{figure}[!htb]
+	\includegraphics[width=1.0\textwidth]{imgs/14/14-7.png}
+	\caption{TCP 交换的相对序列号。包50和66为重传。包50是由三次重复ACK 引发的快速重传。由于没有重传计时器超时，所以恢复过程相对较快}
+\end{figure}
 
 现在我们换个角度来看0.993s 时刻的快速重传过程，也可以看1.326s时刻发生的第二次快速重传，该重传是由1.322s时刻达到的ACK 触发的。
 
@@ -399,8 +441,11 @@ TCP 交换的相对序列号。包50和66为重传。包50是由三次重复ACK 
 法，部分ACK 只能使发送端继续处于恢复状态。对较旧的TCP 版本（单纯的Reno 算法）来说，没有部分ACK 这个概念，任何一个可接受的ACK（序列号大于之前接收到的所有
 ACK）都能使发送端结束恢复阶段。这种方法可能会使 TCP 出现一些性能问题，我们在第16章会详细讨论。下面讨论 NewReno和SACK，它们有时也被称为“高级丢失恢复”技术，
 以此来区别旧的方法。
-
-0.890s、0.926s以及 0.964s 时刻到达的三次重复ACK 触发了0.993s 时刻的快速重传。0.853s时刻的ACK 并不算作重复ACK，因力它包含了一个窗口更新
+\begin{figure}[!htb]
+    \centering
+	\includegraphics[width=0.5\textwidth]{imgs/14/14-8.png}
+	\caption{0.890s、0.926s以及 0.964s 时刻到达的三次重复ACK 触发了0.993s 时刻的快速重传。0.853s时刻的ACK 并不算作重复ACK，因力它包含了一个窗口更新}
+\end{figure}
 
 \section{带选择确认的重传}
 
@@ -442,26 +487,36 @@ SACK 块包含的内容也按照接收的先后依次排列。也就是说，最
 \subsection{例子}
 为理解SACK怎样影响发送端和接收端的行为，我们重复前面的快速重传实验，参数设置也如前（丢掉序列号 23601 与28801），但这次发送端和接收端都采用SACK。为准确观测
 到实验过程，我们仍采用 Wireshark 的 TCP 序列号（tcptrace）图功能（见图14-9）。
-
-第一个包含SACK 信息的重复ACK 触发了快速重传。后一个ACK 的到达使得发送端了解到
-第二个丢失的报文段，并在同一个 RTT 内重传了该报文段
+\begin{figure}[!htb]
+    \centering
+	\includegraphics[width=0.7\textwidth]{imgs/14/14-9.png}
+	\caption{第一个包含SACK 信息的重复ACK 触发了快速重传。后一个ACK 的到达使得发送端了解到第二个丢失的报文段，并在同一个 RTT 内重传了该报文段}
+\end{figure}
 
 图14-9与图14-6类似，但利用SACK信息，发送端在重传完报文段23601 后，不必等待一个 RTT 再重传丢失报文段28801。后面将仔细讨论这些内容，现在我们首先在连接建立
 过程中验证 SACK 允许（SACK-Permitted） 选项的存在，见图14-10。
+
+\begin{figure}[!htb]
+    \centering
+	\includegraphics[width=0.9\textwidth]{imgs/14/14-10.png}
+	\caption{SYN 报文段中SACK 允许选项表明可生成和发送SACK信息。现在的大部分 TCP 版本在连接建立阶段都支持 MSS，时间戳，窗口扩大以及 SACK 允许选项}
+\end{figure}
 
 与预计的一样，接收端通过SACK允许选项来使用SACK。发送端的SYN 包，即记录的第一个包，也包含了该选项。这些选项只在连接建立阶段才能看到，因此只出现在SYN置位的报文段中。
 
 一旦连接被允许使用SACK，发生丢包即会使得接收端开始生成SACK。Wireshark 显示了第一个 SACK 选项的内容（见图14-11）。
 
+\begin{figure}[!htb]
+    \centering
+	\includegraphics[width=0.7\textwidth]{imgs/14/14-11.png}
+	\caption{第一个 ACK 包含SACK 信息表明失序数据的序列号范围为 25201 至 26601}
+\end{figure}
+
 图14-11 显示了首个SACK 被接收后的一系列事件。Wireshark 通过SACK 范围的左右边界来表示 SACK 信息。这里我们看到 23801的ACK 包含了一个SACK 块［25201,26601］，
 指明接收端的空缺。接收端敏失的序列号范围为［23801,25200］，相当于一个从序列号23801开始的 1400字节的包。注意到该 SACK 为一次窗口更新，并不能算作重复ACK，之
 前也提到过，因此不能触发快速重传。
 
-SYN 报文段中SACK 允许选项表明可生成和发送SACK信息。现在的大部分 TCP 版本在连接建立阶段都支持 MSS，时间戳，窗口扩大以及 SACK 允许选项
-
-第一个 ACK 包含SACK 信息表明失序数据的序列号范围为 25201 至 26601
-
-0.967S时刻到达的SACK 包含两个块：［28001，29401］和【25201, 26601］。回忆一下前面提过的，为提高对 ACK 丢失的鲁棒性，前面SACK 的第一个块需要重复出现在后续
+0.967S时刻到达的SACK 包含两个块：［28001，29401］和［25201, 26601］。回忆一下前面提过的，为提高对 ACK 丢失的鲁棒性，前面SACK 的第一个块需要重复出现在后续
 SACK 的靠后的位置。该SACK 为序列号23801的重复 ACK，表明接收端现在需要从序列号23801至26601 的两个全长报文段。发送端立即响应，启动快速重传，但由于拥塞控制机
 制（见第16章），发送端只重传了一个报文段23801。随着另外的两个ACK 的到达，发送端被允许发送第二个重传报文段26601。
 
