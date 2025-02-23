@@ -43,25 +43,31 @@
 %---------------------------------------------------%
 \usepackage{titlesec}
 \usepackage{multicol}
-\titleformat{\chapter}
-   {\normalfont\Large\bfseries}{\thesection}{1em}{}
+
+%\titleformat{\chapter} {\normalfont\Large\bfseries}{\thesection}{1em}{}
+
+\titleformat
+{\chapter} % command
+[display] % shape
+{\bfseries\Large\itshape} % format
+{Chapter No. \ \thechapter} % label
+{0.5ex} % sep
+{
+    \rule{\textwidth}{1pt}
+    \vspace{1ex}
+    \centering
+} % before-code
+[
+\vspace{-0.5ex}%
+\rule{\textwidth}{0.3pt}
+] % after-code
+
 \titleformat{\section}
    {\normalfont\Large\bfseries}{\thesection}{1em}{}
 
-\newcommand*{\setupTOC}{%
-\titleformat{\chapter}{}{}{0pt}{} 
-
-\titlespacing*{\chapter}{0pt}
-{*7} %  % vertical space before the title <<<<<<<<<<
-{*-15}  %  idem after title (in ex units + glue) <<<<<<<<<<<
-}
-
 \begin{document}
-\begin{center}  
-   {\Large \bfseries TABLE OF CONTENTS\bigskip}    
-   \end{center}
 \begin{multicols}{2}
-	{\setupTOC  \tableofcontents}
+	\tableofcontents
 \end{multicols}
 
 \include{chapters/1}
