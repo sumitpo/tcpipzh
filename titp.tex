@@ -65,10 +65,63 @@
 \titleformat{\section}
    {\normalfont\Large\bfseries}{\thesection}{1em}{}
 
+\newcommand*{\setupTOC}{%
+\titleformat{\chapter}{}{}{0pt}{} 
+
+\titlespacing*{\chapter}{0pt}
+{*7} %  % vertical space before the title <<<<<<<<<<
+{*-15}  %  idem after title (in ex units + glue) <<<<<<<<<<<
+}
+
+\makeatletter
+\renewcommand\tableofcontents{%
+    \section*{\makebox[\linewidth][c]{\contentsname}%
+      \@mkboth{\MakeUppercase\contentsname}{\MakeUppercase\contentsname}}%
+    \begin{multicols}{2}%
+    \@starttoc{toc}%
+    \end{multicols}
+    }
+\makeatother
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\definecolor{terminalbgcolor}{HTML}{330033}
+\definecolor{terminalrulecolor}{HTML}{000099}
+\newcommand{\lstconsolestyle}{
+\lstset{
+	backgroundcolor=\color{terminalbgcolor},
+	basicstyle=\color{white}\fontfamily{UbuntuMono}\footnotesize\selectfont,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=b,
+	commentstyle=\color{mygreen},
+	deletekeywords={...},
+	% escapeinside={\%*}{*)},
+	extendedchars=true,
+	frame=single,
+	keepspaces=true,
+	keywordstyle=\color{blue},
+	%language=none,
+	morekeywords={*,...},
+	numbers=none,
+	numbersep=5pt,
+  framerule=2pt,
+	numberstyle=\color{mygray}\tiny\selectfont,
+	rulecolor=\color{terminalrulecolor},
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	stepnumber=2,
+	stringstyle=\color{mymauve},
+	tabsize=2
+}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
-\begin{multicols}{2}
-	\tableofcontents
-\end{multicols}
+\tableofcontents
 
 \include{chapters/1}
 \include{chapters/2}
