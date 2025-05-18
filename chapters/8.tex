@@ -3,7 +3,7 @@
 IP 协议本身并没有终端系统提供直接的方法来发现那些发往目的地址失败的IP 数据
 包。此外，IP 没有提供直接的方式来获取诊断信息（例如，哪些路由器在沿途中被使用了或
 使用一种方法来估计往返时间）。为了解决这些不足之处，将一个特殊的 Internet 控制报文协
-议（Internet Control Message Protocol,ICMP）［RFC0792］［RFC4443］与IP 结合使用，以便提
+议（Internet Control Message Protocol,ICMP）\href{https://www.rfc-editor.org/rfc/rfc0792}{[RFC0792]}\href{https://www.rfc-editor.org/rfc/rfc4443}{[RFC4443]}与IP 结合使用，以便提
 供与IP 协议层配置和 IP 数据包处置相关的诊断和控制信息。ICMP通常被认为是IP 层的一
 部分，它需要在所有IP 实现中存在。它使用 IP 协议进行传输。因此，确切地说，它既不是
 一个网络层协议，也不是一个传输层协议，而是位于两者之间。
@@ -16,19 +16,19 @@ ICMP负责传递可能需要注意的差错和控制报文。ICMP报文通常是
 鉴于ICMP能够影响重要的系统功能操作和获取配置信息，黑客们已经在大量攻击中使
 用ICMP报文。由于担心这种攻击，网络管理员经常会用防火墙封阻 ICMP 报文，特别是在
 边界路由器上。如果ICMP 被封锁，大量的诊断程序（例如 ping，traceroute）将无法正常工
-作［RFC4890］。
+作\href{https://www.rfc-editor.org/rfc/rfc4890}{[RFC4890]}。
 
 当讨论ICMP时，我们用术语ICMP 指一般的ICMP，ICMPv4 和ICMPv6分别指专门
 用于 IPv4和IPv6的ICMP版本。正如我们将看到的，相较于 IPv4 中的ICMPv4，ICMPV6
 在IPv6 中发挥更重要的作用。
 
-［RFC0792］包含ICMPv4官方基本规范，［RFC1122］和［RFC1812］对其进行了细化和澄
-清。［RFC4443］包含了ICMPv6 的基本规范。［RFC4884］提供了一种方法来某些ICMP报
+\href{https://www.rfc-editor.org/rfc/rfc0792}{[RFC0792]}包含ICMPv4官方基本规范，\href{https://www.rfc-editor.org/rfc/rfc1122}{[RFC1122]}和\href{https://www.rfc-editor.org/rfc/rfc1812}{[RFC1812]}对其进行了细化和澄
+清。\href{https://www.rfc-editor.org/rfc/rfc4443}{[RFC4443]}包含了ICMPv6 的基本规范。\href{https://www.rfc-editor.org/rfc/rfc4884}{[RFC4884]}提供了一种方法来某些ICMP报
 文添加扩展对象。这项功能主要用于保存多协议标签交换（Multiprotocol Label Switching，
-MPLS）信息［RFC4950］，以及显示在转发一个特定的数据报时使用到的接口和下一跳路由
-器［RFC5837］。［RFC5508］ 给出了在通过NAT 时ICMP的标准行为特征（在第7章讨论）。
+MPLS）信息\href{https://www.rfc-editor.org/rfc/rfc4950}{[RFC4950]}，以及显示在转发一个特定的数据报时使用到的接口和下一跳路由
+器\href{https://www.rfc-editor.org/rfc/rfc5837}{[RFC5837]}。\href{https://www.rfc-editor.org/rfc/rfc5508}{[RFC5508]} 给出了在通过NAT 时ICMP的标准行为特征（在第7章讨论）。
 在IPv6 中，ICMPv6 不仅用于一些简单的错误报告和信令，它也用于邻居发现（Neighbor
-Discovery,ND） ［RFC4861］，与IPv4 中的ARP（见第4章）起着同样的作用。它还包括用
+Discovery,ND） \href{https://www.rfc-editor.org/rfc/rfc4861}{[RFC4861]}，与IPv4 中的ARP（见第4章）起着同样的作用。它还包括用
 于配置主机（见第6章）和管理组播地址（见第9章）的路由器发现（Router Discovery）功
 能。最后，它也被用来帮助管理移动IPv6 中的切换。
 
@@ -54,7 +54,7 @@ IPv6 Address） 字段、长度（Length）字段和下一个头部（Next Heade
 文。但是，大概只有8个是经常使用的。在整个章节中，我们将给出每个常用报文的确切格
 式。许多类型的ICMP报文也使用不同的代码字段值进一步指定报文的含义。校验和字段覆
 盖整个 ICMPv4报文；在ICMPv6 中，它将涵盖一个来自 IPv6 头部的伪头部（pseudo-header）
-（见［RFC2460］的8.1节）。用于计算校验和的算法和第5章中用于计算IP 头校验和的算法
+（见\href{https://www.rfc-editor.org/rfc/rfc2460}{[RFC2460]}的8.1节）。用于计算校验和的算法和第5章中用于计算IP 头校验和的算法
 相同。请注意，这是我们第一个端到端（end-to-end）的校验和例子。该校验和从发送方的
 ICMP 报文被一路携带到最终的接收方。相比之下，第5章中讨论的IPv4 头校验和在路由器
 的每一跳中都会改变。如果一个ICMP实现收到一个校验和错误的ICMP 报文，该报文将被
@@ -79,9 +79,9 @@ ICMP 报文被一路携带到最终的接收方。相比之下，第5章中讨�
 	\begin{tabular}{c|c|c|c|c}
 		\hline
 		类型      & 正式名称  & 参考        & E/I & 用途/注释           \\ \hline
-		0（*）    & 回显应答  & [RFC0792] & I   & 回显（ping）应答，返回数据 \\ \hline
-		3（*）（+） & 目的不可达 & [RFC0792] & E   & 不可达的主机/协议       \\ \hline
-		4       & 源端抑制  & [RFC0792] & E   & 表示拥塞（弃用）        \\ \hline
+		0（*）    & 回显应答  & \href{https://www.rfc-editor.org/rfc/rfc0792}{[RFC0792]} & I   & 回显（ping）应答，返回数据 \\ \hline
+		3（*）（+） & 目的不可达 & \href{https://www.rfc-editor.org/rfc/rfc0792}{[RFC0792]} & E   & 不可达的主机/协议       \\ \hline
+		4       & 源端抑制  & \href{https://www.rfc-editor.org/rfc/rfc0792}{[RFC0792]} & E   & 表示拥塞（弃用）        \\ \hline
 	\end{tabular}
 \end{table}
 
@@ -90,7 +90,7 @@ ICMP 报文被一路携带到最终的接收方。相比之下，第5章中讨�
 
 重定向
 
-［RFC0792］
+\href{https://www.rfc-editor.org/rfc/rfc0792}{[RFC0792]}
 
 E
 
@@ -100,7 +100,7 @@ E
 
 回显
 
-［RFC0792］
+\href{https://www.rfc-editor.org/rfc/rfc0792}{[RFC0792]}
 
 I
 
@@ -110,7 +110,7 @@ I
 
 路由器通告
 
-［RFC1256］
+\href{https://www.rfc-editor.org/rfc/rfc1256}{[RFC1256]}
 
 I
 
@@ -120,7 +120,7 @@ I
 
 路由器请求
 
-［RFC1256］
+\href{https://www.rfc-editor.org/rfc/rfc1256}{[RFC1256]}
 
 I
 
@@ -130,7 +130,7 @@ I
 
 超时
 
-［RFC0792］
+\href{https://www.rfc-editor.org/rfc/rfc0792}{[RFC0792]}
 
 E
 
@@ -146,14 +146,14 @@ E
 
 有问题的数据包或者头部
 
-注：星号（*）标记的类型是最常见的。那些标有加号（+）的可能包含［RFC4884］ 扩展对象。在第4列中，
+注：星号（*）标记的类型是最常见的。那些标有加号（+）的可能包含\href{https://www.rfc-editor.org/rfc/rfc4884}{[RFC4884]} 扩展对象。在第4列中，
 E表示差 错报文，I表示查询/信息类报文。
 
 对于常用的报文（表8-1中类型号旁标有星号的），将使用表8-2所示的代码号。一些报
-文能够携带扩展信息 ［RFC4884］（表8-1中有加号标记的）。
+文能够携带扩展信息 \href{https://www.rfc-editor.org/rfc/rfc4884}{[RFC4884]}（表8-1中有加号标记的）。
 
 IANA［ICMPTYPES］维护了一个报文类型的正式列表。这些报文类型有许多是1981年
-在原先的ICMPv4 规范［RFC0792］中定义的，这是在具有重要使用经验之前完成的。额外的
+在原先的ICMPv4 规范\href{https://www.rfc-editor.org/rfc/rfc0792}{[RFC0792]}中定义的，这是在具有重要使用经验之前完成的。额外的
 经验和其他协议（如DHCP）的发展已导致停止使用许多已定义的报文。当IPv6（ICMPv6）
 被设计时，这一事实已被接受，为此某种程度上为ICMPv6定义了合理的类型和代码。
 
@@ -263,19 +263,19 @@ IANA［ICMPTYPES］维护了一个报文类型的正式列表。这些报文类�
 
 需要设置分片但被 DF 位禁止了，被 PMTUD
 
-［RFC1191］采用
+\href{https://www.rfc-editor.org/rfc/rfc1191}{[RFC1191]}采用
 
 中间跳不可达
 
-弃用［RFC1812］
+弃用\href{https://www.rfc-editor.org/rfc/rfc1812}{[RFC1812]}
 
 目的不存在
 
-弃用［RFC1812］
+弃用\href{https://www.rfc-editor.org/rfc/rfc1812}{[RFC1812]}
 
-弃用［RFC1812］
+弃用\href{https://www.rfc-editor.org/rfc/rfc1812}{[RFC1812]}
 
-弃用 ［RFC1812］
+弃用 \href{https://www.rfc-editor.org/rfc/rfc1812}{[RFC1812]}
 
 不可用的服务类型（网络）
 
@@ -383,7 +383,7 @@ ICMPV4 和ICMPv6:Internet 控制报文协议
 
 src/dest/port 不准许的优先级
 
-在最小 ToS之下［RFC1812］
+在最小 ToS之下\href{https://www.rfc-editor.org/rfc/rfc1812}{[RFC1812]}
 
 指示一个可选的路由器
 
@@ -395,7 +395,7 @@ src/dest/port 不准许的优先级
 
 路由器的地址和配置信息
 
-和移动 IP［RFC5944］一起使用时，路由器不会
+和移动 IP\href{https://www.rfc-editor.org/rfc/rfc5944}{[RFC5944]}一起使用时，路由器不会
 
 路由普通数据包
 
@@ -496,43 +496,43 @@ src/dest/port 不准许的优先级
 
 重定向报文
 
-［RFC4443］
+\href{https://www.rfc-editor.org/rfc/rfc4443}{[RFC4443]}
 
-［RFC4443］
+\href{https://www.rfc-editor.org/rfc/rfc4443}{[RFC4443]}
 
-［RFC4443］
+\href{https://www.rfc-editor.org/rfc/rfc4443}{[RFC4443]}
 
-［RFC4443］
+\href{https://www.rfc-editor.org/rfc/rfc4443}{[RFC4443]}
 
-［RFC4443］
+\href{https://www.rfc-editor.org/rfc/rfc4443}{[RFC4443]}
 
-［RFC4443］
+\href{https://www.rfc-editor.org/rfc/rfc4443}{[RFC4443]}
 
-［RFC4443］
+\href{https://www.rfc-editor.org/rfc/rfc4443}{[RFC4443]}
 
-［RFC4443］
+\href{https://www.rfc-editor.org/rfc/rfc4443}{[RFC4443]}
 
-［RFC2710］
+\href{https://www.rfc-editor.org/rfc/rfc2710}{[RFC2710]}
 
-［RFC2710］
+\href{https://www.rfc-editor.org/rfc/rfc2710}{[RFC2710]}
 
-［RFC2710］
+\href{https://www.rfc-editor.org/rfc/rfc2710}{[RFC2710]}
 
-［RFC4861］
+\href{https://www.rfc-editor.org/rfc/rfc4861}{[RFC4861]}
 
-［RFC4861］
+\href{https://www.rfc-editor.org/rfc/rfc4861}{[RFC4861]}
 
-［RFC4861］
+\href{https://www.rfc-editor.org/rfc/rfc4861}{[RFC4861]}
 
-［RFC4861］
+\href{https://www.rfc-editor.org/rfc/rfc4861}{[RFC4861]}
 
-［RFC4861］
+\href{https://www.rfc-editor.org/rfc/rfc4861}{[RFC4861]}
 
 141
 
 反向邻居发现请求报文
 
-［RFC3122］
+\href{https://www.rfc-editor.org/rfc/rfc3122}{[RFC3122]}
 
 不可达的主机、端口、协议
 
@@ -594,17 +594,17 @@ IPv6 邻居发现（通告）
 
 本地代理地址发现请求报文
 
-［RFC3122］
+\href{https://www.rfc-editor.org/rfc/rfc3122}{[RFC3122]}
 
-［RFC3810］
+\href{https://www.rfc-editor.org/rfc/rfc3810}{[RFC3810]}
 
-［RFC6275］
+\href{https://www.rfc-editor.org/rfc/rfc6275}{[RFC6275]}
 
 145
 
 本地代理地址发现应答报文
 
-［RFC6275］
+\href{https://www.rfc-editor.org/rfc/rfc6275}{[RFC6275]}
 
 146
 
@@ -646,25 +646,25 @@ FMIPV6 报文
 
 为ICMPv6信息类报文扩充保留
 
-［RFC6275］
+\href{https://www.rfc-editor.org/rfc/rfc6275}{[RFC6275]}
 
-［RFC6275］
+\href{https://www.rfc-editor.org/rfc/rfc6275}{[RFC6275]}
 
-［RFC3971］
+\href{https://www.rfc-editor.org/rfc/rfc3971}{[RFC3971]}
 
-［RFC3971］
+\href{https://www.rfc-editor.org/rfc/rfc3971}{[RFC3971]}
 
-［RFC4286］
+\href{https://www.rfc-editor.org/rfc/rfc4286}{[RFC4286]}
 
-［RFC4286］
+\href{https://www.rfc-editor.org/rfc/rfc4286}{[RFC4286]}
 
-［RFC4286］
+\href{https://www.rfc-editor.org/rfc/rfc4286}{[RFC4286]}
 
-［RFC5568］
+\href{https://www.rfc-editor.org/rfc/rfc5568}{[RFC5568]}
 
-［RFC4443］
+\href{https://www.rfc-editor.org/rfc/rfc4443}{[RFC4443]}
 
-［RFC4443］
+\href{https://www.rfc-editor.org/rfc/rfc4443}{[RFC4443]}
 
 描
 
@@ -818,16 +818,16 @@ ICMPV4 和ICMPv6:Internet 控制报文协议
 
 除了定义ICMPv6基本功能的类型和代码字段外，还支持了大量的标准选项，其中一
 些是必需的。这将ICMPv6与ICMPv4 中区别开来（ICMPv4没有选项）。当前，标准的
-ICMPv6选项只为ICMPV6 ND 报文（类型135和136）定义使用，使用了［RFC4861］中讨
+ICMPv6选项只为ICMPV6 ND 报文（类型135和136）定义使用，使用了\href{https://www.rfc-editor.org/rfc/rfc4861}{[RFC4861]}中讨
 论的选项格式（Option Format）字段。在8.5节详细探讨ND 时我们会讨论这些选项。
 
 \subsection{处理 ICMP 报文}
 在ICMP 中，对传入报文的处理随着系统的不同而不同。一般说来，传人的信息类请求
-将被操作系统自动处理，而差错类报文传递给用户进程或传输层协议，如 TCP［RFC5461］。
+将被操作系统自动处理，而差错类报文传递给用户进程或传输层协议，如 TCP\href{https://www.rfc-editor.org/rfc/rfc5461}{[RFC5461]}。
 进程可以选择对它们采取行动或忽略它们。这个一般规则的例外情况包括重定向报文和目的
 不可达—需要分片报文。前者将导致主机路由表中的自动更新，而后者用于路径MTU发
 现（PMTUD）机制，这一般是由传输层协议来实现的，如TCP。在ICMPv6 中对报文的处理
-在一定程度上将更为严格。处理传入的ICMPv6 报文［RFC4443］时将应用以下规则：
+在一定程度上将更为严格。处理传入的ICMPv6 报文\href{https://www.rfc-editor.org/rfc/rfc4443}{[RFC4443]}时将应用以下规则：
 
 \begin{itemize}
 	\item 未知的ICMPv6 差错报文必须传递给上层产生差错报文的进程（如果可能的话）。
@@ -845,7 +845,7 @@ ICMPv6选项只为ICMPV6 ND 报文（类型135和136）定义使用，使用了�
 \section{ICMP 差错报文}
 
 上一节提到的ICMP 差错报文和信息类报文之间的区别非常重要，因为在生成ICMPV4
-差错报文［RFC1812］和 ICMPv6 差错报文［RFC4443］时做了某些限制，但这不适用于查询。
+差错报文\href{https://www.rfc-editor.org/rfc/rfc1812}{[RFC1812]}和 ICMPv6 差错报文\href{https://www.rfc-editor.org/rfc/rfc4443}{[RFC4443]}时做了某些限制，但这不适用于查询。
 特别是，ICMP 差错报文不会对以下报文进行响应：另一个ICMP差错报文，头部损坏的数
 据报（例如，校验和错误），IP 层的广播/组播数据报，封装在链路层广播或者组播帧中的数
 据报，无效或者网络为零的源地址的数据报，或除第一个之外的其他分片。限制生成ICMP
@@ -875,11 +875,11 @@ ICMPv6也类似。在下面各种情况不会响应产生 ICMPv6 差错报文：
 \end{itemize}
 
 除了控制产生ICMP 报文条件的规则，还有限制从单一发送者发出的ICMP 总体流量
-水平的规则。在［RFC4443］，一种推荐的限制ICMP报文速率的方法是使用令牌桶（token
+水平的规则。在\href{https://www.rfc-editor.org/rfc/rfc4443}{[RFC4443]}，一种推荐的限制ICMP报文速率的方法是使用令牌桶（token
 bucket）。采用令牌桶后，每个“桶”保存了最大数量（B）的“令牌”，每个“令牌”允许一
 定数量的报文被发送。桶定期被新的令牌（速率为 N）填充，并且每发送一个报文便减1。因
 此，令牌桶（通常也称为令牌桶过滤器 （token bucket filter））可以由参数（B,N）刻画。对
-于小型或中型设备，［RFC4443］提供了一个使用参数（10，10）的令牌桶例子。令牌桶是在
+于小型或中型设备，\href{https://www.rfc-editor.org/rfc/rfc4443}{[RFC4443]}提供了一个使用参数（10，10）的令牌桶例子。令牌桶是在
 协议实现中为限制带宽利用率所采取的一个通用机制，在许多情况下 B 和 N的单位是字节，
 而不是报文个数。
 
@@ -892,14 +892,14 @@ bucket）。采用令牌桶后，每个“桶”保存了最大数量（B）的�
 者UDP）及应用进程相关联（包含在IP 数据报有效载荷区中前8个字节所包含的TCP或者
 UDP 头部中的TCP 或者 UDP 端口号）。
 
-在［RFC1812］出版之前，ICMP规范仅要求包含违规IP 数据报的前8个字节（因为这
+在\href{https://www.rfc-editor.org/rfc/rfc1812}{[RFC1812]}出版之前，ICMP规范仅要求包含违规IP 数据报的前8个字节（因为这
 足以确定UDP和TCP 端口号，参见第10章和第12章），但随着越来越多的复杂协议的普
 及（如IP被封装在IP 中），现在需要更多的信息来有效诊断问题。此外，一些差错报文可能
 包括扩展（extension）。我们首先简要地讨论扩展方法，然后再讨论每个重要的ICMP差错
 报文。
 
 \subsection{扩展的ICMP 和多部报文}
-［RFC4884］通过在ICMP 报文的尾部追加扩展数据结构（extension data structure）的方
+\href{https://www.rfc-editor.org/rfc/rfc4884}{[RFC4884]}通过在ICMP 报文的尾部追加扩展数据结构（extension data structure）的方
 法来指定一个扩展的方法。扩展结构包括一个扩展头部和可能包含可变数量数据的扩展对
 象，如图8-3所示。
 
@@ -948,7 +948,7 @@ ICMP 有效载荷（至少128字节）
 
 ｝ICMP 扩展头部
 
-［RFC4884］
+\href{https://www.rfc-editor.org/rfc/rfc4884}{[RFC4884]}
 
 对象头部
 
@@ -956,7 +956,7 @@ ICMP 有效载荷（至少128字节）
 
 多个对象
 
-［RFC4884］
+\href{https://www.rfc-editor.org/rfc/rfc4884}{[RFC4884]}
 
 ………其他对象
 
@@ -990,7 +990,7 @@ ICMPv4而言其类型字段为3，对ICMPv6而言其类型字段为1。代码字
 图 8-4
 
 ICMPv4（左）和ICMPv6（右）的ICMP目的不可达报文。长度字段出现在扩展的ICMP实现
-中并符合［RFC4884］规范，它给出了保存原始数据报的字数大小，分别以4个字节（IPv4）或
+中并符合\href{https://www.rfc-editor.org/rfc/rfc4884}{[RFC4884]}规范，它给出了保存原始数据报的字数大小，分别以4个字节（IPv4）或
 8个字节（IPv6）为单位。可能还会包含一个可选的扩展结构。当代码值为4时，ICMP 中标
 记为“其他”（various）的字段用于记录下一跳的MTU，这将被 PMTUD使用。为了这个目的，
 ICMPv6 使用了不同的ICMPv6 PTB 报文 （ICMPv6 类型2）
@@ -1015,7 +1015,7 @@ prohibition）正阻止到目的地的成功通信。这通常是由一个防火
 UDP 便会回应一个ICMP端口不可达报文。
 
 ICMPv4端口不可达报文可以通过在 Windows 或Linux 客户端中使用简单文件传输协
-议（Trivial File Transfer Protocol,TFTP）［RFC1350］，并采用 tcpdump 来查看数据包交换的
+议（Trivial File Transfer Protocol,TFTP）\href{https://www.rfc-editor.org/rfc/rfc1350}{[RFC1350]}，并采用 tcpdump 来查看数据包交换的
 方法来加以说明。TFTP 服务使用的知名UDP端口是69。然而，在许多系统上有 TFTP客
 户端，但却很少运行 TFTP 服务器。因此，当我们试图访问一个不存在的服务器时很容易着
 个究竟。在清单8-1所示的例子中，我们在 Windows 主机上执行称次 tftp 的 TFTP 客户端
@@ -1258,7 +1258,7 @@ TFTP 读请求（RRQ）尾部的数值16表示在 UDP数据报中数据的长度
 下字段之和：TFTP 中2个字节的操作码，以null 结尾的5个字节文件名/foo，以null 结尾
 的9字节字符串netascii。图8-5描述了整个ICMPv4不可达报文。它的长度是52个字节
 （不包括IPv4头部）：4字节的基本ICMPv4 头，后面是4字节的未使用字段（见图8-5，此实
-现没有使用［RFC4884］扩展），20字节的违规IPv4头部，8字节的UDP 头部，剩下的16字
+现没有使用\href{https://www.rfc-editor.org/rfc/rfc4884}{[RFC4884]}扩展），20字节的违规IPv4头部，8字节的UDP 头部，剩下的16字
 节来自于原始tftp 应用请求（4+4+20+8+16=52）。
 
 图 8-5
@@ -1272,7 +1272,7 @@ IPv4 数据报长度不能超过576字节。在这个例子中，有足够的空
 差错和特定用户进程相关联（尽管我们看到这个例子中的TFTP客户端并没有很好地利用这
 需要注意的是在第7个请求之后（包13），一段时间没有差错返回。之所以会这样，原
 
-因是基于Linux 的服务器有速率限制（rate limiting）。也就是说，根据［RFC1812］的建议，
+因是基于Linux 的服务器有速率限制（rate limiting）。也就是说，根据\href{https://www.rfc-editor.org/rfc/rfc1812}{[RFC1812]}的建议，
 限制了在一段时间内产生相同类型的ICMP报文的数量。我们看一下8s空白之前的初始差
 错报文（包2，时间戳48.974812）和最后报文（包12，时间戳49.034812）之间经过的时间，
 计算可知经过了 60ms。假如我们计算在这段时间内的ICMP报文个数，可以得到（6报文
@@ -1301,7 +1301,7 @@ net.ipv4.icmp\_ratelimit = 100
 除非该进程调用了一个特殊函数（即 UDP套接字的 connect）。通用的 TFTP 客户端不会调用
 这个函数，所以它们从来不会收到ICMP差错通知。当没有收到任何关于TFTP协议请求的
 响应时，TFTP 客户端一次又一次地尝试获取文件。这是一个设计较差的请求和重试机制的
-例子。虽然 TFTP确实有调整这种行为（见［RFC2349］）的扩展，但我们将在后面看到（在第
+例子。虽然 TFTP确实有调整这种行为（见\href{https://www.rfc-editor.org/rfc/rfc2349}{[RFC2349]}）的扩展，但我们将在后面看到（在第
 16 章）更复杂的传输协议如 TCP会有一个更好的算法。
 
 \subsubsection{ICMPv4 PTB（代码 4）}
@@ -1338,7 +1338,7 @@ ICMPv6 差错报文以表示这个问题。
 
 代码5是代码1更为细化的版本，使用在当一个特定的人口或出口过滤政策是导致数据
 报无法成功投递的原因时。这可能会使用在：例如，当一个主机试图采用一个意想不到的网
-络前缀的源 IPv6地址来发送流量时 ［RFC3704］。
+络前缀的源 IPv6地址来发送流量时 \href{https://www.rfc-editor.org/rfc/rfc3704}{[RFC3704]}。
 
 \subsubsection{ICMPv6拒绝路由到目的地（代码6）}
 一个拒绝 （reject）或封阻路由（blocking route）是一个特的路由或转发条目（见第5
@@ -1482,7 +1482,7 @@ ND 过程一起被定义的（参见8.5节）。目标地址（Target Address）
 一跳的正确节点的本地链路IPv6地址。目的地址（Destination Address）是数据报
 中触发这个重定问的目的IPv6地址。当目的地址和接收到重定向报文的主机是在
 同一个链路上时，目标地址和目的地址字段是一样的。这种方法能够告诉一台主机
-另一台主机是在同一个链路上的，即使它们使用的地址前缀不同［RFC5942］。
+另一台主机是在同一个链路上的，即使它们使用的地址前缀不同\href{https://www.rfc-editor.org/rfc/rfc5942}{[RFC5942]}。
 
 与ICMPv6中的其他ND报文一样，这个报文能够包含选项。这些选项类型
 包括了目标链路层地址选项和重定向头部选项。当重定向报文在一个非广播多
@@ -1768,7 +1768,7 @@ round-trip min/avg/max/mdev = 0.380/1.545/2.406/0.765 ms
 构成了 IPv6 SLAAC功能的一部分（参见第6章），在逻辑上是IPv6ND 的一部分。因此，我
 们在8.5 节更为广泛的 ND上下文环境中讨论它。
 
-IPv4 的路由器发现是通过采用一对ICMPv4信息类报文实现的［RFC1256］：路由器请求
+IPv4 的路由器发现是通过采用一对ICMPv4信息类报文实现的\href{https://www.rfc-editor.org/rfc/rfc1256}{[RFC1256]}：路由器请求
 （RS，类型10）和路由器通告（RA，类型9）。通告由路由器通过两种方法发送。首先，它
 们定期对本地网络（使用TTL =1）的所有主机组播地址（224.0.0.1）进行组播，并提供给
 有需要的主机，它们通常使用 RS报文进行请求。使用组播将RS报文发送到所有路由器组
@@ -1778,7 +1778,7 @@ IPv4 的路由器发现是通过采用一对ICMPv4信息类报文实现的［RFC
 报文格式，其中包含了一个 IPv4 地址列表可用做主机的默认路由器。
 
 图 8-17 ICMPv4 路由器通告报文包含了一个IPv4地址列表可用作下一跳的默认路由。优先水平允许
-网络操作人员为这个列表安排不同的优先级（越高优先级越大）。移动 IPV4［RFC5944］通过扩
+网络操作人员为这个列表安排不同的优先级（越高优先级越大）。移动 IPV4\href{https://www.rfc-editor.org/rfc/rfc5944}{[RFC5944]}通过扩
 展增强了 RA 报文，目的是为了通告MIPv4 移动代理以及被通告的路由器地址的前缀长度
 
 在图8-17中，地址数（Number of Address）学段给出了报文中路由地址块的个数。每个
@@ -1788,16 +1788,16 @@ Size）字段给出了每个块的32位字数（在这个例子中是2）。生�
 大代表优先级越高。默认的优先水平是0，特殊值 0x80000000表示这个地址不应该用作有
 效的默认路由。
 
-RA 报文也被移动 IP［RFC5944］中的节点用于定位一个移动（即本地和/或外地）代理。
+RA 报文也被移动 IP\href{https://www.rfc-editor.org/rfc/rfc5944}{[RFC5944]}中的节点用于定位一个移动（即本地和/或外地）代理。
 图8-17描述了一个路由器通告报文，其中包含了一个移动代理通告扩展。这个扩展遵循传
 统的RA 信息并包含一个值为16的类型（Type）字段，以及一个给出了扩展区域（不包括类
 型和长度字段）内字节个数的长度（Length）字段。它的值等于（6+4K），假设包含了K个
 地址。序列号字段给出了自从初始化之后代理产生的这种扩展的个数。注册字段给出了发送
 代理愿意接受 MIPv4注册的最大秒数（OxFFFF 的表示无穷大）。存在具有以下含义的标志
 （Flag）位字段：R（为MIP服务所需的注册），B（代理太忙无法接受新注册），H（代理愿意
-充当本地代理），F（代理愿意充当外地代理），M（支持最小封装格式［RFC2004］），G（代理
-支持封装数据报的GRE 隧道），r（保留零），T（支持反向隧道［RFC3024］），U（支持UDP的
-隧道［RFC3519］），X（支持撤销注册［RFC3543］），1（外地代理支持区域注册 ［RFC4857］）。
+充当本地代理），F（代理愿意充当外地代理），M（支持最小封装格式\href{https://www.rfc-editor.org/rfc/rfc2004}{[RFC2004]}），G（代理
+支持封装数据报的GRE 隧道），r（保留零），T（支持反向隧道\href{https://www.rfc-editor.org/rfc/rfc3024}{[RFC3024]}），U（支持UDP的
+隧道\href{https://www.rfc-editor.org/rfc/rfc3519}{[RFC3519]}），X（支持撤销注册\href{https://www.rfc-editor.org/rfc/rfc3543}{[RFC3543]}），1（外地代理支持区域注册 \href{https://www.rfc-editor.org/rfc/rfc4857}{[RFC4857]}）。
 
 除了移动代理通告扩展，还有一个扩展已经被设计用于帮助移动节点。前缀长度扩展
 可能位于移动代理通告扩展之后，表示在基本路由器通告中每个对应的路由器地址的前缀长
@@ -1809,11 +1809,11 @@ RA 报文也被移动 IP［RFC5944］中的节点用于定位一个移动（即�
 在图8-18中，长度字段被设置等于N，即来源于基本 RA报文中的地址数字段。每
 个8位的前缀长度（Prefix Length）字段给出了在本地子网中使用的路由器地址（Router
 Address）字段（图8-17）对应的位数。这个扩展能被移动节点用来确定它是否已经从一个网
-络移动到另一个了。采用［RFC5944］中的算法2，一个移动节点也能缓存一个特定链路上可
+络移动到另一个了。采用\href{https://www.rfc-editor.org/rfc/rfc5944}{[RFC5944]}中的算法2，一个移动节点也能缓存一个特定链路上可
 用的前缀集合。如果网络前缀集合已经改变，就能检测到是移动了。
 
 \subsection{本地代理地址发现请求 / 应答（ICMPV6 类型 144/145）}
-［RFC6275］定义了4种支持 MIPv6 的ICMPv6报文。其中2个ICMPv6报文用于动态本
+\href{https://www.rfc-editor.org/rfc/rfc6275}{[RFC6275]}定义了4种支持 MIPv6 的ICMPv6报文。其中2个ICMPv6报文用于动态本
 地代理地址发现，另外2个用于重新编号和移动配置。当一个 MIPv6 节点访问一个新的网络
 时，它使用本地代理地址发现请求报文动态地发现一个本地代理（参见图8-19）。
 
@@ -1851,9 +1851,9 @@ Address）字段（图8-17）对应的位数。这个扩展能被移动节点用
 
 移动前缀通告报文是设计用来通知一个移动中的节点其本地前缀已经改变了。这个报文通
 常是使用 IPsec保护的（参见第18章），主要是为了帮助移动节点免受假冒前缀通告的欺骗。前
-缀信息选项使用了［RFC4861］描述的格式，包含了移动节点应该用来配置其本地地址的前缀。
+缀信息选项使用了\href{https://www.rfc-editor.org/rfc/rfc4861}{[RFC4861]}描述的格式，包含了移动节点应该用来配置其本地地址的前缀。
 \subsection{移动 IPv6 快速切换报文（ICMPV6 类型154）}
-MIPv6 的一个变体 MIPv6定义了快速切换 （fast handovers） ［RFC5568］（称 FMIPv6）。
+MIPv6 的一个变体 MIPv6定义了快速切换 （fast handovers） \href{https://www.rfc-editor.org/rfc/rfc5568}{[RFC5568]}（称 FMIPv6）。
 当一个移动节点从一个网络的接人点（AP）移动到另一个时，它指定的方法可以改善IP层的
 切换延迟。这是通过在切换发生之前预测路由器和地址信息来完成的。这个协议涉及对所谓
 的代理路由器（proxy router）的发现，它的行为类似于普通路由器，但是移动节点在切换到
@@ -1873,7 +1873,7 @@ MIPv6 的一个变体 MIPv6定义了快速切换 （fast handovers） ［RFC5568
 式，因此我们在详细探讨 ND 时再讨论它们。
 
 \subsection{组播侦听查询/ 报告 / 完成（ICMPV6 类型 130/131/132）}
-组播侦听发现（MLD）［RFC2710］［RFC3590］为采用IPv6的链路提供了组播地址管理。
+组播侦听发现（MLD）\href{https://www.rfc-editor.org/rfc/rfc2710}{[RFC2710]}\href{https://www.rfc-editor.org/rfc/rfc3590}{[RFC3590]}为采用IPv6的链路提供了组播地址管理。
 它和IPv4采用的IGMP协议类似，在第9章中有描述。那一章详细地介绍了IGMP操作和
 ICMPv6报文的使用。此处我们描述组成 MLD（版本1）报文的格式，包括组播侦听查询、
 报告和完成报文。基本格式如图8-24所示。这些报文被发送时其 IPv6跳数限制（Hop Limit）
@@ -1900,9 +1900,9 @@ MLDv2（版本2组播侦听发现，在下一节描述）扩展了此功能，�
 成报文（类型132），它分别包含和报告相关的地址或不再感兴趣的地址。
 
 \subsection{版本2 组播侦听发现（ICMPV6 类型143）}
-［RFC3810］定义了在［RFC2710］中描述的MLD功能扩展。特别是，它定义了一个组播
+\href{https://www.rfc-editor.org/rfc/rfc3810}{[RFC3810]}定义了在\href{https://www.rfc-editor.org/rfc/rfc2710}{[RFC2710]}中描述的MLD功能扩展。特别是，它定义了一个组播
 侦听的方式来指定只监听一个特定集合的发送者（或者，排除一个特定的集合）。因此，它
-对支持源特定组播（SSM；参见第9章和［RFC4604］［RFC4607］）非常有用。它基本上是对
+对支持源特定组播（SSM；参见第9章和\href{https://www.rfc-editor.org/rfc/rfc4604}{[RFC4604]}\href{https://www.rfc-editor.org/rfc/rfc4607}{[RFC4607]}）非常有用。它基本上是对
 与IPv4一起使用的IGMPv3协议在IPv6 下使用的一个转换，它使用ICMPv6 来管理多数
 组播地址。因此，我们将在这里描述报文格式，但组播地址动态的操作将在第9章中介绍。
 MLDv2扩展了MLD 查询报文，增加了与特定来源相关的其他信息（见图8-25）。报文中开
@@ -1957,7 +1957,7 @@ IN）和 MODE\_IS\_EXCLUDE （IS\_EX）类型，指明的地址过滤模式对�
 （TO\_IN）或CHANGE\_TO\_EXCLUDE（TO\_EX）和当前状态记录是类似的，但当有变化或
 者不需要包含一个非空的源列表时将被发送。源列表改变类型，当过滤器的状态（包含/排
 除）不变而只有源列表被改变时，ALLOW\_NEW\_SOURCES（ALLOW）和BLOCK\_OLD
-SOURCES（BLOCK）将被使用。为了简化了MLDV2［RFC5790］ 的操作，对MLDv2（和
+SOURCES（BLOCK）将被使用。为了简化了MLDV2\href{https://www.rfc-editor.org/rfc/rfc5790}{[RFC5790]} 的操作，对MLDv2（和
 IGMPv3）做了修改，即删除了 EXCLUDE 模式。这种“轻量级”的方法，称为LW-MLDV2
 （和LW-IGMPv3），使用先前定义的相同报文格式，但删除了很少使用的要求组播路由器保存
 附加状态的 EXCLUDE指令。
@@ -1966,11 +1966,11 @@ IGMPv3）做了修改，即删除了 EXCLUDE 模式。这种“轻量级”的�
 值是下列之一：MODE\_IS\_INCLUDE,MODE\_IS\_EXCLUDE, CHANGE\_TO\_INCLUDE \_MODE，
 CHANGE\_TO\_EXCLUDE\_MODE, ALLOW\_NEW\_SOURCES，或BLOCK\_OLD\_SOURCES。
 LW-MLDv2 通过删除 EXCLUDE 模式简化了 MLDV2。辅助数据长度（Aux Data Len） 字段包
-含了记录中的辅助数据，以32位字为单位。对于在［RFC3810］中定义的MLDv2 而言，此字
+含了记录中的辅助数据，以32位字为单位。对于在\href{https://www.rfc-editor.org/rfc/rfc3810}{[RFC3810]}中定义的MLDv2 而言，此字
 段必须为 0．表示没有辅助数据
 
 \subsection{组播路由器发现（IGMP 类型 48/49/50，ICMPV6 类型 151/152/153）}
-［RFC4286］ 描述组播路由器发现（Multicast Router Discovery,MRD），该方法定义的特
+\href{https://www.rfc-editor.org/rfc/rfc4286}{[RFC4286]} 描述组播路由器发现（Multicast Router Discovery,MRD），该方法定义的特
 殊报文可以和ICMPv6 和IGMP一起使用，用来发现能够转发组播数据包和它们的一些配置
 参数的路由器。最初的想法主要是和“IGMP/MLD侦听”一起使用。IGMP/MLD 侦听是一
 种机制，主机和路由器（例如，第2层交换机）以外的系统也可以了解网络层组播路由器和
@@ -2018,7 +2018,7 @@ ND 被设计允许在同一个链路或者网段的节点（路由器和主机�
 
 ND 中两个主要部分是：邻居请求/通告（NS/NA），在网络和链路层地址之间提供类似
 于ARP的映射功能；还有路由器请求和通告（RS/RA），提供的功能包括路由器发现、移动
-IP 代理发现、重定向，以及对一些自动配置的支持。ND 的一个安全变体 SEND［RFC3971］
+IP 代理发现、重定向，以及对一些自动配置的支持。ND 的一个安全变体 SEND\href{https://www.rfc-editor.org/rfc/rfc3971}{[RFC3971]}
 通过引人额外的ND选项增加了认证和特殊形式的寻址。
 
 ND报文就是ICMPv6报文，只是发送时IPv6的跳数限制字段值被设置为255。接
@@ -2050,7 +2050,7 @@ RA 报文。RS报文被发送到所有路由器组播地址 ff02：：2。如果
 
 8字节
 
-选项 ［RFC4861］。
+选项 \href{https://www.rfc-editor.org/rfc/rfc4861}{[RFC4861]}。
 
 保留（0）
 
@@ -2081,13 +2081,13 @@ ICMPv6 路由器请求报文非常简单，但是通
 当前跳数限制（Current Hop Limit）
 
 字段指定主机发送IPv6数据报的默认跳数限制。值为0表示发送路由器并不关心。下一个
-字节包含了位字段数，正如在［RFC5175］ 总结和扩展的那样。M（托管）字段表明本地 IPv6
+字节包含了位字段数，正如在\href{https://www.rfc-editor.org/rfc/rfc5175}{[RFC5175]} 总结和扩展的那样。M（托管）字段表明本地 IPv6
 地址分配是由有状态的配置来处理的，主机应避免使用无状态的自动配置。0（其他）字段
 表示其他有状态的信息（即 IPv6地址以外的）使用一个有状态的配置机制（见第6章）。H（本
 地代理）字段表示发送路由器愿意充当一个移动IPv6 节点的本地代理。Pref（优先级）字段
 给出了将报文发送者作为一个默认路由器来使用的优先级层次：01，高；00，中（默认）；
 11，低；10，保留（未使用）。有关这一字段的更多细节在「RFC41911中有描述。当和实验
-性质的ND代理工具［RFC4389］配合使用时，将使用P（代理）标志。它为IPv6 提供了一个
+性质的ND代理工具\href{https://www.rfc-editor.org/rfc/rfc4389}{[RFC4389]}配合使用时，将使用P（代理）标志。它为IPv6 提供了一个
 类似代理 ARP的功能（见第4章）。
 
 0
@@ -2299,7 +2299,7 @@ NA应答报文使用链路层（和IP 层）单播地址被发送回请求节点
 
 \subsection{ICMPV6 反向邻居发现请求/通告（ICMPV6 类型141/142）}
 
-IPv6［RFC3122］ 中的反向邻居发现（Inverse Neighbor Discovery,IND） 功能起源于需要
+IPv6\href{https://www.rfc-editor.org/rfc/rfc3122}{[RFC3122]} 中的反向邻居发现（Inverse Neighbor Discovery,IND） 功能起源于需要
 在帧中继网络中确定给定的链路层地址对应的IPv6地址。它类似于反向的ARP 协议，主要
 用于支持IPv4网络中的无盘计算机。其主要功能是确定一个已知的链路层地址对应的网络
 层地址。图8-36显示了 IND 请求和通告报文的基本格式。
@@ -2433,11 +2433,11 @@ PROBE。图8-37所示的转换图显示的初始状态是 INCOMPLETE 或 STALE�
 NS报文后还未收到任何证据，就应该删除该条目。
 
 \subsection{安全邻居发现}
-SEND（安全邻居发现）［RFC3971］是一组特殊的增强功能，旨在为ND报文提供额外的
+SEND（安全邻居发现）\href{https://www.rfc-editor.org/rfc/rfc3971}{[RFC3971]}是一组特殊的增强功能，旨在为ND报文提供额外的
 安全性。这是为了帮助抵制各种欺骗攻击，其中一台主机或路由器可能会伪装成另一个（更
-多细节见第18章、8.6节和 ［RFC3756］）。特别是在响应NS报文时，它防止节点伪装成其他
+多细节见第18章、8.6节和 \href{https://www.rfc-editor.org/rfc/rfc3756}{[RFC3756]}）。特别是在响应NS报文时，它防止节点伪装成其他
 节点。SEND 不使用IPsec（见第18章），它有自身的特殊机制。这种机制也可用于确保安全
-的 FMIPv6 切换 ［RFC5269］。
+的 FMIPv6 切换 \href{https://www.rfc-editor.org/rfc/rfc5269}{[RFC5269]}。
 
 SEND在一套假设的框架中操作。首先，每个具备SEND的路由器有一个证书
 
@@ -2448,7 +2448,7 @@ SEND在一套假设的框架中操作。首先，每个具备SEND的路由器有
 
 \subsubsection{密码生成地址}
 也许 SEND 最有趣的特征是使用完全不同类型的称密码生成的地址（Cryptographically
-Generated Address, CGA）［RFC3972］［RFC4581］［RFC4982］ 的IPv6地址。这种类型的地址是
+Generated Address, CGA）\href{https://www.rfc-editor.org/rfc/rfc3972}{[RFC3972]}\href{https://www.rfc-editor.org/rfc/rfc4581}{[RFC4581]}\href{https://www.rfc-editor.org/rfc/rfc4982}{[RFC4982]} 的IPv6地址。这种类型的地址是
 基于节点的公钥信息，从而将地址和节点证书关联起来。因此，拥有相应的私钥的节点或地
 址的所有者能够证明它是一个特定CGA 的授权用户。CGA 也编码与它们相关联的子网前缀，
 因此它们不能被轻易地从一个子网转移到另一个子网。这种做法与通常分配地址的方法完全
@@ -2459,13 +2459,13 @@ CGA。CGA 接口标识符是通过一个称为Hashl 的安全散列函数（secu
 算出来的（被认为难以反转的散列函数，参见第18章），它的输入是节点的公钥和一个特殊
 的CGA 参数数据结构。这些参数也被用来作为另一个安全散列函数 Hash2 的输人，它提供
 了散列扩展（hash extension）技术，能有效地扩展散列函数的输出位数，进而提高其安全
-性（即生成一个不同的输人但却有相同散列值的强度）［A03］［RFC6273］。CGA 技术允许自动
+性（即生成一个不同的输人但却有相同散列值的强度）［A03］\href{https://www.rfc-editor.org/rfc/rfc6273}{[RFC6273]}。CGA 技术允许自动
 生成地址所有者的公钥，所以这种方法可以在没有公钥基础设施（public key infrastructure，
 PKI） 或其他可信任的第三方下工作。
 
 CGA 参数数据结构如图8-38所示。伪随机序列（Modifier）字段初始化一个随机值，碰
 撞计数（Collision Count）字段初始化次0。这个结构包括一个扩展字段（Extension Field）可
-供未来使用［RFC4581］。
+供未来使用\href{https://www.rfc-editor.org/rfc/rfc4581}{[RFC4581]}。
 
 0
 
@@ -2527,7 +2527,7 @@ CGA
 来生成 CGA
 
 一个称为 Sec 的3位无符号参数将影响该方法对数学破解的抵御力（采用了安全散列函
-数［RFC4982］），以及计算中的计算复杂性（在 Sec 值中它们是指数的）。IANA 为 Sec 值维护
+数\href{https://www.rfc-editor.org/rfc/rfc4982}{[RFC4982]}），以及计算中的计算复杂性（在 Sec 值中它们是指数的）。IANA 为 Sec 值维护
 一个注册表［SI］。配合 Sec值，Hashl 和 Hash2 函数在相同的CGA参数块进行操作。该地
 址所有者首先为伪随机序列字段选择一个随机值，将子网前缀字段看作0，再计算Hash2的
 值。结果需要有（16*Sec）个初始0位，所以修改输人将伪随机序列字段递增1，并重新计
@@ -2541,7 +2541,7 @@ CGA
 的，当多个这样的冲突出现时应考虑是否配置错误或遭到了攻击。一旦所有必要的计算完成
 了，通过连接子网前缀，Sec 值以及 Hashl值便能形成CGA。需要注意的是，如果子网前
 缀改变了，只需要重新计算 Hash1，因为伪随机序列字段值仍然保持不变。（对替代 CGA 的
-方法感兴趣的读者应该看看［RFC5535］，它描述了基于散列的地址（hash-based address），或
+方法感兴趣的读者应该看看\href{https://www.rfc-editor.org/rfc/rfc5535}{[RFC5535]}，它描述了基于散列的地址（hash-based address），或
 HBA。HBA 用在一个稍微不同的环境中的多前缀多宿主主机中，并使用了计算复杂度较低
 的不同加密形式，当然也定义了 HBA-CGA 兼容选项。）
 
@@ -2561,18 +2561,18 @@ Hashl需要和CGA 的接口标识符部分匹配（其中开始的3位、第6位
 私钥的知识计算出来的。通过将一个特的128位类型标签和报文结合起来，验证将形成一
 个数据块。使用一个 RSA 签名（RSASSA-PKCSI-VL
 
-\_5 ［RFC3447］），并结合公钥（从 CGA
+\_5 \href{https://www.rfc-editor.org/rfc/rfc3447}{[RFC3447]}），并结合公钥（从 CGA
 
 参数提取）、数据块和签名作为参数来验证CGA的所有权。一般来说，只有在CGA 验证和
 签名验证过程都顺利完成时，CGA 及其用户才被认为是合法的。
 
-使用ICMPv6报文和6个在［RFC3971］中定义的选项来处理CGA 和验证。RFC还定义
+使用ICMPv6报文和6个在\href{https://www.rfc-editor.org/rfc/rfc3971}{[RFC3971]}中定义的选项来处理CGA 和验证。RFC还定义
 了2个IANA托管的注册表，用来保存信任锚选项中的名称类型（Name Type）字段和证书
-选项中的证书类型（Cert Type）字段（见8.5.6.13节）。［RFC3972］定义了CGA报文类型注
-册表，采用在［RFC3971］中定义的128位值（其他值是在SEND之外定义使用的）0x086FC
-ASE10B200C99C8CE00164277C08。Sec 的注册值在［RFC4982］中定义，但目前只提供值0、1、
+选项中的证书类型（Cert Type）字段（见8.5.6.13节）。\href{https://www.rfc-editor.org/rfc/rfc3972}{[RFC3972]}定义了CGA报文类型注
+册表，采用在\href{https://www.rfc-editor.org/rfc/rfc3971}{[RFC3971]}中定义的128位值（其他值是在SEND之外定义使用的）0x086FC
+ASE10B200C99C8CE00164277C08。Sec 的注册值在\href{https://www.rfc-editor.org/rfc/rfc4982}{[RFC4982]}中定义，但目前只提供值0、1、
 2，分别对应于在Hash2函数中使用的SHA-1 安全散列函数使用的0、16或32个初始0位。
-在［RFC4581］中定义的扩展格式支持TLV 编码，可用于未来标准的扩展，但到目前为止只
+在\href{https://www.rfc-editor.org/rfc/rfc4581}{[RFC4581]}中定义的扩展格式支持TLV 编码，可用于未来标准的扩展，但到目前为止只
 定义了一个［RFCS535］。我们现在将描述两个与SEND一起使用的ICMPv6 报文，等我们在
 下一节讲完所有的ICMPv6选项才讨论这些选项。
 
@@ -2752,15 +2752,15 @@ MTU
 
 参考
 
-［RFC4861］
+\href{https://www.rfc-editor.org/rfc/rfc4861}{[RFC4861]}
 
-［RFC4861］
+\href{https://www.rfc-editor.org/rfc/rfc4861}{[RFC4861]}
 
-［RFC4861］［RFC6275］
+\href{https://www.rfc-editor.org/rfc/rfc4861}{[RFC4861]}\href{https://www.rfc-editor.org/rfc/rfc6275}{[RFC6275]}
 
-［RFC4861］
+\href{https://www.rfc-editor.org/rfc/rfc4861}{[RFC4861]}
 
-［RFC4861］
+\href{https://www.rfc-editor.org/rfc/rfc4861}{[RFC4861]}
 
 用途/注释
 
@@ -2866,47 +2866,47 @@ DNS 搜索列表
 
 参考
 
-［RFC2491］
+\href{https://www.rfc-editor.org/rfc/rfc2491}{[RFC2491]}
 
-［RFC6275］
+\href{https://www.rfc-editor.org/rfc/rfc6275}{[RFC6275]}
 
-［RFC6275］
+\href{https://www.rfc-editor.org/rfc/rfc6275}{[RFC6275]}
 
-［RFC3122］
+\href{https://www.rfc-editor.org/rfc/rfc3122}{[RFC3122]}
 
-［RFC3122］
+\href{https://www.rfc-editor.org/rfc/rfc3122}{[RFC3122]}
 
-［RFC3971］
+\href{https://www.rfc-editor.org/rfc/rfc3971}{[RFC3971]}
 
-［RFC3971］
+\href{https://www.rfc-editor.org/rfc/rfc3971}{[RFC3971]}
 
-［RFC3971］
+\href{https://www.rfc-editor.org/rfc/rfc3971}{[RFC3971]}
 
-［RFC3971］
+\href{https://www.rfc-editor.org/rfc/rfc3971}{[RFC3971]}
 
-［RFC3971］
+\href{https://www.rfc-editor.org/rfc/rfc3971}{[RFC3971]}
 
-［RFC3971］
+\href{https://www.rfc-editor.org/rfc/rfc3971}{[RFC3971]}
 
-［RFC5568］
+\href{https://www.rfc-editor.org/rfc/rfc5568}{[RFC5568]}
 
-［RFC5568］
+\href{https://www.rfc-editor.org/rfc/rfc5568}{[RFC5568]}
 
-［RFC5568］
+\href{https://www.rfc-editor.org/rfc/rfc5568}{[RFC5568]}
 
-［RFC4191］
+\href{https://www.rfc-editor.org/rfc/rfc4191}{[RFC4191]}
 
-［RFC6106］
+\href{https://www.rfc-editor.org/rfc/rfc6106}{[RFC6106]}
 
-［RFC5175］
+\href{https://www.rfc-editor.org/rfc/rfc5175}{[RFC5175]}
 
-［RFC5269］
+\href{https://www.rfc-editor.org/rfc/rfc5269}{[RFC5269]}
 
-［RFC5269］
+\href{https://www.rfc-editor.org/rfc/rfc5269}{[RFC5269]}
 
-［RFC6106］
+\href{https://www.rfc-editor.org/rfc/rfc6106}{[RFC6106]}
 
-［RFC4727］
+\href{https://www.rfc-editor.org/rfc/rfc4727}{[RFC4727]}
 
 用途/注释
 
@@ -2958,7 +2958,7 @@ FMIPv6-
 
 DNS域搜索名称；添加到 RA报文中
 
-［RFC3692］类型的实验 1/2
+\href{https://www.rfc-editor.org/rfc/rfc3692}{[RFC3692]}类型的实验 1/2
 
 \subsection{.1}
 源/目标链路层地址选项（类型1，2）
@@ -3064,7 +3064,7 @@ LAR
 在IPv4 中，节点被认为是在链路上的，如果它们有一个共同的前缀，由它们自己的IPV4
 地址和分配的子网掩码组合确定。虽然使用 IPv6 就可以实现这样的安排，但并不是必需
 的，未经确认“在链路上”状态不能被假设。相反，L位字段表示对一台主机或路由器而言
-哪些前缀或单个主机列表是在链路上的［RFC5942］。其他机制也可以达到这个目的（例如，
+哪些前缀或单个主机列表是在链路上的\href{https://www.rfc-editor.org/rfc/rfc5942}{[RFC5942]}。其他机制也可以达到这个目的（例如，
 DHCPv6，手工配置，或ICMPv6重定向报文）。一个节点通常被认为是不在链路上的，除非
 有确认信息表明它是在链路上的。
 
@@ -3154,10 +3154,10 @@ MTU 选项非常重要，例如在桥接两个或者多个拥有多个不同MTU 
 通告间隔选项给出定期路由器通告报文间的时间。通告间隔（Advertisement Interval） 字
 段定义了此报文到达网络上的发送者所发送的RA 报文传输间的最大毫秒数。路由器发送的
 通告可能比选项指定的通告多，但是并不频繁。移动IPv6节点在其运动检测算法中使用此
-选项［RFC6275］。
+选项\href{https://www.rfc-editor.org/rfc/rfc6275}{[RFC6275]}。
 
 \subsubsection{本地代理信息选项（类型8）}
-这个选项包含在愿意充当移动IPv6本地代理［RFC6275］（即那些在RA 报文中设置H
+这个选项包含在愿意充当移动IPv6本地代理\href{https://www.rfc-editor.org/rfc/rfc6275}{[RFC6275]}（即那些在RA 报文中设置H
 位字段的）的路由器发出的RA 报文中，在其他的地方被忽略。如果H位字段没有被设置的
 话，是不允许包含该选项的。在使用了请求 RA 报文进而多个不同的报文携带了多个地址且
 设置了R位字段的情况下，它们中的每个都必须包含该选项，且包含相同的值。图8-47给
@@ -3195,7 +3195,7 @@ MTU 选项非常重要，例如在桥接两个或者多个拥有多个不同MTU 
 RA 报文中包含整个选项。
 
 \subsubsection{源和目标地址列表选项（类型9，10）}
-这些选项可能被包含在IND报文中［RFC3122］。图8-48给出了格式。源地址列表选
+这些选项可能被包含在IND报文中\href{https://www.rfc-editor.org/rfc/rfc3122}{[RFC3122]}。图8-48给出了格式。源地址列表选
 项（类型9）包含了一个由源链路层地址选项指定的IPv6地址列表。目标地址列表选项（类
 型10）包含了由目的链路层地址选项指定的IPv6地址列表。在选项中包含的地址个数等于
 （Length-1）/2，其中长度（Length）字段值包含了选项的大小，以8字节单位。
@@ -3237,7 +3237,7 @@ CGA选项被用来和 SEND一起携带 CGA参数，这些参数是检验器执�
 
 
 图8-49 与SEND一起使用的CGA选项。该选项编码了图8-38中的CGA 参数
-CGA 参数部分由图8-38 描述的相同字段组成。更多的细节请参见 ［RFC3971］。
+CGA 参数部分由图8-38 描述的相同字段组成。更多的细节请参见 \href{https://www.rfc-editor.org/rfc/rfc3971}{[RFC3971]}。
 
 \subsubsection{RSA 签名选项（类型12）}
 RSA 签名选项被用来和SEND一起携带校验器能够使用的 RSA签名，将它和CGA参
@@ -3256,7 +3256,7 @@ CGA 报文类型标签，源IP 和目的IP地址，ICMPv6 头部的开始32位�
 
 \subsubsection{时间戳选项（类型13）}
 时间戳选项给出了发送系统知晓的当天的当前时间。这有助于避免遭到潜在的针对
-SEND 的重放攻击［RFC397］。图8-51给出了它的格式。
+SEND 的重放攻击\href{https://www.rfc-editor.org/rfc/rfc397}{[RFC397]}。图8-51给出了它的格式。
 
 时间戳（Timestamp） 字段记录了自1970年1月1日00:00 UTC以来的秒数。其格式是
 定点的，高阶的48位编码了完整的秒数，剩下的位数表示小数秒（1/64K）的值。
@@ -3289,7 +3289,7 @@ SEND 的重放攻击［RFC397］。图8-51给出了它的格式。
 
 \subsubsection{随机数选项（类型14）}
 随机数选项保存了一个最近生成的随机数。这有助于防范潜在的针对SEND的重放攻击
-［RFC3971］。图8-52 给出了它的格式。
+\href{https://www.rfc-editor.org/rfc/rfc3971}{[RFC3971]}。图8-52 给出了它的格式。
 
 0
 
@@ -3328,7 +3328,7 @@ SEND 的重放攻击［RFC397］。图8-51给出了它的格式。
 X.502 名称；2，全限定域名称（FQDN）。可能会包含多个信任锚。名称字段采用名称类型
 字段定义的格式给出了信任锚的名称。信任锚是报文发送者愿意接受的信任链的信任根（参
 \subsubsection{证书选项（类型16）}
-证书选项保存了和 SEND［RFC3971］一起使用的单独证书，用以提供证书路径。图8-54
+证书选项保存了和 SEND\href{https://www.rfc-editor.org/rfc/rfc3971}{[RFC3971]}一起使用的单独证书，用以提供证书路径。图8-54
 给出了它的格式。
 
 图 8-54
@@ -3340,7 +3340,7 @@ X.502 名称；2，全限定域名称（FQDN）。可能会包含多个信任锚
 X.509v3证书。第18 章详细介绍了证书及其管理方法。
 
 \subsubsection{IP 地址/前缀选项（类型17）}
-IP 地址/前缀选项是和 FMIPv6 报文一起使用的（ICMPv6 类型 154）［RFC5568］。图
+IP 地址/前缀选项是和 FMIPv6 报文一起使用的（ICMPv6 类型 154）\href{https://www.rfc-editor.org/rfc/rfc5568}{[RFC5568]}。图
 8-55 给出了它的格式。
 
 选项代码（Option-Code）字段值表示哪种类型的地址被编码了：1，旧的移交地址；2，
@@ -3383,7 +3383,7 @@ IPv6地址
 或者IPv6地址，或者是一个移动节点使用的移交地址
 
 \subsubsection{链路层地址选项（类型19）}
-链路层地址（LLA）选项是和 FMIPv6 报文（ICMPv6 类型154）［RFC5568］一起使用的。
+链路层地址（LLA）选项是和 FMIPv6 报文（ICMPv6 类型154）\href{https://www.rfc-editor.org/rfc/rfc5568}{[RFC5568]}一起使用的。
 图8-56 给出了它的格式。
 
 选项代码字段值表示相关的链路层地址（Link-Layer Address）字段值是如何解释的：0，
@@ -3417,7 +3417,7 @@ ICMPv4和ICMPv6:Internet 控制报文协议
 中指示的 AP能够支持快速切换
 
 \subsubsection{邻居通告确认选项（类型20）}
-该选项是和 FMIPv6报文（ICMPv6类型154）［RFC5568］一起使用的。图8-57给出了
+该选项是和 FMIPv6报文（ICMPv6类型154）\href{https://www.rfc-editor.org/rfc/rfc5568}{[RFC5568]}一起使用的。图8-57给出了
 
 它的格式。
 
@@ -3457,7 +3457,7 @@ NCoA
 
 \subsubsection{路由信息选项（类型24）}
 该选项与 RA报文一起使用，表示通过一个特定路由器能够到达哪些不在链路上的前缀
-［RFC4191］。图 8-58 给出了它的格式。
+\href{https://www.rfc-editor.org/rfc/rfc4191}{[RFC4191]}。图 8-58 给出了它的格式。
 
 前缀长度（Prefx Length）字段给出了前缀字段中的有效先导位的个数。前缀（Pref）字
 段表示和包含的前缀相关联的路由器相对于其他路由器的优先级。如果这个字段包含值2，
@@ -3496,7 +3496,7 @@ NCoA
 
 .6.18 递归 DNS 服务器选项（类型25）
 
-［RFC6160］中定义的递归 DNS服务器（RDNSS）选项和RA 报文一起使用，能够通过持
+\href{https://www.rfc-editor.org/rfc/rfc6160}{[RFC6160]}中定义的递归 DNS服务器（RDNSS）选项和RA 报文一起使用，能够通过持
 一个或者多个 DNS服务器的地址来增强无状态配置（参见第6 章和第11章）。一个 RA苏
 中可能包含多个 RDNSS选项。图8-59给出了它的格式。
 
@@ -3564,7 +3564,7 @@ Flags Option,EFO）。图8-60给出了它的格式。
 
 \subsubsection{切换密钥请求选项（类型27）}
 切换密钥请求选项和 FMIPv6报文一起使用，它使用SBND保护信令信息的安全
-［RFC5269］。图 8-61 给出了它的格式。
+\href{https://www.rfc-editor.org/rfc/rfc5269}{[RFC5269]}。图 8-61 给出了它的格式。
 
 0
 
@@ -3601,13 +3601,13 @@ AT
 字节的倍数。
 
 \subsubsection{切换密钥应答选项（类型28）}
-该选项和 FMIPv6报文一起使用，它使用SEND保护信令信息的安全 ［RFC5269］。
+该选项和 FMIPv6报文一起使用，它使用SEND保护信令信息的安全 \href{https://www.rfc-editor.org/rfc/rfc5269}{[RFC5269]}。
 图 8-62 给出了它的格式。
 
 填充长度及AT字段和切换密钥请求选项中一样。密钥生命周期（Key Lifetime）字
 段给出了切换密钥有效的秒数（默认是 HK-LIFETIME 或者43 200s）。加密的切换密钥
 （Encrypted Handover Key） 字段保存了一个对称密钥（参见第18章），是经过移动节点的切
-换密钥加密过的。加密格式是 RSAES-PKCS1-V1\_5［RFC3447］。填充字段包含了值为0的字
+换密钥加密过的。加密格式是 RSAES-PKCS1-V1\_5\href{https://www.rfc-editor.org/rfc/rfc3447}{[RFC3447]}。填充字段包含了值为0的字
 节以保证选项的长度是8字节的倍数。
 
 420
@@ -3647,7 +3647,7 @@ AT
 选项并得到密钥
 
 \subsubsection{DNS 搜索列表选项（类型31）}
-DNS搜索列表（DNSSL）选项［RFC6106］用来表示一个域名扩展列表被添加到一台主
+DNS搜索列表（DNSSL）选项\href{https://www.rfc-editor.org/rfc/rfc6106}{[RFC6106]}用来表示一个域名扩展列表被添加到一台主
 
 机可能发起的 DNS查询中。搜索列表是 DNS 配置信息中的一部分，当它初始化时可能提供
 
@@ -3669,7 +3669,7 @@ DNS搜索列表（DNSSL）选项［RFC6106］用来表示一个域名扩展列�
 
 DNS 搜索列表的域名
 
-（可变，采用［RFC1035］格式）
+（可变，采用\href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}格式）
 
 图8-63 当配置一个主机的 DNS参数时，DNS 搜索列表选项提供了一个默认域名扩展列表。
 编码的格式和编码 DNS 名称中的一样（参见第11章）
@@ -3679,11 +3679,11 @@ DNS 搜索列表的域名
 式（参见第11章）。
 
 \subsubsection{实验值（类型 253，254）}
-这些值只用于实验，正如［RFC3692］ 描述的。
+这些值只用于实验，正如\href{https://www.rfc-editor.org/rfc/rfc3692}{[RFC3692]} 描述的。
 
 \section{ICMPV4 和 ICMPV6 转换}
-在第7章，我们讨论了基于［RFC6144］和［RFC6145］来转换 IPv4/IPv6 的一个框架，并
-讨论了如何转换IP 头部。［RFC6145］描述了从ICMPv4转换到ICMPv6 的方法，以及相反
+在第7章，我们讨论了基于\href{https://www.rfc-editor.org/rfc/rfc6144}{[RFC6144]}和\href{https://www.rfc-editor.org/rfc/rfc6145}{[RFC6145]}来转换 IPv4/IPv6 的一个框架，并
+讨论了如何转换IP 头部。\href{https://www.rfc-editor.org/rfc/rfc6145}{[RFC6145]}描述了从ICMPv4转换到ICMPv6 的方法，以及相反
 方向的转换方法。当转换ICMP 时，IP 和ICMP头部都要被转换（即，被修改和被替换）。
 除此之外，包含了一个内部违规数据包头部及数据的ICMP差错报文，也会转换内部（违
 规）数据报的头部。除了映射适当的类型和代码号之外，还有需要额外考虑的分片、MTU
@@ -4251,7 +4251,7 @@ disclosure）。本质上，泛洪将会生成大量流量，导致针对一台�
 攻击。炸弹类型（有时也称为核弹（nuke）类型）指的是发送经过特殊构造的报文，能够导
 致IP 或者ICMP 的处理崩溃或者终止。信息泄露攻击本身并不会造成危害，但是能够帮助
 其他攻击方法避免浪费时间或者被发现。针对TCP 的ICMP攻击已经被专门记录在文档中了
-［RFC5927］。
+\href{https://www.rfc-editor.org/rfc/rfc5927}{[RFC5927]}。
 
 有一种早期的ICMP攻击称为Smurf攻击。这相当于使用目的地址为广播地址的
 ICMPv4，导致大量计算机做出响应。如果这样做得很快，它可以导致DoS 攻击，因为受害
@@ -4280,7 +4280,7 @@ ICMP重定向功能可以导致终端系统使用一个不准确的系统作为�
 ICMP 路由器通告和路由器请求报文能被用于创建一个类似于重定向攻击的攻击。特别
 是，这些报文可导致受害者系统修改它们的默认路由，指向被人侵的机器。此外，被动地接
 收这些报文可以使攻击者了解本地网络环境的拓扑结构。请注意，这样的“流氓 RA”问题
-不管是恶意的还是偶然的，在［RFC6104］ 中都有单独详细的描述。
+不管是恶意的还是偶然的，在\href{https://www.rfc-editor.org/rfc/rfc6104}{[RFC6104]} 中都有单独详细的描述。
 
 可以使用ICMP作为需要协作的入侵程序之间的通信通道。在 TFN （Tribe Flood
 Network，族泛洪网络）攻击中，在人侵主机之后ICMP 被用来协调一组合作病毒的行动。
@@ -4344,212 +4344,4 @@ IICMPTYPES］ http://www.iana.org/assignments/icmp-parameters
 
 IPING］ http://ftp.arl.army.mil/~mike/ping.html
 
-［RFCO792］J. Postel， "Internet Control Message Protocol，" Internet RFC 0792/STD
-
-0005, Sept. 1981.
-
-［RFC1122］ R. Braden, ed.， "Requirements for Internet Hosts-Communication
-
-Layers" Internet RFC 1122/STD 0003, Oct. 1989.
-
-［RFC1191］ J. C. Mogul and S. E. Deering， "Path MTU Discovery.' Internet RFC
-
-1191, Nov. 1990.
-
-［RFC1256］ S. Deering, ed.， "ICMP Router Discovery Messages” Internet RFC
-
-1256, Sept.1991.
-
-［RFC1350］ K. Sollins， "The TFTP Protocol （Revision 2）， " Internet RFC 1350/STD
-
-0033. 1ulv 1992
-
-［RFC1812］ F. Baker, ed.， "Requirements for IP Version 4 Routers，" Internet RFC
-1812,June 1995.
-
-［RFC2004］ C. Perkins， "Minimal Encapsulation within IP" Internet RFC 2004，
-
-Oct. 1996.
-
-［RFC2349］ G. Malkin and A. Harkin， "TFTP Timeout Interval and Transfer Size
-Options/" Internet RFC 2349, May 1998.
-
-［RFC2460］ S. Deering and R. Hinden， "Internet Protocol, Version 6 （IPv6） Speci
-cation,/” Internet RFC 2460, Dec. 1998.
-
-［RFC2491］ G. Armitage, P. Schulter, M. Jork, and G. Harter， "IPv6 over Non-
-
-Broadcast Multiple Access （NBMA） Networks." Internet RFC 2491, Jan. 1999.
-
-［RFC2710］ S. Deering, W. Fenner, and B. Haberman， "Multicast Listener Discov
-ery （MLD） for IPv6." Internet RFC 2710, Oct. 1999.
-
-［RFC3024］， G. Montenegro, ed.， "Reverse Tunneling for Mobile IP, Revised”"
-
-Internet RFC 3024,Jan.2001.
-
-［RFC3122］ A. Conta， "Extensions to IPv6 Neighbor Discovery for Inverse Disco
-ery Specification" Internet RFC 3122, June 2001.
-
-［RFC3447］J.Jonsson and B. Kaliski， "Public-Key Cryptography Standards
-
-（PKCS） 1: RSA Cryptography Specifications Version 2.1/' Internet RFC 3447
-
-（informational）， Feb. 2003.
-
-［RFC3519］ H. Levkowetz and S. Vaarala， "Mobile IP Traversal of Network
-
-Address Translation （NAT） Devices，" Internet RFC 3519, Apr.2003.
-
-［RFC3543］ S. Glass and M. Chandra， "Registration Revocation in Mobile IPv4."
-Internet RFC 3543, Aug. 2003.
-
-［RFC3590］ B. Haberman， "Source Address Selection for the Multicast Listener
-Discovery （MLD） Protocol” Internet RFC 3590, Sept. 2003.
-
-［RFC3692］ T. Narten， "Assigning Experimental and Testing Numbers Consider
-Useful/" Internet RFC 3692/BCP 0082, Jan.2004.
-
-［RFC3704］ F. Baker and P. Savola， "Ingress Filtering for Multihomed Networks，
-Internet RFC 3704/BCP 0084, Mar. 2004.
-
-［RFC3756］ P. Nikander, ed.， J. Kempf, and E. Nordmark， "IPv6 Neighbor Discov
-ery （ND） Trust Models and Threats/" Internet RFC 3756 （informational）， May
-
-2004.
-
-［RFC38101 R. Vida and L. Costa, eds.， "Multicast Listener Discovery Version 2
-
-（MLDv2） for IPv6" Internet RFC 3810, June 2004.
-
-［RFC3971］J. Arkko, ed.， J. Kempf, B. Zill, and P. Nikander， "SEcure Neighbor
-
-Discovery （SEND）， Internet RFC 3971, Mar. 2005.
-
-［RFC3972］ T. Aura， "Cryptographically Generated Addresses （CGA）" Internet
-RFC 4972, Mar. 2005.
-
-［RFC4191］ R. Draves and D. Thaler， "Default Router Preferences and More-Spe-
-cific Routes/" Internet RFC 4191, Nov. 2005.
-
-［RFC4286］ B. Haberman and J. Martin， "Multicast Router Discovery；" Internet
-RFC 4286, Dec. 2005
-
-［RFC4389］ D. Thaler, M. Talwar, and C. Patel， "Neighbor Discovery Proxies （NI
-Proxy）" Internet RFC 4389 （experimental）， Apr. 2006.
-
-［RFC44431 A. Conta, S. Deering, and M. Gupta, ed.， "Internet Control Message
-MPv4 和ICMPv6:Internet 控制报文协议
-
-Protocol （ICMPv6） for the Internet Protocol Version 6 （IPv6） Specification" Inter-
-net RFC 4443, Mar. 2006.
-
-［RFC4581］ M. Bagnulo and J. Arkko， "Cryptographically Generated Addresses
-
-（CGA） Extension Field Format/ Internet RFC 4581, Oct.2006.
-
-［RFC4604］ H. Holbrook, B. Cain, and B. Haberman， "'Using Internet Group Man-
-agement Protocol Version 3 （IGMPv3） and Multicast Listener Discovery Protocol
-Version 2 （MLDv2） for Source-Specific Multicast" Internet RFC 4604, Aug. 2006.
-［RFC4607］H. Holbrook and B. Cain， “Source-Specific Multicast for IP/ Internet
-RFC 4607, Aug.2006.
-
-［RFC4727］ B. Fenner， "Experimental Values in IPv4, IPv6, ICMPv4, ICMPV6, UDI
-and TCP Headers" Internet RFC 4727, Nov.2006.
-
-［RFC4857］ E. Fogelstroem, A. Jonsson, and C. Perkins， "Mobile IPv4 Regional
-
-Registration/” Internet RFC 4857 （experimental）， June 2007.
-
-［RFC4861］ T. Narten, E. Nordmark, W.Simpson, and H. Soliman， "Neighbor Dis-
-covery for IP Version 6 （IPv6"' Internet RFC 4861, Sept. 2007.
-
-［RFC4884］ R. Bonica, D. Gan, D. Tappan, and C. Pignataro， "Extended ICMP to
-
-Support Multi-Part Messages”' Internet RFC 4884, Apr. 2007.
-
-［RFC4890］ E. Davies and J. Mohacsi， “Recommendations for Filtering ICMPv6
-
-Messages in Firewalls/" Internet RFC 4890 （infor mational）， May 2007.
-
-［RFC49501 R. Bonica, D. Gan, D. Tappan, and C. Pignataro， "ICMP Extensions for
-Multiprotocol Label Switching" Internet RFC 4950, Aug. 2007.
-
-［RFC4982］ M. Bagnulo and J. Arkko， "Support for Multiple Hash Algorithms in
-
-Cryptographically Generated Addresses （CGAs）." Internet RFC 4982, July 2007.
-
-［RFC5175］ B. Haberman, ed.， and R. Hinden， "IPv6 Router Advertisement Flags
-Option，" Internet RFC 5175, Mar. 2008.
-
-［RFC5269］ J. Kempf and R. Koodli， "Distributing a Symmetric Fast Mobile IPv6
-（FMIPv6） Handover Key Using SEcure Neighbor Discovery （SEND），"' Internet
-
-RFC 5269, June 2008.
-
-［RFC5461］ F. Gont， "TCP's Reaction to Soft Brrors,/" Internet RFC 5461 （informa-
-tional）， Feb.2009.
-
-［RFC5508］ P. Srisuresh, B. Ford, S. Sivakumar, and S. Guha， “NAT Behavioral
-
-Requirements for ICMP” Internet RFC 5508/BCP 0148, Apr. 2009.
-
-［RFC5535］ M. Bagnulo， "Hash-Based Addresses （HBA），" Internet RFC 5535, June
-2009.
-
-［RFC5568］ R. Koodli, ed.， "Mobile IPv6 Fast Handovers”' Internet RFC 5568, July
-2009.
-
-［RFC5790］ H. Liu, W. Cao, and H. Asaeda， "Lightweight Internet Group Manage
-ment Protocol Version 3 （IGMPv3） and Multicast Listener Discovery Version 2
-
-（MLDv2） Protocols" Internet RFC 5790, Feb.2010.
-
-［RFC5837］ A. Atlas, ed.， R. Bonica, ed.， C. Pignataro, ed.， N. Shen, and JR. Rivers，
-"Extending ICMP for Interface and Next-Hop Identification." Internet RFC 5837，
-Apr.2010.
-
-IRFC5927］ F. Gont， "ICMP Attacks against TCP” Internet RFC 5927 （informa-
-
-tional）， July 2010.
-
-［RFC5942］ H. Singh, W. Beebee, and E. Nordmark， "IPv6 Subnet Model: The Rela
-tionship between Links and Subnet Prefixes " Internet RFC 5942. Tulv 2010.
-
-431
-
-434
-
-［RFC5944］ C. Perkins, ed.， "1P Mobility Support for IPv4, Revised，" Intern
-
-5944, Nov. 2010.
-
-［RFC6104］T. Chown and S. Venaas，
-
-“Rogue IPv6 Advertisement Problem
-
-ment，" Internet RFC 6104 （informational）， Feb. 2011.
-
-［RFC6106］ J. Jeong, S. Park, L. Beloeil, and S. Madanapalli， "1Pv6 Router A
-
-tisement Options for DNS Configuration，" Internet RFC 6106, Nov. 2010.
-
-［RFC6144］ F. Baker, X. Li, C. Bao, and K. Yin， "Framework for IPv4/IPv6 T
-
-tion，" Internet RFC 6144 （informational）， Apr. 2011.
-
-［RFC6145］ X. Li, C. Bao, and F. Baker， "IP/ICMP Translation Algorithm"I
-
-RFC 6145, Apr. 2011.
-
-［RFC6273］ A. Kubec, S. Krishnan, and S. Jiang， "The Secure Neighbor Dis
-
-（SEND） Hash Threat Analysis，" Internet RFC 6273 （informational）， June 2
-
-［RFC6275］ C. Perkins, D. Johnson, and J. Arkko， "Mobility Support in IPve
-
-Internet RFC 6275, June 2011.
-
 ［SI］ http://www.iana.org/assignments/cga-message-types
-
-

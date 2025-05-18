@@ -27,7 +27,7 @@ DNS是一个分布式的客户机/服务器网络数据库，TCPAIP应用程序�
 议（主要是UDP）进行通信，以及在互联网环境中使用的一些其他的解析机制。我们不介
 绍运行名称服务器的所有管理细节，也不介绍地址解析器和服务器所有的可选参数。这些
 技术细节信息可以从多种其他渠道获取，如Albitz 和 Liu 的《 DNS and BIND》［AL06］ 和
-［RFC6168］。我们在第18 章讨论 DNS安全（DNSSEC） 的细节。
+\href{https://www.rfc-editor.org/rfc/rfc6168}{[RFC6168]}。我们在第18 章讨论 DNS安全（DNSSEC） 的细节。
 
 \section{DNS 名称空间}
 
@@ -114,7 +114,7 @@ TLD 中有5类经常使用，其中一组专业域名用于国际化域名（IDN
 同的Unicode 字符值。此外，以文本书写的字符可能是由右至左的、由左至右的，或者两个
 方向都有（将特定的文本和其他的文本结合时）。将这些（或其他的）技术问题和其他关心的
 问题如公平、国际法、国际政治以及值得考虑的障碍问题综合考虑。有兴趣的读者可以查阅
-2006年出版的IAB关于IDN 的回顾［RFC4690］获取更多信息。当前的信息来自于［IIDN］。
+2006年出版的IAB关于IDN 的回顾\href{https://www.rfc-editor.org/rfc/rfc4690}{[RFC4690]}获取更多信息。当前的信息来自于［IIDN］。
 gTLD分为几类：通用、通用限制和赞助。通用gTLD是开放的，可无限制地使用。其
 他的（通用限制和赞助）受限于各种使用类型以及什么实体可以从域名中分配名称。例如，
 EDU 用于教育机构，MIL 和 GOV 用于美国的军事和政府机构，INT 用于国际组织机构（如
@@ -354,7 +354,7 @@ www.net.in.tum.de.
 自右向左的顺序进行，TLD是de（德国的cCTLD），tum 是 Technische Universitat Minchen
 的缩写，in 是 informatik（德语中计算机科学）的缩写，最后 net 是计算机科学系中网络组
 的缩写。出于匹配的目的，标签是大小写不敏感的，因此名称 ACME.COM和 acme.com 或
-AcMe.cOm 是等价的［RFC4343］。每个标签最多可到63个字符长，整个 FQDN 最多255（1
+AcMe.cOm 是等价的\href{https://www.rfc-editor.org/rfc/rfc4343}{[RFC4343]}。每个标签最多可到63个字符长，整个 FQDN 最多255（1
 字节） 个字符。例如，下面的域名
 
 thelongestdomainnameintheworldandthensomeandthensomemoreandmore .com
@@ -425,7 +425,7 @@ DNS有一个专用的协议用于执行区域传输，但是区域内容的副�
 
 值得一提的是，缓存同时适用于成功的解析和不成功的解析（称为否定缓存（negative
 caching））。如果一个特定域名的请求无法返回一个记录，该事实也会被缓存。当出错的应用
-程序一再请求不存在的域名时，这样做就可以帮助降低互联网流量。否定缓存在［RFC2308］
+程序一再请求不存在的域名时，这样做就可以帮助降低互联网流量。否定缓存在\href{https://www.rfc-editor.org/rfc/rfc2308}{[RFC2308]}
 中由可选的变为强制的。
 
 在一些网络配置中（如那些使用老的UNIX 兼容的系统），缓存保存在附近的名称服务器
@@ -557,7 +557,7 @@ A.GTLD-SERVERS.NET 以及一个或多个它的IP地址（消息4）。根据这�
 
 \subsection{DNS消息格式}
 
-有一种基本的DNS 消息格式［RFC6195］。它用于所有的DNS操作（查询、响应、区域
+有一种基本的DNS 消息格式\href{https://www.rfc-editor.org/rfc/rfc6195}{[RFC6195]}。它用于所有的DNS操作（查询、响应、区域
 传输、通知和动态更新），如图11-3所示。
 
 0
@@ -628,9 +628,9 @@ RA：递归可用
 
 Z:0
 
-AD：真实数据［RFC4035］
+AD：真实数据\href{https://www.rfc-editor.org/rfc/rfc4035}{[RFC4035]}
 
-CD：禁止校验［RFC4035］
+CD：禁止校验\href{https://www.rfc-editor.org/rfc/rfc4035}{[RFC4035]}
 
 操作码（通用值）：
 
@@ -638,11 +638,11 @@ CD：禁止校验［RFC4035］
 
 通知（4）
 
--DNS NOTIFY ［RFC1996］
+-DNS NOTIFY \href{https://www.rfc-editor.org/rfc/rfc1996}{[RFC1996]}
 
 更新（5）
 
--DNS UPDATE ［RFC2136］
+-DNS UPDATE \href{https://www.rfc-editor.org/rfc/rfc2136}{[RFC2136]}
 
 响应码（通用值）：
 
@@ -749,27 +749,27 @@ RCODE 域中使用的前10个错误类型
 
 参考
 
-［RFC1035］
+\href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}
 
-［RFC1035］
+\href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}
 
-［RFC1035］
+\href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}
 
-［RFC1035］
+\href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}
 
-［RFC1035］
+\href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}
 
-［RFC1035］
+\href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}
 
-［RFC2136］
+\href{https://www.rfc-editor.org/rfc/rfc2136}{[RFC2136]}
 
-［RFC2136］
+\href{https://www.rfc-editor.org/rfc/rfc2136}{[RFC2136]}
 
-［RFC2136］
+\href{https://www.rfc-editor.org/rfc/rfc2136}{[RFC2136]}
 
-［RFC2136］
+\href{https://www.rfc-editor.org/rfc/rfc2136}{[RFC2136]}
 
-［RFC2136］
+\href{https://www.rfc-editor.org/rfc/rfc2136}{[RFC2136]}
 
 描述和目的
 
@@ -841,9 +841,9 @@ DNS消息末尾的可变长度区段包含问题、回答、授权信息（包�
 www.pearson.com 编码，共有4个标签。名称的
 最后通过未命名根的长度值为0的标签标示
 值。然而这种用法不常见，也不推荐
-这样使用。事实上，即使是可以编码 Unicode 字符［RFC5890］［RFC5891］的国际化域名，也
-使用一种奇怪的称为“Punycode 码”［RFC3492］的编码语法，该语法使用ASCII字符集表
-示 Unicode字符。为了完全保证安全，推荐遵循［RFC1035］中的要求，其中建议标签“以字
+这样使用。事实上，即使是可以编码 Unicode 字符\href{https://www.rfc-editor.org/rfc/rfc5890}{[RFC5890]}\href{https://www.rfc-editor.org/rfc/rfc5891}{[RFC5891]}的国际化域名，也
+使用一种奇怪的称为“Punycode 码”\href{https://www.rfc-editor.org/rfc/rfc3492}{[RFC3492]}的编码语法，该语法使用ASCII字符集表
+示 Unicode字符。为了完全保证安全，推荐遵循\href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}中的要求，其中建议标签“以字
 母开始，以字母或数字结束，并且内部只包含字母、数字和连字符”。
 
 \subsubsection{压缩标签}
@@ -871,7 +871,7 @@ target））。因此压缩标签能够指向距离开始处多达16383个字节
 到目前为止，描述的基本 DNS 消息格式在一些情况中可能受到限制。它有固定长度的
 字段，当使用UDP时512字节的总长度限制（不包含UDP或IP 头部），以及指明差错类型
 的有限空间（4位的响应（RCODE）学段）。一种称为EDNSO（因为将来可能存在扩展超过
-索引10）的扩展机制在［RFC2671］中详细说明。然而目前它的使用并不广泛，而对于支持
+索引10）的扩展机制在\href{https://www.rfc-editor.org/rfc/rfc2671}{[RFC2671]}中详细说明。然而目前它的使用并不广泛，而对于支持
 DNS安全（DNSSEC；见第18章）来说，它是必要的，所以随着时间的推移它有可能获得更
 广泛的部署。
 
@@ -945,7 +945,7 @@ DNS 消息通常封装在 UDP/IPv4 数据报中，并且其长度限制为512字
 会首先使用 UDP，但如果响应消息太大，就会切换到TCP，就像常规查询一样。
 
 当使用UDP时，解析器和服务器应用软件都必须执行自己的超时和重传。在
-［RFC1536］ 中给出了这方面的建议。它建议起始超时时间至少为4秒，随后的超时导致超时
+\href{https://www.rfc-editor.org/rfc/rfc1536}{[RFC1536]} 中给出了这方面的建议。它建议起始超时时间至少为4秒，随后的超时导致超时
 时间的指数增长（有点像TCP的算法；见第14章）。Linux 和类UNIX系统允许通过修改
 /etc/resolv.conf文件（通过设置 timeout 和 attempts参数）来改变重传超时参数。
 
@@ -1016,7 +1016,7 @@ DNS信息中的最后三个区段—回答、
 
 名中星号标签—只包含星号字符的数据标签
 
-［RFC4592］—首先出现（即最左边）。每个资
+\href{https://www.rfc-editor.org/rfc/rfc4592}{[RFC4592]}—首先出现（即最左边）。每个资
 
 源记录都有如图11-8所示的形式。
 
@@ -1051,7 +1051,7 @@ RDATA（16位）
 型。例如，A记录（类型1）在 RDATA 域中有一个32位的IPv4地址。我们以后再讨论其他
 的RR类型。
 
-［RFC2181］ 定义术语资源记录集（RRSet）为共享相同的名称、类和类型，但数据不相同
+\href{https://www.rfc-editor.org/rfc/rfc2181}{[RFC2181]} 定义术语资源记录集（RRSet）为共享相同的名称、类和类型，但数据不相同
 的一组资源记录。这种情况会发生，例如，当一个主机有多个地址记录与其名称对应时（例
 如，因为它有多个IP地址）。在相同 RRSet 中的RR的TTL 值必须是相等的。
 
@@ -1059,7 +1059,7 @@ RDATA（16位）
 
 虽然 DNS常用来确定一个特定的名称对应的IP地址，但是它也可以用于相反的目的和
 一些其他的事情。它可用于IPv4 和 IPv6，甚至可以为非互联网数据（在 DNS术语中其他
-类［RFC6195］）提供分布式数据库功能。由DNS提供的广泛功能主要是由于它能够拥有不同
+类\href{https://www.rfc-editor.org/rfc/rfc6195}{[RFC6195]}）提供分布式数据库功能。由DNS提供的广泛功能主要是由于它能够拥有不同
 类型的资源记录。
 
 资源记录有很多类型（完整列表见［DNSPARAMS］，并且一个单一的名称可能有多个四
@@ -1138,51 +1138,51 @@ AXFR
 
 描述和目的
 
-［RFC1035］
+\href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}
 
 IPv4 地址记录（32位 IPv4地址）
 
-［RFC1035］
+\href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}
 
 名称服务器；提供区域授权名称服务器的名称
 
-［RFC1035］
+\href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}
 
 规范名称；将一个名称映射另一个（提供一种形式的名称别名）
 
 授权开始；为区域提供授权信息（名称服务器，联系的电子邮件地
 
-［RFC1035］
+\href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}
 
 址，序列号，区域传输计时器）
 
 指针；提供地址到（规范）名称的映射；在 in-addr:arpa 和 ip6.arpa
 
-［RFC1035］
+\href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}
 
 域中用于 IPv4 和IPv6 的逆向查询
 
-［RFC1035］
+\href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}
 
-［RFC1035］
+\href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}
 
-［RFC1464］
+\href{https://www.rfc-editor.org/rfc/rfc1464}{[RFC1464]}
 
-［RFC3596］
+\href{https://www.rfc-editor.org/rfc/rfc3596}{[RFC3596]}
 
-［RFC2782］
+\href{https://www.rfc-editor.org/rfc/rfc2782}{[RFC2782]}
 
-［RFC3403］
+\href{https://www.rfc-editor.org/rfc/rfc3403}{[RFC3403]}
 
-［RFC2671］
+\href{https://www.rfc-editor.org/rfc/rfc2671}{[RFC2671]}
 
-［RFC1995］
+\href{https://www.rfc-editor.org/rfc/rfc1995}{[RFC1995]}
 
-［RFC1035］
+\href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}
 
-［RFC5936］
+\href{https://www.rfc-editor.org/rfc/rfc5936}{[RFC5936]}
 
-［RFC1035］
+\href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}
 
 邮件交换器；为一个域提供电子邮件处理主机的名称
 
@@ -1459,7 +1459,7 @@ CNAME条目。
 
 在一个 CNAME RR 中，RDATA 区段包含与该域名相关的“规范名称”（别名）。这样的
 名称使用和其他名称相同的编码类型（例如，数据标签和压缩标签）。当一个 CNAME RR因
-一个特定的名称而存在，其他数据是不被允许的［RFC1912］（除非在使用 DNSSEC；见第18
+一个特定的名称而存在，其他数据是不被允许的\href{https://www.rfc-editor.org/rfc/rfc1912}{[RFC1912]}（除非在使用 DNSSEC；见第18
 章）。CNAME RR 的域名可能不能用于规则域名能出现的所有地方（例如，作为一个 NS RR
 的目标）。此外，规范名称本身可能是一个 CNAME（称为 CNAME 链），但是通常不鼓励这
 么做，因为它可以导致DNS解析器使用更多的非必要的查询。然而，确实也有一些服务使
@@ -1491,7 +1491,7 @@ address 92.123.65.51
 通常被解析器限制在几个链接内（如5）。长链有可能是执行错误或是误解的结果，因为很难
 想象在正常情况下为什么需要它们。
 
-注意 有一个标准的资源记录称 DNAME（类型 39）［RFC2672］［IDDN］。 DNAME
+注意 有一个标准的资源记录称 DNAME（类型 39）\href{https://www.rfc-editor.org/rfc/rfc2672}{[RFC2672]}［IDDN］。 DNAME
 记录就像 CNAME 记录一样，但是是整个区域的。例如，使用一个单一的DNAME
 资源记录可以将具有 NAME.example.com 形式的所有名称映射到 NAME.newexample.
 com。然而，DNAME记录并不适用于顶层记录本身（这里的 example.com）。
@@ -1616,7 +1616,7 @@ nameserver
 = v.arin.net
 \end{verbatim}
 
-这个例子显示了如何设置.in-addr.arpa 域。根据［RFC5855］，域 in-addr-servers.arpa 和
+这个例子显示了如何设置.in-addr.arpa 域。根据\href{https://www.rfc-editor.org/rfc/rfc5855}{[RFC5855]}，域 in-addr-servers.arpa 和
 ip6-servers.arpa 分别用于形成与服务器相关的域名，并且该服务器为IPv4和IPv6提供逆向
 DNS映射。截至2011年，对于每个 IP 版本有5个这样的服务器：X.in-addr-servers.arpa 和
 X.ip6-servers.arpa，其中X是任意a 到f（包括）的字母。
@@ -1722,8 +1722,8 @@ in-addr.arpa 解决方案是有效的，并且还非常高效，虽然IPv4/IPv6�
 络，它使用一类私有地址前缀，如10.0.0.0/8（IPv4）或fc00:/7（IPv6）。当一个系统接收到
 相同私有编址子网的另一个系统传入的连接请求时，它可能希望将源地址解析名称，并且
 通过执行PTR查询来完成。如果查询没有得到本地DNS服务器的回答，那么它可能会传播
-到全球互联网。出于这个原因（以及一些其他原因），［RFC6303］ 指定本地名称服务器—
-尤其是那些连接到互联网且使用私有IP地址的网络中运行的服务器，为在［RFC1918］和
+到全球互联网。出于这个原因（以及一些其他原因），\href{https://www.rfc-editor.org/rfc/rfc6303}{[RFC6303]} 指定本地名称服务器—
+尤其是那些连接到互联网且使用私有IP地址的网络中运行的服务器，为在\href{https://www.rfc-editor.org/rfc/rfc1918}{[RFC1918]}和
 「RFC41931中为IPv4 和 IPv6 定义的私有地址空间提供PTR 映射（即分别为 IN-ADDR.ARPA
 和 D.F.IP6.ARPA）。
 
@@ -1738,9 +1738,9 @@ in-addr.arpa 解决方案是有效的，并且还非常高效，虽然IPv4/IPv6�
 这些情况下，地址范围就不易写为IP地址的简单逆转形式。相反，一些传输网络前缀长度
 的方法也必须包括在内。
 
-［RFC2317］给出了实现的标准方法，即添加前缀长度到逆转后的字节组中，并使用它作
+\href{https://www.rfc-editor.org/rfc/rfc2317}{[RFC2317]}给出了实现的标准方法，即添加前缀长度到逆转后的字节组中，并使用它作
 为域名中的第一个标签。例如，假设一个站点分配的前缀为12.17.136.128/25，即包含128
-个地址的前缀。根据［RFC2317］，应提供两种类型的记录。首先，按照下列方式，为形式为
+个地址的前缀。根据\href{https://www.rfc-editor.org/rfc/rfc2317}{[RFC2317]}，应提供两种类型的记录。首先，按照下列方式，为形式为
 X.136.17.12.in-addr.arpa（其中X至少为128且不超过255）的每一个名称创建一个 CNAME
 RR，可能由站点的ISP 维护：
 
@@ -2064,7 +2064,7 @@ edu 域名的相关信息，并且由于问题区段的内容，它能够利用�
 \subsubsection{邮件交换（MX）记录}
 
 MX记录提供了邮件交换器（mail exchanger）的名称，邮件交换器为在简单邮件传输协
-议（SMTP）［RFC5321］中愿意代表与域名相关的用户接收传入电子邮件的主机。当互联网仍
+议（SMTP）\href{https://www.rfc-editor.org/rfc/rfc5321}{[RFC5321]}中愿意代表与域名相关的用户接收传入电子邮件的主机。当互联网仍
 在发展时，一些站点没有固定连接，而是拨号连接到具有固定互联网连接的主机。在这样的
 情况下，当电子邮件在传输过程中目的地可能从网络上断开，因此另一台主机必须保留该邮
 件，直到目的地连接上为止。这是在 DNS 中包含MX记录的一个原因，即使真实目的地不
@@ -2107,7 +2107,7 @@ Moa.cs.ucla.edu。如果失败，它会随即选择 Pelican或 Mailman 进行尝
 但有该域名的CNAME、A或AAAA 记录。如果有一个 CNAME记录，CNAME 的目标是用
 来代替原来的域名。如果有 A或AAAA记录，邮件代理可以连接到这些地址。每个被认为
 其优先级为0（称为隐式 （implicit）MX）。MX记录目标必须是解析 A 或AAAA 记录的域名；
-它们不能指向 CNAME［RFC5321］。
+它们不能指向 CNAME\href{https://www.rfc-editor.org/rfc/rfc5321}{[RFC5321]}。
 
 \subsubsection{打击垃圾邮件：发送方策略框架（SPF）和文本（TXT）记录}
 
@@ -2119,8 +2119,8 @@ Moa.cs.ucla.edu。如果失败，它会随即选择 Pelican或 Mailman 进行尝
 邮件服务器收到的电子邮件被拒绝、存储或转发到另一个邮件服务器。拒绝发生的原因
 有很多，如协议错误或接收方缺乏可用存储空间。因为发送方邮件客户端不是发送电子邮件
 的合适方也可以被拒绝。这种能力由发送方策略框架（Sender Policy Framework, SPF）支持，
-并记录在［RFC4408］中，这是一个实验性的 RFC。还有另外一个称发送方 ID （Sender ID）
-［RFC4406］的框架，它结合了 SPF的功能。它也是实验性的，但是没有广泛部署。
+并记录在\href{https://www.rfc-editor.org/rfc/rfc4408}{[RFC4408]}中，这是一个实验性的 RFC。还有另外一个称发送方 ID （Sender ID）
+\href{https://www.rfc-editor.org/rfc/rfc4406}{[RFC4406]}的框架，它结合了 SPF的功能。它也是实验性的，但是没有广泛部署。
 
 SPF 的第一个版本使用 DNSTXT或SPF（类型99）资源记录。由域拥有者建立记录，
 并在DNS中发布，以指明哪些服务器被授权发送来自该域的邮件。虽然在某种意义上SPF
@@ -2153,7 +2153,7 @@ include:outboundmail.convio.net ~al1"
 回值之一：None、Neutral、Pass、Fail、SoftFail、TempBrror 和 PermError。None 和 Neutral
 返回值说明没有信息可用，或是有信息可用但是没有声称的结果。这些按完全相同的方式
 处理。Pass 说明一个匹配将如下一段描述的。Fail说明发送方主机没有被授权从该域发送邮
-件。SoftFail有点模糊，但根据［RFC4408］，它被视为“介于‘Fail’和‘Neutral’之间”。
+件。SoftFail有点模糊，但根据\href{https://www.rfc-editor.org/rfc/rfc4408}{[RFC4408]}，它被视为“介于‘Fail’和‘Neutral’之间”。
 TempError 返回值表示某些可能减弱的暂时性失败（如通信故障）。PermError 返回值表示
 SPF 的配置中存在问题，通常是因为有缺陷的域 TXT或SPF记录。
 
@@ -2193,7 +2193,7 @@ outboundmail.convio.net descriptive text
 
 \subsubsection{选项 （OPT）伪记录}
 
-如前所述，连同 EDNSO也定义了特的 OPT伪RR［RFC2671］。就某种意义而言，它
+如前所述，连同 EDNSO也定义了特的 OPT伪RR\href{https://www.rfc-editor.org/rfc/rfc2671}{[RFC2671]}。就某种意义而言，它
 是“假的”，它仅适用于单一DNS消息的内容，而且不是常见的DNS RR数据。因此，OPT
 RR 不被缓存、转发或持续存储，它们可能在 DNS消息中只出现一次（或不出现）。如果出
 现在 DNS消息中，可以在额外消息区段中发现它。
@@ -2246,17 +2246,17 @@ BADALG
 
 描述和目的
 
-［RFC2671］
+\href{https://www.rfc-editor.org/rfc/rfc2671}{[RFC2671]}
 
-［RFC2845］
+\href{https://www.rfc-editor.org/rfc/rfc2845}{[RFC2845]}
 
-［RFC2845］
+\href{https://www.rfc-editor.org/rfc/rfc2845}{[RFC2845]}
 
-［RFC2845］
+\href{https://www.rfc-editor.org/rfc/rfc2845}{[RFC2845]}
 
-［RFC2930］
+\href{https://www.rfc-editor.org/rfc/rfc2930}{[RFC2930]}
 
-［RFC2930］
+\href{https://www.rfc-editor.org/rfc/rfc2930}{[RFC2930]}
 
 IRFC2930］
 
@@ -2276,7 +2276,7 @@ IRFC2930］
 
 正如我们已经提到的，OPT RR 包含可变长度的RDATA 字段。该字段用来存放属性-
 值对的扩展列表。当前属性、意义和定义的RFC的集合都由IANA［DNSPARAMS］维护。一
-个称为 NSID（EDNS选项代码3）［RFC5001］的选项，表示一个响应 DNS服务器的特殊标
+个称为 NSID（EDNS选项代码3）\href{https://www.rfc-editor.org/rfc/rfc5001}{[RFC5001]}的选项，表示一个响应 DNS服务器的特殊标
 识值。该值的格式没有标准定义，但是DNS 服务器的系统管理员可以配置。任播地址用于
 确定一组服务器时，这种功能可能是很有用的。NSID 能够使用非发送方的IP地址的一个值
 识别出一台特定的响应服务器。当我们在第18章查看 DNSSEC时，将看到更多 OPT RR 和
@@ -2284,7 +2284,7 @@ EDNSO用法的例子。
 
 \subsubsection{服务记录}
 
-［RFC2782］定义了服务（SRV）资源记录。SRV RR 推广了MX记录的格式，以描述主机、
+\href{https://www.rfc-editor.org/rfc/rfc2782}{[RFC2782]}定义了服务（SRV）资源记录。SRV RR 推广了MX记录的格式，以描述主机、
 协议和用于连接特定服务的端口号。SRV RR 的一般结构如下：
 
 \_Service. Proto.Name TTL IN
@@ -2320,31 +2320,31 @@ Linux8 host -t srv \_1dap.\_tcp.openldap.org
 （LDAP）服务的服务器。我们发现，可以使用TCP端口389（默认的LDAP端口），在服务器
 www.openldap.org 上访问。Priority 和 Weight 值为0，因没有替代的服务器。
 
-［RFC2782］没有 SRV Service 和 Proto值指定一个新的IANA 注册。所以，默认情况
+\href{https://www.rfc-editor.org/rfc/rfc2782}{[RFC2782]}没有 SRV Service 和 Proto值指定一个新的IANA 注册。所以，默认情况
 下，名称与IANA 的“服务名称和传输协议端口”［ISPR］注册中保存的名称相对应，Proto 值
 为\_tcp 或\_udp，但也有少数例外。［RFCS509］使用以下的 SRV Service 和 Proto 名称为基于
 SIP 的在场和即时通信建立约定：
 
-\_im.\_sip 和\_pres\_sip。［RFC6186］为电子邮件用户代理定
+\_im.\_sip 和\_pres\_sip。\href{https://www.rfc-editor.org/rfc/rfc6186}{[RFC6186]}为电子邮件用户代理定
 义了下面的 SRV Service 名称，以便容易地发现IMAPS、SMTP、IMAP 和 POP3服务器的联
 系信息（当设置电子邮件客户端时，通常前两个是优先考虑的）：\_submission，\_imap，\_imaps，
-\_Pop3，\_Pop3s。虽然［RFC6186］没有要求这些名称使用TCP 作为相应的Proto 值，但是这
+\_Pop3，\_Pop3s。虽然\href{https://www.rfc-editor.org/rfc/rfc6186}{[RFC6186]}没有要求这些名称使用TCP 作为相应的Proto 值，但是这
 是目前唯一的真正选项。例如，用户配置一个新的邮件用户代理（MUA，本质上是一个电
 子邮件程序），可能只指定域名 example.com。然后MUA实现可能至少为\_submission.\_t
 example.com 和\_imaps\_tcp.example.com 执行 DNS查询。
 
 \subsubsection{名称授权指针记录}
 
-当DNS支持动态委托发现系统（DDDS）［RFC3401］时，使用名称授权指针（NAPTR）
+当DNS支持动态委托发现系统（DDDS）\href{https://www.rfc-editor.org/rfc/rfc3401}{[RFC3401]}时，使用名称授权指针（NAPTR）
 RR类型。一个 DDDS一般是抽象的算法，它将动态检索字符串转换规则应用于应用程序提
 供的字符串，并经常使用结果定位资源。每个 DDDS 应用为其特定的使用情况定制一般的
 DDDS规则的操作。一个DDDS 包括一个规则数据库和一组用于形成字符串的算法，该字
-符串和数据库一起产生输出字符串。DNS就是这样一个数据库［RFC3403］，在其中 NAPTR
+符串和数据库一起产生输出字符串。DNS就是这样一个数据库\href{https://www.rfc-editor.org/rfc/rfc3403}{[RFC3403]}，在其中 NAPTR
 资源记录类型用来保存转换规则。一个这样的DDDS 应用程序已经被定义用来和DNS一起
 处理跨国电话号码，并使用 ENUM（见11.5.6.12节）将它们转换为标准的统一资源标识符
-（URI）格式［RFC3986］。
+（URI）格式\href{https://www.rfc-editor.org/rfc/rfc3986}{[RFC3986]}。
 
-在一个 DDDS 中，算法［RFC3402］指如何通过数据库中包含的规则处理应用唯一字
+在一个 DDDS 中，算法\href{https://www.rfc-editor.org/rfc/rfc3402}{[RFC3402]}指如何通过数据库中包含的规则处理应用唯一字
 符串（AUS）。结果可以是一个终结字符串（terminal string）（完整的输出）或另一个（非终结）
 字符串，它用于检索应用到AUS的另一个规则。总之，该集合形成了一个强大的字符串！
 写系统，可用于编码有足够正则语法的几乎任意串。该算法的本质如图11-15所示。
@@ -2378,7 +2378,7 @@ AUS
 
 UNIX sed 程序［DR97］。当使用 DNS作
 
-为支持DDDS的数据库时［RFC3403］，
+为支持DDDS的数据库时\href{https://www.rfc-editor.org/rfc/rfc3403}{[RFC3403]}，
 
 这正是我们感兴趣的情况，关键字是域
 
@@ -2464,7 +2464,7 @@ DDDS算法的抽象操作。允许非终结记录形
 
 \subsubsection{ENUM 和 SIP}
 
-在 ENUM DDDS［R06］［RFC6116］ ［RFC6117］［RFC5483］中，将电话号码映射到URI
+在 ENUM DDDS［R06］\href{https://www.rfc-editor.org/rfc/rfc6116}{[RFC6116]} \href{https://www.rfc-editor.org/rfc/rfc6117}{[RFC6117]}\href{https://www.rfc-editor.org/rfc/rfc5483}{[RFC5483]}中，将电话号码映射到URI
 信息，AUS 是一个E.164格式的电话号码（最多15个数字，以“+”字符开始）。初始的
 “+”字符将ENUM DDS 中使用的E.164号码和来自其他名称空间的号码区别开来。第一
 个众所周知的规则，首先移除AUS 中的任意破折号或其他非数字字符。DDDS的数据库是
@@ -2477,7 +2477,7 @@ DNS，关键字是从 AUS中按如下方式创建的域名：点（.）字符插
 结的规则，有时也称非终结 NAPTR （Non-Terminal NAPTR,NTN）。服务参数在 NAPTR
 记录的 Service 字段中编码，其形式力 E2U+Service，即来自字符串 E2U（E.164 中指向 URI
 的指示器）加上提供与该号码相关的特定服务的信息的 Service 名称子域。它们一起形成了
-enumservice（枚举服务）标识符，这样的服务向 IANA ［ENUM］［RFC6117］注册并且已经创
+enumservice（枚举服务）标识符，这样的服务向 IANA ［ENUM］\href{https://www.rfc-editor.org/rfc/rfc6117}{[RFC6117]}注册并且已经创
 建了许多，包含传真、即时通信和存在指示器的枚举服务。
 
 为了看到这一切是如何工作的，我们可以构造一个对于号码+420738511111 的查询，
@@ -2524,7 +2524,7 @@ sip: 1@cesnet.cz。特殊变量\\1被与圆括号（）之间包含的第一个�
 转换成 URI sip:420738511111@cesnet.cz。
 
 一旦此URI形成了，自然下一步是驱动应用联系一个 SIP 服务器。然而，SIP 本身通过
-不同的传输协议运载，因此，下一步使用另一个为SIP 定制的DDDS［RFC3263］。在该应用
+不同的传输协议运载，因此，下一步使用另一个为SIP 定制的DDDS\href{https://www.rfc-editor.org/rfc/rfc3263}{[RFC3263]}。在该应用
 中，NAPTR记录包含的目标用子识别应用于执行SRV 记录查询的域。继续前面的例子：
 
 \begin{verbatim}
@@ -2550,14 +2550,14 @@ sip: 1@cesnet.cz。特殊变量\\1被与圆括号（）之间包含的第一个�
 段，因此结果是简单的域名替代，由Replacement 字段中学符串给出。Service 学段的形式
 为 SIP+D2x或 SIPS+D2x，其中 SIP 和SIPS分别指出了SIP 协议和SIP 安全协议（TLS；
 见第18章）的使用，x是传输协议的单一字母标识符：UDP为U,TCP为T,SCTP为
-S［RFC4960］。在这个例子中，应用程序将首先尝试查找和使用与 SIP/UDP 对应的SRV记
+S\href{https://www.rfc-editor.org/rfc/rfc4960}{[RFC4960]}。在这个例子中，应用程序将首先尝试查找和使用与 SIP/UDP 对应的SRV记
 录，如果失败了将会向 SIP/TCP 求助，因为 UDP条目有较低的优先级值。
 
 \subsubsection{ URI/URN 解析}
 
 虽然 ENUM可能是 DNS中NAPTR记录最成熟的用法，但也有一些 DDDS应用定义为
-解析 URI［RFC3404］ 和称为统一资源名称（Uniform Resource Names,URN）的持久的、位置
-无关 URI ［RFC2141］。所有的URI（包括 URN）都由一个方案名称和随后的符合针对该方案
+解析 URI\href{https://www.rfc-editor.org/rfc/rfc3404}{[RFC3404]} 和称为统一资源名称（Uniform Resource Names,URN）的持久的、位置
+无关 URI \href{https://www.rfc-editor.org/rfc/rfc2141}{[RFC2141]}。所有的URI（包括 URN）都由一个方案名称和随后的符合针对该方案
 的语义的子串构成。官方方案的当前名单由IANA［URI］维护。URI 和 URN应用很相似，因
 此值得一起考虑它们。对于 URI/URN DDDS 应用，AUS 是一个授权“解析”服务器正处于
 的URI或URN。URI应用程序的第一个众所周知的规则是简单的方案名称。对于 URN，为
@@ -2636,7 +2636,7 @@ NAPTR记录在 urn.arpa 中设置（目前为两条）。
 
 鉴于正则表达式的复杂性，NAPTR 结构和重写功能已经引起实施者和操作者的一些
 关注。为了简化情况，仍需提供一个超越基本 SRV 记录的方法来定位服务，直接 NAPTR
-（Straightforward NAPTR,S-NAPTR）［RFC3958］ 指定了一个DDDS应用程序，通过在
+（Straightforward NAPTR,S-NAPTR）\href{https://www.rfc-editor.org/rfc/rfc3958}{[RFC3958]} 指定了一个DDDS应用程序，通过在
 NAPTR 记录的内容上使用某些筒化的限制来完成包含服务器名称的域名“标签”的映射。
 
 对于 S-NAPTR，AUS是一个特定服务的授权服务器在寻找的域名标签。第一个众所周
@@ -2644,7 +2644,7 @@ NAPTR 记录的内容上使用某些筒化的限制来完成包含服务器名�
 主机、端口）。只有S和A终结标志被允许，它们分别说明一个 SRV RR 或域名（用于形成
 随后的对A或AAAA RR 的请求）。Service 参数从IANA 注册［SNP］中保存的一个集合中获
 取，Regexp字段没有使用。只有 Replacement字段是活动的。S-NAPTR 连同互联网注册信
-息服务（IRIS）［RFC3981］一起使用，基于XML 的文本应用协议用于交换与域名和其他注册
+息服务（IRIS）\href{https://www.rfc-editor.org/rfc/rfc3981}{[RFC3981]}一起使用，基于XML 的文本应用协议用于交换与域名和其他注册
 信息相关的信息，它的数据库包含在 DNS名称空间 iris.arpa 部分。例如：
 \begin{verbatim}
     Linux8 host -t naptr areg.iris.arpa
@@ -2659,20 +2659,20 @@ NAPTR 记录的内容上使用某些筒化的限制来完成包含服务器名�
 \end{verbatim}
 
 该例子使用S-NAPTR（没有正则表达式），表明为了执行对于 AREG1类型数据的ISIS查询
-（见 ［RFC4698］），随后应该启动向 areg.nro.net 的NAPTR 查询。
+（见 \href{https://www.rfc-editor.org/rfc/rfc4698}{[RFC4698]}），随后应该启动向 areg.nro.net 的NAPTR 查询。
 
 S-NAPTR的经验和进一步考虑导致支持URI的NAPTR（U-NAPTR）的发展，它放宽
 了S-NAPTR 的一些限制，但保留了它的所有其他的功能和注册。最重要的是，允许使用一
 个额外的U标志，使得NAPTR记录能够指向一个URI，从而允许使用正则表达式。这与
 NAPTR的完全通用版本相似，除了U-NAPTR正则表达式仅限于下列形式：！.*！<URI>！。也
 就是说，整个 AUS被一个 URI 替换了。U-NAPTR 正在和位置到服务传输协议 （Location-to-
-Service Translation protocol, LoST） ［RFC5222］一起使用，给定网络连接点和地理位置，该
+Service Translation protocol, LoST） \href{https://www.rfc-editor.org/rfc/rfc5222}{[RFC5222]}一起使用，给定网络连接点和地理位置，该
 协议可以用于确定正确的服务。这样的信息在公共安全应用中是非常有用的，地理位置决定
 了特定的权限区域和应该提供应急服务的责任方。
 
 \subsection{动态更新（DNS UPDATE）}
 
-动态更新一个区域是可能的，这被称为 DNS UPDATE，可以使用［RFC2136］中定义的
+动态更新一个区域是可能的，这被称为 DNS UPDATE，可以使用\href{https://www.rfc-editor.org/rfc/rfc2136}{[RFC2136]}中定义的
 协议。它支持指定先决条件（prerequisite） 和更新请求。先决条件在服务器中评估；如果它
 们不为真，更新不执行，并返回一个错误消息。
 
@@ -2682,7 +2682,7 @@ Service Translation protocol, LoST） ［RFC5222］一起使用，给定网络�
 挥作用的先决条件，以及更新信息（update information）。在一次更新中，头部反映了查询的
 格式，而操作码字段被设置为Update （5）。头部字段 ZOCOUNT、PRCOUNT、UPCOUNT
 和ADCOUNT包含以下计数：要被更新的区域（值将为1），要考虑的先决条件，要做出的
-更新和额外的信息记录。［RFC2136］也定义了 DNS响应消息中携带的RCODE 值的集合，该
+更新和额外的信息记录。\href{https://www.rfc-editor.org/rfc/rfc2136}{[RFC2136]}也定义了 DNS响应消息中携带的RCODE 值的集合，该
 消息能够说明与先决条件或服务器的问题相关的情况（表11-2中的值6~10）。
 
 更新消息的区域区段（见图11-7）说明了该区域的名称、类型和类。类型值是6，表明
@@ -2857,7 +2857,7 @@ DNS更新的响应很简单、紧凑。图11-16所示的更新的响应在图11-
 
 …••NOTIFY.
 
-消息）［RFC5936］，或是选择使用增量区域传输
+消息）\href{https://www.rfc-editor.org/rfc/rfc5936}{[RFC5936]}，或是选择使用增量区域传输
 
 （incremental zone transfer）（使用 DNS IXFR 的消
 
@@ -2865,7 +2865,7 @@ DNS更新的响应很简单、紧凑。图11-16所示的更新的响应在图11-
 
 SOA 响应
 
-息）［RFC1995］。一般方案根据图11-18所示进行
+息）\href{https://www.rfc-editor.org/rfc/rfc1995}{[RFC1995]}。一般方案根据图11-18所示进行
 
 序列号
 
@@ -2951,7 +2951,7 @@ gw.home has address 10.0.0.1
 
 \subsubsection{增量区域传输（IXFR 消息）}
 
-为了改进区域传输的效率，［RFC1995］定义了增量区域传输（incremental zone transfer）
+为了改进区域传输的效率，\href{https://www.rfc-editor.org/rfc/rfc1995}{[RFC1995]}定义了增量区域传输（incremental zone transfer）
 的使用。使用增量区域传输和 IXFR消息类型，只提供区域中的变化。为了执行增量区域传
 输，客户端（例如，从服务器）必须提供它在该区域的当前序列号。在下面的例子中，我们
 可以通过提供序列号和dig 程序来模拟请求服务器：
@@ -2989,7 +2989,7 @@ Ele
 如前所述，轮询通常用于确定区域传输的必要性，也就是说，从服务器会定期（刷新间
 隔）检查主服务器，查看区域是否已经更新（通过不同的序列号说明），在哪种情况下区域传
 输将启动。这个过程有点浪费，因为许多无用的轮询在区域更新前可能发生。为了改善这种
-情况，［RFC1996］DNS设计了 DNS NOTIFY 机制。DNS NOTIFY 允许修改区域内容的服务
+情况，\href{https://www.rfc-editor.org/rfc/rfc1996}{[RFC1996]}DNS设计了 DNS NOTIFY 机制。DNS NOTIFY 允许修改区域内容的服务
 器通知从服务器更新已经发生，区域传输应该启动。更具体地说，如果启用，当区域SOA
 RR 改变（例如，如果序列号增加）时，通知消息被发送到一组感兴趣的服务器。这使得区域
 传输在需要时开启。使用本地名称服务器，我们可以看到这是如何工作的（见图11-23）。
@@ -3009,7 +3009,7 @@ DNS NOTIFY 机制默认使用UDP，UDP 是一种不可靠的协议。在特殊�
 获得从来不会到达的响应。
 
 \begin{tcolorbox}
-    重发之间的时间以及尝试重发的总数，在［RFC1996］中分别建议为60s和
+    重发之间的时间以及尝试重发的总数，在\href{https://www.rfc-editor.org/rfc/rfc1996}{[RFC1996]}中分别建议为60s和
     5次。它还建议使用一种计时补偿方法（递增或指数级）。在这里我们可以看到的
     BIND9 并没遵循这些建议，因为两次重传间隔15s。
 \end{tcolorbox}
@@ -3100,9 +3100,9 @@ NAT映射的地址），并且变静态。之后，它会定期更新与服务�
 \section{透明度和扩展性}
 
 DNS 是互联网上最普遍的服务之一，并已成为一个有吸引力的服务，它通常作为基础，
-通过扩展添加新的功能。例如，有很多记录类型，如TXT.SRV 和A（例如，见［RFC5782］），
-可以用来为未来的服务编码有用数据。［RFC5507］为扩展 DNS设想了各种方法，最终结论
-是建立和实现新的 RR类型是最有吸引力的办法。多亏了较早的规范［RFC3597］，有一种标
+通过扩展添加新的功能。例如，有很多记录类型，如TXT.SRV 和A（例如，见\href{https://www.rfc-editor.org/rfc/rfc5782}{[RFC5782]}），
+可以用来为未来的服务编码有用数据。\href{https://www.rfc-editor.org/rfc/rfc5507}{[RFC5507]}为扩展 DNS设想了各种方法，最终结论
+是建立和实现新的 RR类型是最有吸引力的办法。多亏了较早的规范\href{https://www.rfc-editor.org/rfc/rfc3597}{[RFC3597]}，有一种标
 准方法将未知的 RR类型作为不透明的数据来处理。也就是说，如果不认可，它们不解释，
 处理是透明（transparent）的。这允许新的 RR类型在运载时不会对现有 RR类型的处理造成
 负面影响。
@@ -3110,24 +3110,24 @@ DNS 是互联网上最普遍的服务之一，并已成为一个有吸引力的�
 保持透明度存在的问题之一是嵌人域名的编码和压缩。对于已知的RR类型，为了使用
 压缩标签实现压缩，允许改变嵌入域名的大小写。拥有者域名（查询的“关键字”）总是服从
 于压缩。然而，对于未知的RR类型，嵌人的域名不得使用压缩标签。此外，将来包含嵌人
-域名的RR类型也同样禁止（见［RFC3597］的第4节）。未知类型仍然可以按位进行比较（例
-如，动态更新）。这意味着，任何嵌人域名以大小写敏感的方式相比较［RFC4343］，这与大
+域名的RR类型也同样禁止（见\href{https://www.rfc-editor.org/rfc/rfc3597}{[RFC3597]}的第4节）。未知类型仍然可以按位进行比较（例
+如，动态更新）。这意味着，任何嵌人域名以大小写敏感的方式相比较\href{https://www.rfc-editor.org/rfc/rfc4343}{[RFC4343]}，这与大
 多数其他的DNS操作相反。同样的情况也出现在使用TXT记录的嵌入域名中。
 
 当新形势的服务和处理DNS流量的代理引入时，另一个与透明度相关的问题出现了。
 如今在一个家庭网关或防火墙内部包含一个 DNS代理是相当普遍的。一个典型的代理处理
 来自于用户家庭网络的传人DNS请求，并将该请求转发到ISP 提供的域名服务器。它也接
 收返回的信息，并可以（也可以不）缓存结果。从历史上看，一些代理试图做的不仅仅是中
-继请求和答复，这已经引起了一些与 DNS的互操作性的问题。［RFC5625］指定了 DNS代理
+继请求和答复，这已经引起了一些与 DNS的互操作性的问题。\href{https://www.rfc-editor.org/rfc/rfc5625}{[RFC5625]}指定了 DNS代理
 的合理的操作，基本上要求 DNSRR 是无解释的，并仅仅由代理中继。数据分组被截断的情
 况是无法避免的，任何这样的代理必须设置TC位字段表明一些 DNS数据被删除了。此外，
 任何此类代理应准备处理TCP 请求，因为当基于 UDP 的请求被截断时，这是传统的回退机
-制，并且由［RFC5966］要求。
+制，并且由\href{https://www.rfc-editor.org/rfc/rfc5966}{[RFC5966]}要求。
 
 \section{从IPV4 向 IPV6 转换 DNS}
 
 第7章中我们描述了一个框架，用于在IPv4 和IPv6 之间转换 IP 数据报。支持这种能
-力的转换器预计将与在 DNSA 和 AAAA 记录之间转换的相关功能一起部署［RFC6147］，后
+力的转换器预计将与在 DNSA 和 AAAA 记录之间转换的相关功能一起部署\href{https://www.rfc-editor.org/rfc/rfc6147}{[RFC6147]}，后
 者允许只有IPv6 的客户端来访问出现在A记录中的DNS信息（例如，在IPv4 互联网中）。
 这种功能被称为 DNS64，其建议的部署方案之一（称“DNS递归解析模式中的 DNS64”
 如图 11-25所示
@@ -3182,7 +3182,7 @@ IPv6地址的PTR 查询。
 能的信息。当只有少数本地主机希望通信时，有时这开销太大。在DNS服务器不可用的情况
 下（例如，迅速形成的客户端的 ad hoc（自组织）网络，只是相互连接），可以使用一个特殊的
 DNS 本地版本，称本地链路组播名称解析（Link-Local Multicast Name Resolution, LLMNR）
-［RFC4795］。它是一个由微软开发的基于DNS的（非标准）协议，并在本地环境中使用以帮
+\href{https://www.rfc-editor.org/rfc/rfc4795}{[RFC4795]}。它是一个由微软开发的基于DNS的（非标准）协议，并在本地环境中使用以帮
 助发现局域网上的设备，如打印机和文件服务器。Windows Vista、 Windows Server 2008 和
 Windows 7中都支持它。对于IPv4 组播地址224.0.0.252 和 IPv6地址 ff02：：1:3，它使用UDP
 端口 5355。如果来自它们响应的任何单播IP 地址，服务器也可以使用 TCP 端口 5355。
@@ -3193,7 +3193,7 @@ Windows 7中都支持它。对于IPv4 组播地址224.0.0.252 和 IPv6地址 ff0
 mDNS IPv4地址224.0.0.251或IPv6地址 f02：：1b。对于其他域的查询可以随意发送到这些
 组播地址。允许本地链路服务器来响应全局名称的映射可能引起重大安全问题。为了解决这
 一问题，可以使用 DNSSEC（见第18章）。mDNS 支持在.local 伪TLD 中自主分配名称，尽
-管这种伪TLD 还没有被正式预留［RFC2606］。因此，诸如家庭局域网等小型网络上的主机
+管这种伪TLD 还没有被正式预留\href{https://www.rfc-editor.org/rfc/rfc2606}{[RFC2606]}。因此，诸如家庭局域网等小型网络上的主机
 可以被分配合适的名称，如 printer.local、fileserver.local、cameral.local、kevinlaptop.local 等。
 mDNS 中的机制用于检测和解决冲突。
 
@@ -3201,7 +3201,7 @@ mDNS 中的机制用于检测和解决冲突。
 
 到目前为止，我们已经讨论了 DNS和类似于DNS的本地名称服务。为了支持更丰
 富的查询和数据操作，有一种更普遍的目录服务，即我们前面提到的称为LDAP的服务
-［RFC4510］。LDAP（现在 LDAPv3）是一种互联网应用层协议，可以根据 X.500（1993）［X500］
+\href{https://www.rfc-editor.org/rfc/rfc4510}{[RFC4510]}。LDAP（现在 LDAPv3）是一种互联网应用层协议，可以根据 X.500（1993）［X500］
 数据和服务模型提供对于一般目录的访问（例如，“白页”）。它提供了搜索、修改、添加、比
 较和删除基于用户选择模式的条目的能力。LDAP 目录是一个目录条目的树，每个条目包含
 一组属性。由于 TCP/IP 已更受欢迎，LDAP已经从根源演进为与DNS一起工作。例如，与
@@ -3241,7 +3241,7 @@ LDAP 服务器经常在企业内部用于保留目录信息，如位置、电话
 \section{与DNS相关的攻击}
 
 DNS是互联网的一个重要组成部分，多年以来它已经成为一些攻击和对策的对象
-［RFC3833］。最近，在添加强认证到 DNS操作中方面，DNS 安全（DNSSEC）这项全球性工
+\href{https://www.rfc-editor.org/rfc/rfc3833}{[RFC3833]}。最近，在添加强认证到 DNS操作中方面，DNS 安全（DNSSEC）这项全球性工
 作已取得实质性进展。我们将 DNSSEC如何工作的详细讨论推迟到第18 章，其中我们也涉
 及必要的密码学背景。现在，我们探索对 DNS已经发动的一些攻击。
 
@@ -3265,8 +3265,8 @@ Kaminsky 攻击。它包含缓存中毒（cache poisoning），在这种攻击�
 不共享相同的子域作为原始的 DNS请求。与这种形式的攻击相关的主要风险是，依赖于合
 适的 DNS名称到地址解析的客户端可能被定向到伪服务器。如果这样的服务器被故意配置
 为模仿原来的主机（例如，伪装成银行的Web 服务器），用户可能会无意地信任伪装的服务
-器，并泄露敏感信息。对此以及其他相关攻击的缓解技术在［RFC5452］中给出。一种方法没
-有在［RFC5452］中描述，称为 DNS-0x20［D08］，它涉及编码问题区段查询名称部分每个字
+器，并泄露敏感信息。对此以及其他相关攻击的缓解技术在\href{https://www.rfc-editor.org/rfc/rfc5452}{[RFC5452]}中给出。一种方法没
+有在\href{https://www.rfc-editor.org/rfc/rfc5452}{[RFC5452]}中描述，称为 DNS-0x20［D08］，它涉及编码问题区段查询名称部分每个字
 符的0x20位置的临时值，该问题区段会在每个响应的对应位置中回显。这成为可能，因为，
 虽然域名以大小写不敏感的形式比较，当形成响应时，服务器往往会返回一个查询名称的完
 全相同的副本。如果在查询中拥有者的名称大小写故意混排，主动响应将难以重新产生临时
@@ -3291,7 +3291,7 @@ DNS 是互联网的一个重要组成部分，DNS技术也被广泛应用于私�
 
 DNS 支持一些特殊的功能，如区域传输和动态更新。区域传输（完整或增量）用于允许
 冗余的从服务器与主服务器同步区域的内容，主要是为了冗余。动态更新允许应用程序使用
-在线协议修改区域的内容。事实上这种功能有两种形式：一种由［RFC2136］标准化，并在企
+在线协议修改区域的内容。事实上这种功能有两种形式：一种由\href{https://www.rfc-editor.org/rfc/rfc2136}{[RFC2136]}标准化，并在企
 业使用；一种是非标准的但非常流行的动态 DNS功能，它允许用户分配临时 IP地址（例如电
 缆或DSL）来获得一个 DNS 条目，所以它们提供的服务可以通过遍及全世界
 DNS一直受到众多攻击，从DoS 攻击（它使得DNS仅有有限的能力
@@ -3357,248 +3357,6 @@ and Information Sciences, Third Edition （Taylor and Francis, 2010）.
 ［R06］ H. Rice， "ENUM—The Mapping of Telephone Numbers to the Internet"
 
 The Telecommunications Review, 17, Aug. 2006.
-
-［RFC1035］ P. Mockapetris， "Domain Names-Implementation and Specification
-
-Internet RFC 1035/STD 0013, Nov. 1987.
-
-［RFC1464］ R. Rosenbaum， "Using the Domain Name System to Store Arbitrary
-
-String Attributes；" Internet RFC 1464（experimental）， May 1993.
-
-［RFC1536］ A. Kumar et al， "Common DNS Implementation Errors and Suggeste
-
-Fixes" Internet RFC 1536 （informational）， Oct. 1993.
-
-［RFC1912］ D. Barr， "Common DNS Operational and Configuration Errors,/" Inter
-
-net RFC 1912 （informational）. Feb. 1996.
-
-
-［RFC1918］ Y. Rekhter, B. Moskowitz, D. Karrenberg, G. J. de Groot, and E. Lear，
-"Address Allocation for Private Internets”" RFC 1918/BCP 0005, Feb. 1996.
-
-［RFC1995］ M. Ohta， "Incremental Zone Transfer in DNS." Internet RFC 1995，
-
-Aug. 1996.
-
-［RFC1996］ P. Vixie， "'A Mechanism for Prompt Notification of Zone Changes
-
-（DNS NOTIFY）" Internet RFC 1996, Aug. 1996.
-
-［RFC2136］ P. Vixie, ed.， S. Thomson, Y. Rekhter, and ］. Bound， "Dynamic Update
-in the Domain Name System （DNS UPDATE）." Internet RFC 2136, Apr. 1997.
-
-［RFC2141］ R. Moats， "URN Syntax" Internet RFC 2141, May 1997.
-
-［RFC2181］ R. Elz and R. Bush， "Clarifications to the DNS Specification” Internet
-RFC 2181, July 1997.
-
-IRFC2308］ M. Andrews， "Negative Caching of DNS Queries （DNS NCACHE），"
-Internet RFC 2308, Mar. 1998.
-
-［RFC2317］ H. Eidnes, G. de Groot, and P. Vixie， "Classless IN-ADDR.ARPA Del-
-egation/' Internet RFC 2317/BCP 0020, Mar. 1998.
-
-［RFC2606］ D. Eastlake 3rd and A. Panitz， "Reserved Top Level DNS Names.”
-
-Internet RFC 2606/BCP 0032, June 1999.
-
-［RFC2671］ P. Vixie， "Extension Mechanisms for DNS （EDNSO）." Internet RFC
-
-2671, Aug. 1999.
-
-［RFC2672］ M. Crawford， "Non-Terminal DNS Name Redirection，" Internet RFC
-2672, Aug. 1999.
-
-［RFC2782］ A. Gulbrandsen, P. Vixie, and L. Esibov， “A DNS RR for Specifying th
-Location of Services （DNS SRV）." Internet RFC 2782, Feb. 2000.
-
-［RFC2845］ P. Vixie, O. Gudmundsson, D. Eastlake 3rd, and B. Wellington， "Secre
-Key Transaction Authentication for DNS （TSIG）" Internet RFC 2845, May 2000
-
-［RFC2930］ D. Eastlake 3rd， “Secret Key Establishment for DNS （TKEY RR）."
-
-Internet RFC 2930, Sept.2000.
-
-［RFC3172］ G. Huston, ed.， "Management Guidelines and Operational Require-
-ments for the Address and Routing Parameter Area Domain （arpa），" Internet
-
-RFC 3172/BCP 0052, Sept. 2001.
-
-［RFC3263］J. Rosenberg and H. Schulzrinne， "Session Initiation Protocol （SIP）：
-
-Locating SIP Servers，" Internet RFC 3263, June 2002.
-
-［RFC3401］ M. Mealling， "Dynamic Delegation Discovery System （DDDS）—Part
-One: The Comprehensive DDDS，" Internet RFC 3401 （informational）， Oct. 2002.
-［RFC3402］ M. Mealling， "Dynamic Delegation Discovery System （DDDS）—Part
-Two: The Algorithm,/' Internet RFC 3402, Oct. 2002.
-
-［RFC3403］ M. Mealling， "Dynamic Delegation Discovery System （DDDS）—Part
-Three: The Domain Name System （DNS） Database/" Internet RFC 3403, Oct.200
-［RFC3404］ M. Mealling， "Dynamic Delegation Discovery System （DDDS）—Part
-Four: The Uniform Resource Identifiers （URI） Resolution Application" Internet
-RFC 3404,Oct.2002.
-
-［RFC3492］ A. Costello， "Punycode: A Bootstring Encoding of Unicode for Inter-
-nationalized Domain Names in Applications （IDNA），" Internet RFC 3492, Mar.
-2003.
-
-［RFC3596］ S. Thomson, C. Huitema, V. Ksinant, and M. Souissi， "DNS Extension
-to Support IP Version 6" Internet RFC 3596, Oct. 2003.
-
-［RFC3597］ A. Gustafsson， "Handling of Unknown DNS Resource Record （RR）
-
-Types，” Internet RFC 3597, Sept. 2003.
-
-［RFC3833］ D. Atkins and R. Austein， "Threat Analysis of the Domain Name Sys
-tem （DNS）." Internet RFC 3833 （informational）， Aug. 2004.
-
-［RFC3958］ L. Daigle and A. Newton， "Domain-Based Application Service Loca-
-tion Using SRV RRs and the Dynamic Delegation Discovery Service （DDDS），"
-
-Internet RFC 3958, Jan.2005.
-
-［RFC3981］ A. Newton and M. Sanz， "1RIS: The Internet Registry Information
-
-Service （IRIS） Core Protocol" Internet RFC 3981, Jan. 2005.
-
-［RFC3986］ T. Berners-Lee, R. Fielding, and L. Masinter， "Uniform Resource Iden
-tifier （URI）： Generic Syntax" Internet RFC 3986/STD 0066, Jan. 2005.
-
-［RFC4193］ R. Hinden and B. Haberman， "Unique Local IPv6 Unicast Addresses，
-Internet RFC 4193, Oct. 2005.
-
-［RFC4343］ D. Eastlake 3rd， "Domain Name System （DNS） Case Insensitivity
-
-Clarification" Internet RFC 4343, Jan. 2006.
-
-［RFC4406］ J. Lyon and M. Wong， "Sender ID: Authenticating E-Mail，" Internet
-
-RFC 4406 （experimental）， Apr.2006.
-
-［RFC4592］E. Lewis， "The Role of Wildcards in the Domain Name System" Inter
-net RFC 4592, July 2006.
-
-［RFC4408］ M. Wong and W. Schlitt， "Sender Policy Framework （SPF） for Autho-
-rizing Use of Domains in E-Mail, Version 1/" Internet RFC 4408 （experimental），
-
-Apr.2006.
-
-［RFC4510］ K. Zeilenga, ed.， "Lightweight Directory Access Protocol （LDAP）：
-
-Technical Specification Road Map." Internet RFC 4510, June 2006.
-
-［RFC4690］ J. Klensin, P. Falstrom, and C. Karp， '"Review and Recommendations
-for Internationalized Domain Names （IDNs），" Internet RFC 4690 （informational
-Sept. 2006.
-
-［RFC4698］ E. Gunduz, A. Newton, and S. Kerr， "IRIS: An Address Registry （areg
-Type for the Internet Registry Information Service" Internet RFC 4698, Oct. 2006
-［RFC4795］ B. Aboba, D. Thaler, and L. Esibov， "Link-Local Multicast Name Reso
-lution （LL.MNR） " Internet RFC 4795 （informational）， Jan. 2007.
-
-［RFC4848］ L. Daigle， "Domain-Based Application Service Location Using URIs
-
-and the Dynamic Delegation Discovery Service （DDDS） " Internet RFC 4848，
-
-Apr.2007.
-
-［RFC4960］ R. Stewart, ed.， "Stream Control Transmission Protocol” Internet RFC
-4960, Sept. 2007.
-
-［RFC5001］ R. Austein， "DNS Name Server Identifier （NSID） Option." Internet
-
-RFC 5001, Aug. 2007.
-
-［RFC5222］ T. Hardie et al.， "LoST: A Location-to-Service Translation Protocol”
-
-Internet RFC 5222, Aug. 2008.
-
-［RFC5321］J. Klensin， "Simple Mail Transfer Protocol，" Internet RFC 5321, Oct.
-
-2008.
-
-［RFC5452］ A. Hubert and R. van Mook， "Measures for Making DNS More Resil-
-ient against Forged Answers/' Internet RFC 5452, Jan. 2009.
-
-［RFC5483］ L. Conroy and K. Fujiwara， “ENUM Implementation Issues and Expe
-riences" Internet RFC 5483 （informational）， Mar. 2009.
-
-名称解析和域名系统
-
-411
-
-［RFC5507］ P. Falstrom, R. Austein, and P. Koch, eds， "Design Choices When
-
-Expanding the DNS，" Internet RFC 5507 （informational）， Apr. 2009.
-
-［RFC5509］ S. Loreto， "Internet Assigned Numbers Authority （IANA） Registra-
-
-tion of Instant Messaging and Presence DNS SRV RRs for the Session Initiation
-
-Protocol （SIP）" Internet RFC 5509, Apr.2009.
-
-［RFC5625］ R. Bellis， "DNS Proxy Implementation Guidelines” Internet RFC
-
-5625/BCP 0152, Aug. 2009.
-
-［RFC5782］J. Levine，"DNS Blacklists and Whitelists，" Internet RFC 5782 （infor-
-
-mational）， Feb. 2010.
-
-［RFC5855］ J. Abley and T. Manderson， “Nameservers for IPv4 and IPv6 Reverse
-
-Zones，" Internet RFC 5855/BCP 0155, May 2010.
-
-［RFC5890］ J. Klensin， 'Internationalized Domain Names for Applications
-
-（IDNA）： Definitions and Document Framework，" Internet RFC 5890, Aug. 2010.
-
-F0ccgy hnarea krc soy og 2o0 Donpain ame in Applicotbons （DNA）
-
-IRFC5936）| E. Lewis and A. Hoenes, ed.， "DNS Zone Transfer Protocol （AXFR），"
-
-Internet RFC 5936,June 2010.
-
-［RFC5966］ R. Bellis， "DNS Transport over TCP—Implementation Requirements”
-
-Internet RFC 5966, Aug. 2010.
-
-［RFC6116］ S. Bradner, L. Conroy, and K. Fujiwara， "The E.164 to Uniform
-
-Resource Identifiers （URI） Dynamic Delegation Discovery System （DDDS） Appli-
-
-cation （ENUM），' Internet RFC 6116, Mar. 2011.
-
-［RFC6117］ B. Foeneisen, A. Mayrhofer, and J. Livingood， "TANA Registration of
-
-Enumservices: Guide, Template, and IANA Considerations” Internet RFC 6117，
-
-Mar. 2011.
-
-［RFC6147］ M. Bagnulo, A. Sullivan, P. Matthews, and I. van Beijnum， "DNS64：
-
-DNS Extensions for Network Address Translation from IPv6 Clients to IPv4 Serv-
-
-ers” Internet RFC 6147, Apr. 2011.
-
-［RFC6168］ W. Hardaker， "Requirements for Management of Name Servers for the
-
-DNS，" Internet RFC 6168 （informational）， May 2011.
-
-［RFC6186］ C. Daboo， "Use of SRV Records for Locating Email Submission/Access
-
-Services" Internet RFC 6186, Mar. 2011.
-
-［RFC6195］ D. Eastlake 3rd， "Domain Name System （DNS） IANA Considerations，”
-
-Internet RFC 6195/BCP 0042, Mar. 2011.
-
-［RFC6303］ M. Andrews， "Locally Served DNS Zones，" Internet RFC 6303/BCP
-
-0163, July 2011.
 
 ［ROOTS］ http://www.root-servers.org
 

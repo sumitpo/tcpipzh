@@ -106,10 +106,10 @@ ACK，以及哪些分组还不能被发送。在接收方，它记录着哪些�
 的时候帮助降低丢包率。这一章还讨论了一些改动，这些改动被提出来以增加快速网络的吞吐量或改进易损耗（如无线）网络的弹性。最后，第17 章显示 TCP 如何在没有数据流动时
 保持连接的活动性。
 
-TCP 的原始规范是［RFC0793］，尽管这个 RFC的一些错误已经在主机请求 RFC中被修改过来［RFC1122］。从那以后，TCP的一些规范就一直被修改和扩展以包含透明和改进的
-拥塞控制行为 ［RFC568I］IRFC3782］［RFC3517］［RFC3390］［RFC3168］、重传超时 ［RFC6298］［RFC5682］［RFC4015］、在 NAT 的操作『RFC5382］、确认行为 ［RFC2883］、安全［RFC6056］
-［RFC5927［RFC5926］、连接管理［RFC5482］以及紧急机制实现指导方针［RFC6093］。同时还有丰富的实验性修改，覆盖了重传行为［RFC5827］［RFC3708］、拥塞检测和控制 ［RFC5690］
-［RFCSS62］［RFC4782］［RFC3649］［RFC2861］以及其他特性。最后，在探究 TCP 如何利用多重并发网络层路径方面也做了工作 ［RFC6182］。
+TCP 的原始规范是\href{https://www.rfc-editor.org/rfc/rfc0793}{[RFC0793]}，尽管这个 RFC的一些错误已经在主机请求 RFC中被修改过来\href{https://www.rfc-editor.org/rfc/rfc1122}{[RFC1122]}。从那以后，TCP的一些规范就一直被修改和扩展以包含透明和改进的
+拥塞控制行为 ［RFC568I］IRFC3782］\href{https://www.rfc-editor.org/rfc/rfc3517}{[RFC3517]}\href{https://www.rfc-editor.org/rfc/rfc3390}{[RFC3390]}\href{https://www.rfc-editor.org/rfc/rfc3168}{[RFC3168]}、重传超时 \href{https://www.rfc-editor.org/rfc/rfc6298}{[RFC6298]}\href{https://www.rfc-editor.org/rfc/rfc5682}{[RFC5682]}\href{https://www.rfc-editor.org/rfc/rfc4015}{[RFC4015]}、在 NAT 的操作『RFC5382］、确认行为 \href{https://www.rfc-editor.org/rfc/rfc2883}{[RFC2883]}、安全\href{https://www.rfc-editor.org/rfc/rfc6056}{[RFC6056]}
+［RFC5927\href{https://www.rfc-editor.org/rfc/rfc5926}{[RFC5926]}、连接管理\href{https://www.rfc-editor.org/rfc/rfc5482}{[RFC5482]}以及紧急机制实现指导方针\href{https://www.rfc-editor.org/rfc/rfc6093}{[RFC6093]}。同时还有丰富的实验性修改，覆盖了重传行为\href{https://www.rfc-editor.org/rfc/rfc5827}{[RFC5827]}\href{https://www.rfc-editor.org/rfc/rfc3708}{[RFC3708]}、拥塞检测和控制 \href{https://www.rfc-editor.org/rfc/rfc5690}{[RFC5690]}
+［RFCSS62］\href{https://www.rfc-editor.org/rfc/rfc4782}{[RFC4782]}\href{https://www.rfc-editor.org/rfc/rfc3649}{[RFC3649]}\href{https://www.rfc-editor.org/rfc/rfc2861}{[RFC2861]}以及其他特性。最后，在探究 TCP 如何利用多重并发网络层路径方面也做了工作 \href{https://www.rfc-editor.org/rfc/rfc6182}{[RFC6182]}。
 \subsection{TCP服务类型}
 虽然TCP 和 UDP使用相同的网络层（IPv4或IPv6），但是 TCP 给应用程序提供了一种与 UDP 完全不同的服务。TCP 提供了一种面向连接的（connection-oriented）、可靠的字节流
 服务。术语“面向连接的” 是指使用TCP的两个应用程序必须在它们可交换数据之前，通过相互联系来建立一个 TCP连接。最典型的比喻就是拨打一个电话号码，等待另一方接听电
@@ -131,7 +131,7 @@ TCP 如何判定一个报文段的大小。
 TCP 维持了一个强制的校验和，该校验和涉及它的头部、任何相关应用程序数据和IP头部的所有字段。这是一个端到端的伪头部校验和，用于检测传送中引人的比特差错。如
 果一个带无效校验和的报文段到达，那么TCP 会丢弃它，不为被丢弃的分组发送任何确认。然而，TCP 接收端可能会对一个以前的（已经确认的）报文段进行确认，以帮助发送方计算
 它的拥塞控制（见第16章）。TCP 校验和使用的数学函数与其他互联网协议 （UDP、ICMP 等）一样。对于大数据的传送，对这个校验和是否不够强壮的担心是存在的［SP00］，所以仔细的
-应用程序应该应用自己的差错保护方法（如，更强的校验和或 CRC），或者使用一种中间层来达到同样的效果（如，见［RFC5044］）。
+应用程序应该应用自己的差错保护方法（如，更强的校验和或 CRC），或者使用一种中间层来达到同样的效果（如，见\href{https://www.rfc-editor.org/rfc/rfc5044}{[RFC5044]}）。
 
 当TCP发送一组报文段时，它通常设置一个重传计时器，等待对方的确认接收。TCP不会为每个报文段设置一个不同的重传计时器。相反，发送一个窗口的数据，它只设置一个
 计时器，当ACK 到达时再更新超时。如果有一个确认没有及时接收到，这个报文段就会被重传。在第14章我们将更详细地查看 TCP 的自适应超时和重传策略。
@@ -162,7 +162,7 @@ TCP 头部。它的标准长度是20字节，除非出现选项。头部长度�
 Number）、窗口大小（Window Size）以及ECE位和ACK 位）用于与该报文段的发送方关联的相反方向上的数据流
 
 每个 TCP 头部包含了源和目的端口号。这两个值与IP 头部中的源和目的IP 地址一起，唯一地标识了每个连接。在TCP 术语中，一个IP 地址和一个端口的组合有时被称为一个端
-点（endpoint） 或套接字（socket）。后者出现在［RFC0793］ 中，最终被 Berkeley 系列的网络通信编程接口所采用（现在经常被称为“Berkeley套接字”）。每个 TCP 连接由一对套接字
+点（endpoint） 或套接字（socket）。后者出现在\href{https://www.rfc-editor.org/rfc/rfc0793}{[RFC0793]} 中，最终被 Berkeley 系列的网络通信编程接口所采用（现在经常被称为“Berkeley套接字”）。每个 TCP 连接由一对套接字
 或端点（四元组，由客户机 IP 地址、客户机端口号、服务器 IP 地址以及服务器端口号组成）唯一地标识。这个事实在我们观察一个 TCP 服务器是如何做到与多个客户机通信的时候将
 会变得很重要（见第13章）。
 

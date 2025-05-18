@@ -11,7 +11,7 @@ UDP是一种保留消息边界的简单的面向数据报的传输层协议。�
 （见第15章），应用程序写人的全部数据与真正在单个IP数据报里传送的或接收方接收的内
 容可能没有联系。
 
-［RFC0768］是UDP的正式规范，它至今仍然是一个标准，30多年来没有做过重大的修
+\href{https://www.rfc-editor.org/rfc/rfc0768}{[RFC0768]}是UDP的正式规范，它至今仍然是一个标准，30多年来没有做过重大的修
 改。如前所述，UDP 不提供差错纠正：它把应用程序传给IP层的数据发送出去，但是并不
 保证它们能够到达目的地。另外，没有协议机制防止高速 UDP流量对其他网络用户的消极
 影响。考虑到这种可靠性和保护性的缺失，我们可能会认为使用UDP一点好处也没有。但
@@ -36,7 +36,7 @@ UDP 数据报大小超过MTU 时会发生什么，数据报必须被分片成多
 端口号相当于邮箱（mailbox），帮助协议辨认发送和接收进程（见第1章）。它们纯属抽
 象的（abstract）—-它们不与主机上的任何物理实体相关。在UDP 中，端口号是正的16比
 特的数字，源端口号是可选的；\emph{如果数据报的发送者不要求对方回复的话，它可被置成0。}
-传输协议，如 TCP、UDP 和SCTP［RFC4960］，使用目的端口来帮助分离从IP 层进入的数据。
+传输协议，如 TCP、UDP 和SCTP\href{https://www.rfc-editor.org/rfc/rfc4960}{[RFC4960]}，使用目的端口来帮助分离从IP 层进入的数据。
 因为IP 层根据IPv4头部中的协议字段或IPv6头部中的下一个头部字段的值将进入的IP 数
 据报分离到特定的传输协议，这意味着端口号在不同的传输协议之间是独立的。也就是说，
 TCP端口号只能被 TCP使用，UDP 端口号只能被 UDP使用，如此类推。这样的分离导致的
@@ -109,7 +109,7 @@ UDP 校验和是我们遇到的第一个端到端的传输层校验和（ICMP有
 更新，但却没有差错消息产生。（这就是一个 IPv4 头部校验差错被检测到时会发生的事情。）
 
 尽管UDP数据报校验和在原始UDP规范中是可选的，目前它们还是被要求在主机中
-默认使用［RFC1122］。在20世纪80年代，一些计算机供应商默认关闭了 UDP校验和功能
+默认使用\href{https://www.rfc-editor.org/rfc/rfc1122}{[RFC1122]}。在20世纪80年代，一些计算机供应商默认关闭了 UDP校验和功能
 以加速其 Sun 网络文件系统（NFS）的实现，该网络文件系统使用了 UDP。因为有第2层的
 CRC保护（这要比互联网校验和更强壮，见第3章），在许多情况下这可能不会产生问题，
 然而默认关闭校验和功能被认是一种不好的方法（也是违反 RFC规范的）。早期的互联网
@@ -120,7 +120,7 @@ CRC保护（这要比互联网校验和更强壮，见第3章），在许多情�
 修改而检测不到的可能性，除非引人另一种校验和。
 
 \begin{tcolorbox}
-    ［RFC1122］要求UDP校验和被默认使用。它也指出如果发送方计算了校验
+    \href{https://www.rfc-editor.org/rfc/rfc1122}{[RFC1122]}要求UDP校验和被默认使用。它也指出如果发送方计算了校验
     和（也就是说，如果接收到的校验和不是0），那么必须要有一种实现来验证接收到
     的校验和。
 \end{tcolorbox}
@@ -129,7 +129,7 @@ CRC保护（这要比互联网校验和更强壮，见第3章），在许多情�
 时，不仅IP 层头部的校验和要被修改，而且UDP 伪头部的校验和也必须被正确地修改，因
 为IP 层的地址和/或UDP层的端口号可能会改变。因此 NAT通常因同时修改分组中协议的
 多层而违反分层规则。当然，考虑到伪头部本身就是违反分层规则的，NAT没有选择。UDP
-流量被 NAT处理时的一些特定规则由［RFC4784］给出。在第7章我们也简单地讨论过它们。
+流量被 NAT处理时的一些特定规则由\href{https://www.rfc-editor.org/rfc/rfc4784}{[RFC4784]}给出。在第7章我们也简单地讨论过它们。
 近来已有兴趣关注于对 UDP校验和的松懈使用，主要是一些对差错不完全看重的应用
 （多媒体应用是典型的例子）。这些讨论关系到是否有部分校验和（partial checksum），这是
 一个很有价值的概念。部分校验和只覆盖由应用程序指定的负载的一部分。在10.6 节关于
@@ -234,13 +234,13 @@ udP 1024 （DF）（tt1 64,id 37874,len 1052）
 同就是IPv6使用128位的地址和由此产生的对伪头部的结构带来的影响。一个相关却更细
 致的不同在于，在IPv6 里不存在IP 层头部校验和。因此，如果 UDP 不使用校验和去运行，
 就没有端到端检测任何（no end-to-end check whatsoever）IP 层地址信息的正确性。鉴于此，
-当UDP用于IPv6 时，无论是 UDP 还是TCP，伪头部校验和都是必需的（由［RFC2460］第
+当UDP用于IPv6 时，无论是 UDP 还是TCP，伪头部校验和都是必需的（由\href{https://www.rfc-editor.org/rfc/rfc2460}{[RFC2460]}第
 8节规定）。伪头部的结构由图10-4给出。注意到长度字段已经从它的IPv4 相应字段扩展到
 32位。回想之前所述，这个字段对UDP来说是冗余的，但是我们可以从第13 章看到，对
 TCP（无论是TCP/IPv4还是TCP/IPv6）来说它不是冗余的，因此在 UDP/IPv6 和 TCP/IPv6
 中都保留了该字段。
 
-图10-4 使用IPv6的UDP（以及TCP）伪头部（［RFC2460］）。这个伪头部包含了源和目的IPv6地址
+图10-4 使用IPv6的UDP（以及TCP）伪头部（\href{https://www.rfc-editor.org/rfc/rfc2460}{[RFC2460]}）。这个伪头部包含了源和目的IPv6地址
 以及一个更大的32位的长度字段值。UDP 用于IPv6 时，伪头部校验和是必需的，因为IPv6
 头部缺少校验和。下一个头部字段拷贝于链中的最后一个 IPv6头部
 
@@ -248,7 +248,7 @@ TCP（无论是TCP/IPv4还是TCP/IPv6）来说它不是冗余的，因此在 UDP
 里，最小MTU 大小是1280字节（与IPv4要求的需要所有主机支持的最小大小576字节不
 同）。第二，IPv6 支持超长数据报（大于65 535字节的分组）。如果我们仔细查看IPv6 头部
 和选项集（见第5章），可以观察到使用超长数据报，32位是能够表示负载长度的。这意味
-着单个 UDP/IPv6数据报确实可以非常大。如［RFC2675］所述，对于 UDP头部中的只有16
+着单个 UDP/IPv6数据报确实可以非常大。如\href{https://www.rfc-editor.org/rfc/rfc2675}{[RFC2675]}所述，对于 UDP头部中的只有16
 位长的UDP 长度字段会产生一个问题。这样的话，超过65 535字节的UDP/IPv6 数据报被
 封装在IPv6时，它的UDP 长度字段值会被置成0。注意到伪头部里的长度字段的大小仍然
 足够大（32位）。对IPv6超长数据报计算这个字段的值，涉及取UDP 头部加上数据的总长
@@ -256,18 +256,18 @@ TCP（无论是TCP/IPv4还是TCP/IPv6）来说它不是冗余的，因此在 UDP
 Jumbo Payload选项中找到的值减去所有IPv6扩展头部的大小来得到，这也是IPv6负载的
 长度（即数据报总长减40字节的IPv6头部）。在UDP头部中的长度字段是0且没有Jumbo
 Payload选项存在的“意外的”情况下，UDP 长度可以从不等于零的IPv6负载长度字段中推
-断得到（见［RFC2675］第4节）。
+断得到（见\href{https://www.rfc-editor.org/rfc/rfc2675}{[RFC2675]}第4节）。
 
 \subsection{Teredo：通过IPv4 网络隧道传输IPv6}
 虽然以前人们认为全世界过渡到IPv6会很快发生，但是事实并不像预料的那样。结果
-是，不少（理论上是暂时的）过渡机制（transition mechanism）［RFC4213］［RFC5969］被提
-出来缓解过渡负担。其中一个叫 6to4 的机制［RFC3056］，把在主机使用的IPv6分组封装在
+是，不少（理论上是暂时的）过渡机制（transition mechanism）\href{https://www.rfc-editor.org/rfc/rfc4213}{[RFC4213]}\href{https://www.rfc-editor.org/rfc/rfc5969}{[RFC5969]}被提
+出来缓解过渡负担。其中一个叫 6to4 的机制\href{https://www.rfc-editor.org/rfc/rfc3056}{[RFC3056]}，把在主机使用的IPv6分组封装在
 IPv4 分组里以在只支持 IPv4 的基础设施中传送。与其他互联网上的应用程序遇到过的问题
 一样，6t04也遇到 NAT 穿越问题。另一个众所周知的扩展性问题使得人们不太愿意继续使
-用它 ［RFC6343］。尽管我们已经看到一些像ICE（见第7章）的方法可以很好地解决这个问
+用它 \href{https://www.rfc-editor.org/rfc/rfc6343}{[RFC6343]}。尽管我们已经看到一些像ICE（见第7章）的方法可以很好地解决这个问
 题，但是一个名叫 Teredo（原来叫 “shipworm（船蛆）”，但是为了避免与计算机蠕虫混淆，
 根据“船蛆”的常见类属的拉丁名字而重新命名）的专门协议已被设计出来专门解决这个问
-题 ［RFC4380］［RFC5991］［RFC6081］。它之所以流行，是因为它在微软 Windows 的当代版本
+题 \href{https://www.rfc-editor.org/rfc/rfc4380}{[RFC4380]}\href{https://www.rfc-editor.org/rfc/rfc5991}{[RFC5991]}\href{https://www.rfc-editor.org/rfc/rfc6081}{[RFC6081]}。它之所以流行，是因为它在微软 Windows 的当代版本
 中得到了广泛的应用。
 
 Teredo（也叫Teredo隧道）为没有其他IPv6连接选项的系统传送IPv6 数据报，方法是把
@@ -342,7 +342,7 @@ Teredo服务器
 
 图 10-7
 
-由［RFC5991］
+由\href{https://www.rfc-editor.org/rfc/rfc5991}{[RFC5991]}
 
 Randoml
 
@@ -376,12 +376,12 @@ IPv4 地址、16位标志（用于标识用到的 NAT类型和随机位以帮助
 NAT）不需要扩展的支持就可以工作。一开始，C（cone NAT）位字段是用于标识是否碰到一
 个锥形 NAT并给予合适的支持，但现在这种用法被弃用，这个字段应该置成0（客户机忽略
 这个字段，服务器检查它以寻找过时的客户机）。下一个位字段置成O。U（Universal）和G
-（Group）位字段留给未来使用，但现在被置成0。根据［RFC5991］选择 Randoml 和 Random2
+（Group）位字段留给未来使用，但现在被置成0。根据\href{https://www.rfc-editor.org/rfc/rfc5991}{[RFC5991]}选择 Randoml 和 Random2
 字段的随机值，从而使得 Teredo地址很难被猜到（一种安全的措施就是尽量减少潜在攻击者
 的随机试探）。
 
 一旦一个已取得资格的客户机建立了自己的Teredo 地址，它就可以发送IPv6 流量了。
-至于资格认证失败会发生什么或使用一种安全资格认证的具体细节，可参见［RFC4380］。一
+至于资格认证失败会发生什么或使用一种安全资格认证的具体细节，可参见\href{https://www.rfc-editor.org/rfc/rfc4380}{[RFC4380]}。一
 般来说，一台Teredo 客户机可能想要与另一台在同一链路中的客户机、另一台在IPV4 互联
 网中的客户机或在IPv6互联网中的一台主机进行通信。在每种情况下，Teredo 会提供一些
 基于 UDP/IPv4的邻居发现来取代IPv6。对于在同一链路中的客户机，Teredo使用一种组播
@@ -391,7 +391,7 @@ NAT）不需要扩展的支持就可以工作。一开始，C（cone NAT）位�
 通信的目的地。这个IPv6 分组包含一个没有负载和附加扩展（下一个头部字段被置为0x3b，
 表示为空）的IPv6头部。对于在IPv4 互联网中的客户机，回想一下 Teredo IPv6地址包含了
 IPv4 映射地址和端口号，因此，客户机可直接发送Teredo封装的分组到其他客户机的NAT。
-对于受限的 NAT，Teredo 使用气泡来打孔和建立 UDP NAT 映射（见第7章和［RFC6081］）。
+对于受限的 NAT，Teredo 使用气泡来打孔和建立 UDP NAT 映射（见第7章和\href{https://www.rfc-editor.org/rfc/rfc6081}{[RFC6081]}）。
 
 当一个已取得资格认证的客户机有一个分组要发送到一台IPv6 主机（即一台没使用
 Teredo 地址的主机）时，它首先判断是否已经知道一个负责该分组的目的地的Teredo 中继
@@ -402,12 +402,12 @@ Teredo 地址的主机）时，它首先判断是否已经知道一个负责该�
 这个中继器的IPv4地址，并更新缓存以指明后续的目的地为该IPv6 主机的分组应该使用这
 个刚确定下来的中继器。
 
-在［RFC6081］中，Teredo可以支持许多扩展选项，它们中的一些有助于支持 Teredo对
+在\href{https://www.rfc-editor.org/rfc/rfc6081}{[RFC6081]}中，Teredo可以支持许多扩展选项，它们中的一些有助于支持 Teredo对
 对称NAT的操作。这些扩展对协议特性进行了改动，包括以下方面：对称 NAT 支持（SNS），
 带 UPnP 的对称 NAT （UP），端口保留对称 NAT （PP），顺序端口对称 NAT（SP），发夹（HP），
 以及服务器负载减免（SLR）。除了 UP 和PP 两个扩展都依赖于 SNS扩展以外，其他扩展都
 可以独立使用。通过对这些扩展进行各种组合，多种 NAT类型都可得到支持，这些组合由
-一个表格给出（见［RFC6081］的第3节）。
+一个表格给出（见\href{https://www.rfc-editor.org/rfc/rfc6081}{[RFC6081]}的第3节）。
 
 为了实现这些扩展，一个或多个追踪符可能会出现在Teredo消息中。使用与ICMPV6
 ND选项（图8-41）一样的基本格式，追踪符被编码成一个有序的TLV组合列表，这种格
@@ -512,13 +512,13 @@ DiscoveryAdvertisement（0x01）。在第一种情况下，要求接收方用一
 Advertisement类型就是应答。这个追踪符用于支持SLR 扩展，它有效地允许 NS/NA消息携
 带在直接气泡里，而不是需要服务器参与的间接气泡里，以更新NAT 状态。最后，随机端
 口追踪符包含一个16位的UDP端口号，这个端口号是发送方对它被映射的端口号的最好猜
-测。这被PP扩展（见［RFC6081］的6.3节）使用。
+测。这被PP扩展（见\href{https://www.rfc-editor.org/rfc/rfc6081}{[RFC6081]}的6.3节）使用。
 
 \section{UDP-Lite}
 有些应用程序可以容忍在发送和接收的数据里引人的比特差错。通常，为了避免建立
 连接的开销或者为了使用广播或组播地址，这类应用程序会选择使用UDP，但是UDP 使
 用的校验和要么覆盖整个负载，要么就一点也没有（比如，发送方不计算校验和）。一个称
-为UDP-Lite 或UDPLite［RFC3828］的协议通过修改传统的UDP协议，提供了部分校验和来
+为UDP-Lite 或UDPLite\href{https://www.rfc-editor.org/rfc/rfc3828}{[RFC3828]}的协议通过修改传统的UDP协议，提供了部分校验和来
 解决这个问题。这些校验和只覆盖每个 UDP数据报里的一部分负载。UDP-Lite 有它自己的
 IPv4 协议和IPv6 下一个头部字段值（136），因此它实际上算是一种独立的传输协议。UDP-
 Lite 用一个校验和覆盖范围（Checksum Coverage） 字段取代了（冗余的）长度字段来修改
@@ -753,7 +753,7 @@ ICMPv4 超时（代码1）消息，告诉发送方数据报已丢失，包括第
 \section{采用 UDP 的路径 MTU 发现}
 
 让我们考察使用UDP 的应用程序与路径 MTU 发现机制（PMTUD）之间的交互过程
-［RFC1191］。对一个像UDP这样的协议来说，调用这样协议的应用程序一般只控制输出数
+\href{https://www.rfc-editor.org/rfc/rfc1191}{[RFC1191]}。对一个像UDP这样的协议来说，调用这样协议的应用程序一般只控制输出数
 据报的大小，如果有方法能确定一个可以避免分片的合适的数据报大小，那么这会是很有
 用的。传统的PMTUD 使用ICMP PTB 消息（见第8章）来获得一个最大分组大小，其沿着
 一条路由路径传输不会引人分片。典型地，这些消息在UDP层之下被处理，对应用程序不
@@ -943,14 +943,14 @@ MTU 信息被认为是过时的，数据报没被分片发送，另一条ICMPv4 
 
 \iffalse
 \begin{tcolorbox}
-［RFC1191］推荐一个由PMTUD得到的PMTU 值在10分钟后过时。路
+\href{https://www.rfc-editor.org/rfc/rfc1191}{[RFC1191]}推荐一个由PMTUD得到的PMTU 值在10分钟后过时。路
 径MTU 发现有时会因为防火墙和网关过滤可能不加选择地丢弃ICMP 流量而
 出现问题，这会损害 PMTU 发现算法。因为这点，从基于系统范畴或有更好保
 证来看，可能要关闭PMTU发现。在Linux 中，文件/proc/sys/net/ipv4/ip\_no\_
 Pmtu\_disc 可以置成1以关闭PMTU发现。在 Windows 中，可以编辑注册表入口
 \verb|HKEY_LOCAL_MACHINE\System CurrentControl Set Services Topip Parameters
 EnablePMTUDiscovery| 的值0。一个不使用ICMP 的、传统 PMTUD 的替代品已
-经被开发出来［RFC4821］，我们将在第15 章介绍它。
+经被开发出来\href{https://www.rfc-editor.org/rfc/rfc4821}{[RFC4821]}，我们将在第15 章介绍它。
 \end{tcolorbox}
 \fi
 
@@ -1014,8 +1014,8 @@ udp 8192 （frag 27358:1480@0+）（tt1 64,len 1500）
     历史上，分片和ARP 之间的交互一直都是有问题的。例如，在某些情况下
     每一个分片都得发送一个ARP请求，而在某些情况下只有分片中的一个要排队
     等候 ARP应答（从而使数据报丢失了，因为除了一个分片外的所有分片都被丢弃
-    了）。第一个问题在［RFC1122］里被解决了，那需要一种实现来阻止这种ARP 洪
-    泛。建议的最大速率是每秒一个。第二个问题也在［RFC1122］里被讨论，但它只
+    了）。第一个问题在\href{https://www.rfc-editor.org/rfc/rfc1122}{[RFC1122]}里被解决了，那需要一种实现来阻止这种ARP 洪
+    泛。建议的最大速率是每秒一个。第二个问题也在\href{https://www.rfc-editor.org/rfc/rfc1122}{[RFC1122]}里被讨论，但它只
     指出，对每一个分组集，其中的分组的目的地是相同的未解析的IP 地址，链路层
     “应该保存（而不是丢弃）其中的至少一个（最新的）分组”’。这种方法会引起不必
     要的分组丢失，不过已经在具体实现里解决了，方法是给那些ARP请求还在挂起
@@ -1069,7 +1069,7 @@ UDP/IP 能发送和接收一个给定大小的（大）数据报并不意味着�
 等待）。
 
 \section{UDP 服务器的设计}
-UDP 的一些特点对要使用它的网络应用程序的设计和实现有影响［RFC5405］。服务器一
+UDP 的一些特点对要使用它的网络应用程序的设计和实现有影响\href{https://www.rfc-editor.org/rfc/rfc5405}{[RFC5405]}。服务器一
 般与操作系统交互，大多数需要一种方案来处理并发的多客户机。客户机设计与实现通常更
 简单，因此我们将不在这里讨论它们。
 
@@ -1092,7 +1092,7 @@ TCP 服务器的细节。）虽然我们描述的特性有点依赖被使用的 
 为多址、IP 地址别名，以及 IPv6多范围使用，一台主机可能有多个IP地址，单个服务器可
 使用它们中的任何一个来接收进入的数据报（实际情况通常是这样的）。任何想要根据客户
 机选择的目的IP地址来有分别地执行任务的服务器都需要得到目的IP 地址信息。另外，如
-果目的地址是广播或组播的（如，主机需求（Host Requirements） RFC［RFC1122］ 指出 TFTP
+果目的地址是广播或组播的（如，主机需求（Host Requirements） RFC\href{https://www.rfc-editor.org/rfc/rfc1122}{[RFC1122]} 指出 TFTP
 服务器应忽略接收到的发送给一个广播地址的数据报），那么有些服务则可能会有不同的
 回应。
 
@@ -1397,7 +1397,7 @@ IPv4 地址进行编码，所以IPv6里的通配符绑定方式可能会接收�
 注意 情況要针对具体实现。在Linux 里，所有端口空间都是共享的，所有的通配
 符 IPv6绑定意味着对应的IPv4绑定。在 FreeBSD 里，IPV6\_V6ONLY 套接字选
 项可用于保证只在 IPv6 空间进行绑定。程序员应该查阅其支持的那个操作环境的
-IPV6的套接字接口。［RFC3493］ 描述了C语言绑定。
+IPV6的套接字接口。\href{https://www.rfc-editor.org/rfc/rfc3493}{[RFC3493]} 描述了C语言绑定。
 
 \section{流量和拥塞控制的缺失}
 
@@ -1485,15 +1485,15 @@ Smurf 攻击（见第8章）很接近。
 攻击利用IPv4重组程序代码的一个漏洞，可导致系统崩溃。另一种在IPv4 重组层的攻击是
 泪滴（teardrop）攻击，涉及使用可使某些系统崩溃或严重受影响的重叠分片偏移（Fragment
 Offset）字段来精心构造一系列分片。这种攻击的一个变种涉及可覆盖前一分片 UDP头部
-的重叠分片偏移。现在，重叠分片在 IPv6 中被禁止使用［RFC5722］。最后，还有与之相关
+的重叠分片偏移。现在，重叠分片在 IPv6 中被禁止使用\href{https://www.rfc-editor.org/rfc/rfc5722}{[RFC5722]}。最后，还有与之相关
 的Ping of Death 攻击（一般由ICMPv4 回显请求构建，也适合于 UDP），它通过产生一个在
 重组时会超过最大限制的IPv4数据报来进行。这是相当直接的，因分片偏移字段可设置
 的值最大只能到8191，代表了65 528字节的偏移。任何长度超过7字节的这样的分片都会
 （如果没有保护措施）导致产生一个超过最大值65 535字节的重组数据报。关于某些形式的
-分片攻击的应对技术在［RFC3128］给出。
+分片攻击的应对技术在\href{https://www.rfc-editor.org/rfc/rfc3128}{[RFC3128]}给出。
 
 \section{总结}
-UDP是一个简单的协议。它的正式规范［RFC0768］ 只有3页（包括参考文献！）。它给
+UDP是一个简单的协议。它的正式规范\href{https://www.rfc-editor.org/rfc/rfc0768}{[RFC0768]} 只有3页（包括参考文献！）。它给
 用户进程（在IP 层之上）提供的服务是端口号和校验和。它没有流量控制，没有拥塞控制和
 差错纠正。它有差错检测（对 UDP/IPv4 可选，但对UDP/IPv6强制使用）和消息边界保留。
 我们使用了 UDP 来检查互联网校验和以及观察IP 分片如何进行。我们也见到了UDP 的其
@@ -1502,7 +1502,7 @@ UDP是一个简单的协议。它的正式规范［RFC0768］ 只有3页（包�
 
 的相对“笨重”的可靠语义（例如排序、流量控制以及重传）时，最常用的就是UDP了。多
 亏了多媒体和点对点应用程序，UDP 正得到越来越多的使用，同时它也是支持VoIP 的主要
-协议［RFC3550］［RFC3261］。它还是那些要必须经过 NAT 而不引入太多额外开销（只为 UDP
+协议\href{https://www.rfc-editor.org/rfc/rfc3550}{[RFC3550]}\href{https://www.rfc-editor.org/rfc/rfc3261}{[RFC3261]}。它还是那些要必须经过 NAT 而不引入太多额外开销（只为 UDP
 头部提供8字节）的封装流量的传统方法。在支持一种 IPv6过渡机制（Teredo）和帮助 NAT
 穿越STUN（见第7章）方面，我们已经看到了这种用法，同时我们将会在第18章再次看到
 它被用于 IPsec NAT 穿越。UDP 其他主要用途之一是支持DNS。下一步我们在第11 章就探
@@ -1527,78 +1527,6 @@ Systems，" Proc. SIGOPS European Workshop, 1996.
 
 ［KM87］ C. Kent and J.Mogul，"Fragmentation Considered Harmful” DEC WRL
 Technical Report 87/3, 1987.
-
-［RFC0768］ J. Postel， "User Datagram Protocol" Internet RFC 0768/STD 0006, Aug.
-1980.
-
-［RFC1122］ R. Braden, ed.， "Requirements for Internet Hosts—Communication
-Layers/" Internet RFC 1122/STD 0003, Oct. 1989.
-
-［RFC1191］ J. C. Mogul and S. E. Deering， "Path MTU Discovery" Internet RFC
-1191, Nov. 1990.
-
-［RFC2460］ S. Deering and R. Hinden， "Internet Protocol, Version 6 （IPv6） Specifi-
-cation，" Internet RFC 2460, Dec. 1998.
-
-IRFC2675］ D. Borman, S. Deering, and R. Hinden， "1Pv6 Jumbograms" Internet
-RFC 2675, Aug. 1999.
-
-［RFC30561 B. Carpenter and K. Moore， " Connection of IPv6 Domains via IPv4
-户数据报协议和IP分片
-
-Clouds，" Internet RFC 3056, Feb. 2001.
-
-［RFC3128］ I. Miller， "Protection against a Variant of the Tiny Fragment Attack
-（RFC 1858）" Internet RFC 3128 （informational）， June 2001.
-
-［RFC3261］J. Rosenberg, H. Schulzrinne, G. Camarillo, A. Johnston, J. Peterson，
-Sparks, M. Handley, and E. Schooler， “SIP: Session Initiation Protocol，” Interne
-RFC 3261, June 2002.
-
-［RFC3493］ R. Gilligan, S. Thomson, J. Bound, J. McCann, and W.Stevens， "Basi
-Socket Interface Extensions for IPv6" Internet RFC 3493 （informational）， Feb.
-2003.
-
-［RFC3550］ H. Schulzrinne, S. Casner, R. Frederick, and V.Jacobson， "RTP: A
-Transport Protocol for Real-Time Applications/" Internet RFC 3550/STD 0064，
-July 2003.
-
-［RFC3828］ L-A. Larzon, M. Degermark, S. Pink, L-E. Jonsson, ed.， and G.
-Fairhurst, ed， "The Lightweight User Datagram Protocol （UDP-Lite）" Internet
-RFC 3828, July 2004.
-
-［RFC4213］ E. Nordmark and R. Gilligan， "Basic Transition Mechanisms for IPv
-Hosts and Routers，" Internet RFC 4213, Oct. 2005.
-
-［RFC4380］ C. Huitema， "Teredo: Tunneling IPv6 over UDP through Network
-Address Translations （NATs）" Internet RFC 4380, Feb. 2006.
-
-［RFC4787］ F. Audet, ed.， and C. Jennings， "Network Address Translation （NAT
-Behavioral Requirements for Unicast UDP" Internet RFC 4787/BCP 0127, Jan.
-2007.
-
-［RFC4821］ M. Mathis and J. Heffner， "Packetization Layer Path MTU Discovery
-Internet RFC 4821,Mar. 2007.
-
-［RFC4960］ R. Stewart, ed.， "Stream Control Transmission Protocol" Internet RI
-4960, Sept. 2007.
-
-［RFC5405］ L. Eggert and G. Fairhurst， "Unicast UDP Usage Guidelines for
-Application Designers” Internet RFC 5405/BCP 0145, Nov. 2008.
-
-［RFC5722］ S. Krishnan， "Handling of Overlapping IPv6 Fragments" Internet
-RFC 5722, Dec. 2009.
-
-［RFC5969］ W. Townsley and O. Troan， "IPv6 Rapid Deployment on IPv4 Infra-
-structures （6rd）—Protocol Specification，" Internet RFC 5969, Aug. 2010.
-
-［RFC5991］ D. Thaler, S. Krishnan, and J. Hoagland， "Teredo Security Updates，"
-Internet RFC 5991, Sept. 2010.
-
-［RFC6081］ D. Thaler， "Teredo Extensions,/" Internet RFC 6081, Jan. 2011.
-
-［RFC6343］ B. Carpenter， "Advisory Guidelines for 6to4 Deployment" Internet
-RFC 6343 （informational）， Aug. 2011.
 
 ［SMC02］ C. Shannon, D.Moore, and k claffy， "Beyond Folklore: Observations C
 Fragmented Traffic" IEEE/ACM Transactions on Networking, 10（6）， Dec. 2002.

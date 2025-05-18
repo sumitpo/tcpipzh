@@ -6,7 +6,7 @@
 和广播（broadcast）。IPv4 可以使用所有这些地址，而IPv6可以使用除了最后一种形式的所
 有其他形式的地址。在本章中，我们讨论广播和组播更多的细节，包括链路层地址如何有效
 地用于从一台计算机向其他几台计算机发送组播或广播流量。我们也查看互联网组管理协议
-（IGMP） ［RFC3376］和 IPv6组播侦听发现（MLD）［RFC3810］协议，它们用来通知IPv4 和
+（IGMP） \href{https://www.rfc-editor.org/rfc/rfc3376}{[RFC3376]}和 IPv6组播侦听发现（MLD）\href{https://www.rfc-editor.org/rfc/rfc3810}{[RFC3810]}协议，它们用来通知IPv4 和
 IPv6 组播路由器子网中哪些组播地址在使用中。本章（或本书）中，我们没有涉及的一个主
 题是在诸如全球互联网的广域网中，组播路由是如何实现的。目前，组播在企业和本地网络
 中的使用超过在广域网中的使用。尽管我们在本章中讨论的这些协议是为了完全理解广域组
@@ -32,7 +32,7 @@ IPv6 组播路由器子网中哪些组播地址在使用中。本章（或本书
 兴趣的主机。当我们探讨广播和组播的详细情况后，这些概念将变得更加清晰。现在，请记
 住，在广播的更高开销和简单性以及组播的效率改善和更多的复杂性之间存在一种平衡。
 
-广播自出现以来，就一直受到 IPv4 协议的支持，而随着［RFC1112］的出版，组播被添
+广播自出现以来，就一直受到 IPv4 协议的支持，而随着\href{https://www.rfc-editor.org/rfc/rfc1112}{[RFC1112]}的出版，组播被添
 加进来。IPv6 支持组播但不支持广播。一般来说，只有使用 UDP 传输协议（第10章）的用
 户应用程序利用广播和组播，此时应用程序发送单个报文到多个收件方才是有意义的。TCP
 是一个面向连接的协议，这意味着两台主机（由IP地址指定）和每台主机上的一个进程（由
@@ -185,13 +185,13 @@ Windows Vista 路由表的一个例子（更高版本的Windows 使用完全相�
 
 输出的第一部分显示了7个不同的网络接口，它们可用于承载网络流量。第1个是虚拟
 环回接口，下一个是 Wi-Fi无线接口，第3个是有线以太网接口（断开的），第4个是另一个
-环回接口，随后的三个用作非标准站内自动隧道寻址协议（ISATAP）［RFC5214］ ［RFC5579］
+环回接口，随后的三个用作非标准站内自动隧道寻址协议（ISATAP）\href{https://www.rfc-editor.org/rfc/rfc5214}{[RFC5214]} \href{https://www.rfc-editor.org/rfc/rfc5579}{[RFC5579]}
 的一部分。ISATAP 用于支持由 IPv4 网络隔断的IPv6 主机。
 
 转移到路由表中，我们可以看到有7个项目能够用于确定广播流量应发送到的地址。第
 一项是默认路由（掩码为 0.0.0.0），所以它匹配任意的目的地。如果有这样的设施启用了，
 就可以被定向广播用于跨越本地网络。这种类型的定向广播移动到本地网络之外，通常由路
-由器来禁用，以避免一些安全问题，如［RFC2644］所建议的。
+由器来禁用，以避免一些安全问题，如\href{https://www.rfc-editor.org/rfc/rfc2644}{[RFC2644]}所建议的。
 
 接下来的三个条目分别是与IPv4地址10.0.0.57、127.0.0.1 和 169.254.57.240 相关的3个接
 口的定向子网广播地址。最后两个是软件环回接口。这些条目说明Windows如何通过结合网
@@ -202,7 +202,7 @@ Gateway 列 On-link，所以使用直接交付（见第5章）将流量交付至
 最后三项是有限广播地址的路由条目，255.255.255.255。在某些时候，这个地址像组播
 地址一样，因为它不直接与任意直接连在网络上的正在使用的地址相关联。因此，哪一个
 接口应该用于发送去往有限广播地址的流量不是一目了然的。不幸的是，Host Requirements
-RFC ［RFC1122］ 的3.3.6 节提供了很少的指导：
+RFC \href{https://www.rfc-editor.org/rfc/rfc1122}{[RFC1122]} 的3.3.6 节提供了很少的指导：
 
 目标地址为有限广播地址的数据报是否应该从多宿主主机的所有接口发送，对
 此已有讨论。此规范对该问题不持任何观点。
@@ -342,7 +342,7 @@ rtt min/avg/max/mdev = 1.109/1.767/2.590/0.615 ms
 
 推出的一种替代协议也有类似的功能，被称为链路本地组播名称解析（LLMINR）
 
-［RFC4795］。目前这两个协议都不是IETF 内的互联网标准，但现在，mDNS具有
+\href{https://www.rfc-editor.org/rfc/rfc4795}{[RFC4795]}。目前这两个协议都不是IETF 内的互联网标准，但现在，mDNS具有
 
 比LLMNR 更长的历史。有关详细信息请参阅第11 章。
 
@@ -885,9 +885,9 @@ routing）应该由一个或多个组播路由器启动。这种情况更加复�
 兴趣的侦听方接收。这允许一个组播路由器完成其工作，而不用记录每个接口上的单个主
 机，它们可能只对特定组的组播流量感兴趣。
 
-随着时间的推移，IGMP已经演变了，并且［RFC3376］定义了第3版（到写作的时候
-最新的版本）。MLD 在并行发展，其目前版本（2）在［RFC3810］中定义。IGMPv3和/ 或
-MLDv2被要求支持SSM。可以查看［RFC4604］获取每个组播组只使用一个单一源时这些协
+随着时间的推移，IGMP已经演变了，并且\href{https://www.rfc-editor.org/rfc/rfc3376}{[RFC3376]}定义了第3版（到写作的时候
+最新的版本）。MLD 在并行发展，其目前版本（2）在\href{https://www.rfc-editor.org/rfc/rfc3810}{[RFC3810]}中定义。IGMPv3和/ 或
+MLDv2被要求支持SSM。可以查看\href{https://www.rfc-editor.org/rfc/rfc4604}{[RFC4604]}获取每个组播组只使用一个单一源时这些协
 议是如何受限制的更多详细情况。
 
 IGMP版本1是第一个广泛使用的IGMP版本。版本2添加了更迅速地离开组（也被
@@ -942,7 +942,7 @@ MLDv2侦听 IPv6 组播地址 ff02：：16。需要注意的是，当组播路�
 \begin{tcolorbox}
     在IGMPVI 和IGMPV2 中，主机在收到查询后不立即做出响应，而是等待一
     个小的随机时间，以查看是否有其他主机响应同一组。如果有，主机的响应被抑制
-    （不发送）。这是通过在问题中将报告发送到组组播地址来完成的。［RFC3376］的附录
+    （不发送）。这是通过在问题中将报告发送到组组播地址来完成的。\href{https://www.rfc-editor.org/rfc/rfc3376}{[RFC3376]}的附录
     A 说明了为什么该操作在IGMPV3中删除了。总之，组播路由器可能希望跟踪记录
     单个主机的订阅，在使用IGMP探听（见9.4.7节）的桥接LAN 中抑制不能很好地
     工作，处理抑制使得协议实现更为复杂，并且IGMPV3报告包含多个组的信息，使
@@ -967,7 +967,7 @@ IGMP和 MLD定义了两组协议处理规则：由组成员的主机执行的和
 兴趣改变，以及响应定期的查询。组播路由器发送查询，以确定连接链路上的对于任意组或
 是特定的组播组和源是否有兴趣。路由器也与广域组播协议（如PIM-SM 和 BIDIR-PIM）交
 互，将所需的流量带给有兴趣的主机或禁止流量流向不感兴趣的主机。想要了解这些协议的
-更多详细信息，请参见［RFC4601］和 ［RFC5015］。
+更多详细信息，请参见\href{https://www.rfc-editor.org/rfc/rfc4601}{[RFC4601]}和 \href{https://www.rfc-editor.org/rfc/rfc5015}{[RFC5015]}。
 
 \subsection{组成员的IGMP 和MLD 处理（“组成员部分”）}
 IGMP和 MLD组成员的部分被设计为允许主机指定它们对什么样的组有兴趣，以及从
@@ -1117,7 +1117,7 @@ IGMP 和 MLD 查询/ 报告本身从不过滤。MLD 报告使用类似于IGMP报
 链路IPv6地址。当主机在启动并尝试确定它自己的IPv6地址时，会同时出现一个问题。在
 此期间，它选择一个潜在的IPv6地址来使用并执行重复地址检测（DAD）过程（见第6章），
 以确定是否有任何其他的系统已经使用这个地址。因为DAD 涉及组播，一些源地址必须被
-分配为传出 MLD 报文。［RFC3590］ 解决了这个问题，它允许未指定的地址（：：）在配置过程
+分配为传出 MLD 报文。\href{https://www.rfc-editor.org/rfc/rfc3590}{[RFC3590]} 解决了这个问题，它允许未指定的地址（：：）在配置过程
 中被用来作为MLD 流量的源IPv6地址。
 
 \subsection{组播路由器的IGMP 和 MLD 处理（“组播路由器部分”）}
@@ -1320,7 +1320,7 @@ IPv4地址为10.0.0.57的主机分别对组239.255.255.250 和 224.0.0.252 （LL
 一个组播路由器可以停止转发在每个接收方的排除列表中的主机发送的组播流量。实践经验
 证明，应用程序很少需要屏蔽特定源，并且支持此功能也比较复杂。然而，主机往往希望
 包含一个与一个组相关联的特定源，尤其是当SSM 在使用时。因此，简化版的IGMPV3和
-MLDv2已在［RFC5790］中定义，分别称为轻量级 IGMPv3（LW-IGMPv3）和轻量级 MLDV2
+MLDv2已在\href{https://www.rfc-editor.org/rfc/rfc5790}{[RFC5790]}中定义，分别称为轻量级 IGMPv3（LW-IGMPv3）和轻量级 MLDV2
 （LW-MLDv2）。
 
 LW-IGMPv3 和LW-MLDv2是其正本的子集。它们支持ASM和SSM，并使用与
@@ -1531,7 +1531,7 @@ IGMP 和MLD管理路由器之间IP 组播流量的流动。为了进一步优化
 
 2层交换机（即通常不会处理第3层IGMP或 MLD 报文）来说，通过查看在第3层的信息了
 解它对特定的组播流量流动是否有兴趣，这是可能的。该功能通过称为 IGMP（MLD）採听
-（snooping）［RFC4541］的交换机特征指明，并且被很多交换机供应商支持。没有IGMP探听，
+（snooping）\href{https://www.rfc-editor.org/rfc/rfc4541}{[RFC4541]}的交换机特征指明，并且被很多交换机供应商支持。没有IGMP探听，
 交换机通常沿着所有交换机形成的生成树的所有分支广播它来发送链路层流量。这是一种浪
 费，如我们前面描述的原因。IGMP（MLD）感知的（有时也把IGMP 探听称为IGS）交换机
 监控主机和组播路由器之间的IGMP（MLD）流量，并且能记录哪些端口需要哪些特定的组
@@ -1556,7 +1556,7 @@ ICMPv6信息，并小心地从其他报文中分离出 MLD 报文。尤其是，
 其他非标准的专有协议已经被实现，可以进一步优化通过第2层设备运载的IP组播
 
 流量。例如，思科提出了路由器端口组管理协议（Router-port Group Management Protocol，
-RGMP） ［RFC3488］。在RGMP 中采用了一种机制，这样主机不仅报告它们的组和感兴趣的
+RGMP） \href{https://www.rfc-editor.org/rfc/rfc3488}{[RFC3488]}。在RGMP 中采用了一种机制，这样主机不仅报告它们的组和感兴趣的
 源（如在IGMP/MLD 中），而且组播路由器也这样做。该信息用来优化组播路由器（不仅仅
 是主机）之间的组播流量在第2层的转发。
 
@@ -1629,70 +1629,3 @@ IGCLG99］ Y.Goland, T. Cai, P. Leach, and Y. Gu， "Simple Service Discovery
 Protocol/1.0 Operating without an Arbiter" Internet draft-cai-ssdp-V1-03.txt
 
 （expired）， Oct. 1999.
-
-［RFC1112］ S. Deering， "Host Extensions for IP Multicasting." Internet RFC 1112/
-
-STD 0005, Aug. 1989.
-
-［RFC1122］ R. Braden, ed.， "Requirements for Internet Hosts，" Internet RFC 1122/
-
-STD 0003, Oct. 1989.
-
-［RFC2644］ D. Senie， "Changing the Default for Directed Broadcasts in Routers"
-
-Internet RFC 2644/BCP 0034, Aug. 1999.
-
-［RFC3376］ B. Cain, S. Deering, I. Kouvelas, B. Fenner, and A. Thyagarajan， "Inter-
-
-net Group Management Protocol, Version 3" Internet RFC 3376, Oct. 2002.
-
-［RFC3488］ 1.Wu and T. Eckert， "Cisco Systems Router-port Group Management
-
-Protocol （RGMP）." Internet RFC 3488 （informational）， Feb. 2003.
-
-［RFC3590］ B. Haberman， "Source Address Selection for the Multicast Listener
-
-Discovery （MLD） Protocol” Internet RFC 3590, Sept. 2003.
-
-［RFC3810］ R. Vida and L. Costa, eds.， "Multicast Listener Discovery Version 2
-
-（MLDv2） for IPv6" Internet RFC 3810, June 2004.
-
-［RFC4541］ M. Christensen and K. Kimball， "Considerations for Internet Group
-
-Management Protocol （IGMP） and Multicast Listener Discovery （MLD） Snooping
-
-Switches." Internet RFC 4541 （informational）， Mav 2006
-
-［RFC4601］ B. Fenner, M. Handley, H. Holbrook, and I. Kouvelas， "Proto-
-
-col Independent Multicast—Sparse Mode （PIM-SM）： Protocol Specification
-
-（Revised）， " Internet RFC 4601, Aug. 2006.
-
-［RFC4604］ H. Holbrook, B. Cain, and B. Haberman， "Using Internet Group Man
-agement Protocol Version 3 （IGMPv3） and Multicast Listener Discovery Protoc
-Version 2 （MLDv2） for Source-Specific Multicast" Internet RFC 4604, Aug. 2006
-［RFC4607］ H. Holbrook and B. Cain， "Source-Specific Multicast for IP" Internet
-RFC 4607, Aug.2006.
-
-［RFC4795］ B. Aboba, D. Thaler, and L. Esibov， "Link-Local Multicast Name Resc
-lution （LLMNR）' Internet RFC 4795 （informational）， Jan. 2007.
-
-［RFC5015］ M. Handley, I. Kouvelas, T. Speakman, and L. Vicisano， "Bidirections
-Protocol Independent Multicast （BIDIR-PIM），" Internet RFC 5015, Oct. 2007.
-
-［RFC5214］ F. Templin, T. Gleeson, and D. Thaler， 'Intra-Site Automatic Tunnel
-
-Addressing Protocol （ISATAP）" Internet RFC 5214 （informational）， Mar. 2008.
-
-［RFC5579］ F. Templin, ed.， "Transmission of IPv4 Packets over Intra-Site Auto-
-matic Tunnel Addressing Protocol （ISATAP） Interfaces" Internet RFC 5579 （infc
-mational）， Feb. 2010.
-
-［RFC5790］ H. Liu, W. Cao, and H. Asaeda， "Lightweight Internet Group Manag
-ment Protocol Version 3 （IGMPv3） and Multicast Listener Discovery Version 2
-
-（MLDv2） Protocols，" Internet RFC 5790, Feb. 2010.
-
-

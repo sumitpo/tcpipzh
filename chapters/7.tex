@@ -85,8 +85,8 @@ TCP 和UDP 传输关联的终点，通常不会在IP 协议层中路由IP数据�
 墙在所有被访问的网络服务均能提前确定的环境中能工作得很好，但是添加额外的服务可能
 需要网络运营者的重大干预。
 
-代理防火墙的两种最常见的形式是 HTTP 代理防火墙（HTTP proxy firewall） ［RFC2616］
-和 SOCKS防火墙（SOCKS firewall）［RFC1928］。第一种类型也称为 web 代理，只能用于
+代理防火墙的两种最常见的形式是 HTTP 代理防火墙（HTTP proxy firewall） \href{https://www.rfc-editor.org/rfc/rfc2616}{[RFC2616]}
+和 SOCKS防火墙（SOCKS firewall）\href{https://www.rfc-editor.org/rfc/rfc1928}{[RFC1928]}。第一种类型也称为 web 代理，只能用于
 HTTP 和HTTPS 协议（Web），这些协议是非常普遍的，因此这些代理会被经常使用。这些
 代理对于内网用户来说就像是 Web 服务器，对于被访问的外部网站来说就像是Web 客户
 端。这种代理往往也提供 Web 缓存（Web cache）功能。这些缓存保存网页的副本，以便后
@@ -119,7 +119,7 @@ NAT 的引入用以解决两个问题：IP地址枯竭和关于路由可扩展�
 决了路由可扩展性问题。NAT 是受欢迎的，因为它减少了对具备全局路由的互联网地址的需
 求，同时提供了一些防火墙功能，并且仅需要很少的配置。但具有讽刺意味的是，快速发展
 和广泛使用的 NAT 却严重影响了IPv6的推进进程。在IPv6 的诸多益处中，其中一项就是使
-得不再需要 NAT［RFC4864］。
+得不再需要 NAT\href{https://www.rfc-editor.org/rfc/rfc4864}{[RFC4864]}。
 
 NAT 尽管很流行，但是存在几个缺点。最明显的是，需要做特殊配置才能使处于 NAT
 内部的主机能够提供可供互联网访问的服务，因为互联网上的用户无法直接访问具备私有地
@@ -132,13 +132,13 @@ NAT 尽管很流行，但是存在几个缺点。最明显的是，需要做特�
 章和第13 章关于伪头部的校验）。
 
 NAT会对一些应用协议造成困扰，尤其是那些在应用层的有效载荷内记录IP地址信息
-的协议。文件传输协议（File Transfer Protocol, FTP）［RFC0959］和 SIP［RFC5411］就是这种
+的协议。文件传输协议（File Transfer Protocol, FTP）\href{https://www.rfc-editor.org/rfc/rfc0959}{[RFC0959]}和 SIP\href{https://www.rfc-editor.org/rfc/rfc5411}{[RFC5411]}就是这种
 类型的协议代表。它们需要一种特殊的应用层网关功能来重写应用程序的内容，以便能够毫
 无修改地采用NAT或者其他的 NAT传输方法工作，这些传输方法允许应用程序自行确定如
-何在NAT上工作。关于NAT的一个更完整的问题清单出现在［RFC3027］。尽管存在许多问
+何在NAT上工作。关于NAT的一个更完整的问题清单出现在\href{https://www.rfc-editor.org/rfc/rfc3027}{[RFC3027]}。尽管存在许多问
 题，但 NAT 的使用非常广泛，并且被大多数网络路由器（基本上包括所有低端家用路由器）
 所支持。今天，NAT是如此普遍，以至于应用程序设计者被鼓励开发“NAT友好”的应用
-［RFC3235］。值得一提的是，尽管存在缺点，但是 NAT 所支持的基本协议（例如，电子邮件
+\href{https://www.rfc-editor.org/rfc/rfc3235}{[RFC3235]}。值得一提的是，尽管存在缺点，但是 NAT 所支持的基本协议（例如，电子邮件
 和浏览器）被数以百万计的客户端系统在访问互联网时所采用。
 
 NAT的工作原理就是重写通过路由器的数据包的识别信息。这种情况常发生在数据传输
@@ -162,7 +162,7 @@ NAT 路由器中面向 Internet 的网络接口地址，而不是原始主机的
 
 很多年来都没有精确定义NAT的行为。尽管如此，根据 NAT思想行为的不同实现，已
 经对出现的 NAT类型进行了分类。所谓的传统 NAT （traditional NAT）包括基本 NAT （basic
-NAT）和网络地址端口转换（Network Address Port Translation,NAPT） ［RFC3022］。基本
+NAT）和网络地址端口转换（Network Address Port Translation,NAPT） \href{https://www.rfc-editor.org/rfc/rfc3022}{[RFC3022]}。基本
 NAT 只执行IP 地址的重写。本质上就是将私有地址改写一个公共地址——往往取自于一
 个由ISP提供的地址池或公有地址范围。这种类型的NAT 不是最流行的，因为它无助于减
 少需要使用的IP 地址数量，全局可路由的地址数量必须大于或等于希望同时访问 Internet 的
@@ -211,7 +211,7 @@ NAT所处理的协议的条件下单独讨论 NAT的行为。因此，我们现�
 同时还包括一个对客户端的SYN数据包进行确认的ACK数据包。客户端回复一个 ACK数
 据包给服务器端。这样，通过“三次握手”创建了连接。类似的结束（FIN）数据包被用于优
 雅地关闭连接。当然，连接也能通过重置（RST）数据包来强行关闭（请参阅第13章TCP连
-接的详细描述）。与TCP 相关的传统 NAT 行为要求定义在［RFC5382］中，主要涉及了 TCP
+接的详细描述）。与TCP 相关的传统 NAT 行为要求定义在\href{https://www.rfc-editor.org/rfc/rfc5382}{[RFC5382]}中，主要涉及了 TCP
 的三次握手。
 
 以图7-3中的家庭网络为例，考察一个由地址为10.0.0.126的无线客户端发起的TCP 连
@@ -247,19 +247,19 @@ NAT 转发这个数据包的时候，其寻址是（63.204.134.177:9200；212.11
 是活跃的，则重置会话计时器，并不会删除会话。如果没有收到响应（在关闭计时器（close
 timer）超时之后）或者收到一个 RST数据包，表明该连接已经终止，状态将被清除。
 
-［RFC5382］是BEHAVE 工作组的一个成果，指出一个 TCP 连接可以被配置发送“存
+\href{https://www.rfc-editor.org/rfc/rfc5382}{[RFC5382]}是BEHAVE 工作组的一个成果，指出一个 TCP 连接可以被配置发送“存
 活”（keepalive） 数据包（见第17章），在该配置被启用时其默认的发送速率是每两个小时一
 个数据包。否则，一个TCP 连接可以一直保持下去。然而，当一个连接被建立或清除时，
-其最大的空闲时间是4分钟。因此，［RFC5382］要求（REQ-5）NAT 在判定所创建的连接是
+其最大的空闲时间是4分钟。因此，\href{https://www.rfc-editor.org/rfc/rfc5382}{[RFC5382]}要求（REQ-5）NAT 在判定所创建的连接是
 否已经断开前至少需要等待2小时4分钟，而在判定部分打开或关闭的连接是否已经断开前
 至少需要等待4分钟。
 
 一个TCP NAT 面临的棘手问题是如何处理位于多个NAT 内部的主机上运行的对等
-（peer-to-peer）应用［RFC5128］。一部分应用程序采用了“同时发起连接” （simultaneous open）
+（peer-to-peer）应用\href{https://www.rfc-editor.org/rfc/rfc5128}{[RFC5128]}。一部分应用程序采用了“同时发起连接” （simultaneous open）
 的技术，让连接的每一端均作为客户端同时发送 SYN数据包。TCP能够响应 SYN+ACK 的
 数据包，完成连接的速度比三次握手还要快，但目前有许多 NAT并不能正确地处理这种情
-况。为此，［RFC5382］要求（REQ-2）NAT处理所有有效的TCP包交换，尤其是这种连接同
-时打开的情况。某些对等应用程序（如网络游戏）便采用了这种行为。此外，［RFC5382］ 还
+况。为此，\href{https://www.rfc-editor.org/rfc/rfc5382}{[RFC5382]}要求（REQ-2）NAT处理所有有效的TCP包交换，尤其是这种连接同
+时打开的情况。某些对等应用程序（如网络游戏）便采用了这种行为。此外，\href{https://www.rfc-editor.org/rfc/rfc5382}{[RFC5382]} 还
 规定 NAT 将会静默丢弃那些一无所知的传人的SYN数据包。这可能会发生在同时发起一个
 连接时，即当外部主机的SYN 数据包先于内部主机的SYN数据包到达 NAT 主机时。虽然这
 种情况发生的可能性不大，但在出现时钟错误时确实会发生。如果传入的外部SYN数据包被
@@ -268,16 +268,16 @@ timer）超时之后）或者收到一个 RST数据包，表明该连接已经�
 
 \subsubsection{NAT 和 UDP}
 
-针对单播 UDP的NAT 行要求定义在［RFC4787］中。NAT 在处理一系列 UDP 数据报
+针对单播 UDP的NAT 行要求定义在\href{https://www.rfc-editor.org/rfc/rfc4787}{[RFC4787]}中。NAT 在处理一系列 UDP 数据报
 时所出现的问题，与处理TCP 时出现的问题大多数一样。但是UDP 有些不同，不像TCP，
 它没有连接建立和清除的过程。更具体地说，它没有标识位，如用SYN、FIN 和 RST这些
 位来表示一个会话的创建或销毁。此外，一个关联中的参与者也未必完全清楚。UDP 不像
 TCP那样采用一个4元组来标识一个连接，相反，它是基于两个端点的地址/端口号的组
 合。为了处理这些问题，如果一个绑定在“近期”没有被使用，UDP NAT会采用一个映射
 计时器（mapping timer） 来清除 NAT的状态。用多大的计时器值来表示“最近”变化很大，
-而［RFC4787］要求计时器至少2分钟，推荐5分钟。一个相关的问题是计时器何时刷新。
+而\href{https://www.rfc-editor.org/rfc/rfc4787}{[RFC4787]}要求计时器至少2分钟，推荐5分钟。一个相关的问题是计时器何时刷新。
 当数据包从内部传输到外部时 NAT就刷新（NAT 的对外刷新行为）或反之亦然（NAT 的对
-内刷新行为）。［RFC4787］要求 NAT 保证对外的刷新行为。对内的刷新行为是可选的。
+内刷新行为）。\href{https://www.rfc-editor.org/rfc/rfc4787}{[RFC4787]}要求 NAT 保证对外的刷新行为。对内的刷新行为是可选的。
 
 正如我们在第5章所讨论的（会在第10章再次看到），UDP 和IP 数据包可以被分片。
 分片允许一个IP数据报跨越多个块（碎片），其中每个都是作为一个独立的数据报。但是，
@@ -289,16 +289,16 @@ TCP那样采用一个4元组来标识一个连接，相反，它是基于两个�
 
 尽管TCP 和UDP是迄今为止使用最广泛的互联网传输协议，但还有两种其他协议，
 NAT已经为或正在为它们定义行为。数据报拥塞控制协定（Datagram Congestion Control
-Protocol,DCCP）［RFC4340］提供拥塞控制的数据报服务。［RFC5597］给出了针对DCCP的
-NAT 行为要求，［RFC5596］修改了DCCP 用于支持类似于TCP的同时发起连接的过程。流
-控制传输协议（Stream Control Transmission Protocol,SCTP）［RFC4960］ 提供了可靠的报文
+Protocol,DCCP）\href{https://www.rfc-editor.org/rfc/rfc4340}{[RFC4340]}提供拥塞控制的数据报服务。\href{https://www.rfc-editor.org/rfc/rfc5597}{[RFC5597]}给出了针对DCCP的
+NAT 行为要求，\href{https://www.rfc-editor.org/rfc/rfc5596}{[RFC5596]}修改了DCCP 用于支持类似于TCP的同时发起连接的过程。流
+控制传输协议（Stream Control Transmission Protocol,SCTP）\href{https://www.rfc-editor.org/rfc/rfc4960}{[RFC4960]} 提供了可靠的报文
 处理服务，可容纳拥有多个地址的主机。［HBA09］及 ［IDSNAT］给出了 NAT 与 SCTP 中应注
 意的事项。
 
 \subsubsection{NAT 和 ICMP}
 
 ICMP 是Internet 控制报文协议，在第8章中有详细描述。它提供了关于IP数据包的状
-态信息，也能够用于测量和收集网络状态信息。［RFC5508］ 中定义了ICMP 的NAT 行为要
+态信息，也能够用于测量和收集网络状态信息。\href{https://www.rfc-editor.org/rfc/rfc5508}{[RFC5508]} 中定义了ICMP 的NAT 行为要
 求。在ICMP 中使用NAT 时需要考虑两个问题。ICMP有两类报文：信息类的和出错类的。
 出错类报文通常包含一个引起错误条件的IP 数据包（全部或部分）的副本。它们从错误被检
 测到的端点，通常是在网络中，发送到数据报的原始发送方。按说，这并没有任何困难，但
@@ -320,23 +320,23 @@ NAT 不仅要修改IP 包头，还需要修改封装在其中的其他数据包�
 \subsubsection{ NAT 和组播}
 
 到目前为止，我们只讨论了 NAT的单播IP 流量。NAT 也可以被配置成支持组播流量
-（见第9章），虽然这比较少见。［RFC5135］ 给出了 NAT在处理组播流量时的要求。实际上，
-为了支持组播流量，需要用IGMP代理来增强NAT（见［RFC4605］和第9章）。此外，从位
+（见第9章），虽然这比较少见。\href{https://www.rfc-editor.org/rfc/rfc5135}{[RFC5135]} 给出了 NAT在处理组播流量时的要求。实际上，
+为了支持组播流量，需要用IGMP代理来增强NAT（见\href{https://www.rfc-editor.org/rfc/rfc4605}{[RFC4605]}和第9章）。此外，从位
 于NAT 内部的主机发送到外部的数据包的目的IP 地址和端口不会被修改。从内部传输到外
 部的流量，其源地址和端口号可根据单播 UDP 行为修改。
 
 \subsubsection{NAT 和 IPv6}
 
 鉴于 NAT 在IPv4 中的广泛使用，很自然地会想到是否能够在 IPv6 中使用 NAT。目前，
-这是一个有争议的问题［RFC5902］。对于许多协议设计者而言，NAT 出现了一个必要却不可
+这是一个有争议的问题\href{https://www.rfc-editor.org/rfc/rfc5902}{[RFC5902]}。对于许多协议设计者而言，NAT 出现了一个必要却不可
 取的“缺点”—大大地增加了设计其他协议的复杂性。由于在IPv6 中没有必要节省地址
 空间，而其他的NAT 特性（例如，防火墙功能，拓扑隐藏和隐私）也能通过本地网络保护
-（Local Network Protection, LNP）来提供，因此人们坚决抵制在 IPv6 中使用 NAT ［RFC4864］。
+（Local Network Protection, LNP）来提供，因此人们坚决抵制在 IPv6 中使用 NAT \href{https://www.rfc-editor.org/rfc/rfc4864}{[RFC4864]}。
 LNP 代表在 IPv6 中达到或者超过 NAT 性能的技术集合。
 
 除了具备包过滤属性，NAT还支持多个地址范围共存，能够避免当站点切换ISP 时需
-要改变其IP 地址的问题。例如，［RFC4193］定义了唯一的本地 IPv6 单播地址（Unique Local
-IPv6 Unicast Addresses,ULA），能够为被称 NPTv6［RFC6296］的尚处于实验阶段的IPv6
+要改变其IP 地址的问题。例如，\href{https://www.rfc-editor.org/rfc/rfc4193}{[RFC4193]}定义了唯一的本地 IPv6 单播地址（Unique Local
+IPv6 Unicast Addresses,ULA），能够为被称 NPTv6\href{https://www.rfc-editor.org/rfc/rfc6296}{[RFC6296]}的尚处于实验阶段的IPv6
 到IPv6前缀转换所来用。它采用了一种算法而不是一个表格，基于前缀将一个 IPv6 地址转
 换其他的（不同的）IPv6地址（例如，在不同的地址范围中），因此不需要像传统的NAT
 那样需要维护单个连接的状态。此外，该算法需要修改地址以保证通用传输协议（TCP，
@@ -352,7 +352,7 @@ BEHAVE 的主要目标之一是要阐明共同行为，规定哪些是最合适�
 的问题，我们从一个通用的 NAT 映射例子开始（见图7-5）。
 
 在图7-5中，我们使用符号X：表示在私有地址范围（内部主机）中的主机使用IP地址
-X、端口号x（对于ICMP，采用查询ID 代替端口号）。通常 X取自于定义在［RFC1918］中的
+X、端口号x（对于ICMP，采用查询ID 代替端口号）。通常 X取自于定义在\href{https://www.rfc-editor.org/rfc/rfc1918}{[RFC1918]}中的
 私有IPv4地址空间。为了连接到远程地址/端口组合Y:y，NAT 需要使用一个外部地址（通
 常是公共的和全局路由的）X1'和端口号x1'来创建一个映射。假设内部主机先连接到 Y1:Y1，
 再连接到 Y2:y2，NAT则需先创建映射X1'：x1’，再创建映射X2’：x2’。在大多数情况下，X1'
@@ -369,7 +369,7 @@ X1'：x1'才等于X2'：x2’，则NAT存在地址和端口相关的映射。若
 有一个任意地址池行为。另外还有一个选择，它可能有一个配对池行为，在这种情况下任何与
 Y1 相关的关联均使用相同的X1
 
-表7-1 和图7-5概括了由［RFC4787］定义的各种 NAT端口和地址行为。表7-1使用类
+表7-1 和图7-5概括了由\href{https://www.rfc-editor.org/rfc/rfc4787}{[RFC4787]}定义的各种 NAT端口和地址行为。表7-1使用类
 似的术语定义了在7.3.3节中介绍过的过滤行为。在所有常见的传输层协议中，包括TCP 和
 UDP，所需的NAT地址和端口处理行为是独立于端点的（在ICMP中推荐使用类似行为）。
 这项规定的目的是帮助应用程序确定一个确保流量能够正常工作的外部地址。我们将在7.4
@@ -410,7 +410,7 @@ overloading））。在这种情况下，多个内部主机的流量可能被修
 端口号（奇数或偶数）的奇偶性。因此，如果x1 是偶数，那么x1'也是偶数，反之亦然。虽
 然不如端口保留那么强大，但这样的行为有时对于使用特殊端口的特定应用协议还是非常有
 用的（例如，简称为RTP 的实时协议（Real-Time Protocol），历来使用多个端口，当然也有
-方法来避免出现这种问题［RFC5761］）。NAT 推荐保持端口的奇偶性，但并不是必需的。随
+方法来避免出现这种问题\href{https://www.rfc-editor.org/rfc/rfc5761}{[RFC5761]}）。NAT 推荐保持端口的奇偶性，但并不是必需的。随
 着更复杂的 NAT 传输方法的普及，这种特性也变得越来越不重要。
 
 \subsection{过滤行}
@@ -459,7 +459,7 @@ X2:x2 之间存在映射，并将数据包转发到位于NAT私有地址空间�
 
 如果 NAT给X2的发夹数据包的源地址信息是X1'：x！'，那么这种 NAT 被称为有“外部源 IP
 地址和端口”的发夹行为。这种行为是 TCP NAT
-所必需的［RFC5382］。之所以需要这种行，是为了均采用全局路由地址的应用能够识别对
+所必需的\href{https://www.rfc-editor.org/rfc/rfc5382}{[RFC5382]}。之所以需要这种行，是为了均采用全局路由地址的应用能够识别对
 方。在我们的例子中，X2可能期望一个来自于X1'（例如，因为第三方系统的协调）的连接。
 
 图7-6 一个实现了发夹或者 NAT 环回的 NAT允许一个客户机使用服务器的外部IP
@@ -471,13 +471,13 @@ X2'：×2'到达 X2:x2
 总之，大多数IP 流量均使用 UDP和TCP 传输协议在互联网上进行传输。这些传输协
 议，自己就可以很好地被NAT 支持，而无须增加额外的复杂性，这是因为它们的格式是很
 好理解的。当应用层协议与它们一起携带传输层或更低层的信息，如IP 地址，NAT的问题
-就会变得复杂得多。最常见的例子是FTP［RFC0959］。在正常操作中，它交换传输及网络
+就会变得复杂得多。最常见的例子是FTP\href{https://www.rfc-editor.org/rfc/rfc0959}{[RFC0959]}。在正常操作中，它交换传输及网络
 层的端点信息（IP 地址和端口号），所以当要传输大量数据时可以增加额外的连接。这需要
 NAT 不仅改写数据报的IP 和TCP部分中的IP地址和端口号，而且也需要修改有些应用的
 有效载荷本身。具有这种能力的 NAT 有时也被称次 NAT编辑器（NAT editor）。如果 NAT改
 变了包的应用载荷大小，接着需要更多的工作要做。例如，TCP 为数据传输中的每个字节分
 配了一个序列号（见第15章），所以如果一个数据包的大小改变了，序列号也需要相应地修
-改。PPTP［RFC2637］在进行透明操作时便需要 NAT编辑器（见第3章）。
+改。PPTP\href{https://www.rfc-editor.org/rfc/rfc2637}{[RFC2637]}在进行透明操作时便需要 NAT编辑器（见第3章）。
 
 \subsection{服务提供者 NAT 和服务提供者IPV6转换}
 
@@ -491,7 +491,7 @@ NAT 不仅改写数据报的IP 和TCP部分中的IP地址和端口号，而且�
 的研究发现，很多用户由于使用了对等程序，因此愿意接受进来的连接［ANM09］。
 
 SPNAT 有助于解决IPv4地址枯竭的问题，但IPv6 才是最终的解决方案。然而出于各种
-已经讨论过的原因，IPv6部署已落后于预期。最初，双协议栈方案（见［RFC4213］），即每
+已经讨论过的原因，IPv6部署已落后于预期。最初，双协议栈方案（见\href{https://www.rfc-editor.org/rfc/rfc4213}{[RFC4213]}），即每
 个系统同时使用IPv6和IPv4地址，被提出用于支持向 IPv6过渡，但这种做法在IPv4地址
 耗尽之前只是暂时、不那么必要的。目前正在采用更为务实的方法，就是在各种配置中结合
 隧道、地址转换、双协议栈系统多种技术。在介绍完为处理现有的 NAT 而开发的方法之后，
@@ -523,7 +523,7 @@ SPNAT 有助于解决IPv4地址枯竭的问题，但IPv6 才是最终的解决�
 常动态地创建和删除。
 
 通过采用针孔试图使位于 NAT之后的两个或两个以上的系统直接通信的方法称为打孔
-（hole punching）。［RFC5128］的3.3节描述了针对UDP 的打孔，3.4节描述针对TCP 的打孔。
+（hole punching）。\href{https://www.rfc-editor.org/rfc/rfc5128}{[RFC5128]}的3.3节描述了针对UDP 的打孔，3.4节描述针对TCP 的打孔。
 为了打一个孔，一个客户机需通过一个向外的连接来访问一台已知的服务器，这样便在本地
 的NAT 中创建了一个映射。当另一个客户机访问同一台服务器时，由于服务器和每个客户
 机均有连接，因此知道它们的外部寻址信息。它然后在客户机之间交换它们的外部寻址信
@@ -592,12 +592,12 @@ NAT。这种情况可能会导致复杂性。例如，如果B上的应用希望�
 \subsection{NAT 的会话穿越工具}
 
 一个UNSAF 和 NAT穿越的主要功能，就是NAT 会话穿越工具（Session Traversal
-Utilities for NAT,STUN）［RFC5389］。STUN 源自于 UDP简单隧道穿越 NAT（Simple Tunneling
+Utilities for NAT,STUN）\href{https://www.rfc-editor.org/rfc/rfc5389}{[RFC5389]}。STUN 源自于 UDP简单隧道穿越 NAT（Simple Tunneling
 of UDP through NAT），现在被称“经典的STUN”。经典STUN已经在 VoIP/SIP 应用
 中使用了一段时间，但已被修改为一个可以为其他需要NAT穿越的协议使用的工具。需
 要完整 NAT 穿越解决方案的应用，建议先从我们将在7.4.5节讨论（例如，ICE 和 SIP出
 站）的其他机制开始。这些框架可以以一种或多种特定方式来使用STUN，被称为STUN用
-法（usage）。用法可能会扩展STUN 的基本操作、报文类型，或在［RFC5389］定义的错误代
+法（usage）。用法可能会扩展STUN 的基本操作、报文类型，或在\href{https://www.rfc-editor.org/rfc/rfc5389}{[RFC5389]}定义的错误代
 码集。
 
 STUN是一个相对简单的客户机/服务器协议，它能够在多种环境中确定在NAT 中使用
@@ -639,7 +639,7 @@ MTU（见第10章）。如果不知道MTU，整个数据报的长度（包括IP 
 靠性。这是通过重发认丢失的报文来实现的。重传间隔是通过估计向对方发送和接受一个
 报文的时间来计算的，称为往返时间（round-trip time,RTT）。在我们讨论 TCP 时（见第14
 章），RTT的计算及重传计时器的设置是一个需要重点考虑的地方。STUN使用了类似的做法，
-但在标准的TCP 上稍做了修改。更多细节请参考［RFC5389］。通过 TCP/IP 或带有TLS/IP 的
+但在标准的TCP 上稍做了修改。更多细节请参考\href{https://www.rfc-editor.org/rfc/rfc5389}{[RFC5389]}。通过 TCP/IP 或带有TLS/IP 的
 TCP 来传输的STUN报文的可靠性问题由TCP来处理。基于TCP 的连接可以支持多个待定
 的 STUN事务。
 
@@ -651,9 +651,9 @@ STUN的属性被编码在一个 TLV 布局中，这也为许多其他互联网�
 的属性。假如一个代理收到一个拥有必须包含属性的报文但却并不知道该如何处理，就生成
 一个错误。到目前为止，多数定义的属性是必须包含的［ISP］。
 
-［RFC5389］定义了一个称之为绑定（binding）的STUN 方法，能够在请求/响应或者标
+\href{https://www.rfc-editor.org/rfc/rfc5389}{[RFC5389]}定义了一个称之为绑定（binding）的STUN 方法，能够在请求/响应或者标
 志事务中用于地址确定和保持 NAT绑定。它同时定义了11个属性，如表7-2所示。
-表7-2 定义在［RFC5389］ 中的STUN，有时也称为STUN2，它取代了经典 STUN。
+表7-2 定义在\href{https://www.rfc-editor.org/rfc/rfc5389}{[RFC5389]} 中的STUN，有时也称为STUN2，它取代了经典 STUN。
 这11个属性可能被兼容于STUN2的客户机和服务器所使用
 
 名称
@@ -716,7 +716,7 @@ IPv6）
 
 在STUN 报文中的报文证书代码值（参见第18章和
 
-［RFC5389］）
+\href{https://www.rfc-editor.org/rfc/rfc5389}{[RFC5389]}）
 
 包括3位差错类型、8位差错代码值和长度可变的差
 
@@ -779,13 +779,13 @@ NAT 助手”应用。信息长度包含用于属性类型和长度的4字节，
 \begin{figure}[H]
     \centering
 	\includegraphics[scale=0.5]{imgs/7/7-10.png}
-	\caption{包含4个属性的 STUN绑定回复。MAPPED-ADDRESS 和 XOR-MAPPED-ADDRESS 属性含服务器反向寻址信息。其他的属性用于实验性质的 NAT 行为发现机制［RFC5780］}
+	\caption{包含4个属性的 STUN绑定回复。MAPPED-ADDRESS 和 XOR-MAPPED-ADDRESS 属性含服务器反向寻址信息。其他的属性用于实验性质的 NAT 行为发现机制\href{https://www.rfc-editor.org/rfc/rfc5780}{[RFC5780]}}
 \end{figure}
 
 图7-10所示的绑定回复以编码为属性集合的方式为客户机提供了有用的信息
 MAPPED-ADDRESS 和 XOR-MAPPED-ADDRESS 属性表明，STUN服务器确定了服务
 器反向地址71.134.182.214:33294。RESPONSE-ORGIN 和 OTHER-ADDRESS 属性被实系
-设施用于发现NAT行为［RFC5780］。第一个属性给出了用来发送STUN报文的通信终端
+设施用于发现NAT行为\href{https://www.rfc-editor.org/rfc/rfc5780}{[RFC5780]}。第一个属性给出了用来发送STUN报文的通信终端
 （216.146.46.55:3478，与发送 IPv4地址和UDP端口号相匹配）。第二个属性表示假如客户村
 请求“更改地址”或“改变端口”的行为，哪个IPv4源地址和端口号（216.146.45.59:3479
 将被使用。后者的属性相当于现在已经过时的经典 STUN 中的 CHANGED-ADDRESS 属性。
@@ -822,7 +822,7 @@ MESSAGE-INTEGRITY属性，但其完整性功能是通过包含NONCE值来计算�
 
 \subsection{利用 NAT 中继的穿越}
 
-利用 NAT 中继的穿越（Traversal Using Relays around NAT,TURN） ［RFC5766］为两个
+利用 NAT 中继的穿越（Traversal Using Relays around NAT,TURN） \href{https://www.rfc-editor.org/rfc/rfc5766}{[RFC5766]}为两个
 或多个系统提供了一种通信方式，即使它们均位于并未协作的NAT后。作为支持在这种情
 况下通信的最后手段，它需要一个中继服务器在无法通信的系统之间传递数据。使用STUN
 和一些 TURN特定报文的扩展，即使大多数其他方法都失败了它也能照样支持通信，只要每
@@ -832,7 +832,7 @@ TURN 就没有必要存在了。直接通信的方法（即不使用TURN）总�
 
 根据图 7-11，通常位于 NAT后的TURN 客户机会访问位于公共互联网上的TURN服
 务器，并暗示了它希望连接的其他系统（称对等（peer））。通过使用一种特殊的 DNS
-NAPTR记录（见第11章和［RFC5928］），或通过手动配置，便可以找到用于通信的服务器的
+NAPTR记录（见第11章和\href{https://www.rfc-editor.org/rfc/rfc5928}{[RFC5928]}），或通过手动配置，便可以找到用于通信的服务器的
 地址和相应的协议。客户端从服务器端获得的地址和端口信息，称为中继传输地址（relayed
 transport address），就是TURN 服务器用于和其他对等客户机通信的地址和端口号。客户端
 也获得了它自己的服务器反向传输地址。对等客户机也得到了代表它们外部地址的服务器反
@@ -841,20 +841,20 @@ transport address），就是TURN 服务器用于和其他对等客户机通信�
 必须使用其他一些机制来完成交换（例如，7.4.5节的ICE）。
 
 图 7-11
-根据［RFC5766］，一个 TURN服务器通过中继来帮助位于“坏”（bad） NAT 之后的客户机之
+根据\href{https://www.rfc-editor.org/rfc/rfc5766}{[RFC5766]}，一个 TURN服务器通过中继来帮助位于“坏”（bad） NAT 之后的客户机之
 间通信。客户端和服务器之间的流量可采用 TCP、UDP 或使用了TLS的TCP。服务器和一个
 或多个对等客户机之间的流量使用UDP。中继是通信的最后手段，直接的方法才是首选
 
 客户端使用 TURN 命令来创建和维护服务器上的分配（allocation）。一个分配类似于
 一个多路NAT绑定，包括（唯一）中继传输地址，每个对等客户机需要使用它到达本机。
 通过UDP/IPv4使用传统的TURN报文来发送服务器/对等数据。通过增强也能支持TCP
-［RFC6062］和IPv6（IPv4和IPv6之间的中继）［RFC6156］。封装的客户/服务器数据内包括
+\href{https://www.rfc-editor.org/rfc/rfc6062}{[RFC6062]}和IPv6（IPv4和IPv6之间的中继）\href{https://www.rfc-editor.org/rfc/rfc6156}{[RFC6156]}。封装的客户/服务器数据内包括
 发送信息或者接受相关数据的相应的对等客户机的信息。客户/服务器连接已被指定为使用
 UDP/IPV4、TCP/IPv4 和来用TLS的TCPAIPv4。建立一个分配要求验证客户端的身份，通常
 使用 STUN 长期信任机制。
 
 TURN 支持两种客户端和对等之间拷贝数据的方法。第一种使用STUN方法来编码数
-据，称为发送（Send）和数据（Data），定义在［RFC5766］中，这是 STUN 指示器 （indicator），
+据，称为发送（Send）和数据（Data），定义在\href{https://www.rfc-editor.org/rfc/rfc5766}{[RFC5766]}中，这是 STUN 指示器 （indicator），
 因此无须认证。其他的方法采用特定于 TURN 的概念，称为隧道（channel）。隧道是客户端
 和对等之间的通信路径，相对于发送和数据方法负载较轻。通过隧道传递的报文使用一个较
 小的、4个字节的报头，与TURN使用的较大的STUN格式报文是不兼容的。一个分配最多
@@ -990,7 +990,7 @@ Wireshark 执行 XOR操作来显示解码后的地址）。此时，客户端可
 来中继和对等客户端之间的通信。一旦这个完成后，分配可以被删除。大概4s后，图7-15
 所示的包5和6表明客户端请求删除分配。这个请求作为一个刷新，其生命周期设为0。服
 务器响应一个表示成功的指示器，并清除分配。请注意，BANDWIDTH 属性已包含在分配
-和刷新成功指示器中。此属性定义在［RFC5766］ 初稿中，但最终被弃用，本来打算用于保存
+和刷新成功指示器中。此属性定义在\href{https://www.rfc-editor.org/rfc/rfc5766}{[RFC5766]} 初稿中，但最终被弃用，本来打算用于保存
 在分配中允许的峰值带宽，单位是KB/s。在未来可能会重新定义该属性。
 
 \begin{figure}[H]
@@ -1009,19 +1009,19 @@ Wireshark 执行 XOR操作来显示解码后的地址）。此时，客户端可
 \subsection{交互连接建立}
 
 鉴于 NAT的广泛部署及各种为穿越它们所必须采用的机制，一种称交互式连接建立
-（Interactive Connectivity Establishment,ICE）［RFC5245］的通用功能被发展出来，用于帮助
+（Interactive Connectivity Establishment,ICE）\href{https://www.rfc-editor.org/rfc/rfc5245}{[RFC5245]}的通用功能被发展出来，用于帮助
 位于NAT后的UDP 应用程序主机建立连接。ICE是一套启发式，利用它应用程序能够以
 一个相对可预见的方式来执行 UNSAF。在它的操作中，ICE使用了其他协议，如TURN和
 STUN。有一种方法可以扩展ICE 使其支持基于TCP 的应用［IDTI］。
 
 ICE 使用并扩展了“请求/应答”协议，如单播SIP连接建立时的会话描述协议（SDP）
-［RFC3264］。这些协议会提供一项拥有一组服务参数的服务，还包括一组选定的选项。找到
+\href{https://www.rfc-editor.org/rfc/rfc3264}{[RFC3264]}。这些协议会提供一项拥有一组服务参数的服务，还包括一组选定的选项。找到
 ICE 客户并纳入使用SDP/SIP 建立通信的VoIP 应用已经变得越来越普遍。然而在这种情况
-下，ICE 被用于建立媒体流（如使用 RTP［RFC3550］或 SRTP［RFC3711］通话中的音频或视
-频部分）的NAT 穿越，而另一种称为SIP 出站（SIP outbound）的机制［RFC5626］用于处理
+下，ICE 被用于建立媒体流（如使用 RTP\href{https://www.rfc-editor.org/rfc/rfc3550}{[RFC3550]}或 SRTP\href{https://www.rfc-editor.org/rfc/rfc3711}{[RFC3711]}通话中的音频或视
+频部分）的NAT 穿越，而另一种称为SIP 出站（SIP outbound）的机制\href{https://www.rfc-editor.org/rfc/rfc5626}{[RFC5626]}用于处理
 SIP 信令，如谁是被叫方。尽管在实际中，ICE 主要用于基于 SIP/SDP 的应用，它也可以作
 为一个通用的NAT 穿越机制用于其他应用程序。这样的一个例子就是将ICE定义为可扩展
-的报文和现场协议（Extensible Messaging and Presence Protocol, XMPP） ［RFC6120］ 核心的
+的报文和现场协议（Extensible Messaging and Presence Protocol, XMPP） \href{https://www.rfc-editor.org/rfc/rfc6120}{[RFC6120]} 核心的
 一个扩展，并与Jingle 一起使用［XEP-0176］。
 
 通常，ICE用于创建两个 SDP实体（称代理（agent））的通信，首先需要确定一组
@@ -1058,7 +1058,7 @@ ICE 开始试图发现所有可用的候选地址。这些地址可能是本地�
 ICE 采用了不同的实现概念。Lite 实现是专为没有采用 NAT 的系统部署所设计的。它们
 永远不会充当控制代理，除非与另一个 Lite 实现进行交互。它们也不会执行前面提到的完全
 （full）实现所做的检查。发出的STUN 报文会表明ICE实现的类型。所有ICE实现必须遵守
-STUN［RFC5389］，但 Lite 实现将永远只能充当STUN服务器。ICE通过表7-4中所述的属性
+STUN\href{https://www.rfc-editor.org/rfc/rfc5389}{[RFC5389]}，但 Lite 实现将永远只能充当STUN服务器。ICE通过表7-4中所述的属性
 扩展 STUN。
 
 名称
@@ -1106,7 +1106,7 @@ ICE-CONTROLLING
 指示报文的发送者就是控制代理
 
 检查是一个包含PRIORITY属性的STUN绑定请求。该值等于由4.1.2节描述的算法
-所指定的值［RFC5245］。当发送方是正在控制或者被控制的代理时，STUN 请求中会分别包
+所指定的值\href{https://www.rfc-editor.org/rfc/rfc5245}{[RFC5245]}。当发送方是正在控制或者被控制的代理时，STUN 请求中会分别包
 含 ICE-CONTROLLING 和 ICE-CONTROLLED 属性。一个控制代理可能还包括一个 USE-
 CANDIDATE 属性。如果存在，这种属性指示控制代理在后续使用中想要选择的代理。
 
@@ -1316,22 +1316,22 @@ Control Protocol, PCP） ［IDPCP］的建议，NAT-PMP 的概念可被扩展用
 
 随着最后一个顶层单播IPv4地址在2011年早期被分配出去，向IPv6的过渡便开
 始加速了。曾经认为通过为主机配备双栈功能（例如，实现完整的IPv4 和 IPv6协议栈）
-［RFC4213］，网络服务就会过渡到只有IPv6 的操作。目前认为IPv4 和 IPv6将会共存更长一
+\href{https://www.rfc-editor.org/rfc/rfc4213}{[RFC4213]}，网络服务就会过渡到只有IPv6 的操作。目前认为IPv4 和 IPv6将会共存更长一
 段时间，甚至可能是无限期的，这是由于各种经济原因网络基础设施可能会使用IPv4 或者
 IPv6或者两者同时使用。假设这是真的，那就需要支持IPv4 和 IPv6系统之间的通信，无论
 它们是否拥有双协议栈。目前用于支持IPv4和IPv6组合的两种主要方法是隧道和转换。隧
 道方法包括Teredo（见第10章）、双协议栈精简版（DS-Lite）和 IPv6快速部署（6rd）。虽然
-DS-Lite 采用SPNAT作为其架构的一部分，但在［RFC6144］描述的框架中给出了一种更单一
+DS-Lite 采用SPNAT作为其架构的一部分，但在\href{https://www.rfc-editor.org/rfc/rfc6144}{[RFC6144]}描述的框架中给出了一种更单一
 的转换方法，它使用了我们在第2章中见到过的嵌入了IPv4的IPv6地址。我们将在本节了
 为详尽地讨论 DS-Lite 和转换架构的细节。
 
 \subsection{双协议栈精简版}
 
-DS-Lite（Dual Stack Lite，双协议栈精简版）［RFC6333］是一种希望在内部运行IPv6的
+DS-Lite（Dual Stack Lite，双协议栈精简版）\href{https://www.rfc-editor.org/rfc/rfc6333}{[RFC6333]}是一种希望在内部运行IPv6的
 服务提供者更容易过渡到IPv6（同时支持传统的IPv4用户）的方法。从本质上讲，它可以
 让供应商把重点放在部署一个可操作的IPv6核心网上，还通过使用少数的IPv4地址为客
 户提供了IPv4 和IPv6连接。该方法结合了在IPv6 中的IPv4 （IPv4-in-IPv6）的“软电线”
-（softwire） 隧道与 SPNAT［RFC5571］。图7-16显示了这种部署的设想。
+（softwire） 隧道与 SPNAT\href{https://www.rfc-editor.org/rfc/rfc5571}{[RFC5571]}。图7-16显示了这种部署的设想。
 
 图7-16
 DS-Lite 通过使用一个只有IPv6的架构使服务提供者能够支持IPv4和IPv6 客户网络。通过
@@ -1345,7 +1345,7 @@ IPv4 的访问，每个客户使用一个特殊的“前”网关（在图7-16�
 设备为目标是IPv4互联网的流量执行了解封操作，并为相反方向的流量执行封装操作。
 AFTR还执行了 NAT，并作为一种形式的SPNAT。更具体地说，AFTR 可以利用客户隧道终
 端的标志信息来消除从 IPv4 互联网返回到 AFTR的流量的二义性。这将允许多个客户使用
-相同的IPv4地址空间。通过利用 DHCPv6中的一个 AFTR-Name 选项［RFC6334］，一个 B4
+相同的IPv4地址空间。通过利用 DHCPv6中的一个 AFTR-Name 选项\href{https://www.rfc-editor.org/rfc/rfc6334}{[RFC6334]}，一个 B4
 设备能够学习到它所对应的 AFTR设备的名称。
 
 回忆一下第6章中对IPv6快速部署（6rd）的讨论是非常有益的。鉴于 DS-Lite 通过一
@@ -1362,14 +1362,14 @@ AFTR还执行了 NAT，并作为一种形式的SPNAT。更具体地说，AFTR �
 只能够与其他支持 IPv6 的系统进行通信。这种状况是不能接受的，因为只支持IPv6 的新系
 统将无法访问在传统的IPv4互联网上提供的服务。为了解决这个问题，在2008年至2010
 年间花了很大的努力开发了一个能够直接在IPv4 和IPv6间进行转换的框架。借鉴 NAT-
-PT［RFC2766］已有的糟糕经验，这个框架被认为太脆弱了，针对今后不断变化的使用也没有
-可扩展性，因此最终被舍弃了［RFC4966］。
+PT\href{https://www.rfc-editor.org/rfc/rfc2766}{[RFC2766]}已有的糟糕经验，这个框架被认为太脆弱了，针对今后不断变化的使用也没有
+可扩展性，因此最终被舍弃了\href{https://www.rfc-editor.org/rfc/rfc4966}{[RFC4966]}。
 
-IPv4 和IPv6转换的框架在［RFC6144］中有描述。这个基本的转换架构同时采用了有状
+IPv4 和IPv6转换的框架在\href{https://www.rfc-editor.org/rfc/rfc6144}{[RFC6144]}中有描述。这个基本的转换架构同时采用了有状
 态的和无状态的方法来完成IPv4 和IPv6地址之间的转换、DNS 的转换（参见第11章），以
 及在任何必要情况下（包括ICMP 和FTP）添加的行或者ALG 的定义。本节我们将讨论的
-内容包括基于［RFC6145］和［RFC6146］的有状态和无状态的IP地址转换，以及第2章中讨
-论过的源于［RFC6052］的寻址。其他针对特定协议的转换问题将在后续的章节中讨论。
+内容包括基于\href{https://www.rfc-editor.org/rfc/rfc6145}{[RFC6145]}和\href{https://www.rfc-editor.org/rfc/rfc6146}{[RFC6146]}的有状态和无状态的IP地址转换，以及第2章中讨
+论过的源于\href{https://www.rfc-editor.org/rfc/rfc6052}{[RFC6052]}的寻址。其他针对特定协议的转换问题将在后续的章节中讨论。
 
 \subsubsection{已转换的IPv4 地址和可转换的IPv4地址}
 
@@ -1384,7 +1384,7 @@ converted address） 和可转换的IPv4地址（IPv4-translatable address）。
 IPv4 和IPv6地址之间的算法转换涉及使用第2章中讨论过的前缀。这个前缀可能是
 一个知名前缀（WKP） 64:ff9b：：/96 或者另外一个为服务提供者所有并和转换器一起使用的
 特定于网络的前缀。WKP 只用于表示常规的全局可路由的IPv4地址，不能表示私有地址
-［RFC1918］。此外，WKP也不能用于创建可转换的IPv4地址。这样的地址应该在服务提供
+\href{https://www.rfc-editor.org/rfc/rfc1918}{[RFC1918]}。此外，WKP也不能用于创建可转换的IPv4地址。这样的地址应该在服务提供
 者网络内部被定义，因此不适合在一个全局范围中使用。
 
 WKP 是很有趣的，因为相对于 Internet 校验和，它是校验和中立（checksum-neutral）
@@ -1402,7 +1402,7 @@ To6（A4,P）来表示从前缀为P的IPv4地址A中得到的IPv6地址。注意
 \subsubsection{无状态转换}
 
 无状态的 IP/ICMP 转换（Stateless IP/ICMP Translation,SIIT）是指不采用状态表格进行
-IPv4 和IPv6数据包转换的方法［RFC6145］。转换中无须查找表格，只需要使用一个可转换
+IPv4 和IPv6数据包转换的方法\href{https://www.rfc-editor.org/rfc/rfc6145}{[RFC6145]}。转换中无须查找表格，只需要使用一个可转换
 的IPv4地址及一个预定义的用于转换IP头部的计划。大部分情况下，IPv4选项是不需要转
 换的（被忽略），IPv6扩展头部也不需要转换（分片头部例外）。唯一的例外是未到期的IPv4
 源路由选项。如果存在这种选项，数据包将被丢弃，并产生相应的ICMP 差错报文（目的不
@@ -1456,7 +1456,7 @@ DS 字段 /ECN （DS Field/ECN）
 在转换的过程中，IPv4 头部被抽离，取而代之的是IPv6头部。假如到达的IPv4 数据报
 相对于下一个链路的 MTU来说太大了，并且其头部中的DF 位也未设置，那么将会产生多
 个IPv6 分片数据包，其中每个将包含一个分片头部。当到达的IPv4数据报是一个分片时，
-也会发生这种情况。［RFC6145］建议当到达的IPv4数据报头部的DF 位值0时，不管转换
+也会发生这种情况。\href{https://www.rfc-editor.org/rfc/rfc6145}{[RFC6145]}建议当到达的IPv4数据报头部的DF 位值0时，不管转换
 器是否需要执行分片，也不管达到的数据报是否是一个分片，都需要在结果 IPv6 数据报中
 包含一个分片头部。这将允许IPv6接收者知道IPv4的发送者并没有采用PMTUD。当包含
 了一个分片头部时，需要根据表7-6所列的方法来设置字段值。
@@ -1587,7 +1587,7 @@ IPv6 负载长度字段值減去8加上20
 
 \subsubsection{有状态的转换}
 
-在有状态的转换中，NAT64［RFC6146］被用于支持只有IPv6的客户机与其他IPv4服
+在有状态的转换中，NAT64\href{https://www.rfc-editor.org/rfc/rfc6146}{[RFC6146]}被用于支持只有IPv6的客户机与其他IPv4服
 务器进行通信。当许多重要的服务继续只用IPv4来提供时，这将显得非常重要。针对头部
 的转换方法与7.6.2.2节中介绍的无状态转换方法几乎一样。作为一个 NAT,NAT64符合
 BEHAVE 规格，支持独立于端点的映射，以及独立于端点和依赖于地址的过滤。因此，它是
@@ -1596,7 +1596,7 @@ NAT64仅支持由IPv6 主机发起的与IPv4 主机通信的动态转换。
 
 NAT64 在跨越多个地址类型时像传统的NAT （NAPT）那样工作，除了从 IPv4到 IPv6
 这个方向的转换比相反方向的转换更加简单。一个NAT64设备被赋予一个 IPv6 前缀，能用
-于形成一个有效的IPv6地址，该地址是通过第2章和［RFC6052］描述的机制从 IPv4上直接
+于形成一个有效的IPv6地址，该地址是通过第2章和\href{https://www.rfc-editor.org/rfc/rfc6052}{[RFC6052]}描述的机制从 IPv4上直接
 转换过来的。由于IPv4地址空间的不足，在IPv6到IPv4这个方向的转换利用了一个动态管
 理的IPv4地址池。这需要 NAT64 支持NAPT的功能，据此多个不同的IPv6 地址可能会映
 射到一个相同的IPv4地址上。NAT64目前定义了由IPv6 节点初始化的TCP、UDP 和 ICMP
@@ -1716,8 +1716,6 @@ ice-tcp, work in progress, Sep. 2011.
 
 Control Protocol V 1.0" Nov. 2001.
 
-火樯和网络地址转换
-
 ［IGD2］ UPnP Forum， "TDG:2 Improvements over IGD:1，"'Mar. 2009.
 
 ［ISP］ http://www.iana.org/assignments/stun-parameters
@@ -1730,200 +1728,6 @@ Sept. 2008.
 ［NFWEBJ http://netfilter.org
 
 ［PJSUA］ http://www.pjsip.org/pjsua.htm
-
-［RFCO959］J. Postel and J.Reynolds， "File Transfer Protocol，" Internet RFC 0959/
-STD 0009, Oct. 1985
-
-［RFC1918］ Y. Rekhter, B. Moskowitz, D. Karrenberg, G. J.de Groot, and E.Lear，
-"'Address Allocation for Private Internets" Internet RFC 1918BCP 0005, Feb.1996
-［RFC1928］ M. Leech, M. Ganis, Y. Lee, R. Kuris, D. Koblas, and L. Jones， "SOCKS
-Protocol Version 5" Internet RFC 1928, Mar. 1996.
-
-［RFC2616］ R. Fielding, J. Gettys, J. Mogul, H. Frystyk, L. Masinter, P. Leach, and
-T. Berners-Lee， "Hypertext Transfer Protocol-HTTP/1.1" Internet RFC 2616，
-
-June 1999.
-
-［RFC2637］ K. Hamzeh, G. Pall, W. Verthein, J. Taarud, W. Little, and G. Zorn，
-
-"Point-to-Point Tunneling Protocol （PPTP）." Internet RFC 2637 （informational），
-July 1999.
-
-［RFC2766］ G. Tsirtsis and P. Srisuresh， "Network Address Translation—Protocol
-Translation （NAT-PT）." Internet RFC 2766 （obsoleted by ［RFC4966］）， Feb. 2000.
-
-［RFC3022］ P. Srisuresh and K. Egevang， "Traditional IP Network Address Trans-
-lator （Traditional NAT）" Internet RFC 3022 （informational）， Jan. 2001.
-
-［RFC3027］ M. Holdrege and P. Srisuresh， "Protocol Complications with the IP
-
-Network Address Translator” Internet RFC 3027 （informational）， Jan. 2001.
-
-［RFC3235］ D. Senie， "Network Address Translator （NAT）-Friendly Application
-
-Design Guidelines，" Internet RFC 3235 （informational）， Jan. 2002.
-
-［RFC3264］ J. Rosenberg and H. Schulzrinne， "An Offer/Answer Model with
-
-Session Description Protocol （SDP）." Internet RFC 3264, June 2002.
-
-［RFC3424］ L. Daigle, ed.， and IAB， "1AB Considerations for UNilateral Self-
-
-Address Fixing （UNSAF） across Network Address Translation" Internet RFC
-
-3424 （informational）， Nov. 2002.
-
-［RFC35501 H. Schulzrinne, S. Casner, R. Frederick, and V. Jacobson， "RTP: A
-
-Transport Protocol for Real-Time Applications" Internet RFC 3550/STD 0064，
-
-July 2003.
-
-【RFC3711］ M. Baugher, D. McGrew, M. Naslund, E. Carrara, and K. Norrman，
-
-"The Secure Real-Time Transport Protocol （SRTP）" Internet RFC 3711, Mar. 2004
-［RFC4193］ R. Hinden and B. Haberman， "Unique Local IPv6 Unicast Addresses，
-Internet RFC 4193, Oct. 2005.
-
-［RFC4213］ E. Nordmark and R. Gilligan， "Basic Transition Mechanisms for IPv6
-Hosts and Routers” Internet RFC 4213, Oct. 2005.
-
-［RFC4340］ E. Kohler, M. Handley, and S. Floyd， "Datagram Congestion Control
-Protocol （DCCP）" Internet RFC 4340, Mar. 2006.
-
-［RFC4605］ B. Fenner, H. He, B. Haberman, and H. Sandick， "Internet Group Mar
-agement Protocol （IGMP）/Multicast Listener Discovery （MLD）-Based Multicast
-Forwarding （IGMP/MLD Proxving）" Internet RFC 4605, Aug. 2006.
-
-［RFC4787］ F. Audet, ed.， and C. Jennings， "Network Address Translation （NAT）
-Behavioral Requirements for Unicast UDP" Internet RFC 4787/BCP 0127, Jan.
-
-2007.
-
-［RFC4864| G. Van de Velde, T. Hain, R. Droms, B. Carpenter, and E. Klein， "Loc
-Network Protection for IPv6, Internet RFC 4864 （informational）， May 2007.
-
-【RFC4960］ R. Stewart, ed.， "Stream Control Transmission Protocol” Internet RF
-4960, Sept. 2007.
-
-［RFC4966］ C. Aoun and E. Davies， 'Reasons to Move the Network Address
-
-Translator-Protocol Translator （NAT-PT） to Historic Status" Internet RFC 4966
-
-（informational）， July 2007.
-
-［RFC5128］ P. Srisuresh, B. Ford, and D. Kegel， "State of Peer-to-Peer （P2P） Com-
-munication across Network Address Translators （NATs），" Internet RFC 5128
-
-（informational）， Mar.2008.
-
-［RFC5135］ D. Wing and T. Eckert， "IP Multicast Requirements for a Network
-
-Address Translator （NAT） and a Network Address Port Translator （NAPT）”
-
-Internet RFC 5135/BCP 0135, Feb.2008.
-
-［RFC5245］J. Rosenberg， "Interactive Connectivity Establishment （ICE）： A
-
-Protocol for Network Address Translator （NAT） Traversal for Offer/Answer
-
-Protocols” Internet RFC 5245, Apr. 2010.
-
-［RFC5382］ S. Guha, ed.， K. Biswas, B. Ford, S. Sivakumar, and P. Srisuresh， "NA
-Behavioral Requirements for TCP" Internet RFC 5382/BCP 0142, Oct.2008.
-
-［RFC5389］ J. Rosenberg, R. Mahy, P. Matthews, and D. Wing， "Session Traversal
-Utilities for NAT （STUN），" Internet RFC 5389, Oct. 2008.
-
-［RFC5411］ J. Rosenberg， "A Hitchhiker's Guide to the Session Initiation Protocol
-（SIP）." Internet RFC 5411 （informational）， Feb. 2009.
-
-［RFC5508］ P. Srisuresh, B. Ford, S. Sivakumar, and S. Guha， "NAT Behavioral
-
-Requirements for ICMP" Internet RFC 5508/BCP 0148, Apr. 2009.
-
-［RFC5571］ B. Storer, C. Pignataro, ed.， M. Dos Santos, B. Stevant, ed.， L. Toutain，
-and J. Tremblay， "Softwire Hub and Spoke Deployment Framework with Layer
-Two Tunneling Protocol Version 2 （L2TPv2）." Internet RFC 5571, June 2009.
-
-［RFC5596］ G. Fairhurst， "Datagram Congestion Control Protocol （DCCP） Simul-
-taneous-Open Technique to Facilitate NAT/Middlebox Traversal" Internet RFC
-5596, Sept. 2009.
-
-［RFC5597］ R. Denis-Courmont， "Network Address Translation （NAT） Behavior
-Requirements for the Datagram Congestion Control Protocol，" Internet RFC
-
-5597/BCP 0150, Sept. 2009.
-
-［RFC5626］ C. Jennings, R. Mahy, and F. Audet, eds， "Managing Client-Initiated
-Connections in the Session Initiation Protocol （SIP），" Internet RFC 5626, Oct.
-
-2009.
-
-［RFC5761］ C. Perkins and M. Westerlund， "Multiplexing RTP Data and Control
-Packets on a Single Port" Internet RFC 5761, Apr. 2010.
-
-［RFC5766］ R. Mahy, P. Matthews, and J. Rosenberg， "Traversal Using Relays
-
-around NAT （TURN）： Relay Extensions to Session Traversal Utilities for NAT
-
-（STUN）"' Internet RFC 5766, Apr. 2010.
-
-［RFC5780］ D. MacDonald and B. Lowekamp， “NAT Behavior Discovery Using
-Session Traversal Utilities for NAT （STUN）" Internet RFC 5780 （experimental），
-火墻和网络地址转换
-
-247
-
-［RFC5902］ D. Thaler, L. Zhang, and G. Lebovitz， "TAB Thoughts on IPv6 Network
-
-Address Translation，" Internet RFC 5902 （informational）， July 2010.
-
-［RFC5928］ M. Petit-Huguenin， "Traversal Using Relays around NAT （TURN）
-
-Resolution Mechanism，" Internet RFC 5928, Aug.2010.
-
-［RFC6052］ C. Bao, C. Huitema, M. Bagnulo, M. Boucadair, and X. L.i， "1Pv6
-
-Addressing of IPv4/IPv6 Translators，" Internet RFC 6052, Oct. 2010.
-
-［RFC6062］ S. Perreault, ed.， and J. Rosenberg， "Traversal Using Relays around
-
-NAT （TURN） Extensions for TCP Allocations" Internet RFC 6062, Nov. 2010.
-
-［RFC6120］ P. Saint-Andre， "Extensible Messag ing and Presence Protocol （XMPP）：
-
-Core" Internet RFC 6120, Mar. 2011.
-
-［RFC6144］ F. Baker, X. Li, C. Bao, and K. Yin， "Framework for IPv4/IPv6 Transla-
-
-tion，" Internet RFC 6144 （informational）， Apr.2011.
-
-［RFC6145］ X. Li, C. Bao, and F. Baker， "IP/ICMP Translation Algorithm" Internet
-
-RFC 6145, Apr. 2011.
-
-［RFC6146］ M. Bagnulo, P. Matthews, and I. van Beijnum， "Stateful NAT64：
-
-Network Address and Protocol Translation from IPv6 Clients to IPv4 Servers，"
-
-Internet RFC 6146, Apr. 2011.
-
-［RFC6156］G. Camarillo, O. Novo, and S. Perreault, ed.， "Traversal Using Relays
-
-around NAT （TURN） Extension for IPv6." Internet RFC 6156, Apr. 2011.
-
-［RFC6296］ M. Wasserman and F. Baker， "1Pv6-to-IPv6 Network Prefix Transla-
-
-tion，" Internet RFC 6296 （experimental）， June 2011.
-
-［RFC6333］ A. Durand, R. Droms, J. Woodyatt, and Y. Lee， "Dual-Stack Lite Broad-
-
-band Deploy ments Following IPv4 Exhaustion” Internet RFC 6333, Aug. 2011.
-
-［RFC6334］ D. Hankins and T. Mrugalski， "Dynamic Host Configuration Protocol
-
-for IPv6 （DHCPv6） Option for Dual-Stack Lite/" Internet RFC 6334, Aug. 2011.
 
 ［UPNP］ http://www.upnp.org
 

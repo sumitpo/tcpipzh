@@ -65,7 +65,7 @@ subnetcalculator.com，包含用于IP 地址和相关信息之间格式转换的
 它不太熟悉。IPv6地址的传统表示方法是采用称为块或字段的四个十六进制数，这些被称为
 块或字段的数由冒号分隔。例如，一个包含8个块的IPv6地址可写为 5f05:2000:80ad:5800：
 0058:0800:2023:1d71。虽然不像用户熟悉的十进制数，但将十六进制数转换二进制更容
-易。另外，一些已取得共识的IPv6地址简化表示法已被标准化［RFC4291］：
+易。另外，一些已取得共识的IPv6地址简化表示法已被标准化\href{https://www.rfc-editor.org/rfc/rfc4291}{[RFC4291]}：
 
 1. 一个块中前导的零不必书写。在前面的例子中，地址可写为5fO5:2000:80ad:5800：
 
@@ -85,7 +85,7 @@ subnetcalculator.com，包含用于IP 地址和相关信息之间格式转换的
 
 址：1.2.240.1。它被称为IPv4 兼容的IPv6地址。需要注意，IPv4兼容地址与IPv4 映射地址不
 同；它们只是在能用类似IPv4地址的方式书写或由软件处理方面给人以兼容的感觉。这种地
-址最初用于 IPv4 和 IPv6之间的过渡计划，但现在不再需要［RFC4291］。
+址最初用于 IPv4 和 IPv6之间的过渡计划，但现在不再需要\href{https://www.rfc-editor.org/rfc/rfc4291}{[RFC4291]}。
 
 表2-2介绍了一些IPv6地址的例子以及它们的二进制表示。
 
@@ -139,9 +139,9 @@ http://［2001:0db8:85a3:08d3:1319:8a2e:0370:73441:443/
 是指IPv6 主机 2001:0db8:85a3:08d3:1319:8a2e:0370:7344 中的端口号443使用HTTP、TCP
 和IPv6协议。
 
-［RFC4291］提供的灵活性造成了不必要的混淆，这是因为能用多种方式表示相同的IPv6
+\href{https://www.rfc-editor.org/rfc/rfc4291}{[RFC4291]}提供的灵活性造成了不必要的混淆，这是因为能用多种方式表示相同的IPv6
 
-地址。为了弥补这种情况，［RFC5952］制定了一些规则，以缩小选择范围，同时与［RFC4291］
+地址。为了弥补这种情况，\href{https://www.rfc-editor.org/rfc/rfc5952}{[RFC5952]}制定了一些规则，以缩小选择范围，同时与\href{https://www.rfc-editor.org/rfc/rfc4291}{[RFC4291]}
 保持兼容。这些规则如下：
 
 1.前导的零必须压缩（例如，2001:0db8：：0022 变成 2001:db8：：22）。
@@ -342,7 +342,7 @@ Internet 发展初期首先遇到一个困难，那就是很难为接人 Interne
 
 实现这个想法需要改变一个IP地址的网络部分和主机部分的限制，但这样做只是针对
 一个站点自身而言；Internet 其余部分将只能“看到” 传统的A类、B类和C类部分。支持
-此功能的方法称为子网寻址［RFC0950］。通过子网寻址，一个站点被分配一个A类、B类或
+此功能的方法称为子网寻址\href{https://www.rfc-editor.org/rfc/rfc0950}{[RFC0950]}。通过子网寻址，一个站点被分配一个A类、B类或
 C类的网络号，保留一些剩余主机号进一步用于站点内分配。该站点可能将基础地址中的主
 机部分进一步划分为一个子网号和一个主机号。从本质上来说，子网寻址为IP地址结构增
 加了一个额外部分，但它没有为地址增加长度。因此，一个站点管理员能在子网数和每个子
@@ -653,7 +653,7 @@ Internet
 尽管这可能并不显而易见，但有一个常见情况，即一个子网中只包含两台主机。当路由
 
 器之间被一条点到点链路连接，则每个端点都需要分配一个 IP 地址，常见做法是IPv4使用
-/31为前缀，目前也有建议 IPv6 使用/127为前缀［RFC6164］。
+/31为前缀，目前也有建议 IPv6 使用/127为前缀\href{https://www.rfc-editor.org/rfc/rfc6164}{[RFC6164]}。
 
 \subsection{广播地址}
 在每个IPv4子网中，一个特殊地址被保留作为子网广播地址。子网广播地址通过将
@@ -707,9 +707,9 @@ IPv4 地址的网络/子网部分设置为适当值，以及主机部分的所�
 
 注意 定向广播是一个大问题，从安全的角度来看，它们至今在 Internet 中仍被禁
 
-用。［RFC0919］ 描述了针对IPv4的各类广播，［RFC1812］建议支持由路由器转发
+用。\href{https://www.rfc-editor.org/rfc/rfc0919}{[RFC0919]} 描述了针对IPv4的各类广播，\href{https://www.rfc-editor.org/rfc/rfc1812}{[RFC1812]}建议支持由路由器转发
 
-定向广播，它不仅可用，而且默认启用。［RFC2644］使这个策略发生逆转，路由器
+定向广播，它不仅可用，而且默认启用。\href{https://www.rfc-editor.org/rfc/rfc2644}{[RFC2644]}使这个策略发生逆转，路由器
 
 现在默认禁止转发定向广播，甚至完全省略支持能力。
 
@@ -733,11 +733,11 @@ IPv4 中，而IPv6仅使用组播地址（见第9章）。
 包括节点本地（只用于同一计算机中通信）、链路本地（只用于同一网络链路或IPv6 前缀中
 的节点）或全球性（Internet范围）。在IPv6 中，大部分节点通常在同一网络接口上使用多个
 地址。虽然IPv4 中也支持这样做，但是并不常见。一个IPv6节点中需要一组地址，包括组
-播地址（见2.5.2节），它来源于［RFC4291］。
+播地址（见2.5.2节），它来源于\href{https://www.rfc-editor.org/rfc/rfc4291}{[RFC4291]}。
 
 注意 另一个范围层次称 站点本地，使用的前缀 fec0:/10，最初是由IPV6支
 
-持的，后来被［RFC3879］放弃并用于单播地址。主要问题包括如何处理这种地址，
+持的，后来被\href{https://www.rfc-editor.org/rfc/rfc3879}{[RFC3879]}放弃并用于单播地址。主要问题包括如何处理这种地址，
 
 这是由于它可能被重用于多个站点，以及如何准确定义一个“站点”。
 
@@ -847,7 +847,7 @@ Base address :0x3040 Memory:f8220000-f8240000
 首先，它被转换为EUI-64形成地址 00:30:48:ff:fe:2a:19:89。接着，u位被取反，形成IID
 值 02:30:48:ff:fe:2a:19:89。为了完成链路本地IPv6地址，我们使用保留的链路本地前缀
 fe80:/10（见2.5节）。总之，这样形成完整地址 fe80：：230:48ff:fe2a:1989。/64是标准长度，用
-于从一个 IPv6地址中识别子网/主机部分，它由 ［RFC4291］要求的一个 IID 派生。
+于从一个 IPv6地址中识别子网/主机部分，它由 \href{https://www.rfc-editor.org/rfc/rfc4291}{[RFC4291]}要求的一个 IID 派生。
 
 另一个有趣的例子来自支持IPv6的Windows 系统。在这个例子中，我们将看到一个特
 
@@ -911,7 +911,7 @@ fecO:0:0:ffff：：382
 
 •••
 
-在这个例子中，我们可以看到一个特的隧道接口为ISATAP［RFC5214］。实际上，所
+在这个例子中，我们可以看到一个特的隧道接口为ISATAP\href{https://www.rfc-editor.org/rfc/rfc5214}{[RFC5214]}。实际上，所
 
 谓的物理地址是IPv4地址的十六进制编码：0A-99-8D-87与10.153.141.135相同。这里，使
 用的OUI（00-00-5E）是由IANA分配的［IANA］。它被用于与十六进制值 fe 组合，表示一
@@ -943,7 +943,7 @@ fe80：：5efe:10.153.141.135。附加在地址结尾的%2 在Windows 中称为�
 \subsection{前缀}
 为了帮助缓解IPv4地址（特别是B类地址）的压力，分类寻址方案通常使用一个类似
 
-VLSM 的方案，扩展 Internet 路由系统以支持无类别域间路由（CIDR）［RFC4632］。这提供
+VLSM 的方案，扩展 Internet 路由系统以支持无类别域间路由（CIDR）\href{https://www.rfc-editor.org/rfc/rfc4632}{[RFC4632]}。这提供
 了一种方便的分配连续地址范围的方式，包含多于255台但少于65 536台主机。也就是说，
 不只是单个B类或多个C类网络号可分配给站点。使用CIDR，未经过预定义的任何地址
 范围可作为一个类的一部分，但需要一个类似于子网掩码的掩码，有时也称为CIDR 掩码。
@@ -1169,7 +1169,7 @@ b）拓扑敏感（位置相关）寻址
 \section{特殊用途地址}
 IPv4 和 IPv6地址空间中都包括几个地址范围，它们被用于特殊用途（因此不能用于单
 
-播地址分配）。对于 IPv4，这些地址显示在表2-7中［RFC5735］。
+播地址分配）。对于 IPv4，这些地址显示在表2-7中\href{https://www.rfc-editor.org/rfc/rfc5735}{[RFC5735]}。
 
 前缀
 
@@ -1239,39 +1239,39 @@ IPv4 组播地址（以前的D类），仅作为目的IP地址使用
 
 参考文献
 
-［RFC1122］
+\href{https://www.rfc-editor.org/rfc/rfc1122}{[RFC1122]}
 
-［RFC1918］
+\href{https://www.rfc-editor.org/rfc/rfc1918}{[RFC1918]}
 
-［RFC1122］
+\href{https://www.rfc-editor.org/rfc/rfc1122}{[RFC1122]}
 
-［RFC3927］
+\href{https://www.rfc-editor.org/rfc/rfc3927}{[RFC3927]}
 
-［RFC1918］
+\href{https://www.rfc-editor.org/rfc/rfc1918}{[RFC1918]}
 
-［RFC5736］
+\href{https://www.rfc-editor.org/rfc/rfc5736}{[RFC5736]}
 
-［RFC5737］
+\href{https://www.rfc-editor.org/rfc/rfc5737}{[RFC5737]}
 
-［RFC3068］
+\href{https://www.rfc-editor.org/rfc/rfc3068}{[RFC3068]}
 
-［RFC1918］
+\href{https://www.rfc-editor.org/rfc/rfc1918}{[RFC1918]}
 
-［RFC2544］
+\href{https://www.rfc-editor.org/rfc/rfc2544}{[RFC2544]}
 
-［RFC5737］
+\href{https://www.rfc-editor.org/rfc/rfc5737}{[RFC5737]}
 
-［RFC5737］
+\href{https://www.rfc-editor.org/rfc/rfc5737}{[RFC5737]}
 
-［RFC5771］
+\href{https://www.rfc-editor.org/rfc/rfc5771}{[RFC5771]}
 
-［RFC1112］
+\href{https://www.rfc-editor.org/rfc/rfc1112}{[RFC1112]}
 
-［RFC0919］
+\href{https://www.rfc-editor.org/rfc/rfc0919}{[RFC0919]}
 
-［RFC0922］
+\href{https://www.rfc-editor.org/rfc/rfc0922}{[RFC0922]}
 
-在IPv6 中，许多地址范围和个别地址用于特定用途，它们都列在表2-8中［RFC5156］。
+在IPv6 中，许多地址范围和个别地址用于特定用途，它们都列在表2-8中\href{https://www.rfc-editor.org/rfc/rfc5156}{[RFC5156]}。
 
 前缀
 
@@ -1337,33 +1337,33 @@ IPv6组播地址，仅作为目的IP 地址使用
 
 参考文献
 
-［RFC5150］
+\href{https://www.rfc-editor.org/rfc/rfc5150}{[RFC5150]}
 
-［RFC4291］
+\href{https://www.rfc-editor.org/rfc/rfc4291}{[RFC4291]}
 
-［RFC4291］
+\href{https://www.rfc-editor.org/rfc/rfc4291}{[RFC4291]}
 
-［RFC4291］
+\href{https://www.rfc-editor.org/rfc/rfc4291}{[RFC4291]}
 
-［RFC4291］
+\href{https://www.rfc-editor.org/rfc/rfc4291}{[RFC4291]}
 
-［RFC4380］
+\href{https://www.rfc-editor.org/rfc/rfc4380}{[RFC4380]}
 
-［RFC4843］
+\href{https://www.rfc-editor.org/rfc/rfc4843}{[RFC4843]}
 
 ［RFC3849」
 
-［RFC3056］
+\href{https://www.rfc-editor.org/rfc/rfc3056}{[RFC3056]}
 
 ［RFC370L］
 
-［RFC3701］
+\href{https://www.rfc-editor.org/rfc/rfc3701}{[RFC3701]}
 
-［RFC4193］
+\href{https://www.rfc-editor.org/rfc/rfc4193}{[RFC4193]}
 
-［RFC4291］
+\href{https://www.rfc-editor.org/rfc/rfc4291}{[RFC4291]}
 
-［RFC4291］
+\href{https://www.rfc-editor.org/rfc/rfc4291}{[RFC4291]}
 
 Internet 地址结构
 
@@ -1380,11 +1380,11 @@ Internet 地址结构
 入 Internet 时修改其中的IP 地址。我们在第7章详细讨论 NAT。
 
 \subsection{IPv4/IPv6地址转换}
-在有些网络中，可能需要在IPv4 和IPv6 之间转换［RFC6127］。目前，已制定了一个用
+在有些网络中，可能需要在IPv4 和IPv6 之间转换\href{https://www.rfc-editor.org/rfc/rfc6127}{[RFC6127]}。目前，已制定了一个用
 
-于单播转换的框架［RFC6144］，以及一个正在开发的用于组播转换的方案［IDV 4v6mc］。一
+于单播转换的框架\href{https://www.rfc-editor.org/rfc/rfc6144}{[RFC6144]}，以及一个正在开发的用于组播转换的方案［IDV 4v6mc］。一
 个基本功能是提供自动、基于算法的地址转换。例如，使用“知名的” IPv6 前缀 64:f9b:/96
-或其他指定前缀，［RFC6052］ 定义了如何在单播地址中实现它。
+或其他指定前缀，\href{https://www.rfc-editor.org/rfc/rfc6052}{[RFC6052]} 定义了如何在单播地址中实现它。
 
 该方案使用一种特地址格式，称为嵌入IPv4 的IPv6地址。这种地址在IPv6地址肉
 
@@ -1525,7 +1525,7 @@ IPv4地址可以嵌人 IPv6地址中，形成一个嵌人IPv4 的IPv6地址。�
 
 在该图中，前缀既可以是一个众所周知的前缀，也可以是组织为转换器分配的唯一前
 
-缀。第64至71位必须设置为0，以保持与［RFC4291］指定标识符的兼容性。后缀的位被保
+缀。第64至71位必须设置为0，以保持与\href{https://www.rfc-editor.org/rfc/rfc4291}{[RFC4291]}指定标识符的兼容性。后缀的位被保
 留，并且应设置为0。然后，采用简单方法来生成嵌人IPv4 的IPv6 地址：将IPv6 前缀与
 32位的IPv4地址相串联，并确保第64至71位被设置为0（如果有必要，插人）。在后缀的
 后面增加0，直到生成一个128地址。嵌人IPv4 的IPv6地址使用96位前缀选项，该选项
@@ -1533,7 +1533,7 @@ IPv4地址可以嵌人 IPv6地址中，形成一个嵌人IPv4 的IPv6地址。�
 
 L53
 
-通常用前面提到的IPv6 映射地址来表示（［RFC4291］中的2.2（3）节）。例如，嵌入IPv4 地址
+通常用前面提到的IPv6 映射地址来表示（\href{https://www.rfc-editor.org/rfc/rfc4291}{[RFC4291]}中的2.2（3）节）。例如，嵌入IPv4 地址
 
 198.51.100.16 和众所周知的前缀，生成地址 64:ff9b：：198.51.100.16。
 
@@ -1542,7 +1542,7 @@ IPv4和IPv6支持组播寻址。一个IP 组播地址（也称组或组地址）
 
 而不是单个接口。一般来说，一个组可以跨越整个 Internet。一个组所覆盖的网络部分称
 
-组的范围［RFC2365］。常见的范围包括节点本地（同一计算机）、链路本地（同一子网）、站点
+组的范围\href{https://www.rfc-editor.org/rfc/rfc2365}{[RFC2365]}。常见的范围包括节点本地（同一计算机）、链路本地（同一子网）、站点
 
 本地（适用于一些站点）、全球（整个 Internet）和管理。管理范围的地址可用于一个网络区
 
@@ -1564,7 +1564,7 @@ IPv4和IPv6支持组播寻址。一个IP 组播地址（也称组或组地址）
 
 何发送方可以发送给任何组；一个加入组的接收方被指定唯一的组地址。一种新方案称为源
 
-特定组播（SSM）［RFC3569］［RFC4607］，在每个组中只使用一个发送方（见［RFC4607］的勘
+特定组播（SSM）\href{https://www.rfc-editor.org/rfc/rfc3569}{[RFC3569]}\href{https://www.rfc-editor.org/rfc/rfc4607}{[RFC4607]}，在每个组中只使用一个发送方（见\href{https://www.rfc-editor.org/rfc/rfc4607}{[RFC4607]}的勘
 
 误表）。在这种情况下，当一台主机加入一个组后，它会被指定一个信道地址，其中包括一
 
@@ -1631,17 +1631,17 @@ Ad hoc 块2
 
 参考文献
 
-［RFC5771］
+\href{https://www.rfc-editor.org/rfc/rfc5771}{[RFC5771]}
 
-［RFC5771］
+\href{https://www.rfc-editor.org/rfc/rfc5771}{[RFC5771]}
 
-［RFC5771］
+\href{https://www.rfc-editor.org/rfc/rfc5771}{[RFC5771]}
 
-［RFC5771］
+\href{https://www.rfc-editor.org/rfc/rfc5771}{[RFC5771]}
 
-［RFC4566］
+\href{https://www.rfc-editor.org/rfc/rfc4566}{[RFC4566]}
 
-［RFC5771］
+\href{https://www.rfc-editor.org/rfc/rfc5771}{[RFC5771]}
 
 ［IP4MA］
 
@@ -1679,17 +1679,17 @@ Ad hoc 块3（233.252.0.0/24为文档保留）
 
 参考文献
 
-［RFC4607］［RFC4608］
+\href{https://www.rfc-editor.org/rfc/rfc4607}{[RFC4607]}\href{https://www.rfc-editor.org/rfc/rfc4608}{[RFC4608]}
 
-［RFC3180］
+\href{https://www.rfc-editor.org/rfc/rfc3180}{[RFC3180]}
 
-［RFC5771］
+\href{https://www.rfc-editor.org/rfc/rfc5771}{[RFC5771]}
 
-［RFC6034］
+\href{https://www.rfc-editor.org/rfc/rfc6034}{[RFC6034]}
 
 ［IP4MA」
 
-［RFC2365］
+\href{https://www.rfc-editor.org/rfc/rfc2365}{[RFC2365]}
 
 到224.255.255.255的地址块被分配给某些应用协议或组织使用。这些分配工作由IANA
 
@@ -1699,7 +1699,7 @@ Ad hoc 块3（233.252.0.0/24为文档保留）
 
 于本地网络控制范围，其目的是控制需要被路由到本地链路的流量。该地址块的一个例子是
 
-网络时间协议（NTP）组播组（224.0.1.1）［RFC5905］。
+网络时间协议（NTP）组播组（224.0.1.1）\href{https://www.rfc-editor.org/rfc/rfc5905}{[RFC5905]}。
 
 第一个 Ad hoc（特定）块用于保留一些地址，避免它们落入本地或互联网络控制块。在
 
@@ -1709,7 +1709,7 @@ Ad hoc 块3（233.252.0.0/24为文档保留）
 
 的地址，例如会话目录工具（SDR）［H96］，它使用会话通告协议（SAP）发送组播会议通告
 
-［RFC2974］。新的会话描述协议（SDP）［RFC4566］ 最初只是SAP的一个组成部分，当前它
+\href{https://www.rfc-editor.org/rfc/rfc2974}{[RFC2974]}。新的会话描述协议（SDP）\href{https://www.rfc-editor.org/rfc/rfc4566}{[RFC4566]} 最初只是SAP的一个组成部分，当前它
 
 不仅用于IP 组播，而且与其他机制一起描述多媒体会话。
 
@@ -1721,7 +1721,7 @@ Ad hoc 块3（233.252.0.0/24为文档保留）
 
 围的路由协议，以聚合路由器和实现路由策略。AS号最初是16位，但现在已扩展到32位
 
-［RFC4893］。GLOP 地址的生成是将一个16位AS号放在IPv4组播地址的第2和第3字节，
+\href{https://www.rfc-editor.org/rfc/rfc4893}{[RFC4893]}。GLOP 地址的生成是将一个16位AS号放在IPv4组播地址的第2和第3字节，
 
 并且保留1字节的空间表示可能的组播地址（即多达256个地址）。因此，它可在一个16位
 
@@ -1731,7 +1731,7 @@ AS号和与这个 AS号相关联的GLOP组播地址之间来回映射。这个�
 
 最近，IPv4组播地址分配机制将多个组播地址与一个IPv4单播地址前缀关联。这
 
-被称为基于单播前缀的组播寻址（UBM），它在［RFC6034］中描述。它基于 IPv6 发展早
+被称为基于单播前缀的组播寻址（UBM），它在\href{https://www.rfc-editor.org/rfc/rfc6034}{[RFC6034]}中描述。它基于 IPv6 发展早
 
 期的一个类似结构，我们在前面2.5.4节讨论过。UBM的IPv4地址范围是234.0.0.0至
 
@@ -1830,7 +1830,7 @@ IPv6组播地址
 IPv6组播地址的第2字节包含一个4位标志字段和一个4位范围ID字段。范围字段表
 
 示到某些组播地址的数据报的分配限制。十六进制值0、3和f保留。十六进制值6、7和
-9~d未分配。表2-10给出了这些值（根据［RFC4291］中的2.7节）。
+9~d未分配。表2-10给出了这些值（根据\href{https://www.rfc-editor.org/rfc/rfc4291}{[RFC4291]}中的2.7节）。
 
 值
 
@@ -1935,7 +1935,7 @@ Internet 中的所有 NTP 服务器
 在IPv6中，当P和R位字段设置0时，使用图2-12中给出的组播地址格式。当
 
 P设置1，无须基于每个组的全球性许可，对组播地址有两个可选方法。它们被描述在
-［RFC3306］和［RFC4489］中。第一种方法称为基于单播前缀的IPv6 组播地址分配，由ISP或
+\href{https://www.rfc-editor.org/rfc/rfc3306}{[RFC3306]}和\href{https://www.rfc-editor.org/rfc/rfc4489}{[RFC4489]}中。第一种方法称为基于单播前缀的IPv6 组播地址分配，由ISP或
 地址分配机构提供单播前缀分配，并且有效分配一个组播地址集合，从而限制了因避免重复
 而需全球协调的数量。第二种方法称为链路范围的IPv6组播，使用接口标识符，并且组播
 地址是基于主机的IID。为了了解这些不同格式如何工作，首先要了解IPv6 组播地址中位字
@@ -1961,11 +1961,11 @@ T
 
 参考文献
 
-［RFC3956］
+\href{https://www.rfc-editor.org/rfc/rfc3956}{[RFC3956]}
 
-［RFC3300］
+\href{https://www.rfc-editor.org/rfc/rfc3300}{[RFC3300]}
 
-［RFC4291］
+\href{https://www.rfc-editor.org/rfc/rfc4291}{[RFC4291]}
 
 当T位字段被设置时，表示组地址是临时或动态分配的；它不是［IP6MA］ 中定义的标
 
@@ -2010,7 +2010,7 @@ SSM设为0
 
 图 2-13
 
-IPv6 组播地址可以基于单播IPv6地址来创建［RFC3306］。在这样做时，P位字段设置为1，
+IPv6 组播地址可以基于单播IPv6地址来创建\href{https://www.rfc-editor.org/rfc/rfc3306}{[RFC3306]}。在这样做时，P位字段设置为1，
 
 单播前缀和32位的组ID 被加入地址。这种形式的组播地址分配简少了全球地址分配协议的
 
@@ -2026,7 +2026,7 @@ IPv6 组播地址可以基于单播IPv6地址来创建［RFC3306］。在这样�
 缀长度和将前缀字段设置为0来支持这种格式，以便有效地将前缀ff3x:/32（其中x 是任何
 有效的范围值）用于所有这类IPv6 SSM 组播地址。
 
-为了创建唯一的链路本地范围的组播地址，可使用一种基于IID 的方法［RFC4489］，当
+为了创建唯一的链路本地范围的组播地址，可使用一种基于IID 的方法\href{https://www.rfc-editor.org/rfc/rfc4489}{[RFC4489]}，当
 
 只需要链路本地范围时，这种方法是基于单播前缀分配的首选。在这种情况下，可使用另一
 种形式的IPv6组播地址结构（见图2-14）。
@@ -2089,7 +2089,7 @@ gggg:gggg 是一个 32位组播组 ID 的十六进制表示。
 
 注意 会合点（RP）是一个路由器中用于处理一个或多个组播组的组播路由的IP
 
-地址。RP用于 PIM-SM 协议［RFC4601］，以帮助参加同一组播组中的发送方和接
+地址。RP用于 PIM-SM 协议\href{https://www.rfc-editor.org/rfc/rfc4601}{[RFC4601]}，以帮助参加同一组播组中的发送方和接
 
 收方找到对方。Internet 范围的组播部署遇到的问题之一是会合点定位。这种方法
 
@@ -2109,7 +2109,7 @@ RIID 字段值被用作 RP地址的低4位。剩余的部分用零填充。作�
 2001:db8:dead:beef：：9. 更多的例子见「RFC39561.
 
 
-图2-15 RP的单播 IPv6地址可嵌人IPv6组播地址［RFC3956］。这样，它可以直接找到用于路由的
+图2-15 RP的单播 IPv6地址可嵌人IPv6组播地址\href{https://www.rfc-editor.org/rfc/rfc3956}{[RFC3956]}。这样，它可以直接找到用于路由的
 RP关联的地址。RP被用于组播路由系统，以协调不在同一子网中的组播发送方和接收方
 
 与IPv4相似，IPv6 也有一些保留的组播地址。除了前面提到的可变范围地址，这些地
@@ -2297,67 +2297,67 @@ SSM 块
 
 参考文献
 
-［RFC4291］
+\href{https://www.rfc-editor.org/rfc/rfc4291}{[RFC4291]}
 
-［RFC4291］
+\href{https://www.rfc-editor.org/rfc/rfc4291}{[RFC4291]}
 
 ［IDChes］
 
-［RFC4291］
+\href{https://www.rfc-editor.org/rfc/rfc4291}{[RFC4291]}
 
-［RFC4291］
+\href{https://www.rfc-editor.org/rfc/rfc4291}{[RFC4291]}
 
-［RFC1075］
+\href{https://www.rfc-editor.org/rfc/rfc1075}{[RFC1075]}
 
-［RFC2328］
+\href{https://www.rfc-editor.org/rfc/rfc2328}{[RFC2328]}
 
-［RFC2328］
+\href{https://www.rfc-editor.org/rfc/rfc2328}{[RFC2328]}
 
-［RFC2080］
+\href{https://www.rfc-editor.org/rfc/rfc2080}{[RFC2080]}
 
 ［EIGRP］
 
-［RFC5059］
+\href{https://www.rfc-editor.org/rfc/rfc5059}{[RFC5059]}
 
-［RFC3810］
+\href{https://www.rfc-editor.org/rfc/rfc3810}{[RFC3810]}
 
-［RFC4286］
+\href{https://www.rfc-editor.org/rfc/rfc4286}{[RFC4286]}
 
-［RFC5498］
-
-［IDChes］
-
-［RFC3315］
-
-［RFC4795］
-
-［RFC4291］
-
-［RFC4291］
+\href{https://www.rfc-editor.org/rfc/rfc5498}{[RFC5498]}
 
 ［IDChes］
 
-［RFC3315］
+\href{https://www.rfc-editor.org/rfc/rfc3315}{[RFC3315]}
 
-［RFC4291］
+\href{https://www.rfc-editor.org/rfc/rfc4795}{[RFC4795]}
+
+\href{https://www.rfc-editor.org/rfc/rfc4291}{[RFC4291]}
+
+\href{https://www.rfc-editor.org/rfc/rfc4291}{[RFC4291]}
 
 ［IDChes］
 
-［RFC5905］
+\href{https://www.rfc-editor.org/rfc/rfc3315}{[RFC3315]}
 
-［RFC5352］
+\href{https://www.rfc-editor.org/rfc/rfc4291}{[RFC4291]}
 
-［RFC5415］
+［IDChes］
 
-［RFC4607］
+\href{https://www.rfc-editor.org/rfc/rfc5905}{[RFC5905]}
+
+\href{https://www.rfc-editor.org/rfc/rfc5352}{[RFC5352]}
+
+\href{https://www.rfc-editor.org/rfc/rfc5415}{[RFC5415]}
+
+\href{https://www.rfc-editor.org/rfc/rfc4607}{[RFC4607]}
 
 任播地址是一个单播IPv4或IPv6地址，这些地址根据它所在的网络确定不同的主机。
 
 这是通过配置路由器通知 Internet 中多个站点有相同单播路由来实现。因此，一个任播地址
 不是指Internet 中的一台主机，而是对于任播地址“最合适”或“最接近”的一台主机。任
-播地址最常用于发现一台提供了常用服务的计算机［RFC4786］。例如，某个数据报发送到一
+播地址最常用于发现一台提供了常用服务的计算机\href{https://www.rfc-editor.org/rfc/rfc4786}{[RFC4786]}。例如，某个数据报发送到一
 个任播地址，可用于找到 DNS服务器（见第11章），6to4 网关将 IPv6流量封装在IPv4 隧道
-中［RFC3068］，或用于组播路由的 RP 中［RFC4610］。
+中\href{https://www.rfc-editor.org/rfc/rfc3068}{[RFC3068]}，或用于组播路由的 RP 中\href{https://www.rfc-editor.org/rfc/rfc4610}{[RFC4610]}。
 
 \section{分配}
 IP 地址空间通常被分配为大的块，这由一些分层次组织的权威机构完成。权威机构是为
@@ -2617,14 +2617,14 @@ RIPE
 我们可以看到，地址193.5.93.80是分配给 WIPO 的地址块 193.5.88.0/21 的一部分。注
 
 意，这个块的状态为ASSIGNED PI，意味着该地址块是供应商独立类型。RPSL 的参考文献
-表示数据库记录使用路由策略规范语言 ［RFC2622］［RFC4012］，ISP 用它来表示自己的路由策
+表示数据库记录使用路由策略规范语言 \href{https://www.rfc-editor.org/rfc/rfc2622}{[RFC2622]}\href{https://www.rfc-editor.org/rfc/rfc4012}{[RFC4012]}，ISP 用它来表示自己的路由策
 略。这些信息允许网络运营商配置路由器，以帮助缓解 Internet 中的路由不稳定。
 
 \subsection{组播}
 在IPv4 和IPv6中，组播地址（即组地址）可根据其范围来描述，它们需要确定组播方
 
 式（静态、动态的协议或算法），以及是否使用ASM或SSM。这些组的分配策略已被制定
-（［RFC5771］针对IPv4；［RFC3307］针对IPv6），整体架构在［RFC6308］中详细描述。全球
+（\href{https://www.rfc-editor.org/rfc/rfc5771}{[RFC5771]}针对IPv4；\href{https://www.rfc-editor.org/rfc/rfc3307}{[RFC3307]}针对IPv6），整体架构在\href{https://www.rfc-editor.org/rfc/rfc6308}{[RFC6308]}中详细描述。全球
 范围之外的组（例如管理范围的地址和IPv6链路范围的组播地址）可在 Internet 的各个部分
 重复使用，并由网络管理员配置管理范围之外的地址块或由端主机自动选择。静态分配的全
 球范围地址通常是固定的，并且可能被硬件编码到应用中。这种地址空间是有限的，特别是
@@ -2635,8 +2635,8 @@ RIPE
 
 我们可以看到，大量的协议和复杂的组播地址格式，导致组播地址管理成为一个难题
 
-（更不用说全球组播路由［RFC5110］）。从用户的角度来看，组播很少使用，可能受到的关注
-有限。从程序员的角度来看，在应用设计中支持组播可能是有价值的，［RFC3170］ 提供了一
+（更不用说全球组播路由\href{https://www.rfc-editor.org/rfc/rfc5110}{[RFC5110]}）。从用户的角度来看，组播很少使用，可能受到的关注
+有限。从程序员的角度来看，在应用设计中支持组播可能是有价值的，\href{https://www.rfc-editor.org/rfc/rfc3170}{[RFC3170]} 提供了一
 些这方面的设想。当网络管理员需要实现组播时，与服务提供商的交流可能是必要的。另
 外，一些组播地址分配方案已由厂商开发［CGEMA］。
 
@@ -2832,7 +2832,7 @@ NAT 路由器可以使用池中的任何地址重写进入或离开内部网络�
 
 哪个IP地址的问题。目前，已有针对多个ISP 同时运行的方法，以及在ISP之间转换的指
 
-导原则（其中提出了一些类似问题）。对于 IPv4，［RFC4116］讨论了 PI或PA地址如何用
+导原则（其中提出了一些类似问题）。对于 IPv4，\href{https://www.rfc-editor.org/rfc/rfc4116}{[RFC4116]}讨论了 PI或PA地址如何用
 
 多宿主。我们看图2-17所示的情况。
 
@@ -2884,11 +2884,11 @@ ISP 都不能聚合它，因为它与ISP 地址块中任何一个数值都不相
 另一个 ISP，它不需要改变其分配的地址。不幸的是，无法聚合这种地址可能关系到 Internet
 未来的扩展性，因此PI 空间相对供不应求。
 
-IPv6多宿主已成为IETF 近年来的研究课题，并出现了Multi6 体系结构［RFC4177］
+IPv6多宿主已成为IETF 近年来的研究课题，并出现了Multi6 体系结构\href{https://www.rfc-editor.org/rfc/rfc4177}{[RFC4177]}
 
-和Shim6 协议 ［RFC5533］。Multi6 概括了一些已提出处理意见的方法。从广义上来说，上
+和Shim6 协议 \href{https://www.rfc-editor.org/rfc/rfc5533}{[RFC5533]}。Multi6 概括了一些已提出处理意见的方法。从广义上来说，上
 述选择包括使用一种相当于前面提到的IPv4多宿主的路由方式、使用移动IPv6的能力
-［RFC6275］，以及采用一种将节点标识符与定位符分离的新方法。当前，IP地址作为连接
+\href{https://www.rfc-editor.org/rfc/rfc6275}{[RFC6275]}，以及采用一种将节点标识符与定位符分离的新方法。当前，IP地址作为连接
 Internet 的一个网络接口标识符（本质上是一种名称）和定位符（一种路由系统理解的地址）。
 这种分离使得将来即使在底层IP地址改变的情况下网络协议也能够实现。提供这种分离白
 协议有时称为标识符/定位符分离或id/loc 分离协议。
@@ -2896,7 +2896,7 @@ Internet 的一个网络接口标识符（本质上是一种名称）和定位�
 Shim6 介绍了一个网络层协议“隔离层”（shim），传输层协议使用它分离来自 IP地址的
 “上层协议标识符”。多宿主通过选择使用的 IP 地址（定位符）来实现，基于动态网络环境且
 不需要PI地址分配。通信主机（端点）之间对使用的定位符及交换的时机进行协商。标识符
-与定位符分离是其他几项工作的主题，包括实验性的主机标识协议（HIP）［RFC4423］，它使
+与定位符分离是其他几项工作的主题，包括实验性的主机标识协议（HIP）\href{https://www.rfc-editor.org/rfc/rfc4423}{[RFC4423]}，它使
 用加密的主机标识符来标识主机。这种标识符实际上是与主机相关的公共/私人密钥对中的
 公钥，因此来源于一个特定主机的HIP 流量可被认证。第18 章将详细讨论安全问题。
 
@@ -2911,7 +2911,7 @@ IP 地址基本上都是数字，只有少数网络攻击涉及它们。一般�
 或办公室的无线路由器连接Internet。在这种情况下，不知情的家庭或企业所有者可能因IP
 地址而成为嫌疑人，即使这个人并不是网络流量的发送者。这种情况也可能因受攻击的主机
 被用于组成僵尸网络而发生。目前，这类计算机（和路由器）可通过基于 Internet 的黑市来
-租赁，并被用于执行攻击、非法内容服务和其他违法活动［RFC4948］。
+租赁，并被用于执行攻击、非法内容服务和其他违法活动\href{https://www.rfc-editor.org/rfc/rfc4948}{[RFC4948]}。
 
 \section{总结}
 
@@ -3009,269 +3009,3 @@ Practical Juniper Netroorks and Cisco Systems Solutions （Addison-Wesley, 2002�
 Performance Evaluation and Optimization" Computer Networks, 1（3）， 1977.
 
 ［NRO1 Number Resource Organization, http://www.nro.net
-
-［RFCO919］ J. C. Mogul， "Broadcasting Internet Datagrams，" Internet RFC 0919/
-BCP 0005, Oct. 1984.
-
-［RFC0922］J.C. Mogul， "Broadcasting Internet Datagrams in the Presence of Suk
-nets" Internet RFC 0922/STD 0005, Oct. 1984.
-
-［RFC0950］ J. C. Mogul and J.Postel， "Internet Standard Subnetting Procedure"
-Internet RFC 0950/STD 0005, Aug. 1985.
-
-［RFC1075］ D. Waitzman, C. Partridge, and S. E. Deering， "Distance Vector Multi
-cast Routing Protocol/ Internet RFC 1075 （experimental）， Nov. 1988.
-
-［RFC1112］ S. E. Deering， "Host Extensions for IP Multicasting/" Internet RFC
-
-1112/STD 0005, Aug. 1989.
-
-［RFC1122］ R. Braden, ed.， "Requirements for Internet Hosts
-
-—Communication
-
-Layers" Internet RFC 1122/STD 0003, Oct. 1989.
-
-TRFC1812］ F. Baker, ed， "Requirements for IP Version 4 Routers" Internet RF（
-
-1812/STD 0004, June 1995.
-
-［RFC1918］ Y. Rekhter, B. Moskowitz, D. Karrenberg, G.J. de Groot, and E. Lear，
-"'Address Allocation for Private Internets，" Internet RFC 1918/BCP 0005, Feb.
-
-1996.
-
-［RFC2080］ G. Malkin and R. Minnear， “RIPng for IPv6" Internet RFC 2080, Jan.
-1997.
-
-［RFC2328］ J. Moy， "OSPF Version 2" Internet RFC 2328/STD 0054, Apr. 1988.
-
-［RFC2365］ D. Meyer， "Administratively Scoped IP Multicast/ Internet RFC 2365
-BCP 0023, July 1998.
-
-［RFC2544］ S. Bradner and J. McQuaid，"Benchmarking Methodology for Net-
-
-work Interconnect Devices，" Internet RFC 2544 （informational）， Mar. 1999.
-
-［RFC2622］ C. Alaettinoglu, C. Villamizar, E. Gerich, D. Kessens, D. Meyer, T.
-
-Bates, D. Karrenberg, and M. Terpstra， "Routing Policy Specification Language
-（RPSL）" Internet RFC 2622, June 1999.
-
-［RFC2644］ D. Senie， "Changing the Default for Directed Broadcasts in Routers”
-Internet RFC 2644/BCP 0034, Aug. 1999.
-
-［RFC2974］ M. Handley, C. Perkins, and E. Whelan， "Session Announcement Pro
-tocol” Internet RFC 2974 （experimental）， Oct.2000.
-
-［RFC3056］ B. Carpenter and K.Moore， "Connection of IPv6 Domains via IPv4
-
-Clouds/" Internet RFC 3056, Feb. 2001.
-
-［RFC3068］ C. Huitema， "An Anycast Prefix for 6to4 Relay Routers." Internet RFC
-3068, June 2001.
-
-［RFC3170］ B. Quinn and K. Almeroth， "IP Multicast Applications: Challenges
-
-and Solutions" Internet RFC 3170 （informational）， Sept. 2001.
-
-［RFC31801 D. Meyer and P. Lothberg， “GLOP Addressing in 233/8，" Internet RF（
-3180/BCP 0053, Sept. 2001.
-
-［RFC3306］ B. Haberman and D.Thaler， "Unicast-Prefix-Based IPv6 Multicast
-
-Addresses/" Internet RFC 3306, Aug. 2002.
-
-［RFC3307］ B. Haberman， "Allocation Guidelines for IPv6 Multicast Addresses/"
-Internet RFC 3307, Aug. 2002.
-
-［RFC3315］ R. Droms, ed.， J. Bound, B. Volz, T. Lemon, C. Perkins, and M. Carney
-"Dvnamic Host Configuration Protocol for IPv6 （DHCPv6） " Internet RFC 3315，
-temet 地址结构
-
-［RFC3569］ S. Bhattacharyya, ed.， "An Overview of Source-Specific Multicast
-
-（SSM）" Internet RFC 3569 （informational）， July 2003.
-
-［RFC3701］ R. Fink and R. Hinden， "6bone （IPv6 Testing Address Allocation）
-
-Phaseout/ Internet RFC 3701 （informational）， Mar. 2004.
-
-［RFC3810］ R. Vida and L. Costa, eds， "Multicast Listener Discovery Version 2
-
-（MLDv2） for IPv6" Internet RFC 3810, June 2004.
-
-［RFC3849］ G. Huston, A. Lord, and P. Smith， "IPv6 Address Prefix Reserved for
-Documentation，" Internet RFC 3849 （informational）， July 2004.
-
-［RFC3879］ C. Huitema and B. Carpenter， "Deprecating Site Local Addresses/”
-
-Internet RFC 3879, Sept. 2004.
-
-［RFC3927］ S. Cheshire, B.Aboba, and B. Guttman， "Dynamic Configuration of
-iPV4 Link-Local Addresses，” Internet RFC 3927, May 2005.
-
-［RFC3956］ P. Savola and B. Haberman， "Embedding the Rendezvous Point （RP）
-Address in an IPv6 Multicast Address，" Internet RFC 3956, Nov. 2004.
-
-［RFC4012］ L. Blunk, J. Damas, F. Parent, and A. Robachevsky， "Routing Policy
-
-Specification Language Next Generation （RPSLng）." Internet RFC 4012, Mar.
-
-2005.
-
-［RFC4116］ J.Abley, K. Lindqvist, E. Davies, B. Black, and V. Gill， "IPv4 Multihon
-ing Practices and Limitations，' Internet RFC 4116 （informational）， July 2005.
-
-［RFC4177］ G. Huston， "Architectural Approaches to Multi-homing for IPv6.”
-
-Internet RFC 4177 （informational）， Sept. 2005.
-
-［RFC4193］ R. Hinden and B. Haberman， "Unique Local IPv6 Unicast Addresses
-Oct. 2005.
-
-［RFC42861 B. Haberman and J. Martin， "Multicast Router Discovery，" Internet
-
-RFC 4286, Dec.2005.
-
-［RFC4291］ R. Hinden and S. Deering， "IP Version 6 Addressing Architecture"
-
-Internet RFC 4291, Feb.2006.
-
-［RFC4380］ C. Huitema， "Teredo: Tunneling IPv6 over UDP through Network
-
-Address Translations （NATs）" Internet RFC 4380, Feb. 2006.
-
-［RFC4423］ R. Moskowitz and P. Nikander， "Host Identity Protocol （HIP） Archi-
-tecture/' Internet RFC 4423 （informational）， May 2006.
-
-［RFC4489］J-S. Park, M.-K. Shin, and H.J. Kim， "A Method for Generating Link
-Scoped IPv6 Multicast Addresses/' Internet RFC 4489, Apr. 2006.
-
-［RFC4566］ M. Handley, V. Jacobson, and C. Perkins， "SDP: Session Description
-Protocol”" Internet RFC 4566, July 2006.
-
-［RFC4601］ B. Fenner, M. Handley, H. Holbrook, and I. Kouvelas， "Protocol Inde.
-pendent Multicast-Sparse Mode （PIM-SM）： Protocol Specification （Revised）.”
-
-Internet RFC 4601, Aug. 2006.
-
-［RFC4607］ H. Holbrook and B. Cain， "Source-Specific Multicast for IP" Internet
-RFC 4607,Aug. 2006.
-
-［RFC4608］ D. Meyer, R. Rockell, and G. Shepherd， "Source-Specific Protocol Ind
-pendent Multicast in 232/8" Internet RFC 4608/BCP 0120, Aug. 2006.
-
-［RFC4610］ D. Farinacci and Y. Cai， "Anycast-RP Using Protocol Independent MI
-ticast （PIM），" Internet RFC 4610, Aug. 2006.
-
-［RFC4632］ V. Fuller and T. Li， "Classless Inter-domain Routing （CIDR）： The Inte
-net Address Assignment and Aggregation Plan" Internet RFC 4632/BCP 0122.
-Aug. 2006.
-
-［RFC4786］ J. Abley and K. Lindqvist， "Operation of Anycast Services，" Internet
-RFC 4786/BCP 0126, Dec. 2006.
-
-［RFC4795］ B. Aboba, D. Thaler, and L. Esibov， "Link-Local Multicast Name Res
-lution （LLMNR） " Internet RFC 4795 （informational）， Jan.2007.
-
-［RFC4843］ P. Nikander, J. Laganier, and F. Dupont， “An IPv6 Prefix for Overlay
-Routable Cryptographic Hash Identifiers （ORCHID），" Internet RFC 4843 （exper
-mental）， Apr.2007.
-
-［RFC4893］ Q. Vohra and E. Chen， "BGP Support for Four-Octet AS Number
-
-Space" Internet RFC 4893, May 2007.
-
-［RFC4948］ L. Andersson, E. Davies, and L. Zhang, eds， "Report from the IAB
-
-Workshop on Unwanted Traffic March 9-10, 2006" Internet RFC 4948 （informa
-tional）， Aug. 2007.
-
-［RFC5059］ N. Bhaskar, A. Gall, J. Lingard, and S. Venaas， "Bootstrap Router （BS
-Mechanism for Protocol Independent Multicast （PIM）." Internet RFC 5059, Jan.
-2008.
-
-［RFC5110］ P. Savola， "Overview of the Internet Multicast Routing Architecture，
-Internet RFC 5110 （informational）， Jan. 2008.
-
-［RFC5156］ M. Blanchet， “Special-Use IPv6 Addresses" Internet RFC 5156 （infor
-mational）， Apr.2008.
-
-［RFC5352］ R. Stewart, Q. Xie, M. Stillman, and M. Tuexen， "Aggregate Server
-
-Access Protocol （ASAP）." Internet RFC 5352 （experimental）， Sept. 2008.
-
-［RFC5415］ P. Calhoun, M.Montemurro, and D. Stanley, eds， "Control and Pro-
-Visioning of Wireless Access Points （CAPWAP） Protocol Specification" Interne
-RFC 5415, Mar. 2009.
-
-［RFC5498］ I. Chakeres， "IANA Allocations for Mobile Ad Hoc Network
-
-（MANET） Protocols” Internet RFC 5498, Mar. 2009.
-
-［RFC5533］ E. Nordmark and M. Bagnulo， "Shim6: Level 3 Multihoming Shim
-
-Protocol for IPv6" Internet RFC 5533, June 2009.
-
-［RFC5735］ M. Cotton and L. Vegoda， "Special Use IPv4 Addresses，" Internet RE
-5735/BCP 0153, Jan.2010.
-
-［RFC5736］ G. Huston, M. Cotton, and L. Vegoda， "IANA IPV4 Special Purpose
-Address Registry." Internet RFC 5736 （informational）， Jan. 2010.
-
-［RFC5737］J.Arkko, M. Cotton, and L. Vegoda， "IPv4 Address Blocks Reserved
-for Documentation，" Internet RFC 5737 （informational）， Jan. 2010.
-
-［RFC5771］ M. Cotton, L. Vegoda, and D. Meyer， "IANA Guidelines for IPv4 Mu
-ticast Address Assignments/" Internet RFC 5771/BCP 0051, Mar.2010.
-
-［RFC5952］ S. Kawamura and M. Kawashima， "'A Recommendation for IPv6
-
-Address Text Representation" Internet RFC 5952, Aug. 2010.
-
-［RFC5905］ D. Mills, J. Martin, ed.， J. Burbank, and W. Kasch， "Network Time
-
-Protocol Version 4: Protocol and Algorithms Specification/ Internet RFC 5905，
-June 2010.
-
-［RFC6034］ D. Thaler， "Unicast-Prefix-Based IPv4 Multicast Addresses，" Interne
-RFC 6034. Oct.2010.
-
-ternet 地址结构
-
-53
-
-［RFC6052］ C. Bao, C. Huitema, M. Bagnulo, M. Boucadair, and X. L.i， “1Pv6
-
-Addressing of IPv4/IPv6 Translators” Internet RFC 6052, Oct. 2010.
-
-［RFC6217］J.Arkko and M. Townsley， "1Pv4 Run-Out and IPv4-IPv6 Co-Existence
-
-Scenarios，" Internet RFC 6127 （experimental）， May 2011.
-
-［RFC6144］ F. Baker, X. Li, C. Bao, and K. Yin， "Framework for IPv4/IPv6 Transla-
-
-tion" Internet RFC 6144 （informational）， Apr. 2011.
-
-［RFC6164］ M. Kohno, B. Nitzan, R. Bush, Y. Matsuzaki, L. Colitti, and T. Narten，
-
-"'Using 127-Bit IPv6 Prefixes on Inter-Router Links" Internet RFC 6164, Apr. 2011.
-
-［RFC6275］ C. Perkins, ed.， D. Johnson, and J.Arkko， "Mobility Support in IPv6"
-
-Internet RFC 3775, July 2011.
-
-［RFC6308］ P. Savola， "Overview of the Internet Multicast Addressing Architec-
-
-ture" Internet RFC 6308 （informational）， June 2011.
-
-IWRWS1 http://www.arin.net/resources/whoisrs
-
-73
-
-~
-
-7°
-
-TCP/IP Ilustrated, Volume 1: The Protocols, Second Editio
