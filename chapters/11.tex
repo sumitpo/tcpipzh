@@ -38,83 +38,18 @@ DNS 中使用的所有的名称集合构成了DNS 名称空间（name space）�
 以及由于历史原因而存在的一类特殊的称 ARPA 的基础设施顶级域名（infrastructure TLI
 「RFC31721。这些构成了一棵命名树的最高层，如图11-1所示。
 
-AERO
-
-JOBS
-
-基础设施
-
-T0D
-
-ARPA
-
-空树根
-
-ccTLD （ISO 3166-1）
-
-ASIA
-
-CAT
-
-COOP
-
-EDU
-
-GOV
-
-INT
-
-通用gTLD
-
-MIL
-
-MOBI
-
-TEL
-
-TRAVEL
-
-BIZ
-
-NAME
-
-PRO
-
-赞助gTLD
-
-通用限制gTLD
-
-测试
-
-測試
-
-段公E
-
-0090
-
-Uiill-6o 8
-
-6oxiun
-
-IDN cCTLD
-
-IDN测试城名
-
 图11-1
 DNS名称空间形成了层级结构，顶部的树根未命名。顶级域名包含通用顶级域名、国家代码顶级域名、
 国际化国家代码顶级域名和称为 ARPA的特殊基础设施顶级域名
-「和域名系统
 
-TLD 中有5类经常使用，其中一组专业域名用于国际化域名（IDN）®
-
-。IDN的历史是
-
+TLD 中有5类经常使用，其中一组专业域名用于国际化域名（IDN）\footnotemark。IDN的历史是
 互联网国际化的一部分，漫长而复杂。在世界各地有多种语言，每种语言使用一种或多种文
 字。虽然Unicode 标准［U11］的目标是获取整个字符集，但是很多字符看上去相似却拥有不
 同的Unicode 字符值。此外，以文本书写的字符可能是由右至左的、由左至右的，或者两个
 方向都有（将特定的文本和其他的文本结合时）。将这些（或其他的）技术问题和其他关心的
 问题如公平、国际法、国际政治以及值得考虑的障碍问题综合考虑。有兴趣的读者可以查阅
 2006年出版的IAB关于IDN 的回顾\href{https://www.rfc-editor.org/rfc/rfc4690}{[RFC4690]}获取更多信息。当前的信息来自于［IIDN］。
+
 gTLD分为几类：通用、通用限制和赞助。通用gTLD是开放的，可无限制地使用。其
 他的（通用限制和赞助）受限于各种使用类型以及什么实体可以从域名中分配名称。例如，
 EDU 用于教育机构，MIL 和 GOV 用于美国的军事和政府机构，INT 用于国际组织机构（如
@@ -122,219 +57,55 @@ NATO）。表11-1总结了截止到2011年年中来自［GTLD］的22个gTLD摘�
 项目正在进行中，该项目可以显著地扩展当前的集合，可能扩展至数百甚至上千。该项目以
 及与 TLD管理相关的政策一般由互联网名称和号码分配机构（ICANN）负责［ICANN］。
 
-表11-1
-
-TLD
-
-AERO
-
-ARPA
-
-ASIA
-
-BIZ
-
-CAT
-
-COM
-
-COOP
-
-EDU
-
-GOV
-
-INFO
-
-INT
-
-JOBS
-
-MIL
-
-MOBI
-
-MUSEUM
-
-NAME
-
-NET
-
-ORG
-
-PRO
-
-TEL
-
-TRAVEL
-
-XXX
-
-首次使用
-
-2001年12月21日
-
-1985年1月1日
-
-2007年5月2日
-
-2001年6月26日
-
-2005年12月19日
-
-1985年1月1日
-
-2001年12月 15日
-
-1985年1月1日
-
-1985年1月1日
-
-2001年6月25日
-
-1988年11月3日
-
-2005年9月8日
-
-1985年1月1日
-
-2005年10月30日
-
-2001年10月30日
-
-2001年8月16日
-
-1985年1月1日
-
-2002年12月9日
-
-2002年5月6日
-
-2007年3月1日
-
-2005年7月27日
-
-2011年4月15日
-
-通用顶级域名（大约2011年）
-
-用途
-
-航空运输行业
-
-基础设施
-
-泛亚洲和亚太地区
-
-商业用途
-
-加泰罗尼亚语语言/文化社区
-
-通用
-
-合作协会
-
-美国公认的中学后教育机构
-
-美国政府
-
-通用
-
-国际条约组织
-
-人力资源管理者
-
-美国军方
-
-客户/移动产品供应商/服务
-
-博物馆
-
-个体
-
-通用
-
-通用
-
-持证专业人士/实体
-
-企业/个人联系资料
-
-旅游业
-
-成人娱乐业
-
-例
-
-子
-
-www.sita.aero
-
-18.in-addr.arpa
-
-www.seo.asia
-
-neustar.biz
-
-www.domini.cat
-
-icanhascheezburger.com
-
-www.ems.coop
-
-hpu.edu
-
-whitehouse.gov
-
-germany.info
-
-nato.int
-
-intel.jobs
-
-dtic.mil
-
-fowers.mobi
-
-icom.museum
-
-www.name
-
-ja.net
-
-slashdot.org
-
-nic.pro
-
-telnic.tel
-
-cancun.travel
-
-whois.nic.xxx
+\begin{table}[]
+	\centering
+	\caption{通用顶级域名(大约2011年)}
+	\begin{tabular}{c|c|c|c}
+		\hline
+        TLD	    & 首次使用	    &     用途	          &              例子 \\ \hline
+        AERO	& 2001年12月21日	& 航空运输行业	       &     www.sita.aero \\ \hline
+        ARPA	& 1985年1月1日	& 基础设施	           &     18.in-addr.arpa \\ \hline
+        ASIA	& 2007年5月2日	& 泛亚洲和亚太地区	       & www.seo.asia \\ \hline
+        BIZ	    & 2001年6月26日	& 商业用途	          &      neustar.biz \\ \hline
+        CAT	    & 2005年12月19日	& 加泰罗尼亚语语言/文化社区	&www.domini.cat \\ \hline
+        COM	    & 1985年1月1日	& 通用	             &   icanhascheezburger.com \\ \hline
+        COOP	& 2001年12月 15日	& 合作协会	        &        www.ems.coop \\ \hline
+        EDU	    & 1985年1月1日	& 美国公认的中学后教育机构	   & hpu.edu \\ \hline
+        GOV	    & 1985年1月1日	& 美国政府	           &     whitehouse.gov \\ \hline
+        INFO	& 2001年6月25日	& 通用	            &        germany.info \\ \hline
+        INT	    & 1988年11月3日	& 国际条约组织	        &    nato.int \\ \hline
+        JOBS	& 2005年9月8日	& 人力资源管理者	        &    intel.jobs \\ \hline
+        MIL	    & 1985年1月1日	& 美国军方	           &     dtic.mil \\ \hline
+        MOBI	& 2005年10月30日	& 客户/移动产品供应商/服务	&fowers.mobi \\ \hline
+        MUSEUM	& 2001年10月30日	& 博物馆	          &      icom.museum \\ \hline
+        NAME	& 2001年8月16日	& 个体	            &    www.name \\ \hline
+        NET	    & 1985年1月1日	& 通用	             &   ja.net \\ \hline
+        ORG	    & 2002年12月9日	& 通用	            &    slashdot.org \\ \hline
+        PRO	    & 2002年5月6日	& 持证专业人士/实体	      &  nic.pro \\ \hline
+        TEL	    & 2007年3月1日	& 企业/个人联系资料	      &  telnic.tel \\ \hline
+        TRAVEL	& 2005年7月27日	& 旅游业	           &     cancun.travel \\ \hline
+        XXX	& 2011年4月15日	& 成人娱乐业	          &      whois.nic.xxx \\ \hline
+	\end{tabular}
+\end{table}
+
+① 
+\footnotetext{图11-1还显示了 11个仍在使用的测试 IDN 域名。}
 
 ccTLD 包含ISO 3166标准［ISO3166］指定的两个字母的国家代码，以及另外5个：u、
-
 su、ac、eu 和tp（最后一个正逐渐淘汰）。由于两个字母代码中的一些暗示其他的用途和意义，
-
-①
-
-图11-1还显示了 11个仍在使用的测试 IDN 域名。
-
 各国已经能够从出售其ccTLD 内的域名获取商业暴利。例如，域名 cnn.tv 是太平洋岛国图
 瓦卢的一个真实的注册域名，它已经在销售与电视娱乐相关的域名。以这样非常规的方式创
 建一个域名有时称为域名黑客（domain hack）。
 
-11.2.1 DNS 命名语法
+\subsection{DNS 命名语法}
 
 DNS名称树中TLD下面的名称进一步划分成组，称为子域名（subdomain）。这是习惯
-
 做法，特别是对于 ccTLD。例如，英国的大部分教育站点使用后缀.ac.uk，而大部分的盈利
 机构以后缀.co.uk结尾。在美国，市政府web 站点倾向于使用子域名 ci.city.state.us，其中
 state 是州名字的两个字母的缩写，city是城市的名字。例如，站点 www.ci.manhattan-beach.
 ca.us 是美国加利福尼亚州曼哈顿海滩市政府的站点。
 
 到目前为止，我们所看到的名称示例被称为完全限定域名（FQDN）。它们有时更正式地
-
 书写为带有后随点的形式（如 mit.edu.）。后随点表示该名称是完整的，当进行名称解析时，
 没有额外的信息添加到该名称。与FQDN 形成对照，与系统配置中的默认域名或域名搜索列
 表集结合使用的非限定域名（unqualified domain name），会有一个或多个字符串添加到尾部。
@@ -345,10 +116,11 @@ ca.us 是美国加利福尼亚州曼哈顿海滩市政府的站点。
 IP地址。
 
 一个域名包含一系列的由点分开的标签（label）。名称代表名称层级中的一个位置，句
-
 点是层次结构分隔符，并且按名称中自右至左的顺序沿树下降。例如，FQDN
 
-www.net.in.tum.de.
+\begin{verbatim}
+    www.net.in.tum.de.
+\end{verbatim}
 
 包含一个在4级深度域名（net.in.tum.de）中的主机名称标签（www）。从根开始，按名称中
 自右向左的顺序进行，TLD是de（德国的cCTLD），tum 是 Technische Universitat Minchen
@@ -357,7 +129,10 @@ www.net.in.tum.de.
 AcMe.cOm 是等价的\href{https://www.rfc-editor.org/rfc/rfc4343}{[RFC4343]}。每个标签最多可到63个字符长，整个 FQDN 最多255（1
 字节） 个字符。例如，下面的域名
 
-thelongestdomainnameintheworldandthensomeandthensomemoreandmore .com
+\begin{verbatim}
+    thelongestdomainnameintheworldandthensomeandthensomemoreandmore.com
+\end{verbatim}
+
 据称可能想申请名称最长的世界纪录，其标签长度为63，但是在吉尼斯世界纪录中没能赢得
 一席之地。
 
@@ -473,46 +248,6 @@ server）构成 DNS分布式基础设施，通过该基础设施支持 DNS 查�
 一个完整的解析过程发生在几个实体之间，这样的过程无法利用已经存在的缓存条目，
 如图11-2所示。
 
-ISP DNS服务器
-
-（缓存/转发服务器）
-
-（递归）
-
-EXAMPLE.COM
-
-（对应的主机）
-
-ISP网络
-
-A.HOME
-
-（解析器）
-
-Internet
-
-A.IANA-SERVERS.NET
-
-（example.com 的授权
-
-DNS服务器）
-
-图 11-2
-
-GW.HOME
-
-（缓存/转发服务器）
-
-（递归）
-
-根名称服务器
-
-gTLD服务器
-
-（非递归）
-
-（非递归）
-
 A.HOME 查询EXAMPLE.COM的典型递归 DNS查询过程涉及多达10条消息。本地递归服
 务器（此处为GW.HOME）使用由ISP提供的DNS服务器。该服务器依次使用互联网根域名
 服务器和gTLD服务器（用于 COM 和 NET TLD）来查找EXAMPLE.COM 域名的名称服务
@@ -560,116 +295,6 @@ A.GTLD-SERVERS.NET 以及一个或多个它的IP地址（消息4）。根据这�
 有一种基本的DNS 消息格式\href{https://www.rfc-editor.org/rfc/rfc6195}{[RFC6195]}。它用于所有的DNS操作（查询、响应、区域
 传输、通知和动态更新），如图11-3所示。
 
-0
-
-15
-
-Q
-
-R
-
-事务ID（16位）
-
-OpCode
-
-（4位）
-
-ATR
-
-R
-
-A
-
-C
-
-Z
-
-ACDIA
-
-D
-
-D
-
-RCODE
-
-（4位）
-
-QDCOUNT/ZOCOUNT
-
-（查询数/区域数）
-
-ANCOUNT/PRCOUNT
-
-（回答数/先决条件数）
-
-NSCOUNT/UPCOUNT（授权记录数/更新数）
-
-ARCOUNT/ADCOUNT（额外信息数）
-
-区段：问题，回答，授权，额外信息
-
-区段（用于 DNS UPDATE）：区
-
-域，先决条件，更新，额外信息（可
-
-变长度）
-
-标志：
-
-QR：查询（0）/响应（1）
-
-•AA：授权回答
-
-TC：截断回答
-
-RD：期望递归
-
-RA：递归可用
-
-Z:0
-
-AD：真实数据\href{https://www.rfc-editor.org/rfc/rfc4035}{[RFC4035]}
-
-CD：禁止校验\href{https://www.rfc-editor.org/rfc/rfc4035}{[RFC4035]}
-
-操作码（通用值）：
-
-查询（0）—正常查询
-
-通知（4）
-
--DNS NOTIFY \href{https://www.rfc-editor.org/rfc/rfc1996}{[RFC1996]}
-
-更新（5）
-
--DNS UPDATE \href{https://www.rfc-editor.org/rfc/rfc2136}{[RFC2136]}
-
-响应码（通用值）：
-
-NoError （0）-
-
--无错误
-
-FormErr（1）
-
--格式错误
-
-ServFail（2）
-
--服务器失效
-
-NXDomain （3）
-
-—不存在域名
-
-Notlmp （4）
-
-未实现
-
-Refused（5）
-
--查询拒绝
-
 图 11-3
 DNS消息格式有一个固定的12字节头部。整个消息通常在UDP/IPv4 数据报中运载，并且限于
 512 字节。DNS UPDATE（动态更新 DNS）使用字段名 ZOCOUNT、PRCOUNT、 UPCOUNT 和
@@ -703,97 +328,25 @@ query）。RA 是1位字段，表示“递归可用（recursion available）”�
 中给出了前面11个错误代码（11 ~15的值未定义）。使用一种特殊的扩展来定义其他的类
 型（见11.5.2节）。名称错误只会由授权名称服务器返回，表示在查询中指定的域名不存在。
 
-表11-2
-
-值
-
-2
-
-3
-
-4
-
-6
-
-8
-
-9
-
-10
-
-名称
-
-NoError
-
-FormErr
-
-ServFail
-
-NXDomain
-
-Notlmp
-
-Refused
-
-YXDomain
-
-YXRRSet
-
-NXRRSet
-
-NotAuth
-
-NotZone
-
-RCODE 域中使用的前10个错误类型
-
-参考
-
-\href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}
-
-\href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}
-
-\href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}
-
-\href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}
-
-\href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}
-
-\href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}
-
-\href{https://www.rfc-editor.org/rfc/rfc2136}{[RFC2136]}
-
-\href{https://www.rfc-editor.org/rfc/rfc2136}{[RFC2136]}
-
-\href{https://www.rfc-editor.org/rfc/rfc2136}{[RFC2136]}
-
-\href{https://www.rfc-editor.org/rfc/rfc2136}{[RFC2136]}
-
-\href{https://www.rfc-editor.org/rfc/rfc2136}{[RFC2136]}
-
-描述和目的
-
-没有错误
-
-格式错误；查询不能被解读
-
-服务器失效；服务器的处理错误
-
-不存在域名；引用了未知域名
-
-没有实现；请求在服务器端不被支持
-
-拒绝；服务器不希望提供回答
-
-名称存在但是不应该存在（用于更新）
-
-RRSet 存在但是不应该存在（用于更新）
-
-RRSet 不存在但是应该存在（用于更新）
-
-服务器不是为该区域授权的（用于更新）
-
-在区域中不包含名称（用于更新）
+\begin{table}[]
+	\centering
+	\caption{RCODE 域中使用的前10个错误类型}
+	\begin{tabular}{c|c|c|c}
+		\hline
+        值	&	名称	&	参考	&	描述和目的  \\ \hline
+        0	&	NoError	&	\href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}	&	没有错误    \\ \hline
+        1	&	FormErr	&	\href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}	&	格式错误；查询不能被解读    \\ \hline
+        2	&	ServFail	&	\href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}	&	服务器失效；服务器的处理错误    \\ \hline
+        3	&	NXDomain	&	\href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}	&	不存在域名；引用了未知域名  \\ \hline
+        4	&	Notlmp	&	\href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}	&	没有实现；请求在服务器端不被支持    \\ \hline
+        5	&	Refused	&	\href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}	&	拒绝；服务器不希望提供回答  \\ \hline
+        6	&	YXDomain	&	\href{https://www.rfc-editor.org/rfc/rfc2136}{[RFC2136]}	&	名称存在但是不应该存在（用于更新）  \\ \hline
+        7	&	YXRRSet	&	\href{https://www.rfc-editor.org/rfc/rfc2136}{[RFC2136]}	&	RRSet 存在但是不应该存在（用于更新）    \\ \hline
+        8	&	NXRRSet	&	\href{https://www.rfc-editor.org/rfc/rfc2136}{[RFC2136]}	&	RRSet 不存在但是应该存在（用于更新）    \\ \hline
+        9	&	NotAuth	&	\href{https://www.rfc-editor.org/rfc/rfc2136}{[RFC2136]}	&	服务器不是为该区域授权的（用于更新）    \\ \hline
+        10	&	NotZone	&	\href{https://www.rfc-editor.org/rfc/rfc2136}{[RFC2136]}	&	在区域中不包含名称（用于更新）  \\ \hline
+	\end{tabular}
+\end{table}
 
 随后的4个字段均16位，说明了组成DNS消息的问题、回答、授权和额外信息区段
 中条目的数目。对于查询消息，问题的数目通常为1，其他三项计数则为0。对于应答消息，
@@ -818,28 +371,12 @@ DNS消息末尾的可变长度区段包含问题、回答、授权信息（包�
 的字节结束，0也是一个标签，其长度值0（根标签）。例如，名称www.pearson.com 的编
 码如图11-4所示。
 
-对于数据标签来说，每个标签的
-长度字节（值）必须在0到63之间，
-
-最大63个字符
-
-因为标签（长度）限于63字节。没有
-
-标签长度
-
-填充标签，因此总的名称长度可能是
-
-奇数。尽管有时这些标签称为“文本”
-
-标签，但是它们也可以包含非ASCII
-
-标签长度0
-
-（指明结束）
-
 图11-4 DNS名称编码为一系列的标签。本例将名称
 www.pearson.com 编码，共有4个标签。名称的
 最后通过未命名根的长度值为0的标签标示
+
+对于数据标签来说，每个标签的长度字节（值）必须在0到63之间，因为标签（长度）限于63字节。没有
+填充标签，因此总的名称长度可能是奇数。尽管有时这些标签称为“文本”标签，但是它们也可以包含非ASCII
 值。然而这种用法不常见，也不推荐
 这样使用。事实上，即使是可以编码 Unicode 字符\href{https://www.rfc-editor.org/rfc/rfc5890}{[RFC5890]}\href{https://www.rfc-editor.org/rfc/rfc5891}{[RFC5891]}的国际化域名，也
 使用一种奇怪的称为“Punycode 码”\href{https://www.rfc-editor.org/rfc/rfc3492}{[RFC3492]}的编码语法，该语法使用ASCII字符集表
@@ -866,7 +403,8 @@ target））。因此压缩标签能够指向距离开始处多达16383个字节
 2个高位置1以及在剩余的14位中编码edu的偏移量来完成。因为 edu 第一次出现在偏移量
 为4的位置，我们只需要设置第一个字节192（6位0），随后字节4。图11-5中的例
 子只显示了节省4个字节的情况，但是很显然压缩较大的共同标签可以得到更大幅度的节省。
-11.5.2 DNS 扩展格式（EDNSO）
+
+\subsection{DNS 扩展格式（EDNSO）}
 
 到目前为止，描述的基本 DNS 消息格式在一些情况中可能受到限制。它有固定长度的
 字段，当使用UDP时512字节的总长度限制（不包含UDP或IP 头部），以及指明差错类型
@@ -890,46 +428,6 @@ EDNSO也定义了扩展的标签类型（延伸到先前提到的数据标签和
 
 对于 TCP 和UDP来说，DNS的知名端口号都是53。最常见的格式使用如图11-6所示
 的 UDP/IPv4 的数据报结构。
-
-UDP 数据报
-
-DNS消息（最多512字节）
-
-图11-6
-
-IPv4
-
-头部
-
-UDP头部
-
-固定
-
-问题区段
-
-回答区段
-
-授权区段
-
-额外
-
-信息区段
-
-头部
-
-（20字节；
-
-（8
-
-（12
-
-4
-
-一（可变长度）—
-
-无选项）字节）字节）
-
-IPv4数据报 —
 
 DNS 消息通常封装在 UDP/IPv4 数据报中，并且其长度限制为512字节，除非不使用TCP 和/
 或EDNSO。每一个区段（除了问题区段）包含一组资源记录
@@ -955,96 +453,32 @@ DNS 消息的问题或查询字段列出了被引用的问题。问题字段中�
 所示。虽然协议可以支持多个问题，但是通常只有一个。动态更新中的区域字段也使用相同
 的结构（见11.5.7节），但使用不同的名称。
 
-查询名称（Query Name）是要被查询的
-
-0
-
-8
-
-15
-
-域名，使用我们之前描述的标签的编码。每
-个问题都有查询类型（Query Type） 和查询类
-
-查询名称（可变）
-
-（DNS更新的区域名称）
-
-（Query Class）。类的值是1、254或255，分别
-
-表示互联网类、没有类或所有类，这些是我们
-
-感兴趣的所有的情况（其他值通常不用于TCP/
-
-查询类型（16位）（DNS更新的区域类型）
-
-查询类（16位）（DNS更新的区域类）
-
-IP 网络）。查询类型字段包含一个值，该值使
-
-用表11-2中的值指明正在执行的查询类型。最
-
-图11-7
-
 DNS 消息中的查询（或问题）字段不
-
 包含TTL，因为它是不被缓存的
 
-常见的查询类型是A（如果启用IPv6的 DNS
-
-解析，则是 AAAA），这意味着需要一个与查询
-
-名称对应的IP地址。它也可以创建一个类型
-
-15
-
-ANY的查询，这将返回与查询名称相匹配的在
-
+查询名称（Query Name）是要被查询的域名，使用我们之前描述的标签的编码。每
+个问题都有查询类型（Query Type） 和查询类（Query Class）。类的值是1、254或255，分别
+表示互联网类、没有类或所有类，这些是我们感兴趣的所有的情况（其他值通常不用于TCP/
+IP 网络）。查询类型字段包含一个值，该值使用表11-2中的值指明正在执行的查询类型。最
+常见的查询类型是A（如果启用IPv6的 DNS 解析，则是 AAAA），这意味着需要一个与查询
+名称对应的IP地址。它也可以创建一个类型ANY的查询，这将返回与查询名称相匹配的在
 同一类中任意类型的所有 RR。
 
-名称（可变）
 
 \subsection{回答、授权和额外信息区段格式}
 
-DNS信息中的最后三个区段—回答、
-
-授权和额外信息，包含RR的集合。在大多
-
-数情况下，这些区段中的RR可以使用通配
-
-符（wildcard）域名作为自己的名称。这些域
-
-名中星号标签—只包含星号字符的数据标签
-
-\href{https://www.rfc-editor.org/rfc/rfc4592}{[RFC4592]}—首先出现（即最左边）。每个资
-
+DNS信息中的最后三个区段—回答、授权和额外信息，包含RR的集合。在大多
+数情况下，这些区段中的RR可以使用通配符（wildcard）域名作为自己的名称。这些域
+名中星号标签—只包含星号字符的数据标签\href{https://www.rfc-editor.org/rfc/rfc4592}{[RFC4592]}—首先出现（即最左边）。每个资
 源记录都有如图11-8所示的形式。
-
-名称（Name）字段（有时也被称“自己
-
-的名称”
-
-、“拥有者”或“记录拥有者名称”）是
-
-随后的资源数据对应的域名。它与我们之前描
-
-述的名称和标签的格式相同。类型（Type）字段
-
-类型（16位）
-
-类（16位）
-
-TTL（32位）
-
-RDLENGTH（16位）
-
-RDATA（16位）
 
 图11-8 DNS资源记录的格式。对于互联网中
 的DNS，类（class）字段总是包含值
 1。TTL 字段给出 RR 可以缓存的最大
 时间量（秘）
 
+名称（Name）字段（有时也被称“自己的名称”、“拥有者”或“记录拥有者名称”）是
+随后的资源数据对应的域名。它与我们之前描述的名称和标签的格式相同。类型（Type）字段
 指定为 RR类型代码中的一个（见11.5.6节）。这些和我们之前描述的查询类型值相同。对于
 互联网数据来说，类（Class）字段是1。TTL 字段是RR可以被缓存的秒数。资源数据长度
 （RDLENGTH）字段指定了资源数据（RDATA）字段中包含的字节数。数据的格式取决于类
@@ -1065,144 +499,146 @@ RDATA（16位）
 资源记录有很多类型（完整列表见［DNSPARAMS］，并且一个单一的名称可能有多个四
 配的RR。表11-3提供了在传统的 DNS（即没有 DNSSEC安全扩展的 DNS）中使用的最常
 见RR类型的列表。
-
-表11-3
-
-值
-
-1
-
-2
-
-5
-
-6
-
-12
-
-15
-
-16
-
-28
-
-33
-
-35
-
-41
-
-251
-
-252
-
-255
-
-RR 类型
-
-A
-
-NS
-
-CNAME
-
-SOA
-
-PTR
-
-MX
-
-TXT
-
-AAAA
-
-SRV
-
-NAPTR
-
-OPT
-
-IXFR
-
-AXFR
-
-（ANY）
-
-在DNS协议消息中使用的流行的资源记录类型和查询类型。当使用安
-
-全DNS （DNSSEC）时，需要使用其他的记录（未显示）
-
-参
-
-考
-
-描述和目的
-
-\href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}
-
-IPv4 地址记录（32位 IPv4地址）
-
-\href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}
-
-名称服务器；提供区域授权名称服务器的名称
-
-\href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}
-
-规范名称；将一个名称映射另一个（提供一种形式的名称别名）
-
-授权开始；为区域提供授权信息（名称服务器，联系的电子邮件地
-
-\href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}
-
-址，序列号，区域传输计时器）
-
-指针；提供地址到（规范）名称的映射；在 in-addr:arpa 和 ip6.arpa
-
-\href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}
-
-域中用于 IPv4 和IPv6 的逆向查询
-
-\href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}
-
-\href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}
-
-\href{https://www.rfc-editor.org/rfc/rfc1464}{[RFC1464]}
-
-\href{https://www.rfc-editor.org/rfc/rfc3596}{[RFC3596]}
-
-\href{https://www.rfc-editor.org/rfc/rfc2782}{[RFC2782]}
-
-\href{https://www.rfc-editor.org/rfc/rfc3403}{[RFC3403]}
-
-\href{https://www.rfc-editor.org/rfc/rfc2671}{[RFC2671]}
-
-\href{https://www.rfc-editor.org/rfc/rfc1995}{[RFC1995]}
-
-\href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}
-
-\href{https://www.rfc-editor.org/rfc/rfc5936}{[RFC5936]}
-
-\href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}
-
-邮件交换器；为一个域提供电子邮件处理主机的名称
-
-文本；提供各种信息（如，与SPF 发垃圾邮件方案一起使用以识别
-
-授权电子邮件服务器）
-
-IPv6地址记录（128位IPv6地址）
-
-服务器选择；通用服务的传输终点
-
-名称授权指针；支持交替的名称空间
-
-伪RR；支持更大的数据报、标签、EDNSO中的返回码
-
-增量区域传输
-
-完全区域传输；通过TCP运载
-
-请求任意记录
+\begin{verbatim}
+    
+    表11-3
+    
+    值
+    
+    1
+    
+    2
+    
+    5
+    
+    6
+    
+    12
+    
+    15
+    
+    16
+    
+    28
+    
+    33
+    
+    35
+    
+    41
+    
+    251
+    
+    252
+    
+    255
+    
+    RR 类型
+    
+    A
+    
+    NS
+    
+    CNAME
+    
+    SOA
+    
+    PTR
+    
+    MX
+    
+    TXT
+    
+    AAAA
+    
+    SRV
+    
+    NAPTR
+    
+    OPT
+    
+    IXFR
+    
+    AXFR
+    
+    （ANY）
+    
+    在DNS协议消息中使用的流行的资源记录类型和查询类型。当使用安
+    
+    全DNS （DNSSEC）时，需要使用其他的记录（未显示）
+    
+    参
+    
+    考
+    
+    描述和目的
+    
+    \href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}
+    
+    IPv4 地址记录（32位 IPv4地址）
+    
+    \href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}
+    
+    名称服务器；提供区域授权名称服务器的名称
+    
+    \href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}
+    
+    规范名称；将一个名称映射另一个（提供一种形式的名称别名）
+    
+    授权开始；为区域提供授权信息（名称服务器，联系的电子邮件地
+    
+    \href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}
+    
+    址，序列号，区域传输计时器）
+    
+    指针；提供地址到（规范）名称的映射；在 in-addr:arpa 和 ip6.arpa
+    
+    \href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}
+    
+    域中用于 IPv4 和IPv6 的逆向查询
+    
+    \href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}
+    
+    \href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}
+    
+    \href{https://www.rfc-editor.org/rfc/rfc1464}{[RFC1464]}
+    
+    \href{https://www.rfc-editor.org/rfc/rfc3596}{[RFC3596]}
+    
+    \href{https://www.rfc-editor.org/rfc/rfc2782}{[RFC2782]}
+    
+    \href{https://www.rfc-editor.org/rfc/rfc3403}{[RFC3403]}
+    
+    \href{https://www.rfc-editor.org/rfc/rfc2671}{[RFC2671]}
+    
+    \href{https://www.rfc-editor.org/rfc/rfc1995}{[RFC1995]}
+    
+    \href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}
+    
+    \href{https://www.rfc-editor.org/rfc/rfc5936}{[RFC5936]}
+    
+    \href{https://www.rfc-editor.org/rfc/rfc1035}{[RFC1035]}
+    
+    邮件交换器；为一个域提供电子邮件处理主机的名称
+    
+    文本；提供各种信息（如，与SPF 发垃圾邮件方案一起使用以识别
+    
+    授权电子邮件服务器）
+    
+    IPv6地址记录（128位IPv6地址）
+    
+    服务器选择；通用服务的传输终点
+    
+    名称授权指针；支持交替的名称空间
+    
+    伪RR；支持更大的数据报、标签、EDNSO中的返回码
+    
+    增量区域传输
+    
+    完全区域传输；通过TCP运载
+    
+    请求任意记录
+\end{verbatim}
 
 资源记录用于多种用途，但可以分为三大类：数据类型、查询类型和元类型。数据类型
 用于传达在DNS中存储的信息，如IP地址和授权名称服务器的名称。查询类型使用和数据
@@ -1228,69 +664,23 @@ example.com,nsl.example.com，考虑该如何解析。使用在大多数 Linux/�
 供的工具dig，我们可以看到A、AAAA和NS记录的结构。在这里，我们请求了与域名 rfc-
 editor.org 相关的任意类型的记录：
 
-Linux8 dig +nostats -t ANY rfc-editor.org
+\begin{verbatim}
+    Linux% dig +nostats -t ANY rfc-editor.org
+    
+    ; <<>> DiG 9.10.6 <<>> +nostats -t ANY rfc-editor.org
+    ;; global options: +cmd
+    ;; Got answer:
+    ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 36168
+    ;; flags: qr rd ra; QUERY: 1, ANSWER: 6, AUTHORITY: 0, ADDITIONAL: 1
+    
+    ;; OPT PSEUDOSECTION:
+    ; EDNS: version: 0, flags:; udp: 4096
+    ;; QUESTION SECTION:
+    ;rfc-editor.org.			IN	ANY
 
-； <<>> DiG 9.6.0-P1 <<>> tnostats -t ANYrfc-editor.org
-
-ii global options: tcmd
-
-ii Got answer：
-
-ii->>HEADER<<- opcode:QUERY,status: NOERROR,id: 53052
-
-ii flags:ar rd ra; QUERY:1、ANSWER:12,AUTHORITY:0,ADDITIONAL:2
-
-；； QUESTION SECTION：
-
-irfc-editor.org. IN ANY
-
-：； ANSWER SECTION：
-
-••
-
-rfc-editor.org.
-
-rfc-editor.org•
-
-rfc-editor.org.
-
-rfc-editor.org.
-
-1654
-
-IN
-
-AAAA 2001:1890:1112:1：：2£
-
-1654 IN A 64.170.98.47
-
-1654
-
-IN NS nso.ietf.org.
-
-1654
-
-IN NS nsl.hkgl.afilias-nst.info.
-
-；； ADDITIONAL SECTION：
-
-ns0.ietf.org.|
-
-nsO.ietf.org.
-
-756
-
-756
-
-IN
-
-IN
-
-A
-
-64.170.98.2
-
-AAAA 2001:1890:1112:1：：14
+    ;; ANSWER SECTION:
+    \dots
+\end{verbatim}
 
 在命令的输出中，前两行显示了正在使用的dig程序的版本、向它提供的参数，以及
 隐式的参数（+cmd 意味信息本身会被打印）。接下来的部分指明了 DNS应答消息中的数
@@ -1307,9 +697,10 @@ AAAA 2001:1890:1112:1：：14
 64.170.98.47，IPv6地址为2001:1890:1112:1:2f。正如NS记录所示，这也是一个子域。便
 用下面的命令我们可以很快的猜测并验证该子域中至少有一台主机。
 
-Linux8 host ftp.rfc-editor.org
-
-ftp.rfc-editor.org has address 64.170.98.47
+\begin{verbatim}
+    Linux% host ftp.rfc-editor.org
+    ftp.rfc-editor.org has address 64.170.98.47
+\end{verbatim}
 
 这个例子说明了 A、AAAA 和NS记录的一些有趣的方面。首先，一个单一的域名有这
 些类型（或更多）的记录是可能的。对于特定组织的“著名的”支持IPv6的服务器来说，这
@@ -1326,69 +717,47 @@ ftp.rfc-editor.org has address 64.170.98.47
 名称服务器和由ISP管理的远程名称服务器之间的通信。此情形演示了 DNS缓存的重要性。
 其拓扑结构如图 11-9所示。
 
-BERKELEY.EDU
-
-（对应的主机）
-
-A.HOME
-
-ISP
-
-网络
-
-Internet
-
-ISP DNS
-
-服务器
-
-ADNS1.BERKELEY.EDU
-
-（权威DNS服务器）
-
-GW.HOME
-
-（私有DNS服务器）
-
 图11-9一个简单的DNS查询/响应的示例。本地 DNS服务器（GW.HOME）向客户端（A.HOME）
 提供递归查询，并在请求的数据不在缓存中时使用ISP 提供的 DNS服务器
 
 在我们的 Windows 客户端（A.HOME）上，我们开始时使用命令删除任何由解析器库缓
 存的DNS数据。然后，我们执行对域名 berkeley.edu 的地址（A记录类型）的查询：
 
-C：\> ipconfig /flushdns
-
-Windows IP Configuration
-
-Successfully flushed the DNS Resolver Cache.
-
-C：\> nslookup
-
-Default Server：
-
-gw
-
-Address：
-
-> set type=a
-
-> berkeley.edu.
-
-Server：
-
-gW
-
-Address: 10.0.0.1
-
-Non-authoritative answer：
-
-Name：
-
-berkeley.edu
-
-Address：
-
-169.229.131.81
+\begin{verbatim}
+    C：\> ipconfig /flushdns
+    
+    Windows IP Configuration
+    
+    Successfully flushed the DNS Resolver Cache.
+    
+    C：\> nslookup
+    
+    Default Server：
+    
+    gw
+    
+    Address：
+    
+    > set type=a
+    
+    > berkeley.edu.
+    
+    Server：
+    
+    gW
+    
+    Address: 10.0.0.1
+    
+    Non-authoritative answer：
+    
+    Name：
+    
+    berkeley.edu
+    
+    Address：
+    
+    169.229.131.81
+\end{verbatim}
 
 第一个命令是特定于 Windows的，能够删除由客户端的解析器软件缓存的数据。在
 Windows 和 Linux/基于 UNIX的系统中都可以使用的nslookup 程序提供了一种基本的方式
@@ -1400,8 +769,12 @@ nslookup 再一次指明它使用的用于解析的名称服务器。然后，�
 为了在数据分组级别查看 DNS协议发生了什么，我们使用 Wireshark，并详细地查看第
 一个分组，如图11-10所示。
 
-图11-10
-一个 UDP/IPv4 数据报，它包含一个 DNS标准查询，即查询 berkeley.edu 相关的IPv4 地址
+\begin{figure}[!htb]
+    \centering
+	\includegraphics[width=0.7\textwidth]{imgs/11/11-10.png}
+	\caption{一个 UDP/IPv4 数据报，它包含一个 DNS标准查询，即查询 berkeley.edu 相关的IPv4 地址}
+\end{figure}
+
 在跟踪记录中有两个消息：一个标准查询消息和一个标准查询响应消息。在第一条消息
 （查询）中，源IPv4地址是10.0.0.120（在客户端的DHCP 分配的地址；见第6章），目的地
 是10.0.0.1（DNS服务器）。查询是一个源端口为56288（临时端口）和目的端口为53（知名
@@ -1418,8 +791,11 @@ berkeley 和 edu 的数据标签（分别为9字节和4字节），再加上尾�
 询转发至配置使用的下一个（上游）名称服务器。在本特例情况下，那个名称服务器地址为
 206.13.28.12（见图11-11）。
 
-图11-11
-在GW.HOME产生的DNS请求，因为递归被发送到ISP 的名称服务器
+\begin{figure}[!htb]
+    \centering
+	\includegraphics[width=0.7\textwidth]{imgs/11/11-11.png}
+	\caption{在GW.HOME产生的DNS请求，因为递归被发送到ISP 的名称服务器}
+\end{figure}
 
 在图11-11中，我们看到了一个与客户端发出的查询相似的查询，但在这种情况下源
 IPv4 地址是 70.231.136.162（ISP 端的GW.HOME 的IPv4地址）。目的地址是206.13.28.12，
@@ -1443,11 +819,19 @@ IPv4地址。注意，授权标志没有设置，应答的授权区段是空的�
 分的时间（14.2ms）被本地域名服务器（GW.HOME）和ISP 的域名服务器（206.13.28.12）
 之间的事务占据。
 
-图11-12 从ISP的 DNS服务器发送到GW.HOME的一个标准的 DNS响应
+\begin{figure}[!htb]
+    \centering
+	\includegraphics[width=0.7\textwidth]{imgs/11/11-12.png}
+	\caption{从ISP的 DNS服务器发送到GW.HOME的一个标准的 DNS响应}
+\end{figure}
 
-图11-13
-由GW.HOME 生成去往客户端的响应。这个消息完成了递归的DNS 事务
-规范名称（CNAME）记录
+\begin{figure}[!htb]
+    \centering
+	\includegraphics[width=0.7\textwidth]{imgs/11/11-13.png}
+	\caption{由GW.HOME 生成去往客户端的响应。这个消息完成了递归的DNS 事务规范名称（CNAME）记录}
+\end{figure}
+
+\subsubsection{规范名称(cNAME)记录}
 
 CNAME 记录代表规范名称（canonical name）的记录，并用于将单一域名的别名引人到
 DNS 命名系统中。例如，名称 www.berkeley.edu 可能有一个CNAME记录，以映射到其他
@@ -1464,37 +848,28 @@ CNAME条目。
 的目标）。此外，规范名称本身可能是一个 CNAME（称为 CNAME 链），但是通常不鼓励这
 么做，因为它可以导致DNS解析器使用更多的非必要的查询。然而，确实也有一些服务使
 用此功能。例如，大容量站点 www.whitehouse.gov（在写作的时候）使用了Akamai公司所
-提供的内容交付网络（CDN）°。当查看这个域名时，我们找到以下内容：
+提供的内容交付网络（CDN）\footnotemark。当查看这个域名时，我们找到以下内容：
 
 \begin{verbatim}
-    
-Linux& host -t any www.whitehouse.gov
-
-www.whitehouse.gov is an alias for www.whitehouse.gov.edgesuite.net.
-
-Linux& host -t any www.whitehouse.gov.edgesuite.net
-
-www.whitehouse.gov.edgesuite.net is an alias for a1128.h.akamai.net.
-
-Linux& host -t
-
-any a1128.h.akamai.net
-
-a1128.h.akamai.net has address 92.123.65.42
-
-a1128.h.akamai.net has
-
-address 92.123.65.51
+    Linux& host -t any www.whitehouse.gov
+    www.whitehouse.gov is an alias for www.whitehouse.gov.edgesuite.net.
+    Linux& host -t any www.whitehouse.gov.edgesuite.net
+    www.whitehouse.gov.edgesuite.net is an alias for a1128.h.akamai.net.
+    Linux& host -t any a1128.h.akamai.net
+    a1128.h.akamai.net has address 92.123.65.42
+    a1128.h.akamai.net has address 92.123.65.51
 \end{verbatim}
 
 这样，CNAME 链就可以和DNS一起使用。然而，由于其潜在的性能影响，这样的链
 通常被解析器限制在几个链接内（如5）。长链有可能是执行错误或是误解的结果，因为很难
 想象在正常情况下为什么需要它们。
 
-注意 有一个标准的资源记录称 DNAME（类型 39）\href{https://www.rfc-editor.org/rfc/rfc2672}{[RFC2672]}［IDDN］。 DNAME
-记录就像 CNAME 记录一样，但是是整个区域的。例如，使用一个单一的DNAME
-资源记录可以将具有 NAME.example.com 形式的所有名称映射到 NAME.newexample.
-com。然而，DNAME记录并不适用于顶层记录本身（这里的 example.com）。
+\begin{tcolorbox}
+    有一个标准的资源记录称 DNAME（类型 39）\href{https://www.rfc-editor.org/rfc/rfc2672}{[RFC2672]}［IDDN］。 DNAME
+    记录就像 CNAME 记录一样，但是是整个区域的。例如，使用一个单一的DNAME
+    资源记录可以将具有 NAME.example.com 形式的所有名称映射到 NAME.newexample.
+    com。然而，DNAME记录并不适用于顶层记录本身（这里的 example.com）。
+\end{tcolorbox}
 
 \subsubsection{逆向 DNS查询：PTR（指针）记录}
 
@@ -1506,14 +881,15 @@ com。然而，DNAME记录并不适用于顶层记录本身（这里的 example.
 PTR RR类型用于响应逆向DNS查询，当将一个 IP地址转换为其名称时，它通常是很
 必要的。它以一种特殊的方式使用了特殊的 in-addr.arpa （IPv6 中为 ip6.arpa）域。考虑一个
 IPv4 地址，如128.32.112.208。在分类的地址结构中（见第2章），这个地址来自于 128.32B
-
-• 内容交付网络一般包括大量同步内容缓存，它们位于网络的特定拓扑位置。CDN 可让客户访问内容提供
-商的付费内容时的延迟最小。
-
 类地址空间。为了确定对应到这个地址的名称，首先将该地址逆转，然后添加特殊的域。本
 例中，将会使用名称
 
-208.112.32.128.in-addr.arpa.
+ \footnotetext{内容交付网络一般包括大量同步内容缓存，它们位于网络的特定拓扑位置。CDN 可让客户访问内容提供
+商的付费内容时的延迟最小。}
+
+\begin{verbatim}
+    208.112.32.128.in-addr.arpa.
+\end{verbatim}
 
 进行PTR记录的查询。实际上，这是在查询域112.32.128.in-addr.arpa. 中的“主机”208。
 在本节中我们稍后将会看到更多的逆向 DNS查询的例子。
@@ -1626,43 +1002,20 @@ X.ip6-servers.arpa，其中X是任意a 到f（包括）的字母。
 地址注册管理组织（ARIN）维护的8台名称服务器之一，它可以对以 169开始的IPv4地址
 授权。如果我们联系这些服务器中的一个，我们发现对于81.131.229.169.in-addr.arpa 的PTR
 查询给出了以下响应：
-\begin{verbatim}
-    
-> server w.arin.net
+\begin{verbatim} 
+    > server w.arin.net
+    Default Server: W.arin.net
+    Address: 72.52.71.2
+    Default Server: w.arin.net
+    Address: 2001:470:1a::2
+    > 81.131.229.169.in-addr.arpa.
+    Server: w.arin.net
+    Address: 72.52.71.2
 
-Default Server: W.arin.net
-
-Address: 72.52.71.2
-
-Default Server: w.arin.net
-
-Address: 2001:470:1a：：2
-
-> 81.131.229.169.in-addr.arpa.
-
-Server：
-
-w.arin.net
-
-Address: 72.52.71.2
-
-229.169.in-addr.arpa nameserver
-
-adnsl.berkeley.edu.
-
-229.169.in-addr.arpa nameserver
-
-= phloem.uoregon.edu.
-
-229.169.in-addr.arpa
-
-nameserver
-
-aodnsl.berkeley.edu.
-
-229.169.in-addr.arpa nameserver
-
-= adns2.berkeley.edu.
+    229.169.in-addr.arpa nameserver = adnsl.berkeley.edu.
+    229.169.in-addr.arpa nameserver = phloem.uoregon.edu.
+    229.169.in-addr.arpa nameserver = aodnsl.berkeley.edu.
+    229.169.in-addr.arpa nameserver = adns2.berkeley.edu.
 \end{verbatim}
 
 这里我们可以推测，拥有网络前缀169.229/16的教育机构是伯克利大学，该大学维护了三个
@@ -1670,40 +1023,17 @@ aodnsl.berkeley.edu.
 这些服务器中的一个，我们找到了答案（这次使用 Linux版本的 nslookup，输出略有不同）：
 
 \begin{verbatim}
-    
-Linuxe nslookur
-
-> set type=ptr
-
-> server adnsl.berkeley .edu
-
-Default Server：
-
-adnsl.berkeley.edu
-
-Address：
-
-128.32.136.3#53
-
-Default Server：
-
-adnsl.berkeley.edu
-
-Address：
-
-2607:f140:ffff:fffe：：3#53
-
-> 81.131.229.169.in-addr.arpa.
-
-Server：
-
-adnsl.berkeley.edu
-
-Address: 128.32.136.3#53
-
-81.131.229.169.in-addr.arpa
-
-name = webfarm.Berkeley.EDU
+    Linuxe nslookup
+    > set type=ptr
+    > server adnsl.berkeley .edu
+    Default Server： adnsl.berkeley.edu
+    Address：128.32.136.3#53
+    Default Server：adnsl.berkeley.edu
+    Address：2607:f140:ffff:fffe：：3#53
+    > 81.131.229.169.in-addr.arpa.
+    Server：adnsl.berkeley.edu
+    Address: 128.32.136.3#53
+    81.131.229.169.in-addr.arpa name = webfarm.Berkeley.EDU
 \end{verbatim}
 
 这里我们得到所期待的结果，即 IPv4地址169.229.131.81 的名称为 webfarm.Berkeley.
@@ -1745,22 +1075,14 @@ X.136.17.12.in-addr.arpa（其中X至少为128且不超过255）的每一个名�
 RR，可能由站点的ISP 维护：
 
 \begin{verbatim}
-    
-128.136.17.12.in-addr.arpa. canonical name =
+    128.136.17.12.in-addr.arpa. canonical name =
+                                128.128/25.136.17.12.in-addr.arpa.
 
-128.128/25.136.17.12.in-addr.arpa.
-
-129.136.17.12.in-addr.arpa.
-
-canonical name =
-
-129.128/25.136.17.12.in-addr.arpa.
-
-255.136.17.12.in-addr.arpa.
-
-canonical name =
-
-255.128/25.136.17.12.in-addr.arpa.
+    129.136.17.12.in-addr.arpa. canonical name =
+                                129.128/25.136.17.12.in-addr.arpa.
+    ...
+    255.136.17.12.in-addr.arpa. canonical name =
+                                255.128/25.136.17.12.in-addr.arpa.
 \end{verbatim}
 
 这里我们可以看到网络前缀是如何使用域名中第二个标签相关的“/” 符号编码的（在
@@ -1950,7 +1272,7 @@ Addresses: 2607：£140:ffff:fffe：：3
 
 128.32.136.3
 
-berkeley•edu
+berkeleyedu
 
 Primary name server = ns-masterl.berkeley .edu
 
@@ -2059,7 +1381,11 @@ edu 域名的相关信息，并且由于问题区段的内容，它能够利用�
 长度为16字节，因此，尽管IPv6地址可以以带有“：”的文本形式来节省空间，但是它在
 分组中并非如此编码。相反，使用了全部的128位地址。
 
-图 11-14 使用IPv6对一个SOA 记录 DNS 查询的响应。响应包括该区域的 IPv4 和 IPv6地址
+\begin{figure}[!htb]
+    \centering
+	\includegraphics[width=0.7\textwidth]{imgs/11/11-14.png}
+	\caption{使用IPv6对一个SOA 记录 DNS 查询的响应。响应包括该区域的 IPv4 和 IPv6地址}
+\end{figure}
 
 \subsubsection{邮件交换（MX）记录}
 
@@ -2076,26 +1402,15 @@ MX记录包括优先级（preference） 值，因此对于一个特定的域名�
 edu 相关的 MX 记录：
 
 \begin{verbatim}
-    
-Linux& host -t MX cs.ucla.edu ns3.dns.ucla.edu
+    Linux% host -t MX cs.ucla.edu ns3.dns.ucla.edu
+    Using domain server：
+    Name: ns3.dns.ucla.edu
+    Address: 2607:f600:8001:1：：ff:fe01:35#53
+    Aliases：
 
-Using
-
-domain server：
-
-Name: ns3.dns.ucla.edu
-
-Address: 2607:f600:8001:1：：ff:fe01:35#53
-
-Aliases：
-
-cs.ucla.edu mail is handled
-
-by 13 Pelican.cs.ucla.edu.
-
-cs.ucla.edu mail is handled by 3 Moa.cs.ucla.edu.
-
-cs.ucla.edu mail is handled by 13 Mailman.cs.ucla.edu.
+    cs.ucla.edu mail is handled by 13 Pelican.cs.ucla.edu.
+    cs.ucla.edu mail is handled by 3 Moa.cs.ucla.edu.
+    cs.ucla.edu mail is handled by 13 Mailman.cs.ucla.edu.
 \end{verbatim}
 
 在这里我们可以看到，邮寄到person@cs.ucla.edu 的电子邮件由在 DNS中配置的三台
@@ -2103,6 +1418,7 @@ cs.ucla.edu mail is handled by 13 Mailman.cs.ucla.edu.
 件服务器不必与它们正在处理的电子邮件有相同的域。这三个服务器可分为两部分：一部分
 优先级为3，一部分优先级为13。优先级编号较小的服务器是首选的，所以发送方首先尝试
 Moa.cs.ucla.edu。如果失败，它会随即选择 Pelican或 Mailman 进行尝试。
+
 很可能MX记录的目标主机都不可达。这是一种错误状态。也可能现在没有MX记录，
 但有该域名的CNAME、A或AAAA 记录。如果有一个 CNAME记录，CNAME 的目标是用
 来代替原来的域名。如果有 A或AAAA记录，邮件代理可以连接到这些地址。每个被认为
@@ -2134,14 +1450,10 @@ SPF 支持丰富的语法来表达一些准则，这些准则用于匹配传入�
 起来）：
 
 \begin{verbatim}
-    
-Linux& host -t txt berkeley .edu
-
-berkeley.edu descriptive text
-
-"v=spf1 ip4:169.229.218.128/25 ip6:2607:F140:0:1000：：/64
-
-include:outboundmail.convio.net ~al1"
+    Linux% host -t txt berkeley.edu
+    berkeley.edu descriptive text
+            "v=spf1 ip4:169.229.218.128/25 ip6:2607:F140:0:1000：：/64
+            include:outboundmail.convio.net ~all"
 \end{verbatim}
 
 在这个例子中，所提供的信息是对SPF版本1的（通过版本字段中v=spf1 字符串来说
@@ -2163,22 +1475,14 @@ SPF 的配置中存在问题，通常是因为有缺陷的域 TXT或SPF记录。
 outboundmail.convio.net TXT 记录：
 
 \begin{verbatim}
-    
-Linux& host -t txt outboundmai1.convio.net
-
-outboundmail.convio.net descriptive text
-
-“v=spf1 +ip4:66.45.103.0/25 +ip4:69.48.252.128/25
-
-+ip4:209.163.168.192/26 ~a11"
-
-outboundmail.convio.net descriptive text
-
-"spf2.0/pra
-
-+ip4:66.45.103.0/25 +ip4:69.48.252.128/25
-
-+ip4:209.163.168.192/26 ~a11"
+    Linux% host -t txt outboundmai1.convio.net
+    outboundmail.convio.net descriptive text
+            “v=spf1 +ip4:66.45.103.0/25 +ip4:69.48.252.128/25
+            +ip4:209.163.168.192/26 ~all"
+    outboundmail.convio.net descriptive text
+            "spf2.0/pra
+            +ip4:66.45.103.0/25 +ip4:69.48.252.128/25
+            +ip4:209.163.168.192/26 ~all"
 \end{verbatim}
 
 \begin{tcolorbox}
@@ -2191,7 +1495,7 @@ outboundmail.convio.net descriptive text
     户。在第18 章我们将着眼于 DKIM，它提供类似 SPF的功能，但使用加密进行身份验证。
 \end{tcolorbox}
 
-\subsubsection{选项 （OPT）伪记录}
+\subsubsection{选项（OPT）伪记录}
 
 如前所述，连同 EDNSO也定义了特的 OPT伪RR\href{https://www.rfc-editor.org/rfc/rfc2671}{[RFC2671]}。就某种意义而言，它
 是“假的”，它仅适用于单一DNS消息的内容，而且不是常见的DNS RR数据。因此，OPT
@@ -2208,71 +1512,73 @@ Name、Type、Class、TTL 和 RDLEN 有相同的相对位置关系（见图11-8�
 位提供了一个可能的DNS错误类型的扩展集，这些值在表11-4中给出。（注意值16由两个
 不同的RFC定义。）
 
-值
-
-16
-
-16
-
-17
-
-18
-
-19
-
-20
-
-21
-
-名称
-
-BADVERS
-
-BADVERS
-
-BADKEY
-
-BADTIME
-
-BADMODE
-
-BADMODE
-
-BADALG
-
-表11-4 扩展 RCODE 值。大部分被用来支持安全扩展
-
-参考
-
-描述和目的
-
-\href{https://www.rfc-editor.org/rfc/rfc2671}{[RFC2671]}
-
-\href{https://www.rfc-editor.org/rfc/rfc2845}{[RFC2845]}
-
-\href{https://www.rfc-editor.org/rfc/rfc2845}{[RFC2845]}
-
-\href{https://www.rfc-editor.org/rfc/rfc2845}{[RFC2845]}
-
-\href{https://www.rfc-editor.org/rfc/rfc2930}{[RFC2930]}
-
-\href{https://www.rfc-editor.org/rfc/rfc2930}{[RFC2930]}
-
-IRFC2930］
-
-坏 EDSN版本
-
-坏TSIG 签名（见第18章）
-
-坏TSIG 密钥（见第18章）
-
-坏TSIG 签名（时间问题；见第18章）
-
-坏TKEY 模式（见第18章）
-
-重复密钥名称（见第18章）
-
-不支持的算法（见第18章）
+\begin{verbatim}
+    值
+    
+    16
+    
+    16
+    
+    17
+    
+    18
+    
+    19
+    
+    20
+    
+    21
+    
+    名称
+    
+    BADVERS
+    
+    BADVERS
+    
+    BADKEY
+    
+    BADTIME
+    
+    BADMODE
+    
+    BADMODE
+    
+    BADALG
+    
+    表11-4 扩展 RCODE 值。大部分被用来支持安全扩展
+    
+    参考
+    
+    描述和目的
+    
+    \href{https://www.rfc-editor.org/rfc/rfc2671}{[RFC2671]}
+    
+    \href{https://www.rfc-editor.org/rfc/rfc2845}{[RFC2845]}
+    
+    \href{https://www.rfc-editor.org/rfc/rfc2845}{[RFC2845]}
+    
+    \href{https://www.rfc-editor.org/rfc/rfc2845}{[RFC2845]}
+    
+    \href{https://www.rfc-editor.org/rfc/rfc2930}{[RFC2930]}
+    
+    \href{https://www.rfc-editor.org/rfc/rfc2930}{[RFC2930]}
+    
+    IRFC2930］
+    
+    坏 EDSN版本
+    
+    坏TSIG 签名（见第18章）
+    
+    坏TSIG 密钥（见第18章）
+    
+    坏TSIG 签名（时间问题；见第18章）
+    
+    坏TKEY 模式（见第18章）
+    
+    重复密钥名称（见第18章）
+    
+    不支持的算法（见第18章）
+\end{verbatim}
 
 正如我们已经提到的，OPT RR 包含可变长度的RDATA 字段。该字段用来存放属性-
 值对的扩展列表。当前属性、意义和定义的RFC的集合都由IANA［DNSPARAMS］维护。一
@@ -2287,17 +1593,9 @@ EDNSO用法的例子。
 \href{https://www.rfc-editor.org/rfc/rfc2782}{[RFC2782]}定义了服务（SRV）资源记录。SRV RR 推广了MX记录的格式，以描述主机、
 协议和用于连接特定服务的端口号。SRV RR 的一般结构如下：
 
-\_Service. Proto.Name TTL IN
-
-SRV
-
-PriO
-
-Weight
-
-Port
-
-Target
+\begin{verbatim}
+    \_Service. Proto.Name TTL IN    SRV Prio    Weight  Port    Target
+\end{verbatim}
 
 Service 标识符是一个服务的正式名称。Proto 标识符是用于访问服务的传输协议，通常
 是TCP或UDP。TTL值是一个传统 RR的 TTL,IN和SRV 分别表明互联网类和 SRV RR类
@@ -2312,9 +1610,10 @@ Service 标识符是一个服务的正式名称。Proto 标识符是用于访问
 和端口，它会使用域名\_Idap.\_tcp.example.com执行SRV记录的查询。这里是一个真实的
 例子：
 
-Linux8 host -t srv \_1dap.\_tcp.openldap.org
-
-\_ldap•tcp.openldap•org has SRV record 0 0 389 www.openldap•org•
+\begin{verbatim}
+    Linux% host -t srv \_1dap.\_tcp.openldap.org
+    \_ldaptcp.openldaporg has SRV record 0 0 389 www.openldap.org
+\end{verbatim}
 
 在这个例子中，我们通过TCP，在域openldap.org 中查找提供轻量级目录访问协议
 （LDAP）服务的服务器。我们发现，可以使用TCP端口389（默认的LDAP端口），在服务器
@@ -2323,9 +1622,7 @@ www.openldap.org 上访问。Priority 和 Weight 值为0，因没有替代的服
 \href{https://www.rfc-editor.org/rfc/rfc2782}{[RFC2782]}没有 SRV Service 和 Proto值指定一个新的IANA 注册。所以，默认情况
 下，名称与IANA 的“服务名称和传输协议端口”［ISPR］注册中保存的名称相对应，Proto 值
 为\_tcp 或\_udp，但也有少数例外。［RFCS509］使用以下的 SRV Service 和 Proto 名称为基于
-SIP 的在场和即时通信建立约定：
-
-\_im.\_sip 和\_pres\_sip。\href{https://www.rfc-editor.org/rfc/rfc6186}{[RFC6186]}为电子邮件用户代理定
+SIP 的在场和即时通信建立约定：\_im.\_sip 和\_pres\_sip。\href{https://www.rfc-editor.org/rfc/rfc6186}{[RFC6186]}为电子邮件用户代理定
 义了下面的 SRV Service 名称，以便容易地发现IMAPS、SMTP、IMAP 和 POP3服务器的联
 系信息（当设置电子邮件客户端时，通常前两个是优先考虑的）：\_submission，\_imap，\_imaps，
 \_Pop3，\_Pop3s。虽然\href{https://www.rfc-editor.org/rfc/rfc6186}{[RFC6186]}没有要求这些名称使用TCP 作为相应的Proto 值，但是这
@@ -2350,105 +1647,23 @@ DDDS规则的操作。一个DDDS 包括一个规则数据库和一组用于形�
 写系统，可用于编码有足够正则语法的几乎任意串。该算法的本质如图11-15所示。
 
 图11-15所示的过程，开始时将“第一条众所周知的规则”（frst Well-Known Rule）应用
-于AUS,AUS 对于每个应用是唯一的。
-
-结果形成一个关键字，用于从数据库中
-
-AUS
-
-检索另一个规则。规则是字符串重写模
-式和标志，该标志应用于 AUS，但是
-从来不应用于重写字符串的结果。它工
-作的特定方式依赖于应用程序，但规则
-应用第一条
-
-众所周知
-
-的规则
-
-重写规则
-
-规则
-
-据廓
-
-通常是正则表达式的替换，类似于使用
-
-关键字
-
-UNIX sed 程序［DR97］。当使用 DNS作
-
+于AUS,AUS 对于每个应用是唯一的。结果形成一个关键字，用于从数据库中
+检索另一个规则。规则是字符串重写模式和标志，该标志应用于 AUS，但是
+从来不应用于重写字符串的结果。它工作的特定方式依赖于应用程序，但规则
+通常是正则表达式的替换，类似于使用UNIX sed 程序［DR97］。当使用 DNS作
 为支持DDDS的数据库时\href{https://www.rfc-editor.org/rfc/rfc3403}{[RFC3403]}，
-
-这正是我们感兴趣的情况，关键字是域
-
-在数据库
-
-中搜索
-
-无
-
-完成
-
-（未找到）
-
-名，规则存储于NAPTR资源记录中。
-
-每个 NAPTR RR 包含以下字段：顺序、
-
-规则的
-
-有序集
-
-优先级、标志、服务、正则表达式（有
-
+这正是我们感兴趣的情况，关键字是域名，规则存储于NAPTR资源记录中。
+每个 NAPTR RR 包含以下字段：顺序、优先级、标志、服务、正则表达式（有
 时简写为 Regexp）、替换。
 
-关键字
-
-顺序字段是16位无符号整数，指
-
-将规则
-
-应用到
-
-AUS
-
-定哪一个NAPTR 记录在其他之前使用
-
-（较小的数字比较大的那些更优先），因
-
-关键字，标志
-
-DNS架构不保证任意特定资源记录
-
-集的排序。优先级字段用来影响含有
-
-否
-
-是
-
-终结规则？？
-
-相同顺序号的记录的顺序。顺序字段表
-
-完成
-
-（完整）
-
-明在 RR上施加强制性的顺序，而优先
-
-级是建议性的。标志字段包含来自集合
-
-A~Z和0~9的单个字符的无序列表
-
-（大小写不敏感的）。使用NAPTR 记录
-
-图11-15
-DDDS算法的抽象操作。允许非终结记录形
-成循环。每次迭代都涉及应用唯一字符串的
+DDDS算法的抽象操作。允许非终结记录形成循环。每次迭代都涉及应用唯一字符串的
 重写操作
 
+顺序字段是16位无符号整数，指定哪一个NAPTR 记录在其他之前使用
+（较小的数字比较大的那些更优先），因DNS架构不保证任意特定资源记录
+集的排序。优先级字段用来影响含有相同顺序号的记录的顺序。顺序字段表
+明在 RR上施加强制性的顺序，而优先级是建议性的。标志字段包含来自集合
+A~Z和0~9的单个字符的无序列表（大小写不敏感的）。使用NAPTR 记录
 的特定的应用程序（例如 ENUM，将在
 下一节描述），定义标志字段的解释。服务字段由应用程序定义，用以说明哪种类型的服务
 正在被描述。正则表达式字段包含一个替换表达式，该表达式应用于AUS 以形成另一个服
@@ -2484,22 +1699,13 @@ enumservice（枚举服务）标识符，这样的服务向 IANA ［ENUM］\href
 号码位于捷克的俄斯特拉法大学（为清晰起见，很多行隐藏了）：
 
 \begin{verbatim}
-    
-Linux8 host -t naptr 1.1.1.1.1.5.8.3.7.0.2.4.e164.arpa
-
-1.1.1.1.1.5.8.3.7.0.2.4.e164.arpa has NAPTR record
-
-"u""E2U+sip" "！^\\+（.*）$！sip：\\1@osu.cz！"
-
-1.1.1.1.1.5.8.3.7.0.2.4.e164.arpa has NAPTR record
-
-"E2U+sip""！^\l+（.*）$！sip：\\1@cesnet.cz！"
-
-1.1.1.1.1.5.8.3.7.0.2.4.e164.arpa has NAPTR record
-
-200 50 "u""E2U+h323"
-
-“！^\\+（.*）$！h323：\\1@gklext.cesnet.cz！"
+    Linux% host -t naptr 1.1.1.1.1.5.8.3.7.0.2.4.e164.arpa
+    1.1.1.1.1.5.8.3.7.0.2.4.e164.arpa has NAPTR record
+            50 50 "u""E2U+sip" "！^\\+（.*）$！sip：\\1@osu.cz！"
+    1.1.1.1.1.5.8.3.7.0.2.4.e164.arpa has NAPTR record
+            100 50 "E2U+sip""！^\l+（.*）$！sip：\\1@cesnet.cz！"
+    1.1.1.1.1.5.8.3.7.0.2.4.e164.arpa has NAPTR record
+            200 50 "u""E2U+h323" “！^\\+（.*）$！h323：\\1@gklext.cesnet.cz！"
 \end{verbatim}
 
 这里我们看到在 ENUM DDDS 应用中三个 NAPTR 记录的内容，两个用于SIP服务，一个
@@ -2528,22 +1734,9 @@ sip: 1@cesnet.cz。特殊变量\\1被与圆括号（）之间包含的第一个�
 中，NAPTR记录包含的目标用子识别应用于执行SRV 记录查询的域。继续前面的例子：
 
 \begin{verbatim}
-    Linux8 host -t naptr cesnet.cz
-    
-    cesnet.cz has NAPTR record 200 50 "s" "SIP+D2T"""
-    
-    -SiP•tcp.cesnet.cz•
-    
-    cesnet.cz has
-    
-    NAPTR record 100
-    
-    50
-    
-    “s""SIP+D2U"
-    
-    Sip. udp.cesnet.cz.
-    
+    Linux% host -t naptr cesnet.cz
+    cesnet.cz has NAPTR record 200 50 "s" "SIP+D2T" "" -SiP.tcp.cesnet.cz
+    cesnet.cz has NAPTR record 100 50 “s" "SIP+D2U" "" -Sip.udp.cesnet.cz.
 \end{verbatim}
 
 这里我们看到了 NAPTR 中s标志的使用，表明SRV 记录是结果。没有使用 Regexp 字
@@ -2582,7 +1775,7 @@ DNS，可以看到一些方案已经填充到 uri.arpa TLD：
     
     ftp.uri.arpa has NAPTR record 00""
     
-    "！^ftp://（［^：/？#］*）•*$！\11！i"
+    "！^ftp://（［^：/？#］*）*$！\11！i"
     
     Linux8 host -t naptr mailto.uri.arpa
     
@@ -2608,14 +1801,9 @@ com。第四个记录用于提取 URN名称空间ID 并继续处理。对于 URN
 NAPTR记录在 urn.arpa 中设置（目前为两条）。
 
 \begin{verbatim}
-    Linux8 host -t naptr pin.urn.arpa
-    
-    pin.urn.arpa has NAPTR record 100 100 """" ""
-    
-    pin.verisignlabs.com.
-    
-    Linux8 host -t naptr uci.urn.arpa
-    
+    Linux% host -t naptr pin.urn.arpa
+    pin.urn.arpa has NAPTR record 100 100 """" "" pin.verisignlabs.com.
+    Linux% host -t naptr uci.urn.arpa
     uci.urn.arpa has NAPTR record 100 100 "" """"uci.or.kr.
 \end{verbatim}
 
@@ -2647,15 +1835,9 @@ NAPTR 记录的内容上使用某些筒化的限制来完成包含服务器名�
 息服务（IRIS）\href{https://www.rfc-editor.org/rfc/rfc3981}{[RFC3981]}一起使用，基于XML 的文本应用协议用于交换与域名和其他注册
 信息相关的信息，它的数据库包含在 DNS名称空间 iris.arpa 部分。例如：
 \begin{verbatim}
-    Linux8 host -t naptr areg.iris.arpa
-    
+    Linux% host -t naptr areg.iris.arpa
     reg.iris.arpa NAPTR
-    
-    100 10
-    
-    "" "AREG1:iris.xpc:iris.lwz" ""
-    
-    areg.nro.net.
+            100 10  "" "AREG1:iris.xpc:iris.lwz" "" areg.nro.net.
 \end{verbatim}
 
 该例子使用S-NAPTR（没有正则表达式），表明为了执行对于 AREG1类型数据的ISIS查询
@@ -2696,113 +1878,120 @@ RRSet 不存在，名称在使用，名称没有使用。回忆一下，RRSet �
 的组合根据表11-5设置。
 
 表11-5 在先决条件区段中使用的RR 类和类型字段说明了先决条件类型
-
-类设置
-
-先决条件类型（语义）
-
-RRSet 存在（不依赖于值）
-
-RRSet 存在（依赖于值）
-
-RRSet 不存在
-
-名称在使用
-
-名称没有使用
-
-ANY
-
-与区域的类相同
-
-NONE
-
-ANY
-
-NONE
-
-类型设置
-
-与区域的类型相同
-
-正在被检查的类型
-
-正在被检查的类型
-
-ANY
-
-ANY
-
-RDATA 设置
-
-空
-
-空
-
-空
-
-空
-
-正在被检查的 RRSet
+\begin{verbatim}
+    
+    类设置
+    
+    先决条件类型（语义）
+    
+    RRSet 存在（不依赖于值）
+    
+    RRSet 存在（依赖于值）
+    
+    RRSet 不存在
+    
+    名称在使用
+    
+    名称没有使用
+    
+    ANY
+    
+    与区域的类相同
+    
+    NONE
+    
+    ANY
+    
+    NONE
+    
+    类型设置
+    
+    与区域的类型相同
+    
+    正在被检查的类型
+    
+    正在被检查的类型
+    
+    ANY
+    
+    ANY
+    
+    RDATA 设置
+    
+    空
+    
+    空
+    
+    空
+    
+    空
+    
+    正在被检查的 RRSet
+\end{verbatim}
 
 RRSet 存在类型意味着在区域区段中指定的区域中至少存在一个 RRSet，它与先决条件
 区段中对应的 RR的名称和类型相匹配。在依赖于值的情况中，只有当匹配的RR 也包含匹
 配的RDATA值时，先决条件才为真。RRset 不存在类型意味着在区域区段中指定的区域中
 没有 RRSet 与先决条件区段中的RR名称和类型相匹配。最后两种情况（名称在使用和名称
 没有使用）只涉及域名；类型值没有使用。值 NONE 和 ANY，DNS 类分别为254和255。
+
 先决条件区段的后面是Update 区段，它包含要从区域区段中指定的区域中添加或删
 除的RR。有四种类型的更新，编码为类、类型和RDATA 字段中值的不同组合的RR，如
 表11-6所说明的。
 
-表11-6
-
-用法
-
-向 RRSet 添加 RR
-
-删除 RRSet
-
-从名称中删除所有的 RRset
-
-从 RRSet 中删除 RR
-
-Update 区段中使用的RR 类和类型字段说明了更新类型
-
-类设置
-
-与区域的类相同
-
-ANY
-
-ANY
-
-NONE
-
-类型设置
-
-正被添加的 RR 的类型
-
-正被删除的RRSet 的类型
-
-ANY
-
-正被删除的 RR 的类型
-
-RDATA
-
-正被添加的 RR 的 RDATA
-
-空（TTL 和 RDLENGTH 也是0）
-
-空（TTL 和 RDLENGTH 也是0）
-
-要删除的匹配的 RDATA
+\begin{verbatim}
+    表11-6
+    
+    用法
+    
+    向 RRSet 添加 RR
+    
+    删除 RRSet
+    
+    从名称中删除所有的 RRset
+    
+    从 RRSet 中删除 RR
+    
+    Update 区段中使用的RR 类和类型字段说明了更新类型
+    
+    类设置
+    
+    与区域的类相同
+    
+    ANY
+    
+    ANY
+    
+    NONE
+    
+    类型设置
+    
+    正被添加的 RR 的类型
+    
+    正被删除的RRSet 的类型
+    
+    ANY
+    
+    正被删除的 RR 的类型
+    
+    RDATA
+    
+    正被添加的 RR 的 RDATA
+    
+    空（TTL 和 RDLENGTH 也是0）
+    
+    空（TTL 和 RDLENGTH 也是0）
+    
+    要删除的匹配的 RDATA
+\end{verbatim}
 
 更新区段包含被处理的RR 的集合，假如没有遇到由于先决条件或服务器问题造成的错
 误。每个 RR编码增加或删除操作。修改可以通过先删除随后添加来执行。下面我们看一个
 DNS UPDATE 的例子，可以使用如下的命令引导 Windows 机器来执行动态 DNS 更新：
 
-C：> ipconfig /reqisterdns
+\begin{verbatim}
+    C：> ipconfig /reqisterdns
+\end{verbatim}
 
 Windows 客户端默认为它们的计算机名称和域名发布更新，但是这种行也可以为每个
 DNS后缀基础上的IPv4启用，这可以通过选择标记“在 DNS注册中使用此连接的 DNS
@@ -2811,9 +2000,12 @@ TCP/IP 启用的每个接口相关的“互联网协议（TCP/IP）属性”菜�
 对于IPv6，相同的过程用于“IPv6 属性”菜单上。在图11-16所示的例子中，我们能够看
 到，当发布所示的 DNS更新消息时，命名为vista 的机器如何更新本地区域 dyn.home。
 
-图11-16
-DNS动态更新包含区域区段中的SOA记录和更新区段中的RR。这种情况包含主机 vista.
-dyn.home 的新的IPv4 和 IPv6地址
+\begin{figure}[!htb]
+    \centering
+	\includegraphics[width=0.7\textwidth]{imgs/11/11-16.png}
+	\caption{DNS动态更新包含区域区段中的SOA记录和更新区段中的RR。这种情况包含主机 vista.
+            dyn.home 的新的IPv4 和 IPv6地址}
+\end{figure}
 
 图11-16显示了动态更新是如何编码的。在10.0.0.1 的DNS服务器（本例中运行
 BIND9［AL06］）配置允许动态更新。区域区段包含识别要被更新的区域（vista.dyn.home）的
@@ -2833,7 +2025,11 @@ DNS更新的响应很简单、紧凑。图11-16所示的更新的响应在图11-
 物，或在服务器上列出客户端的IP 地址，两者都不安全，或者可以使用更加复杂和安全的方
 法，这些方法提供了事务认证 （transaction authentication）（见第18章中的 TSIG 和 SIG （0））。
 
-图11-17 对动态更新请求的响应包括一个事务ID 和状态标志集合
+\begin{figure}[!htb]
+    \centering
+	\includegraphics[width=0.7\textwidth]{imgs/11/11-16.png}
+	\caption{对动态更新请求的响应包括一个事务ID 和状态标志集合}
+\end{figure}
 
 \subsection{区域传输和 DNS 通知}
 
@@ -2845,57 +2041,23 @@ DNS更新的响应很简单、紧凑。图11-16所示的更新的响应在图11-
 
 按照最初的规定，区域传输在轮询（polling）后开启，在轮询中，从服务器周期性地联
 系主服务器，通过比较区域的版本号以查看区域传输是否为必要的。稍后的方法认为，如果
-需要开启区域传输，当区域内容改变时使用异步
-
-从服务器
-
-主服务器
-
-更新机制。这被称为 DNS NOTIFY。一旦启动
-
-区域传输，或是传输整个区域（使用 DNS AXFR
-
-…••NOTIFY.
-
-消息）\href{https://www.rfc-editor.org/rfc/rfc5936}{[RFC5936]}，或是选择使用增量区域传输
-
-（incremental zone transfer）（使用 DNS IXFR 的消
-
--SOA 查询
-
-SOA 响应
-
-息）\href{https://www.rfc-editor.org/rfc/rfc1995}{[RFC1995]}。一般方案根据图11-18所示进行
-
-序列号
-
+需要开启区域传输，当区域内容改变时使用异步更新机制。这被称为 DNS NOTIFY。一旦启动
+区域传输，或是传输整个区域（使用 DNS AXFR消息）\href{https://www.rfc-editor.org/rfc/rfc5936}{[RFC5936]}，或是选择使用增量区域传输
+（incremental zone transfer）（使用 DNS IXFR 的消息）\href{https://www.rfc-editor.org/rfc/rfc1995}{[RFC1995]}。一般方案根据图11-18所示进行
 操作。
 
--AXFR或IXFR-
-
-现在，我们将仔细查看每个选项，包括完整
-
-和增量区域传输，以及 DNS通知。
-
-生成更新和
-
-IXFR请求的
-
-记录结果
-
-区域内容
-
-\subsubsection{完整区域传输（AXFR消息）}
-
-完整区域传输由区域的SOA 记录中的区域
-传输参数控制：主名称服务器，序列号，刷新间
-隔，重试间隔和到期间隔。当配置后，从服务器
+现在，我们将仔细查看每个选项，包括完整和增量区域传输，以及 DNS通知。
 
 图11-18
 DNS 区域传输在服务器之间复制
 内容。一个可选的通知可以引起从
 服务器请求完整或增量区域传输
 
+\subsubsection{完整区域传输（AXFR消息）}
+
+完整区域传输由区域的SOA 记录中的区域
+传输参数控制：主名称服务器，序列号，刷新间
+隔，重试间隔和到期间隔。当配置后，从服务器
 尝试联系主服务器以查看区域传输是否是必要的。根据刷新间隔，周期性地尝试联系。当服
 务器开启时，它们也开始尝试。如果联系没有成功（从服务器没有响应），根据重试间隔（一
 般比刷新间隔短），周期性地尝试重试。如果在到期间隔内没有刷新，整个区域的内容被刷
@@ -2906,30 +2068,27 @@ TCP 请求一个完整的区域传输。为了查看这样的消息，我们可�
 来开始一个请求：
 
 \begin{verbatim}
-    
-Linux& host -1 home.
+    Linux% host -1 home.
+    Using domain server：
+    Name: 10.0.0.1
+    Address: 10.0.0.1#53
+    Aliases：
 
-Using domain server：
-
-Name: 10.0.0.1
-
-Address: 10.0.0.1#53
-
-Aliases：
-
-home name server gw.home.
-
-ap.home has
-
-address 10.0.0.6
-
-gw.home has address 10.0.0.1
+    home name server gw.home.
+    ap.home has address 10.0.0.6
+    gw.home has address 10.0.0.1
+    ...
 \end{verbatim}
 
--1标志告诉host 程序从本地 DNS服务器执行一个完整区域传输。该程序启动一个基于 TCP
+-l标志告诉host 程序从本地 DNS服务器执行一个完整区域传输。该程序启动一个基于 TCP
 的查询/响应对话，如图11-19所示。
 
-图11-19 一个完整区域传输的 DNS请求使用 AXFR 记录类型和 TCP 传输协议
+
+\begin{figure}[!htb]
+    \centering
+	\includegraphics[width=0.7\textwidth]{imgs/11/11-19.png}
+	\caption{一个完整区域传输的 DNS请求使用 AXFR 记录类型和 TCP 传输协议}
+\end{figure}
 
 在图11-19中，我们可以看到使用TCP的区域传输是如何发生的。前面的三个 TCP报
 文段是标准TCP连接建立过程的一部分（见第13章）。第4个（解码）分组是请求。这是一
@@ -2941,9 +2100,12 @@ gw.home has address 10.0.0.1
 8 ~10），连接被优雅地关闭了。查看第13章来获取关于标准TCP连接建立和清除的详细
 情况。
 
-图11-20
-完整区域传输请求的成功响应包括该区域的所有记录。事务使用TCP 进行，
-因为区域内容可能很大，并且需要一个可靠的副本
+\begin{figure}[!htb]
+    \centering
+	\includegraphics[width=0.7\textwidth]{imgs/11/11-20.png}
+	\caption{完整区域传输请求的成功响应包括该区域的所有记录。事务使用TCP 进行，
+            因为区域内容可能很大，并且需要一个可靠的副本}
+\end{figure}
 
 虽然它可以和任意的DNS服务器执行这样的区域传输，但是它们现在通常限制于区域
 的权威服务器（例如，区域的NS记录中列出的那些）。该限制是出于隐私和安全的考虑一
@@ -2957,13 +2119,8 @@ gw.home has address 10.0.0.1
 可以通过提供序列号和dig 程序来模拟请求服务器：
 
 \begin{verbatim}
-    Linux8
-    
-    dig +short @10.0.0.1 -t ixfr=1997022700 home.
-    
-    gw.home hostmaster.gw.home. 1997022700 10800
-    
-    15 604800 10800
+    Linux% dig +short @10.0.0.1 -t ixfr=1997022700 home.
+    gw.home hostmaster.gw.home. 1997022700 10800 15 604800 10800
 \end{verbatim}
 
 命令行中指出，命令的输出应该是简短的，10.0.0.1是要使用的DNS服务器的地址，以
@@ -2971,9 +2128,12 @@ gw.home has address 10.0.0.1
 中所示的 AXFR类似的交换，只不过在这种情况下请求的序列号与当前的序列号匹配（见
 Ele
 
-图11-21
-在TCP 上运载的增量区域传输请求（IXFR记录类型）。序列号用于确定自前一次区域传输
-发生后哪些记录（如果有）已经改变了
+\begin{figure}[!htb]
+    \centering
+	\includegraphics[width=0.7\textwidth]{imgs/11/11-21.png}
+	\caption{在TCP 上运载的增量区域传输请求（IXFR记录类型）。序列号用于确定自前一次区域传输
+            发生后哪些记录（如果有）已经改变了}
+\end{figure}
 
 图11-22显示了IXFR 请求如何在授权区段包含一个大多数空的SOA RR。SOA 记录
 包括指定的序列号（1997022700）。响应（分组6）不包含任何真实的信息，因为序列号与
@@ -2994,8 +2154,11 @@ Ele
 RR 改变（例如，如果序列号增加）时，通知消息被发送到一组感兴趣的服务器。这使得区域
 传输在需要时开启。使用本地名称服务器，我们可以看到这是如何工作的（见图11-23）。
 
-图 11-22 当序列号是当前的时，IXFR请求的响应只包含一个 SOA记录，没有额外的信息
-
+\begin{figure}[!htb]
+    \centering
+	\includegraphics[width=0.7\textwidth]{imgs/11/11-22.png}
+	\caption{当序列号是当前的时，IXFR请求的响应只包含一个 SOA记录，没有额外的信息}
+\end{figure}
 
 这个例子说明了简单的 DNS NOTIFY 消息，它被发送到服务器的通知服务器集合之
 中的一台主机，该通知服务器集合由应该被通知区域改变的服务器组成。消息是一个UDP/
@@ -3014,8 +2177,12 @@ DNS NOTIFY 机制默认使用UDP，UDP 是一种不可靠的协议。在特殊�
     BIND9 并没遵循这些建议，因为两次重传间隔15s。
 \end{tcolorbox}
 
-图 11-23
-一个 DNS NOTIFY，说明区域文件的更新。间隔 15s有两个重传（与标准中建议的方法相反）
+\begin{figure}[!htb]
+    \centering
+	\includegraphics[width=0.7\textwidth]{imgs/11/11-23.png}
+	\caption{一个 DNS NOTIFY，说明区域文件的更新。间隔 15s有两个重传（与标准中建议的方法相反）}
+\end{figure}
+
 响应是简单的DNS响应消息，除了事务ID外没有有用的信息；它们只用于完成协议以
 及取消发送服务器的重传。
 
@@ -3043,23 +2210,8 @@ DMZ相关。当然，如果A、B和R通过DMZ到达M,C通过内部网络到达M�
 器和服务器的配置文件中使用的选项）。如果由 DNS 服务器软件默认执行，这样的排序行为
 也可能自动发生。
 
-DNS服务器
-
-DMZ（公共）
-
-网络
-
-Internet
-
-多宿主主机
-
-M
-
-内部网络
-
-C
-
 图11-24 在小型企业的拓扑结构中，DNS 可以配置返回为依赖于请求IP 地址的不同的地址
+
 当多台服务器提供一种服务时，传人的连接就会是负载均衡的（即，在服务器之间划
 分），这时一些相关的问题就会出现。在前面的例子中，想象一个服务由A和B提供。这样
 的服务可以通过URL http://www.example.com来识别。请求客户端（如R）执行域名 www.
@@ -3132,31 +2284,6 @@ DNS 是互联网上最普遍的服务之一，并已成为一个有吸引力的�
 这种功能被称为 DNS64，其建议的部署方案之一（称“DNS递归解析模式中的 DNS64”
 如图 11-25所示
 
-
-IPv4/lpv6
-
-转换器
-
-IPv6网络
-
-IPv4网络
-
-配置通用IPv6前缀
-
-只有IPv6
-
-的客户端
-
-只有IPv4的服务器
-
-只有IPv4的
-
-DNS服务器
-
-DNS服务器
-
-（带有DNS64）
-
 图 11-25 DNS64将A记录转换为 AAAA 记录，并和 IPv4/IPv6 转换器一起工作，
 以允许只有 IPv6 的客户端访问 IPv4 网络中的服务
 
@@ -3186,6 +2313,7 @@ DNS 本地版本，称本地链路组播名称解析（Link-Local Multicast Name
 助发现局域网上的设备，如打印机和文件服务器。Windows Vista、 Windows Server 2008 和
 Windows 7中都支持它。对于IPv4 组播地址224.0.0.252 和 IPv6地址 ff02：：1:3，它使用UDP
 端口 5355。如果来自它们响应的任何单播IP 地址，服务器也可以使用 TCP 端口 5355。
+
 组播 DNS（multicast DNS,mDNS） ［IDMDNS］是另一种形式的本地类 DNS 功能，它
 是由苹果公司开发的。当它和 DNS 服务发现协议结合时，苹果称之为框架 Bonjour。mDNS
 使用通过本地组播地址携带的DNS消息，使用 UDP 端口 5353，规定特殊的TLD.local 用特
@@ -3209,20 +2337,13 @@ MIT 的校长办公室匹配的目录查询可以通过使用 LDAP搜索工具 I
 相当的工具称为ldp，在它的web 站点作支持工具提供）来形成，它按如下方式工作：
 
 \begin{verbatim}
-    Linux% 1dapsearch -x -h 1dap.mit.edu -b "dc=mit,dc=edu" \
-    
+    Linux% ldapsearch -x -h 1dap.mit.edu -b "dc=mit,dc=edu" \
     "（ou=*Chancel1or*）"
-    
     # extended LDIF
-    
-    ＃
-    
+    #
     # LDAPV3
-    
     # base <dc=mit,dc=edu> with scope sub
-    
     # filter： （ou=*Chancellor*）
-    
     # requesting: ALL
 \end{verbatim}
 
@@ -3301,7 +2422,6 @@ DNS一直受到众多攻击，从DoS 攻击（它使得DNS仅有有限的能力
 \section{参考文献}
 
 ［AL06］ P. Albitz and C. Liu, DNS and BIND, Fifth Edition （O'Reilly Media, Inc，
-
 2006）.
 
 ［CIN］ http://www.cert.org/incident\_notes/IN-2000-04.html
@@ -3309,13 +2429,11 @@ DNS一直受到众多攻击，从DoS 攻击（它使得DNS仅有有限的能力
 ［CKB］ http://www.kb.cert.org/vuls/id/800113
 
 ［D08］ D. Dagon et al.， "Increased DNS Forgery Resistance Through Ox20-bit
-
 Encoding" Proc. ACM CCS, Oct. 2008.
 
 ［DNSPARAM!http://www.iana.org/assignments/dns-parameters
 
 ［DR97］ D. Dougherty and A. Robbins, sed \& awk, Second Edition （O'Reilly Media，
-
 1997）.
 
 ［DYNDNS］ http://www.dyndns.com/about/technology
@@ -3327,35 +2445,28 @@ IGTLD］ http://www.iana.org/domains/root/db
 IICANN］ http://www.icann.org/en/tlds
 
 ［IDDN］ S. Rose and W. Wijngaards， "Update to DNAME Redirection in the
-
 DNS，" Internet draft-ietf-dnsext-rfc2672bis-dname, work in progress, July 2011.
 
 ［LDIMDNS］ S. Cheshire and M. Krochmal， "Multicast DNS，" Internet draft-
-
 cheshire-dnsext-multicastdns, work in progress, Feb.2011.
 
 ［IDN］ http://www.icann.org/en/topics/idn
 
 ［ISO3166］ International Organization for Standardization， "International Stan-
-
 dard for Country Codes，” ISO 3166-1, 2006.
 
 ［ISPR］ http://www.iana.org/assignments/service-names-port-numbers
 
 ［021 J. Jung et al.，"DNS Performance and the Effectiveness of Caching" IEEE/
-
 ACM Transactions on Networking, 10（5）， Oct. 2002.
 
 ［MD88］ P. Mockapetris and K. Dunlap， "Development of the Domain Name Sys.
-
 tem/” Proc.ACM SIGCOMM, Aug. 1988.
 
 ［P10］ N. Paskin， "Digital Object Identifier （DOIO） System，' Encyclopedia of Librar
-
 and Information Sciences, Third Edition （Taylor and Francis, 2010）.
 
 ［R06］ H. Rice， "ENUM—The Mapping of Telephone Numbers to the Internet"
-
 The Telecommunications Review, 17, Aug. 2006.
 
 ［ROOTS］ http://www.root-servers.org
@@ -3365,7 +2476,6 @@ The Telecommunications Review, 17, Aug. 2006.
 ［SNPJ http://www.iana.org/assignments/s-naptr-parameters
 
 ［U11］ The Unicode Consortium, The Unicode Standard, Version 6.0.0 （The Unicode
-
 Consortium,2011）.
 
 ［URI］ http://www.iana.org/assignments/uri-schemes
@@ -3373,11 +2483,5 @@ Consortium,2011）.
 ［URN］ http://www.iana.org/assignments/urn-namespaces
 
 ［X500］ International Telecommunication Union—Telecommunication Standard-
-
 ization Sector， "The Directory—Overview of Concepts, Models and Services，"
-
 11U-T X.500, 1993
-
-F574
-
-578

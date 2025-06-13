@@ -26,12 +26,6 @@ EV-DO、LTE 和 WiMAX。在本章中，我们将详细讨论以下内容：在�
 并在1982年加以修订。第一个常见格式的以太网，目前被称为“10Mb/s 以太网”或“共享以
 太网”，它被 IEEE采纳（轻微修改）为802.3标准。这种网络的结构通常如图 3-1所示。
 
-站
-
-共享的以太网段
-
-（LAN）
-
 图3-1 基本的共享以太网包含一个或多个站（例如工作站、超级计算机），它们都被连接到一个共享的
 电缆段上。当介质被确定为空闲状态时，链路层的PDU（帧）可从一个站发送到一个或更多其
 他站。如果多个站同时发送数据，可能因信号传播延迟而发生碰撞。碰撞可以被检测到，它会
@@ -62,18 +56,6 @@ CSMA/CD，在任何给定的时间内，网络中只能有一个帧传输。如C
 于竞争的MAC协议已变得不流行。相反，局域网中每个站之间的线路通常不共享，而是提供
 了一个专用的星形拓扑结构。这可以通过以太网交换机来实现，如图3-2所示。
 
-站
-
-以太网
-
-交换机
-
-端口
-
-“上行”端口
-
-（到其他交换机）
-
 图3-2 一个交换式以太网包含一个或多个站，每个站使用一条专用的线路连接到一个交换机端口。在
 大多数情况下，交换式以太网以全双工方式运行，并且不需要使用CSMA/CD算法。交换机可
 以通过交换机端口级联形成更大的以太网，该端口有时也称为“上行”端口
@@ -100,266 +82,74 @@ CD 网络，称为802.3。在IEEE 标准中，带802前缀的标准定义了局�
 表3-1显示了一个相当完整的列表，包括截至2011年年中支持TCP/IP 的相关IEEE 802局
 域网和城域网标准。
 
-表3-1
-
-有关TCP/IP 协议的局域网和城域网 IEEE 802标准（2011）
-
-描述
-
-名称
-
-802.1ak
-
-802.1AE
-
-802.1AX
-
-802.1d
-
-802.Ip
-
-802.1q
-
-802.ls
-
-802.1w
-
-802.1X
-
-802.2
-
-802.3
-
-802.3u
-
-802.3x
-
-802.3z/802.3ab
-
-802.3ae
-
-802.3ad
-
-802.3af
-
-802.3ah
-
-802.3as
-
-802.3at
-
-802.3ba
-
-802.11a
-
-802.11b
-
-802.1le
-
-多注册协议（MRP）
-
-MAC 安全（MACSec）
-
-链路聚合（以前的802.3ad）
-
-MAC 网桥
-
-流量类/优先级 /QoS
-
-虚拟网桥的局域网/MRP 的更正
-
-多生成树协议（MSTP）
-
-快速生成树协议（RSTP）
-
-基于端口的网络访问控制 （PNAC）
-
-逻辑链路控制 （LLC）
-
-基本以太网和10Mb/s以太网
-
-100Mb/s以太网（“快速以太网”）
-
-全双工运行和流量控制
-
-1000Mb/s 以太网（“千兆以太网”）
-
-10Gb/s 以太网（“万兆以太网”）
-
-链路聚合
-
-以太网供电 （PoE,15.4W）
-
-以太网接入（第一公里以太网）
-
-帧格式扩展（2000字节）
-
-以太网供电增强（“PoE+”，30W）
-
-40/100Gb/s以太网
-
-运行在5GHz的54Mb/s 的无线局域网
-
-运行在2.4GHz 的11Mb/s 的无线局域网
-
-针对 802.11 的QoS增强
-
-官方参考
-
-［802.1AK-2007］
-
-［802.1AE-2006］
-
-［802.1AX-2008］
-
-［802.1D-2004］
-
-［802.1D-2004］
-
-［802.1Q-2005/Corl-2008］
-
-［802.1Q-2005］
-
-［802.1D-2004］
-
-［802.1X-2010］
-
-［802.2-1998］
-
-［802.3-2008］（第1节）
-
-［802.3-2008］（第2节）
-
-［802.3-2008］
-
-［802.3-2008］（第3节）
-
-［802.3-2008］（第4节）
-
-［802.1AX-2008］
-
-［802.3-2008］（第2节）
-
-［802.3-2008］（第5节）
-
-［802.3-2008］
-
-［802.3at-2009］
-
-［802.3ba-2010］
-
-［802.11-2007］
-
-［802.11-2007］
-
-［802.11-2007］
-
-名称
-
-802.11g
-
-802.11h
-
-802.11i
-
-802.11j
-
-802.11n
-
-802.11s（草案）
-
-802.1ly
-
-802.16
-
-802.16d
-
-802.16e
-
-802.16h
-
-802.16j
-
-802.16k
-
-802.21
-
-描述
-
-运行在 2.4GHz 的54Mb/s的无线局域网
-
-频谱/电源管理扩展
-
-安全增强 /代替 WEP
-
-运行在4.9～5.0GHz（日本）
-
-运行在2.4GHz 和5GHz的6.5~600Mb/s 的无线局域网，
-
-使用可选的MIMO 和40MHz信道
-
-网状网，拥塞控制
-
-运行在 3.7GHz的54Mb/s的无线局域网（许可的）
-
-微波存取全球互通技术（WiMAX）
-
-固定的无线城域网标准（WiMAX）
-
-固定/移动的无线城域网标准（WiMAX）
-
-改进的共存机制
-
-802.16中的多跳中继
-
-802.16网桥
-
-介质无关切换
-
-（续）
-
-官方参考
-
-［802.11-2007］
-
-［802.11-2007］
-
-［802.11-2007］
-
-［802.11-2007］
-
-［802.11n-2009］
-
-开发中
-
-［802.11y-2008］
-
-［802.16-2009］
-
-［802.16-2009］
-
-［802.16-2009］
-
-［802.16h-2010］
-
-［802.16j-2009］
-
-［802.16k-2007］
-
-［802.21-2008］
+\begin{table}[]
+    \centering
+    \caption{有关TCP/IP 协议的局域网和城域网 IEEE 802标准（2011）}
+    \begin{tabular}{c|c|c}
+        \hline
+        名称	&	描述	&	官方参考  \\ \hline
+        802.1ak	&	多注册协议(MRP)	&	[802.1AK-2007]  \\ \hline
+        802.1AE	&	MAC 安全(MACSec)	&	[802.1AE-2006]  \\ \hline
+        802.1AX	&	链路聚合(以前的802.3ad)	&	[802.1AX-2008]  \\ \hline
+        802.1d	&	MAC 网桥	&	[802.1D-2004]  \\ \hline
+        802.Ip	&	流量类/优先级 /QoS	&	[802.1D-2004]  \\ \hline
+        802.1q	&	虚拟网桥的局域网/MRP 的更正	&	[802.1Q-2005/Corl-2008]  \\ \hline
+        802.ls	&	多生成树协议(MSTP)	&	[802.1Q-2005]  \\ \hline
+        802.1w	&	快速生成树协议(RSTP)	&	[802.1D-2004]  \\ \hline
+        802.1X	&	基于端口的网络访问控制 (PNAC)	&	[802.1X-2010]  \\ \hline
+        802.2	&	逻辑链路控制 (LLC)	&	[802.2-1998]  \\ \hline
+        802.3	&	基本以太网和10Mb/s以太网	&	[802.3-2008](第1节)  \\ \hline
+        802.3u	&	100Mb/s以太网(“快速以太网”)	&	[802.3-2008](第2节)  \\ \hline
+        802.3x	&	全双工运行和流量控制	&	[802.3-2008]  \\ \hline
+        802.3z/802.3ab	&	1000Mb/s 以太网(“千兆以太网”)	&	[802.3-2008](第3节)  \\ \hline
+        802.3ae	&	10Gb/s 以太网(“万兆以太网”)	&	[802.3-2008](第4节)  \\ \hline
+        802.3ad	&	链路聚合	&	[802.1AX-2008]  \\ \hline
+        802.3af	&	以太网供电 (PoE,15.4W)	&	[802.3-2008](第2节)  \\ \hline
+        802.3ah	&	以太网接入(第一公里以太网)	&	[802.3-2008](第5节)  \\ \hline
+        802.3as	&	帧格式扩展(2000字节)	&	[802.3-2008]  \\ \hline
+        802.3at	&	以太网供电增强(“PoE+”，30W)	&	[802.3at-2009]  \\ \hline
+        802.3ba	&	40/100Gb/s以太网	&	[802.3ba-2010]  \\ \hline
+        802.11a	&	运行在5GHz的54Mb/s 的无线局域网	&	[802.11-2007]  \\ \hline
+        802.11b	&	运行在2.4GHz 的11Mb/s 的无线局域网	&	[802.11-2007]  \\ \hline
+        802.1le	&	针对 802.11 的QoS增强	&	[802.11-2007]  \\ \hline
+        802.11g	&	运行在 2.4GHz 的54Mb/s的无线局域网	&	[802.11-2007]  \\ \hline
+        802.11h	&	频谱/电源管理扩展	&	[802.11-2007]  \\ \hline
+        802.11i	&	安全增强 /代替 WEP	&	[802.11-2007]  \\ \hline
+        802.11j	&	运行在4.9～5.0GHz（日本）	&	[802.11-2007]  \\ \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[]
+    \centering
+    \begin{tabular}{c|c|c}
+        \hline
+        名称	&	描述	&	官方参考  \\ \hline
+        802.11n	&	运行在2.4GHz 和5GHz的6.5~600Mb/s 的无线局域网， 使用可选的MIMO 和40MHz信道	&	[802.11n-2009]  \\ \hline
+        802.11s（草案）	&	网状网，拥塞控制	&	开发中  \\ \hline
+        802.1ly	&	运行在 3.7GHz的54Mb/s的无线局域网（许可的）	&	[802.11y-2008]  \\ \hline
+        802.16	&	微波存取全球互通技术（WiMAX）	&	[802.16-2009]  \\ \hline
+        802.16d	&	固定的无线城域网标准（WiMAX）	&	[802.16-2009]  \\ \hline
+        802.16e	&	固定/移动的无线城域网标准（WiMAX）	&	[802.16-2009]  \\ \hline
+        802.16h	&	改进的共存机制	&	[802.16h-2010]  \\ \hline
+        802.16j	&	802.16中的多跳中继	&	[802.16j-2009]  \\ \hline
+        802.16k	&	802.16网桥	&	[802.16k-2007]  \\ \hline
+        802.21	&	介质无关切换	&	[802.21-2008]  \\ \hline
+    \end{tabular}
+\end{table}
 
 除了802.3、802.11、802.16标准定义的特定类型的局域网之外，还有一些相关标准适
-
 用于所有IEEE 标准的局域网技术。最常见的是定义逻辑链路控制（LLC）的802.2标准，其
 帧头部在802网络的帧格式中常见。在IBEE 的术语中，LLC和MAC是链路层的“子层”，
 LLC（多数帧格式）对每种网络都是通用的，而MAC层可能有所不同。虽然最初的以太网
 使用CSMA/CD，但无线局域网常使用CSMA/CA（CA 是“冲突避免”）。
 
-注意不幸的是，802.2 和802.3 共同定义了与Ethernet II 不同的帧格式，这个
-情况直到802.3x 才最终纠正。它已经被纳入［802.3-2008］。在 TCP/IP 世界中，
-［RFCO894］和\href{https://www.rfc-editor.org/rfc/rfc2464}{[RFC2464]}定义了针对以太网的IP 数据报封装，但旧的LLC/SNAP
-封装仍发布在\href{https://www.rfc-editor.org/rfc/rfc1042}{[RFC1042]}中。虽然这不再是一个大问题，但它曾经令人关注，并偶
-尔出现类似问题\href{https://www.rfc-editor.org/rfc/rfc4840}{[RFC4840]}。
+\begin{tcolorbox}
+    注意不幸的是，802.2 和802.3 共同定义了与Ethernet II 不同的帧格式，这个
+    情况直到802.3x 才最终纠正。它已经被纳入［802.3-2008］。在 TCP/IP 世界中，
+    ［RFCO894］和\href{https://www.rfc-editor.org/rfc/rfc2464}{[RFC2464]}定义了针对以太网的IP 数据报封装，但旧的LLC/SNAP
+    封装仍发布在\href{https://www.rfc-editor.org/rfc/rfc1042}{[RFC1042]}中。虽然这不再是一个大问题，但它曾经令人关注，并偶
+    尔出现类似问题\href{https://www.rfc-editor.org/rfc/rfc4840}{[RFC4840]}。
+\end{tcolorbox}
 
 直到最近，帧格式在本质上还一直相同。为了获得该格式的详细信息，并了解它是如何
 演变的，我们现在将焦点转向这些细节。
@@ -376,93 +166,6 @@ LLC（多数帧格式）对每种网络都是通用的，而MAC层可能有所�
 个公认的模式（典型值为0xAA），在发现帧起始分隔符（SFD）时，接收器使用它“恢复时
 钟”。SFD 的固定值为 OxAB。
 
-前导
-
-（7字节）
-
-SFD
-
-（6
-
-SRC
-
-6
-
-长度
-
-或
-
-类型
-
-（2
-
-P/O
-
-其他
-
-标签
-
-标签
-
-（0/2）
-
-IEEE“分组”
-
-帧
-
-- MAC客户机数据
-
-上层协议有效载荷
-
-（通常最大为1500字节）
-
-壤充
-
-（0~1982）
-
-（0+）
-
-基本帧：64~1518字节
-
-Q标签帧：64~1522字节
-
-信封帧：64~2000字节
-
-在信封帧中允许最大482字节的标签
-
-（Q标签帧是信封帧）
-
-FOS
-
-（4）
-
-载体扩展
-
-（仅半双工）
-
-（可变的）
-
-802.1p/q标签
-
-（如果存在）
-
-标签/协议ID
-
-优先级
-
-CFI
-
-VLAN ID
-
-图 3-3
-
-16位
-
-3
-
-1
-
-12
 
 以太网（IEEE 802.3）帧格式包含一个源地址和目的地址、一个重载的长度/ 类型字段、一个
 数据字段和一个帧校验序列（CRC32）。另外，基本帧格式提供了一个标签，其中包含一个
@@ -490,19 +193,24 @@ VLAN ID 和优先级信息（802.1p/q），以及一个最近出现的可扩展�
 部后面的数据类型。TCP/IP 网络使用的常见值包括IPv4（0x0800）、IPv6（0x86DD）和
 ARP（0x0806）。0x8100 表示一个Q标签帧（可携带一个“虚拟局域网”或802.1q 标准的
 VLAN ID）。一个以太网帧的基本大小是1518字节，但最近的标准将该值扩大到2000字节。
-注意最初的IEEE（802.3.）规范将长度/ 类型字段作为长度字段而不是类型字段使
-用。因此，这个字段被童载（可用于多个目的）。关键是看字段值。目前，如果字段
-值大于或等于 1536，则该字段表示类型，它是由标准分配的超过1536的值。如果字
-段值等于或小于1500，则该字段表示长度。「ETHERTYPES1给出了类型的完整列表。
+
+\begin{tcolorbox}
+    注意最初的IEEE（802.3.）规范将长度/ 类型字段作为长度字段而不是类型字段使
+    用。因此，这个字段被童载（可用于多个目的）。关键是看字段值。目前，如果字段
+    值大于或等于 1536，则该字段表示类型，它是由标准分配的超过1536的值。如果字
+    段值等于或小于1500，则该字段表示长度。「ETHERTYPES1给出了类型的完整列表。
+\end{tcolorbox}
 
 在上述字段之后，［802.3-2008］提供了多种标签包含由其他IEEE 标准定义的各种协议
 字段。其中，最常见的是那些由802.1p 和802.1q使用的标签，它提供虚拟局域网和一些服
 务质量（QoS）指示符。这些在3.2.3节讨论。
 
-注意当前的［802.3-2008］标准采用修改后的802.3帧格式，提供最大为482字节
-的“标签”'，它携带在每个以太网帧中。这些较大的帧称为信封帧，长度最大可能
-达到2000字节。包含802.1p/q 标签的帧称Q标签帧，也是信封帧。但是，并非
-所有信封帧必然是Q标签帧。
+\begin{tcolorbox}
+    注意当前的［802.3-2008］标准采用修改后的802.3帧格式，提供最大为482字节
+    的“标签”'，它携带在每个以太网帧中。这些较大的帧称为信封帧，长度最大可能
+    达到2000字节。包含802.1p/q 标签的帧称Q标签帧，也是信封帧。但是，并非
+    所有信封帧必然是Q标签帧。
+\end{tcolorbox}
 
 在这些讨论过的字段之后，是帧的数据区或有效载荷部分。这里是放高层PDU（例如IP
 数据报）的地方。传统上，以太网的有效载荷一直是1500字节，它代表以太网的MTU。目
@@ -512,110 +220,25 @@ VLAN ID）。一个以太网帧的基本大小是1518字节，但最近的标准
 
 \subsubsection{帧校验序列/ 循环冗余校验}
 
-在以太网帧格式中，有效载荷区域之后
-的最后字段提供了对帧完整性的检查。循环
-
-10011
-
-冗余校验（CRC）字段位于尾部，有32位，
-有时称之为 IBEE/ANSI 标准的CRC32［802.3-
-2008］。要使用一个n位CRC检测数据传输
-错误，被检查的消息首先需要追加n位0形
-成一个扩展消息。然后，扩展消息（使用
-模2除法）除以一个（n+1）位的值，这个
-作为除数的值称为生成多项式。放置在消息
-的CRC 字段中的值是这次除法计算中余数
-的二进制反码（商被丢弃）。生成多项式已
-被标准化为一系列不同的n值。以太网使用
-
-1000011000000101
-
-10011110001011110000
-
-10011
-
-00001
-
-00000
-
-00011
-
-00000
-
-00110
-
-00000
-
-01100
-
-00000
-
-11000
-
-10011
-
-10111
-
-10011
-
-01000
-
-00000
-
-商（丟弃）
-
-消息
-
-n = 32，CRC32的生成多项式是33位的二
-进制数100000100110000010001110110110111。
-为了理解如何使用（mod 2）二进制除法计算
-余数，我们看一个 CRC4的简单例子。国际
-
-00101
-
-00000
-
-01011
-
-00000
-
-电信联盟（ITU）将CRC4的生成多项式值
-标准化为10011，这是在G.704［G704］标
-准中规定的。如果我们要发送16位的消息
-1001111000101111，首先开始进行图3-4所
+在以太网帧格式中，有效载荷区域之后的最后字段提供了对帧完整性的检查。循环
+冗余校验（CRC）字段位于尾部，有32位，有时称之为 IBEE/ANSI 标准的CRC32［802.3-
+2008］。要使用一个n位CRC检测数据传输错误，被检查的消息首先需要追加n位0形
+成一个扩展消息。然后，扩展消息（使用模2除法）除以一个（n+1）位的值，这个
+作为除数的值称为生成多项式。放置在消息的CRC 字段中的值是这次除法计算中余数
+的二进制反码（商被丢弃）。生成多项式已被标准化为一系列不同的n值。以太网使用
+n = 32，CRC32的生成多项式是33位的二进制数100000100110000010001110110110111。
+为了理解如何使用（mod 2）二进制除法计算余数，我们看一个 CRC4的简单例子。国际
+电信联盟（ITU）将CRC4的生成多项式值标准化为10011，这是在G.704［G704］标
+准中规定的。如果我们要发送16位的消息1001111000101111，首先开始进行图3-4所
 示的（mod 2）二进制除法。
 
-在该图中，我们看到这个除法的余数
-是4位的值1111。通常，该余数的反码
+图3-4 长（mod 2）二进制除法演示了CRC4的计算过程
 
-01000
-
-00000
-
-10000
-
-10011
-
-oii1o
-
-00000
-
-1100
-
-19011
-
-（0000）将放置在帧的CRC 或帧校验序列
-
-余数
-
-（FCS）字段中。在接收到数据之后，接收方
-执行相同的除法计算出余数，并判断该值与
-图3-4 长（mod 2）二进制除法演示了
-CRC4的计算过程
-
-
-FCS 字段的值是否匹配。如果两者不匹配，帧可能在传输过程中受损，通常被丢弃。CRC功
-能可用于提示信息受损，因为位模式的任何改变极可能导致余数的改变。
+在该图中，我们看到这个除法的余数是4位的值1111。通常，该余数的反码
+（0000）将放置在帧的CRC 或帧校验序列（FCS）字段中。在接收到数据之后，接收方
+执行相同的除法计算出余数，并判断该值与FCS 字段的值是否匹配。如果两者不匹配，
+帧可能在传输过程中受损，通常被丢弃。CRC功能可用于提示信息受损，因为位模式的
+任何改变极可能导致余数的改变。
 
 \subsubsection{帧大小}
 
@@ -623,17 +246,19 @@ FCS 字段的值是否匹配。如果两者不匹配，帧可能在传输过程�
 签）最小为48字节。当有效载荷较小时，填充字节（值为0）被添加到有效载荷尾部，以确
 保达到最小长度。
 
-注意 最小长度对最初的10Mb/s以太网的CSMA/CD很重要。为了使传输数据的
-站能知道哪个帧发生了冲突，将一个以太网的最大长度限制为2500m（通过4个
-中继器连接的5个500m的电缆段）。根据电子在铜缆中传播速度约为0.77C（约
-×10\%m/s），可得到64字节来用10Mb/s 时的传输时间为64×8/10 000000=
-51.2wS，最小尺寸的帧能在电缆中传输约11000m。如果采用一条最长为2500m
-的电缆，从一个站到另一个站之间的最大往返距离为5000m。以太网设计者确定最
-小帧长度基于安全因素，在完全兼容（和很多不兼容）的情况下，一个输出帧的最
-后位在所需时间后仍处于传输过程中，这个时间是信号到达位于最大距离的接收器
-并返回的时间。如果这时检测到一个冲突，传输中的站能知道哪个帧发生冲突，即
-当前正在传输中的那个帧。在这种情况下，该站发送一个干扰信号（高电压）提醒
-其他站，然后启动一个随机的二进制指数退避过程。
+\begin{tcolorbox}
+    最小长度对最初的10Mb/s以太网的CSMA/CD很重要。为了使传输数据的
+    站能知道哪个帧发生了冲突，将一个以太网的最大长度限制为2500m（通过4个
+    中继器连接的5个500m的电缆段）。根据电子在铜缆中传播速度约为0.77C（约
+    ×10\%m/s），可得到64字节来用10Mb/s 时的传输时间为64×8/10 000000=
+    51.2wS，最小尺寸的帧能在电缆中传输约11000m。如果采用一条最长为2500m
+    的电缆，从一个站到另一个站之间的最大往返距离为5000m。以太网设计者确定最
+    小帧长度基于安全因素，在完全兼容（和很多不兼容）的情况下，一个输出帧的最
+    后位在所需时间后仍处于传输过程中，这个时间是信号到达位于最大距离的接收器
+    并返回的时间。如果这时检测到一个冲突，传输中的站能知道哪个帧发生冲突，即
+    当前正在传输中的那个帧。在这种情况下，该站发送一个干扰信号（高电压）提醒
+    其他站，然后启动一个随机的二进制指数退避过程。
+\end{tcolorbox}
 
 传统以太网的最大帧长度是1518字节（包括4字节CRC和14字节头部）。选择这个值
 出于一种折中：如果一个帧中包括一个错误（接收到不正确的CRC校验），只需重发1.5KB
@@ -701,52 +326,29 @@ VLAN O和VLAN 4095）。它还包含支持QoS的3位优先级（定义在802.1p�
 面的命令为VLAN ID 为2的接口 ethl添加、删除虚拟接口，修改虚拟接口的命名方式并添
 加新接口：
 \begin{verbatim}
-    
     Linux# vconfig add eth1 2
-    
-    Added VLAN with VID == 2 to IF -：eth1：-
-    
-    Linux# ifconfig ethl.2
-    
-    ethl.2 Link encap:Ethernet HWaddr 00:04:5A:9F:9E:80
-    
-    BROADCAST MULTICAST MTU:1500 Metric:1
-    
-    RX packets:0 errors:0 dropped:0 overruns:0 frame:0
-    
-    TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
-    
-    collisions:0 txgueuelen:0
-    
-    RX bytes:0 （0.0 b）TX bytes:0 （0.0b）
-    
+    Added VLAN with VID == 2 to IF -:eth1:-
+    Linux# ifconfig eth1.2
+    eth1.2 Link encap:Ethernet HWaddr 00:04:5A:9F:9E:80
+                BROADCAST MULTICAST MTU:1500 Metric:1
+                RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+                TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+                collisions:0 txgueuelen:0
+                RX bytes:0 （0.0 b)TX bytes:0 （0.0b)
     Linux# vconfig rem eth1.2
-    
-    Removed VLAN -：eth1.2：-
-    
+    Removed VLAN -:eth1.2:-
     Linux# vconfig set\_name\_type VLAN\_PLUS\_VID
-    
     Set name-type for VLAN subsystem. Should be visible in
-    
-    /proc/net/vlan/config
-    
+                /proc/net/vlan/config
     Linux# vconfig add eth1 2
-    
-    Added VLAN with VID == 2 to IF -：eth1：-
-    
+    Added VLAN with VID == 2 to IF -:eth1:-
     Linux# ifcontig v1an0002
-    
     vlan0002 Link encap: Ethernet HWaddr 00:04:5A:9F:9E:80
-    
-    BROADCAST MULTICAST MTU:1500 Metric:1
-    
-    RX packets:0 errors:0 dropped:0 overruns:0 frame:0
-    
-    TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
-    
-    col1isions:0 txqueuelen:0
-    
-    RX bytes:0 （0.0b）TX bytes:0 （0.0b）
+                BROADCAST MULTICAST MTU:1500 Metric:1
+                RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+                TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+                col1isions:0 txqueuelen:0
+                RX bytes:0 （0.0b)TX bytes:0 （0.0b)
 \end{verbatim}
 
 这里，我们可以看到在Linux 中，虚拟接口命名的默认方法是将相关物理接口与 VLAN
@@ -781,69 +383,38 @@ LACPDU）。
 Linux 可实现跨越不同类型设备的链路聚合（绑定），使用以下命令：
 \begin{verbatim}
     Linux# modprobe bonding
-    
-    Linux# ifconfig bondo 10.0.0.111
-    
-    netmask 255.255.255.128
-    
+    Linux# ifconfig bondo 10.0.0.111 netmask 255.255.255.128
     Linux# ifenslave bondo ethO wlanO
 \end{verbatim}
 
 这组命令中的第一个用于加载绑定驱动，它是一个支持链路聚合的特设备驱动程序。
-
 第二个命令使用IPv4地址来创建bondO接口。虽然IP 相关信息对创建聚合接口不是必需
 的，但它是典型的。在ifenslave命令执行后，绑定设备bondO用MASTER 标志来标记，而
 设备 ethO 和wlanO 用 SLAVE 标志来标记：
 \begin{verbatim}
     bondo Link encap:Ethernet HWaddr 00:11:A3:00:2C:2A
-    
-    inet addr:10.0.0.111 Bcast:10.0.0.127 Mask:255.255.255.128
-    
-    inet6 addr: fe80：：211:a3ff:fe00:2c2a/64 Scope:Link
-    
-    UP BROADCAST RUNNING MASTER MULTICAST MTU:1500 Metric:1
-    
-    RX packets:2146 errors:0 dropped:0 overruns:0 frame:0
-    
-    TX packets:985 errors:0 dropped:0 overruns:0 carrier:0
-    
-    col1isions:18 txgueuelen:0
-    
-    RX bytes:281939 （275.3 KiB）TX bytes:141391（138.0 KiB）
-    
-    ethO Link
-    
-    encap:Ethernet HWaddr 00:11:A3:00:2C:2A
-    
-    UP BROADCAST RUNNING SLAVE MULTICAST MTU: 1500 Metric:1
-    
-    RX packets:1882 errors:0 dropped:0 overruns:0 frame:0
-    
-    packets:961 errors:0 dropped:0 overruns:0 carrier:0
-    
-    collisions:18 txgueuelen:1000
-    
-    RX bytes: 244231 （238.5 KiB）TX bytes: 136561（133.3 KiB）
-    
-    Interrupt:20 Base address:0x6c00
-    
-    wlanO
-    
-    Link
-    
-    encap:Ethernet HWaddr 00:11:A3:00:2C:2A
-    
-    UP BROADCAST SLAVE MULTICAST MTU : 1500 Metric:1
-    
-    RX packets:269 errors:0 dropped:0 overruns:0 frame:0
-    
-    TX
-    
-    packets:24 errors:0 dropped: 0 overruns:0 carrier:0
-    
-    col1isions:0 txqueuelen: 1000
-    
-    RX bytes: 38579（37.6 KiB）™X bytes:4830 （4.7 KiB）
+              inet addr:10.0.0.111 Bcast:10.0.0.127 Mask:255.255.255.128
+              inet6 addr: fe80：：211:a3ff:fe00:2c2a/64 Scope:Link
+              UP BROADCAST RUNNING MASTER MULTICAST MTU:1500 Metric:1
+              RX packets:2146 errors:0 dropped:0 overruns:0 frame:0
+              TX packets:985 errors:0 dropped:0 overruns:0 carrier:0
+              col1isions:18 txgueuelen:0
+              RX bytes:281939 (275.3 KiB)TX bytes:141391(138.0 KiB)
+
+    eth0 Link encap:Ethernet HWaddr 00:11:A3:00:2C:2A
+              UP BROADCAST RUNNING SLAVE MULTICAST MTU: 1500 Metric:1
+              RX packets:1882 errors:0 dropped:0 overruns:0 frame:0
+              packets:961 errors:0 dropped:0 overruns:0 carrier:0
+              collisions:18 txgueuelen:1000
+              RX bytes: 244231 (238.5 KiB)TX bytes: 136561(133.3 KiB)
+              Interrupt:20 Base address:0x6c00
+
+    wlan0 Link encap:Ethernet HWaddr 00:11:A3:00:2C:2A
+              UP BROADCAST SLAVE MULTICAST MTU : 1500 Metric:1
+              RX packets:269 errors:0 dropped:0 overruns:0 frame:0
+              TX packets:24 errors:0 dropped:0 overruns:0 carrier:0
+              col1isions:0 txqueuelen: 1000
+              RX bytes: 38579(37.6 KiB) TX bytes:4830 (4.7 KiB)
 \end{verbatim}
 
 在这个例子中，我们将一个有线以太网接口和一个Wi-Fi接口绑定在一起。为主设备
@@ -872,153 +443,60 @@ LACP 协议旨在通过避免手工配置，以简化链路聚合的建立工作
 交换式以太网的发展，网络不再是单一的共享线路，而代之以很多链路的组合。因此，多个站
 之间可以同时进行数据交换。另外，以太网被修改为全双工操作，这样可以有效禁用冲突检测
 电路。这样也可以增加以太网的物理长度，因为半双工操作和冲突检测的相关时间约束被取消。
-在 Linux 中，ethtool 程序可用于查询是否支持全双工，以及是否正在执行全双工操作。
 
+在 Linux 中，ethtool 程序可用于查询是否支持全双工，以及是否正在执行全双工操作。
 这个工具也可显示和设置以太网接口的很多属性：
 
 \begin{verbatim}
     Linux# ethtool ethO
-    
-    Settings for ethO：
-    
-    Supported ports： ［ TP MII ］
-    
-    Supported link modes: 10baseT/Half 10baseT/Fu11
-    
-    100baseT/Half 100baseT/Fu11
-    
-    Supports
-    
-    auto-negotiation: Yes
-    
-    Advertised link modes: 10baser/Half 10baser/Fu11
-    
-    100baseT/Half 100baser/Fu11
-    
-    Advertised auto-negotiation: Yes
-    
-    Speed: 10Mb/s
-    
-    Duplex:Half
-    
-    Port: MII
-    
-    PHYAD: 24
-    
-    Transceiver: internal
-    
-    Auto-negotiation: on
-    
-    Current message level: 0x00000001 （1）
-    
-    Link detected: yes
-    
+    Settings for ethO:
+              Supported ports: [ TP MII ]
+              Supported link modes: 10baseT/Half 10baseT/Fu11
+              100baseT/Half 100baseT/Fu11
+              Supports auto-negotiation: Yes
+              Advertised link modes: 10baser/Half 10baser/Fu11
+              100baseT/Half 100baser/Fu11
+              Advertised auto-negotiation: Yes
+              Speed: 10Mb/s
+              Duplex:Half
+              Port: MII
+              PHYAD: 24
+              Transceiver: internal
+              Auto-negotiation: on
+              Current message level: 0x00000001 (1)
+              Link detected: yes
     Linux# ethtool eth1
-    
-    Settings for ethl：
-    
-    Supported ports：［ TP］
-    
-    Supported 1ink modes: 10baser/Half 10baser/Fu11
-    
-    100baser/Half 100baseT/Fu11
-    
-    1000baser/Fu11
-    
-    Supports auto-negotiation: Yes
-    
-    Advertised link modes: 10baseT/Half 10baser/Fu11
-    
-    100baser/Half 100baser/Fu11
-    
-    1000baseT/Fu11
-    
-    Advertised auto-negotiation: Yes
-    
-    Speed: 100Mb/s
-    
-    Duplex: Fu11
-    
-    Port: Twisted Pair
-    
-    PHYAD:0
-    
-    Transceiver: internal
-    
-    Auto-negotiation: on
-    
-    Supports Wake-on: umba
-    
-    Current message level:0x00000007 （7）
-    
-    Link
-    
-    detected: yes
+    Settings for eth1:
+              Supported ports:[ TP ]
+              Supported 1ink modes: 10baser/Half 10baser/Fu11
+              100baser/Half 100baseT/Fu11
+              1000baser/Fu11
+              Supports auto-negotiation: Yes
+              Advertised link modes: 10baseT/Half 10baser/Fu11
+              100baser/Half 100baser/Fu11
+              1000baseT/Fu11
+              Advertised auto-negotiation: Yes
+              Speed: 100Mb/s
+              Duplex: Fu11
+              Port: Twisted Pair
+              PHYAD:0
+              Transceiver: internal
+              Auto-negotiation: on
+              Supports Wake-on: umba
+              Wake-on: g
+    Current message level:0x00000007 (7)
+    Link detected: yes
 \end{verbatim}
 
 在这个例子中，第一个以太网接口（ethO）连接到一个半双工的10Mb/s网络。我们看到
 它能够自动协商，这是一种来源于802.3u的机制，使接口能交换信息（例如速度）和功能
 （例如半双工或全双工运行）。自动协商信息在物理层通过信号交换，它可在不发送或接收数
-据时发送。我们可以看到，第二个以太网接口
+据时发送。我们可以看到，第二个以太网接口（ethl）也支持自动协商，它的速率100Mb/
+S，工作模式为全双工。其他值（Port、PHYAD、Transceiver） 指出物理端口类型、地
+址，以及物理层电路在NIC内部还是外部。当前消息级别用于配置与接口操作模式相关的
+日志消息，它的行为由使用的驱动程序指定。我们在下面的例子讨论如何设置这些值。
 
-Intel（R） 82577LN Gigabit Network Connection Properties
-
-（ethl）也支持自动协商，它的速率100Mb/
-
-S，工作模式为全双工。其他值（Port、
-
-PHYAD、Transceiver） 指出物理端口类型、地
-
-址，以及物理层电路在NIC内部还是外部。
-
-当前消息级别用于配置与接口操作模式相关的
-
-日志消息，它的行为由使用的驱动程序指定。
-
-我们在下面的例子讨论如何设置这些值。
-
-在Windows 中，我们可以看到以下细节，
-
-首先进入“控制面板”中的“网络连接”，然
-
-Adaptive Irter-Frame Spacing
-
-Enable PME
-
-Flow Control
-
-Gigabi Master Slave Mode
-
-Intemupt Moderation
-
-hntemupt Moderation Rate
-
-IPy4 Checksum Ofload
-
-Jumbo Packet
-
-Large Send Oiioad （IPv4）
-
-Lare Send OHiload（Py5）
-
-Link Speed Battery Saver
-
-Locakly Administered Address
-
-LLog Link State Evert
-
-Autto Negotiation
-
-1.0Gops Fu Duple
-
-10 Mbps Ful Duplex
-
-10 Mbps Half Duplex
-
-100 Mbps Fuil Duplex
-
-100 Mos Half Dupdex
-
+在Windows 中，我们可以看到以下细节，首先进入“控制面板”中的“网络连接”，然
 后在感兴趣的接口上单击鼠标右键并选择“属性”，然后单击“配置”框并选择“高级”选
 项卡。这时，将打开一个类似图3-6（这个例子来自 Windows 7机器上的以太网接口）所示
 的对话框。
@@ -1027,12 +505,10 @@ Autto Negotiation
 的适配器和驱动程序，802.1p/q 标签可启用或禁用，也可提供流量控制和唤醒功能
 （见3.3.2节）。我们可以手工设置速率和双工模式，或使用更典型的自动协商选项。
 
-驱动程序的运行参数
-
 \begin{figure}
     \centering
     \includegraphics[scale=0.5]{imgs/3/3-6.png}
-    \caption{Windows （7）的网络接口属性的“高级”选项卡。该控件允许用户提供网络设备}
+    \caption{Windows （7）的网络接口属性的“高级”选项卡。该控件允许用户提供网络设备驱动程序的运行参数}
 \end{figure}
 
 \subsection{双工不匹配}
@@ -1131,66 +607,7 @@ IEEE 802.1d 标准规定了网桥的操作，交换机本质上是高性能的�
 位置，每个帧将会被交付到每个网段，这样会导致不必要的开销。学习能力可以显著降低开
 销，它是交换机和网桥的一个基本功能。
 
-图 3-9
-
-站
-
-00:17:f2:a2:10:3d
-
-00:c0:19:33:0a:2e
-
-端口
-
-2
-
-1
-
-站
-
-00:17:f2:a2:10:3d
-
-00:c0:19:33:0a:2e
-
-00:0d:66:4f:02:03
-
-00:0d:66:4f:02:03
-
-端口
-
-9
-
-9
-
-9
-
-00:0d:66:4f:02:04
-
-00:30:48:2b:19:82
-
-00:30:48:2b:19:86
-
-3
-
-3
-
-3
-
-00:0d:66:4f:02:04
-
-00:30:48:2b:19:82
-
-00:30:48:2b:19:86
-
-0I
-
-11
-
-交换机A的数据库
-
-交换机B的数据库
-
 交换机 A和B 中的过滤数据库是从图3-8经过一段时间“学习”，
-
 通过查看交换机端口上的帧的源地址来创建
 
 目前，多数操作系统支持网络接口之间的网桥功能，这意味着具有多个接口的计算机
@@ -1211,6 +628,7 @@ IEEE 802.1d 标准规定了网桥的操作，交换机本质上是高性能的�
 所示的拓扑结构
 
 图 3-11
+
 在这个简单的拓扑中，一台基于Linux 的PC被配置网桥，它在两个以太网之间实现互联。
 作为一个处于学习中的网桥，它不断积累并建立一些表，其中包含有关哪个端口可到达扩展
 局域网中的其他系统的信息
@@ -1252,18 +670,14 @@ IEEE 802.1d 标准规定了网桥的操作，交换机本质上是高性能的�
 指定的“有效期”内，没有再次看到该条目中的地址，则将这个条目删除，如下所示：
 
 \begin{verbatim}
-    Linux# brctl setageing bro 1
-    Linux# brctl showmacs br0 port no
-    
-    mac addr is local? ageing
-    
-    timer
-    
-    1 00:04:5a:9f:9e:80 no 0.76
-    2 00:07：€9:14:a9:c1 yes 0.00
-    1 00:08:74:93:c8:3c yes 0.00
-    2 00:14:22:f4:19:5f no 0.78
-    1 00:17:f2:e7:6d:91 no 0.00
+    Linux# brctl setageing br0 1
+    Linux# brctl showmacs br0
+    port no mac addr is local? ageing timer
+      1 00:04:5a:9f:9e:80 no 0.76
+      2 00:07:e9:14:a9:c1 yes 0.00
+      1 00:08:74:93:c8:3c yes 0.00
+      2 00:14:22:f4:19:5f no 0.78
+      1 00:17:f2:e7:6d:91 no 0.00
 \end{verbatim}
 
 为了方便演示，我们选择了一个比平时数值低的值作为有效期。当一个条目因有效期满
@@ -1281,130 +695,36 @@ IEEE 802.1d 标准规定了网桥的操作，交换机本质上是高性能的�
 假设图3-12中的多个交换机刚被打开，并且它们的过滤数据库为空。当站S发送一个
 帧时，交换机B在端口7、8和9复制该帧。这时，最初的帧已被“放大”3倍。这些帧被
 交换机 A、D和C接收。交换机 A在端口2和3生成该帧的副本。交换机 D和C分别在端
-口 20、22和13、14生成更多副本。当这些
+口 20、22和13、14生成更多副本。当这些副本在交换机 A、C和D之间双向传输，这
+时放大倍数已增大为6。当这些帧到达时，转发数据库开始出现震荡，这是由于网桥反
+复尝试查找通过哪些端口可到达站S。显然，这种情况是不能容忍的。如果允许这种情况
+发生，采用这种配置的网桥将无法使用。幸运的是，有一种协议可避免这种情况，这种
+协议称生成树协议（STP）。我们将介绍STP的一些细节，解释网桥和交换机采用哪
+些方法抑制放大。在当前的标准［802.1D-2004］中，传统的STP被快速生成树协议
+（RSTP）代替，我们将在了解传统STP的基础上再介绍它。
 
-交换机A
-
-副本在交换机 A、C和D之间双向传输，这
-
-时放大倍数已增大为6。当这些帧到达时，
-
-转发数据库开始出现震荡，这是由于网桥反
-
-复尝试查找通过哪些端口可到达站S。显然，
-
-21
-
-这种情况是不能容忍的。如果允许这种情况
-
-交换机B
-
-站S
-
-20
-
-交换机D
-
-发生，采用这种配置的网桥将无法使用。幸
-
-12
-
-运的是，有一种协议可避免这种情况，这种
-
-协议称生成树协议（STP）。我们将介绍
-
-图3-12
-
-STP的一些细节，解释网桥和交换机采用哪
-
-些方法抑制放大。在当前的标准［802.1D-
-
-2004］中，传统的STP被快速生成树协议
-
-（RSTP）代替，我们将在了解传统STP的基
-
-14
-
-交换机C
-
-一个扩展的以太网包括4台交换机和多
-
-条冗余链路。如果在这个网络中采用简单
-
-的洪泛转发帧，由于多余的倍增流量（所
-
-谓的广播风暴），将会导致一场大的灾难。
-
+一个扩展的以太网包括4台交换机和多条冗余链路。如果在这个网络中采用简单
+的洪泛转发帧，由于多余的倍增流量（所谓的广播风暴），将会导致一场大的灾难。
 这种情况需要使用 STP
 
-础上再介绍它。
 
-STP通过在每个网桥禁用某些端口来工
-
-交换机A
-
-1
-
-作，这样可避免拓扑环路（即两个网桥之间
-
-不允许出现重复路径），但如果拓扑结构未分
-
-区，则仍可到达所有站。在数学上，一个生
-
-6
-
-21
-
-成树是一张图中所有节点和一些线的集合，
-
-交换机B
-
-13
-
-从任何节点到其他节点（跨越图）有一条路径
-
-站S
-
-交换机D
-
-12
-
-或路由，但是没有环路（这些线的集合构成
-一棵树）。一张图可能存在多个生成树。STP
-用于找出这张图的其中一个生成树，该图将
-网桥作为节点并将链路作为线（或称“边”）。
-
+STP通过在每个网桥禁用某些端口来工作，这样可避免拓扑环路（即两个网桥之间
+不允许出现重复路径），但如果拓扑结构未分区，则仍可到达所有站。在数学上，一个生
+成树是一张图中所有节点和一些线的集合，从任何节点到其他节点（跨越图）有一条路径
+或路由，但是没有环路（这些线的集合构成一棵树）。一张图可能存在多个生成树。STP
+用于找出这张图的其中一个生成树，该图将网桥作为节点并将链路作为线（或称“边”）。
 图3-13说明了这个想法。
 
-在本图中，粗线表示网络中被STP选择
-
-用于转发帧的链路。其他链路没有被使用，
-
-端口8、9、12、21、22和3被阻塞。通过
-
-14
-
-交换机C
-
-图3-13
-
-通过STP，链路B-A、A-C和C-D在生
-
-成树中是活跃的。端口6、7、1、2、13、
-
-14和20处于转发状态；所有其他端口被
-
-阻塞（即不转发）。这样可以防止帧循环，
-
-避免广播风暴。如果配置发生变化或某台
-
-交换机故障，则将阻塞端口改变为转发状
-
+通过STP，链路B-A、A-C和C-D在生成树中是活跃的。端口6、7、1、2、13、
+14和20处于转发状态；所有其他端口被阻塞（即不转发）。这样可以防止帧循环，
+避免广播风暴。如果配置发生变化或某台交换机故障，则将阻塞端口改变为转发状
 态，并由网桥计算一个新生成树
 
-使用STP，早期的各种问题并没有出现，这些帧只是作为另一个抵达帧的副本而被创建。这
-里没有出现放大的问题。由于任意两个站之间只有一条路径，因此可以避免循环。生成树的
-形成和维护由多个网桥完成，在每个网桥上运行一个分布式算法。
+在本图中，粗线表示网络中被STP选择用于转发帧的链路。其他链路没有被使用，
+端口8、9、12、21、22和3被阻塞。通过使用STP，早期的各种问题并没有出现，这些帧只
+是作为另一个抵达帧的副本而被创建。这里没有出现放大的问题。由于任意两个站之间只有
+一条路径，因此可以避免循环。生成树的形成和维护由多个网桥完成，在每个网桥上运行
+一个分布式算法。
 
 用于转发数据库时，STP必须处理以下情况，例如网桥启用和关闭、接口卡更换或
 MAC地址改变。显然，这种变化可能影响生成树运行，因此STP 必须适应这些变化。这种
@@ -1422,47 +742,8 @@ MAC地址改变。显然，这种变化可能影响生成树运行，因此STP �
 端口可能有5个状态：阻塞、侦听、学习、转发和禁用。在图3-14所示的状态转换图中，我
 们可以看出它们之间的关系。
 
-拓扑改变
-
-初始化
-
-阻塞
-
-（丟弃）
-
-最大
-
-一时间
-
-（20s）
-
-侦听
-
-（丟弃）
-
-转发
-
-一延迟一
-
-（15s）
-
-学习
-
-转发
-
-转发延迟
-
-（15s）
-
-拓扑改变
-
-禁用
-
-（丢弃）
-
-拓扑改变
-
 图3-14
+
 在正常的STP操作中，端口在4个主要状态之间转换。在阻塞状态下，帧不被转发，但一次
 拓扑变化或超时可能导致向侦听状态转换。转发状态是活跃的交换机端口承载数据流量的正
 常状态。括号中的状态名用于表示 RSTP 相关的端口状态
@@ -1487,81 +768,8 @@ BPDU，但不进行地址学习或数据转发。经过一个典型的15秒的�
 
 为了确定生成树中的链路，STP 使用图3-15所示的BPDU。
 
-帧
-
-前导
-
-SFD
-
-（7字节）（1）
-
-DST
-
-（6）
-
-SRC
-
-（6
-
-LLC/
-
-L/T
-
-Prot Vers Type Flags
-
-SNAP
-
-（2
-
-（3
-
-2）
-
-（1）
-
-（1
-
-（1）
-
-根1
-
-（⑧
-
-BPDU
-
-根路径
-
-网桥1D
-
-成本
-
-（4）
-
-（8
-
-（2）
-
-2
-
-Hello 转发
-
-Mah
-
-Time延迟
-
-（2）
-
-FCS
-
-（4）
-
-（1 （1（2位）（1）（1）（1）
-
-由802.1w
-
-定义
-
 图3-15
+
 BPDU 被放置在802帧的有效载荷区，并在网桥之间交换以建立生成树。重要的字段包括
 源、根节点、到根的成本和拓扑变化提示。在802.1w 和［802.1D-2004］中（包括快速 STP或
 RSTP），附加学段显示端口状态
@@ -2217,79 +1425,81 @@ TSPEC。HCF 利用前面讨论过的虚拟载波侦听机制和DCF，以避免�
 802.11n 还增加了多种数据流和一种聚合多帧方法（见3.5.1.3节）。我们尽量避免详细讨论物
 理层，这里只是看一下可选的内容。表3-2包括802.11标准中特别描述的物理层部分。
 
-标准（条款）
-
-表3-2
-
-速率（Mb/s）
-
-6、9、12、18、24、36、
-
-802.11a（第17条）
-
-48、
-
-54
-
-802.11 标准中描述的物理层部分
-
-频率范围；调制
-
-5.16GHz ~ 5.35GHz 和5.725~
-
-5.825GHz; OFDM
-
-802.11b（第18条）
-
-1、2、5.5、11
-
-1、2、5.5、6、9、11、12、
-
-802.11g（第19条）
-
-18、24、36、48、54（加22、23）
-
-6.5 ~600，很多选项（最多
-
-802.11n
-
-4个MIMO流）
-
-信道设置
-
-37 ~165（根据国家不
-
-同），20MHz/10MHz/5MHz
-
-信道宽度选项
-
-1~14（根据国家不同）
-
-1~14（根据国家不同）
-
-802.1ly
-
-（与802.11-2007相同）
-
-度20MHz或 40MHz;OFDM
-
-3.650GHz ~ 3.700GHz（需要
-
-许可）；OFDM
-
-1~13（2.4GHz频段）；
-
-36 ~196（5GHz频段）（根
-
-据国家不同）
-
-1~25、
-
-36
-
-64、
-
-100~161（根据国家不同）
+\begin{verbatim}
+    标准（条款）
+    
+    表3-2
+    
+    速率（Mb/s）
+    
+    6、9、12、18、24、36、
+    
+    802.11a（第17条）
+    
+    48、
+    
+    54
+    
+    802.11 标准中描述的物理层部分
+    
+    频率范围；调制
+    
+    5.16GHz ~ 5.35GHz 和5.725~
+    
+    5.825GHz; OFDM
+    
+    802.11b（第18条）
+    
+    1、2、5.5、11
+    
+    1、2、5.5、6、9、11、12、
+    
+    802.11g（第19条）
+    
+    18、24、36、48、54（加22、23）
+    
+    6.5 ~600，很多选项（最多
+    
+    802.11n
+    
+    4个MIMO流）
+    
+    信道设置
+    
+    37 ~165（根据国家不
+    
+    同），20MHz/10MHz/5MHz
+    
+    信道宽度选项
+    
+    1~14（根据国家不同）
+    
+    1~14（根据国家不同）
+    
+    802.1ly
+    
+    （与802.11-2007相同）
+    
+    度20MHz或 40MHz;OFDM
+    
+    3.650GHz ~ 3.700GHz（需要
+    
+    许可）；OFDM
+    
+    1~13（2.4GHz频段）；
+    
+    36 ~196（5GHz频段）（根
+    
+    据国家不同）
+    
+    1~25、
+    
+    36
+    
+    64、
+    
+    100~161（根据国家不同）
+\end{verbatim}
 
 第一列给出了标准的原有名称和在［802.11-2007］中的当前位置，并增加802.11n和
 802.1ly修订版的细节。在这个表中，需要注意的是，802.116/g工作在2.4GHz的工业、
@@ -2369,184 +1579,186 @@ Stream），即由多个天线同时传输的多个数据流。一个给定信�
 两路信号包含相同信息。每行给出了2个数据传输速率，一个使用早期的800ns GI，一个使
 用较短的400ns GI 以获得更大传输速率。两个带下划线的值 6Mb/s 和600Mb/S，分别表示最
 小和最大吞叶率
-
-表3-3
-
-MCS值
-
-0
-
-1
-
-2
-
-3
-
-4
-
-5
-
-6
-
-7
-
-8
-
-802.11n 的MCS 值包括平等和不平等调制，不同的FEC编码率，使用20MHz或40MHz信
-道宽度的4个空间流，以及 800ns 或400ns GI 的组合。77种组合提供从6Mb/s 到600Mb/s
-的数据传输速率
-
-调制类型
-
-FEC 编码率
-
-空间流
-
-BPSK
-
-QPSK
-
-QPSK
-
-16-QAM
-
-16-QAM
-
-64-QAM
-
-64-QAM
-
-64-QAM
-
-BPSK
-
-1/2
-
-1/2
-
-3/4
-
-1/2
-
-3/4
-
-2/3
-
-3/4
-
-5/6
-
-1/2
-
-1
-
-速率（Mb/s）
-
-（20MHz）［800/400ns］
-
-6.5/7.2
-
-13/14.4
-
-19.5/21.7
-
-26/28.9
-
-39/43.3
-
-52/57.8
-
-58.5/65
-
-65/72.2
-
-13/14.4
-
-速率（Mb/s）
-
-（40MHz）［800/400ns］
-
-13.5/15
-
-27/30
-
-40.5/45
-
-54/60
-
-81/90
-
-108/120
-
-121.5/135
-
-135/150
-
-27/30
-
-15
-
-16
-
-64-QAM
-
-BPSK
-
-5/6
-
-1/2
-
-31
-
-32
-
-64-QAM
-
-BPSK
-
-5/6
-
-1/2
-
-2
-
-2
-
-3
-
-4
-
-1
-
-130/144.4
-
-19.5/21.7
-
-260/288.9
-
-NA
-
-270/300
-
-40.5/45
-
-•••
-
-540/600
-
-6/6.7
-
-76
-
-64x3/16×1-QAM
-
-3/4
-
-4
-
-214.5/238.3
-
-445.5/495
+\begin{verbatim}
+    
+    表3-3
+    
+    MCS值
+    
+    0
+    
+    1
+    
+    2
+    
+    3
+    
+    4
+    
+    5
+    
+    6
+    
+    7
+    
+    8
+    
+    802.11n 的MCS 值包括平等和不平等调制，不同的FEC编码率，使用20MHz或40MHz信
+    道宽度的4个空间流，以及 800ns 或400ns GI 的组合。77种组合提供从6Mb/s 到600Mb/s
+    的数据传输速率
+    
+    调制类型
+    
+    FEC 编码率
+    
+    空间流
+    
+    BPSK
+    
+    QPSK
+    
+    QPSK
+    
+    16-QAM
+    
+    16-QAM
+    
+    64-QAM
+    
+    64-QAM
+    
+    64-QAM
+    
+    BPSK
+    
+    1/2
+    
+    1/2
+    
+    3/4
+    
+    1/2
+    
+    3/4
+    
+    2/3
+    
+    3/4
+    
+    5/6
+    
+    1/2
+    
+    1
+    
+    速率（Mb/s）
+    
+    （20MHz）［800/400ns］
+    
+    6.5/7.2
+    
+    13/14.4
+    
+    19.5/21.7
+    
+    26/28.9
+    
+    39/43.3
+    
+    52/57.8
+    
+    58.5/65
+    
+    65/72.2
+    
+    13/14.4
+    
+    速率（Mb/s）
+    
+    （40MHz）［800/400ns］
+    
+    13.5/15
+    
+    27/30
+    
+    40.5/45
+    
+    54/60
+    
+    81/90
+    
+    108/120
+    
+    121.5/135
+    
+    135/150
+    
+    27/30
+    
+    15
+    
+    16
+    
+    64-QAM
+    
+    BPSK
+    
+    5/6
+    
+    1/2
+    
+    31
+    
+    32
+    
+    64-QAM
+    
+    BPSK
+    
+    5/6
+    
+    1/2
+    
+    2
+    
+    2
+    
+    3
+    
+    4
+    
+    1
+    
+    130/144.4
+    
+    19.5/21.7
+    
+    260/288.9
+    
+    NA
+    
+    270/300
+    
+    40.5/45
+    
+    
+    
+    540/600
+    
+    6/6.7
+    
+    76
+    
+    64x3/16×1-QAM
+    
+    3/4
+    
+    4
+    
+    214.5/238.3
+    
+    445.5/495
+\end{verbatim}
 
 表3-3显了可用于802.11n 的各种编码组合，包括二进制相移键控（BPSK）、正交相
 移键控（QPSK），以及各种正交幅度调制（16-QAM 和64-QAM）。这些调制方案为给定的信
@@ -2607,39 +1819,41 @@ Wi-Fi 安全体系结构的基础，称为强健安全网络（RSN），并支�
 早期的一些方法（如WEP）称为预RSNA方法。RSNA要求支持CCMP（TKIP 可选），而
 802.11n标准完全不使用TKIP。表3-4总结了这种复杂情况。
 
-表3-4 Wi-Fi 安全己从不安全的WEP 演变到 WPA，再到当前标准的WPA2方案
-
-名称 /标准
-
-密码
-
-密钥流管理
-
-WEP（预RSNA）
-
-RC4
-
-（WEP）
-
-WPA
-
-RC4
-
-TKIP
-
-WPA2/802.11 （i）
-
-CCMP
-
-CCMP，（TKIP）
-
-认证
-
-PSK，（802.1X/EAP）
-
-PSK,802.IX/EAP
-
-PSK，802.1 X/EAP
+\begin{verbatim}
+    表3-4 Wi-Fi 安全己从不安全的WEP 演变到 WPA，再到当前标准的WPA2方案
+    
+    名称 /标准
+    
+    密码
+    
+    密钥流管理
+    
+    WEP（预RSNA）
+    
+    RC4
+    
+    （WEP）
+    
+    WPA
+    
+    RC4
+    
+    TKIP
+    
+    WPA2/802.11 （i）
+    
+    CCMP
+    
+    CCMP，（TKIP）
+    
+    认证
+    
+    PSK，（802.1X/EAP）
+    
+    PSK,802.IX/EAP
+    
+    PSK，802.1 X/EAP
+\end{verbatim}
 
 在所有情况下，预共享密钥和802.1X 可用于认证和初始化密钥。802.1X/EAP 的主要吸
 引力在于其可管理的认证服务器，它基于AP为每个用户提供访问控制决策。出于这个原因，
@@ -2688,51 +1902,7 @@ PPP通常对底层的点到点链路有最低要求，LCP更是这样。链路�
 系结构（SNA）协议族中用作链路层协议。HDLC协议还用作802.2中LLC标准的基础，并
 最终被用于 PPP。图3-22显示了这种格式。
 
-标志
-
-地址
-
-控制
-
-协议
-
-（0x7E）
-
-（-O×FF2
-
-K0x03）
-
-（1）
-
-（1）
-
-（2字节）（1或2）
-
-FCS范围
-
-数据
-
-（PPP控制或网络层数据）
-
-（可变）
-
-埴充
-
-（如果在在，用9）
-
-（可变）
-
-FCS
-
-标志
-
-（0x7E）
-
-（2或4）
-
-计入MRU
-
-图3-22•PPP 基本帧格式借用了HDLC 的格式。它包括一个协议标识符、有效载荷区域，以及2或4
+图3-22PPP 基本帧格式借用了HDLC 的格式。它包括一个协议标识符、有效载荷区域，以及2或4
 字节的FCS。其他字段是否存在取决于压缩选项
 
 在通常情况下，PPP帧格式类似于图3-22所示的HDLC帧，由2个1字节的包含固定
@@ -2780,62 +1950,6 @@ PPP 帧的最后部分包含一个 16位的FCS（一个CRC16，生成多项式�
 
 LCP在基本PPP分组之上进行了简单的封装。如图3-23所示。
 
-PPP分组
-
-标志
-
-地址
-
-（0x7E）
-
-KOxFF）
-
-（1）
-
-（1）
-
-控制
-
-（0×03）
-
-（2字节）
-
-协议
-
-（0xC021）
-
-（1或2）
-
-标识
-
-LCP数据
-
-填充
-
-（如果存在）
-
-可变
-
-FCS
-
-标志
-
-（0x7E）
-
-图 3-23
-
-（1）
-
-（1）
-
-（2
-
-可变
-
-（2或4）
-
-LCP分组
-
 LCP 分组采用很普通的格式，能识别封装数据的类型和长度。LCP 帧主要用于建立 PPP链路，
 这种格式已成为很多网络控制协议的基础
 
@@ -2873,6 +1987,7 @@ LCP 的主要工作是使一条点到点链路达到最低要求。配置消息�
 或发送一个链路终止请求，并从对方接收到一个终止响应，则认为这个链路已被终止。
 
 图3-24
+
 LCP 用于建立 PPP链路和各方商定选项。典型的交换过程包括一对包含选项列表的配置请求
 和配置确认、一个认证交换、数据交换（未画出）和一个终止交换。因为PPP是一个包括很
 多部分的通用协议，所以在一条链路建立和终止之间可能发生很多其他类型的操作
@@ -2956,7 +2071,6 @@ ISDN B信道）的聚合。MP包含一个特殊的LCP选项，表示支持多链
 IP 可以正确处理重新排序后的分组，但也可能不如没有重新排序处理得好。）MP 在每个
 分组中添加一个2~4字节的序列头部，而远程MP接收方的任务是重建正确的顺序。
 图3-25显示了这种数据帧。
-
 
 一个MP 分片包含一个序列头部，允许在一个多链路捆绑的远端对分片重新排序。这个头部
 支持2种格式：短头部（2字节）和长头部（4字节）
@@ -3233,9 +2347,9 @@ IP 头部压缩以涵盖更多的传输协议，并允许同时处理多种头�
     
     remote IP address 192.168.0.2
     
-    • data
+     data
     
-    •••
+    
 \end{verbatim}
 
 这里，我们可看到一些涉及PPP的交换，它是从服务器的角度来看的。PPP服务器进
@@ -3322,7 +2436,7 @@ Windows 7，在命令提示符下运行程序 hdwwiz，并手动添加 Microsoft
     
     Connection-specific
     
-    DNS Suffix•：
+    DNS Suffix：
     
     Description .
     
@@ -3332,7 +2446,7 @@ Windows 7，在命令提示符下运行程序 hdwwiz，并手动添加 Microsoft
     
     Autoconfiguration Enabled
     
-    •
+    
     
     ： Microsoft Loopback Adapter
     
@@ -3348,29 +2462,18 @@ Windows 7，在命令提示符下运行程序 hdwwiz，并手动添加 Microsoft
     
     fe80：：9cod:77a:52b8:39f0818（Preterred）
     
-    Autoconfiguration IPv4 Address. • ： 169.254.57.240（Preferred）
+    Autoconfiguration IPv4 Address.  ： 169.254.57.240（Preferred）
     
-    Subnet Mask.•••.
+    Subnet Mask..
     
     255.255.0.0
     
-    Default Gateway. •
+    Default Gateway. 
     
     DHCPv6 IAID
     
     ...
-    
-    •
-    
-    •
-    
     DNS Servers
-    
-    ••
-    
-    •
-    
-    ••
     
     ：302121036
     
@@ -3380,89 +2483,91 @@ Windows 7，在命令提示符下运行程序 hdwwiz，并手动添加 Microsoft
     
     fecO:0:0:ffff：：381
     
-    NetBIOS over rcpip.••••••： Enabled
+    NetBIOS over rcpip.： Enabled
 \end{verbatim}
 
 这里，我们可看到该接口已被创建，分配了IPv4 和IPv6地址，并显示为一系列的虚拟
 以太网设备。现在，这台计算机具有以下环回地址：
-
-C：> ping 127.1.2.3
-
-Pinging 127.1.2.3 with 32 bytes of data：
-
-Reply from 127.1.2.3:bytes=32 time<1ms TTL=128
-
-Reply from 127.1.2.3:bytes=32 time<1ms TTL=128
-
-Reply from 127.1.2.3:bytes=32 time<1ms TTL=128
-
-Reply from 127.1.2.3：
-
-bytes=32 time<1ms TTL=128
-
-Ping statistics for 127.1.2.3：
-
-Packets: Sent = 4,Received = 4,Lost = 0 （08 10SS），
-
-Approximate round trip times in milli-seconds：
-
-Minimum =
-
-0ms.
-
-Maximum =
-
-0ms，
-
-Average =
-
-0ms
-
-C：\> ping ：：1
-
-Pinging ：：1 from ：：1 with 32 bytes of data：
-
-Reply from ：：1:time<lms
-
-Reply from ：：1:time<1ms
-
-Reply from ：：1: time<1ms
-
-Reply from
-
-：：1：time<1ms
-
-Ping statistics for ：：1：
-
-Packets: Sent = 4,Received = 4, Lost =0 （08 108S），
-
-Approximate round trip times in milli-seconds：
-
-Minimum = 0ms,Maximum = 0ms,Average = 0ms
-
-C：\> ping 169.254.57.240
-
-Pinging 169.254.57.240127.1.2.3 with 32 bytes
-
-of data：
-
-Reply from 169.254.57.240:bytes=32 time<1ms TTL=128
-
-Reply from 169.254.57.240:bytes=32 time<1ms TTL=128
-
-Reply from 169.254.57.240:bytes=32 time<1ms TTL=128
-
-Reply from 169.254.57.240:bytes=32 time<1ms TTL=128
-
-Ping
-
-statistics for 169.254.57.240：
-
-Packets: Sent = 4,Received = 4,Lost =0 （08 10SS），
-
-Approximate round trip times in milli-seconds：
-
-Minimum = 0ms,Maximum = 0ms,Average = 0ms
+\begin{verbatim}
+    
+    C：> ping 127.1.2.3
+    
+    Pinging 127.1.2.3 with 32 bytes of data：
+    
+    Reply from 127.1.2.3:bytes=32 time<1ms TTL=128
+    
+    Reply from 127.1.2.3:bytes=32 time<1ms TTL=128
+    
+    Reply from 127.1.2.3:bytes=32 time<1ms TTL=128
+    
+    Reply from 127.1.2.3：
+    
+    bytes=32 time<1ms TTL=128
+    
+    Ping statistics for 127.1.2.3：
+    
+    Packets: Sent = 4,Received = 4,Lost = 0 （08 10SS），
+    
+    Approximate round trip times in milli-seconds：
+    
+    Minimum =
+    
+    0ms.
+    
+    Maximum =
+    
+    0ms，
+    
+    Average =
+    
+    0ms
+    
+    C：\> ping ：：1
+    
+    Pinging ：：1 from ：：1 with 32 bytes of data：
+    
+    Reply from ：：1:time<lms
+    
+    Reply from ：：1:time<1ms
+    
+    Reply from ：：1: time<1ms
+    
+    Reply from
+    
+    ：：1：time<1ms
+    
+    Ping statistics for ：：1：
+    
+    Packets: Sent = 4,Received = 4, Lost =0 （08 108S），
+    
+    Approximate round trip times in milli-seconds：
+    
+    Minimum = 0ms,Maximum = 0ms,Average = 0ms
+    
+    C：\> ping 169.254.57.240
+    
+    Pinging 169.254.57.240127.1.2.3 with 32 bytes
+    
+    of data：
+    
+    Reply from 169.254.57.240:bytes=32 time<1ms TTL=128
+    
+    Reply from 169.254.57.240:bytes=32 time<1ms TTL=128
+    
+    Reply from 169.254.57.240:bytes=32 time<1ms TTL=128
+    
+    Reply from 169.254.57.240:bytes=32 time<1ms TTL=128
+    
+    Ping
+    
+    statistics for 169.254.57.240：
+    
+    Packets: Sent = 4,Received = 4,Lost =0 （08 10SS），
+    
+    Approximate round trip times in milli-seconds：
+    
+    Minimum = 0ms,Maximum = 0ms,Average = 0ms
+\end{verbatim}
 
 我们可以看到，IPv4 中以127开始的目的地址被环回。但是，对于 IPv6，只有地址：：1
 被定义用于环回操作。我们还可以看到，地址169.254.57.240的环回适配器如何立即返
@@ -3511,8 +2616,8 @@ B到A的反向路径），路径MTU 不需要在两个方向上相同。
 见第18章）。由于GRE和PPTP有密切关系，我们现在看图3-26中的GRE头部，它们分别
 基于原来的标准和修订后的标准。
 
-
 图 3-26
+
 基本的GRE 头部只有4字节，包括一个 16位的校验和选项（很多 Internet 协议中的典型选
 项）。后来，这个头部被扩展为包括一个标识符（密钥字段），该标识符是同一流中的多个分组
 共有的，还包括一个序列号（用于顺序混乱的分组重新排序）
@@ -3549,241 +2654,111 @@ B到A的反向路径），路径MTU 不需要在两个方向上相同。
 
 \begin{verbatim}
     pptpd: MGR: Manager process started
-    
     pptpd: MGR: Maximum of 100 connections available
-    
     pptpd: MGR: Launching /usr/sbin/pptpctrl to handle client
-    
     pptpd: CTRL: local address = 192.168.0.1
-    
     Pptpd: CTRL: remote address = 192.168.1.1
-    
     Pptpd: CTRL:pppd options file = /etc/ppp/options.pptpd
-    
     pptpd: CTRL: Client 71.141.227.30 control connection started
-    
     Pptpd: CTRL: Received PPTP Control Message （type: 1）
-    
     Pptpd: CrRL: Made a START CTRL CONN RPLY packet
-    
     Pptpd: CTRL: I wrote 156 bytes to the client.
-    
     pptpd: CTRL: Sent packet to Client
-    
     Pptpd: CTRL: Received PPTP Control Message （type: 7）
-    
-    pptpd: CTRL: Set parameters to 100000000 maxbps,64 window
-    
-    size
-    
+
+    pptpd: CTRL: Set parameters to 100000000 maxbps,64 window size
     pptpd: CTRL: Made a OUT CALL RPLY packet
-    
     Pptpd: CTRL:Starting call （launching Pppd, opening GRE）
-    
     Pptpd: CTRL:pty\_fd = 6
-    
     Pptpd: CTRL: tty\_fd = 7
-    
     pptpd: CTRL（PPPD Launcher）：program binary = /usr/sbin/pppd
-    
     Pptpd: CTRL （PPPD Launcher）： 1ocal address = 192.168.0.1
-    
     Pptpd: CTRL （PPPD Launcher）： remote address = 192.168.1.1
-    
-    pppd:pppd 2.4.4 started by root,uid O
-    
+    pppd:pppd 2.4.4 started by root,uid 0
     Pppd: using channel 60
-    
     Pptpd: CTRL: I wrote 32 bytes to the client.
-    
     pptpd: CTRL: Sent packet to client
-    
     pppd: Usina interface pppO
-    
+
     PPpd: Connect: pppO <--> /dev/pts/1
-    
-    pppd: sent ［LCP ConfReg id=0x1 <asyncmap 0x0> <auth chap MS-v2>
-    
-    <magic 0x4e2ca200><pcomp> <accomp>］
-    
+    pppd: sent [LCP ConfReg id=0x1 <asyncmap 0x0> <auth chap MS-v2>
+                <magic 0x4e2ca200><pcomp> <accomp>]
     Pptpd: CTRL : Received PPTP Control Message（type: 15）
-    
     Pptpd: CTRL: Got a SET LINK INFO packet with standard ACCMs
-    
     pptpd: GRE:accepting packet #0
-    
-    pppd: rcvd ［LCP ConfReg id=0x0 <mru 1400> <magic 0x5e565505>
-    
-    <pcomp> <accomp>］
-    
-    Pppd:sent ［ICP ConfAck id=0x0 <mru 1400> <magic 0x5e565505>
-    
-    <pComp> <accomp>］
-    
-    PPPd:sent ［ICP ContReg id=0x1
-    
-    <asyncmap Ox0> auth chap MS-v2>
-    
-    <magic 0x4e2ca200><pcomp><accomp>］
-    
+    pppd: rcvd [LCP ConfReg id=0x0 <mru 1400> <magic 0x5e565505>
+                <pcomp> <accomp>]
+    Pppd: sent [ICP ConfAck id=0x0 <mru 1400> <magic 0x5e565505>
+                <pComp> <accomp>]
+    PPPd: sent [ICP ContReg id=0x1 <asyncmap Ox0> auth chap MS-v2>
+                <magic 0x4e2ca200><pcomp><accomp>]
     pptpd: GRE:accepting packet #1
-    
-    Pppd:rcvd ［LCP ConfAck id=0x1 <asyncmap 0x0> <auth chap MS-v2>
-    
-    <magic 0x4e2ca200><pcomp><accomp>］
-    
-    pppd: sent［CHAP Challenge id=0x3
-    
-    <eb88bfff67d1c239ef73e98ca32646a5>，name - "dialer" ］
-    
-    PPtpa:CTRL: Received PPTP Control Message （type:15）
-    
+    Pppd: rcvd [LCP ConfAck id=0x1 <asyncmap 0x0> <auth chap MS-v2>
+              <magic 0x4e2ca200><pcomp><accomp>］
+    pppd: sent [CHAP Challenge id=0x3
+                <eb88bfff67d1c239ef73e98ca32646a5>，name - "dialer" ］
+    PPtpa: CTRL: Received PPTP Control Message （type:15）
     pptpd: CTRL: Ignored a SET LINK INEO packet with real ACCMs！
-    
     pptpd: GRE: accepting packet #2
-    
-    Pppd:rcvd
-    
-    ［CHAP Response id=0x3<276f3678f0f03fa57f64b3c36752956500
-    
-    00000000000fa2b2ae0ad8db9d986f8e222a0217a620638a24
-    
-    3179160900>，name = "dialer" ］
-    
+    Pppd: rcvd [CHAP Response id=0x3<276f3678f0f03fa57f64b3c36752956500
+                00000000000fa2b2ae0ad8db9d986f8e222a0217a620638a24
+                3179160900>，name = "dialer" ］
     PPpd: sent［CHAP Success id=0x3
-    
-    "S=C551119EOE1AAB68E86DED09A32D0346D7002E05
-    
-    M=Accessgranted"］
-    
-    Pppd: sent ［CCP ConfReg id=0x1
-    
-    <mppe +tH -M +S +L-D -C>］
-    
+                "S=C551119EOE1AAB68E86DED09A32D0346D7002E05
+                M=Accessgranted"］
+    Pppd: sent [CCP ConfReg id=0x1
+                <mppe +tH -M +S +L-D -C>］
     Pptpd: GRE:accepting packet #3
-    
     Pppd: rcvd ［IPV6CP ConfReq id=0x1 <addr fe8o：：lcfc:fddd:8e2c:e118>］
     pppd: sent［IPV6CP TermAck id=0x1］
-    
     Pptpd: GRE: accepting packet #4
-    
-    Pppd: rcvd
-    
-    【CCP ConfReg id=0x2 <mppe +H -M -S -L -D -C>］
-    
-    pppd: sent ［CCP ConfNak id=0x2 <mppe +H -M +S +L -D -C>］
-    
+    Pppd: rcvd [CCP ConfReg id=0x2 <mppe +H -M -S -L -D -C>］
+    pppd: sent [CCP ConfNak id=0x2 <mppe +H -M +S +L -D -C>］
     Pptpd: GRE: accepting packet #5
-    
-    Pptpd: GRE：
-    
-    accepting packet #6
-    
-    pppd: rcvd［IPCP ConfReg id=0x3 <addr 0.0.0.0> <ms-dns1 0.0.0.0>
-    
-    <ms-wins 0.0.0.0> <ms-dns3 0.0.0.0> <ms-wins 0.0.0.0>］
-    
+    Pptpd: GRE： accepting packet #6
+    pppd: rcvd [IPCP ConfReg id=0x3 <addr 0.0.0.0> <ms-dns1 0.0.0.0>
+                <ms-wins 0.0.0.0> <ms-dns3 0.0.0.0> <ms-wins 0.0.0.0>］
     Pptpd: GRE: accepting packet #7
-    
-    Pppd:sent ［IPCP TermAck id=0x31
-    
-    PPpd:rcvd ［CCP ContNak id=0x1 <mppe +H -M +S -L -D -C>1
-    
-    pppd: sent
-    
-    ［CCP ConfReg id=0x2 <mppe +H -M +S -L -D -C>］
-    
-    pppd: rcvd
-    
-    ［CCP ConfReg id=0x4 <mppe +H -M +S -L -D -C>］
-    
-    Pppd: sent ［CCP ConfAck id=0x4 <mppe +H -M +S -L -D -C>1
-    
+    Pppd:sent [IPCP TermAck id=0x31
+    PPpd:rcvd [CCP ContNak id=0x1 <mppe +H -M +S -L -D -C>1
+    pppd: sent [CCP ConfReg id=0x2 <mppe +H -M +S -L -D -C>］
+    pppd: rcvd [CCP ConfReg id=0x4 <mppe +H -M +S -L -D -C>］
+    Pppd: sent [CCP ConfAck id=0x4 <mppe +H -M +S -L -D -C>1
     Pptpd: GRE:accepting packet #8
-    
-    pppd:rcvd
-    
-    ［CCP ConfAck id=0x2 <mppe +H -M +S -L -D-C>］
-    
+    pppd:rcvd [CCP ConfAck id=0x2 <mppe +H -M +S -L -D-C>］
     Pppd: MPPE 128-bit stateless compression enabled
-    
-    Pppd: sent ［IPCP ConfReg id=0x1 <addr 192.168.0.1>］
-    
-    Pppd: sent
-    
-    【IPV6CP ConfReg id=0x1 <addr fe80：：0206:5bff:fedd:c5c3>］
-    
-    Pptpd: GRE：
-    
-    accepting packet #9
-    
-    Pppd: rcvd
-    
-    ［IPCP ConfAck id=0x1 <addr 192.168.0.1>］
-    
-    PPtpd: GRE：
-    
-    accepting packet #10
-    
-    pppd:rcvd
-    
-    ［IPV6CP ConfAck id=0x1 <addr fe80：：0206:5bff:fedd:c5c3>］
-    
-    Pptpa:GRE：
-    
-    accepting packet #11
-    
-    Pppd:rcvd
-    
-    ［IPCP ConfReg id=0x5 <addr 0.0.0.0>
-    
-    <ms-dns1 0.0.0.0> <ms-wins 0.0.0.0>
-    
-    <ms-dns3 0.0.0.0> <ms-wins 0.0.0.0>］
-    
+    Pppd: sent [IPCP ConfReg id=0x1 <addr 192.168.0.1>］
+    Pppd: sent [IPV6CP ConfReg id=0x1 <addr fe80：：0206:5bff:fedd:c5c3>］
+    Pptpd: GRE: accepting packet #9
+    Pppd: rcvd [IPCP ConfAck id=0x1 <addr 192.168.0.1>］
+    PPtpd: GRE： accepting packet #10
+    pppd:rcvd [IPV6CP ConfAck id=0x1 <addr fe80：：0206:5bff:fedd:c5c3>]
+    Pptpa:GRE: accepting packet #11
+    Pppd:rcvd [IPCP ConfReg id=0x5 <addr 0.0.0.0>
+                <ms-dns1 0.0.0.0> <ms-wins 0.0.0.0>
+                <ms-dns3 0.0.0.0> <ms-wins 0.0.0.0>］
     Pppd: sent ［IPCP ConfRej id=0x5 <ms-wins 0.0.0.0><ms-wins 0.0.0.0>
     Pptpd: GRE:accepting packet #12
-    
     pppd: rcvd ［IPV6CP ConfReg id=0x6 <addr fe80：：lcfc:fddd:8e2c:e118>］
     Pppd: sent［IPV6CP ConfAck id=0x6 <addr fe80：：lcfc:fddd:8e2c:e118>］
-    pppd: 1ocal
-    
-    LL address fe80：：0206:5bff:fedd:c5c3
-    
+    pppd: local LL address fe80：：0206:5bff:fedd:c5c3
     pppd: remote LL address fe80：：lcfc:fddd:8e2c:e118
-    
     pptpd: GRE:accepting packet #13
-    
-    pppd: rcvd ［IPCP ConfReg id=0x7 <addr 0.0.0.0>
-    
-    <ms-dns1 0.0.0.0> <ms-dns3 0.0.0.0>］
-    
-    PPPa:sent ［IPCP ConfNak id=0x7 <addr 192.168.1.1>
-    
-    <ms-dns1 192.168.0.1> <ms-dns3 192.168.0.1>］
-    
+    pppd: rcvd [IPCP ConfReg id=0x7 <addr 0.0.0.0>
+                <ms-dns1 0.0.0.0> <ms-dns3 0.0.0.0>］
+    PPPa:sent [IPCP ConfNak id=0x7 <addr 192.168.1.1>
+                <ms-dns1 192.168.0.1> <ms-dns3 192.168.0.1>］
     Pptpd: GRE:accepting packet #14
-    
-    pppd: rcvd ［IPCP ConfReg id=0x8 <addr 192.168.1.1>
-    
-    <ms-dns1 192.168.0.1> <ms-dns3 192.168.0.1>］
-    
-    Pppd:sent ［IPCP ConfAck id=0x8 <addr 192.168.1.1>
-    
-    <ms-dns1 192.168.0.1> <ms-dns3 192.168.0.1>］
-    
+    pppd: rcvd [IPCP ConfReg id=0x8 <addr 192.168.1.1>
+                <ms-dns1 192.168.0.1> <ms-dns3 192.168.0.1>］
+    Pppd: sent [IPCP ConfAck id=0x8 <addr 192.168.1.1>
+                <ms-dns1 192.168.0.1> <ms-dns3 192.168.0.1>］
     Pppd: local IP address 192.168.0.1
-    
     Pppd: remote IP address 192.168.1.1
-    
     Pptpd: GRE: accepting packet #15
-    
     pptpd: CTRL: Sending ECHO REO id 1
-    
     pptpd: CTRL: Made a ECHO REO packet
-    
     Pptpd: CTRL:I wrote 16 bytes to the client.
-    
     pptpd: CTRL: Sent packet to client
 \end{verbatim}
 
@@ -3928,7 +2903,6 @@ cations"June 2007.
 Specifications Amendment 5: Enhancements for Higher Throughput” Oct. 2009
 ［802.11y-2008］ IEBE Standard for Local and Metropolitan Area Networks, Part
 11:Wireless LAN Medium Access Control （MAC） and Physical Layer （PHY）
-
 Specifications Amendment 3: 3650-3700 MHz Operation in USA，" Nov. 2009.
 
 ［802.16-2009］"TEEE Standard for Local and Metropolitan Area Networks, Part 16
@@ -3936,38 +2910,28 @@ Air Interface for Fixed Broadband Wireless Access Systems." May 2009.
 
 ［802.16h-2010］ "TEEE Standard for Local and Metropolitan Area Networks, Part
 16:Air Interface for Fixed Broadband Wireless Access Systems Amendment 2：
-
 Improved Coexistence Mechanisms for License-Exempt Operation，" July 2010.
 
 ［802.16j-2009］"TEEE Standard for Local and Metropolitan Area Networks, Part
-
 16:Air Interface for Fixed Broadband Wireless Access Systems Amendment 1：
-
 Miultihop Relay Specification" June 2009.
 
 ［802.16k-2007］'TEEE Standard for Local and Metropolitan Area Networks, Part
 16:Air Interface for Fixed Broadband Wireless Access Systems Amendment 5：
-
 Bridging of IEEE 802.16" Aug. 2010.
 
 ［802.1AK-2007］"TEEE Standard for Local and Metropolitan Area Networks，
-
 Virtual Bridged Local Area Networks Amendment 7: Multiple Registration
-
 Protocol June 2007.
 
 ［802.1AE-2006］ 'TEEE Standard for Local and Metropolitan Area Networks
-
 Media Access Control （MAC） Security" Aug. 2006.
 
 ［802.1ak-2007］ "TEEE Standard for Local and Metropolitan Area Networks-
-
 Virtual Bridged Local Area Networks—Amendment 7: Multiple Registration
-
 Protocol/June 2007.
 
 ［802.1AX-2008］"1EEE Standard for Local and Metropolitan Area Networks-
-
 Link Aggregation，" Nov. 2008.
 
 ［802.1D-2004］"TEEE Standard for Local and Metropolitan Area Networks Media
@@ -3977,7 +2941,6 @@ Access Control （MAC） Bridges" June 2004.
 Bridged Local Area Networks" May 2006.
 
 ［802.1X-2010］'IEEE Standard for Local and Metropolitan Area Networks Port-
-
 Based Network Access Control/ Feb.2010.
 
 ［802.2-1998］ '1EEE Standard for Local and Metropolitan Area Networks Logical
@@ -3987,34 +2950,25 @@ Link Control" （also ISO/IEC 8802-2:1998）， May 1998.
 Media Independent Handover Services" Jan. 2009.
 
 ［802.3-2008］'TEEE Standard for Local and Metropolitan Area Networks, Part
-
 3:Carrier Sense Multiple Access with Collision Detection （CSMA/CD） Acces
-
 Method and Phvsical Laver Specifications" Dec.2008
 
 ［802.3at-2009］'TEEE Standard for Local and Metropolitan Area Networks—Spe-
 cific Requirements, Part 3:Carrier Sense Multiple Access with Collision Detec-
-
 tion （CSMA/CD） Access Method and Physical Layer Specifications Amendment
 3:Date Terminal Equipment （DTE） Power via the Media Dependent Interface
-
 （MDI） Enhancements，" Oct. 2009.
 
 ［802.3ba-2010］"TEEE Standard for Local and Metropolitan Area Networks, Part
 3:Carrier Sense Multiple Access with Collision Detection （CSMA/CD） Access
-
 Method and Physical Layer Specifications, Amendment 4: Media Access Con-
-
 trol Parameters, Physical Layers, and Management Parameters for 40Gb/s and
-
 100Gb/s Operation/" June 2010.
 
 ［802.11n-2009］'TEEE Standard for Local and Metropolitan Area Networks, Part
 11:Wireless LAN Medium Access Control （MAC） and Physical Layer （PHY）
-
 Specifications, Amendment 5: Enhancements for Higher Throughput” Oct. 2009
 【AESO1］ U.S. National Institute of Standards and Technology, FIPS PUB 197，
-
 "'Advanced Encryption Standard” Nov. 2001.
 
 ［BHLO6］ A. Bittau, M. Handley, and J. Lackey， "The Final Nail in WEP's Coffin."
@@ -4028,12 +2982,10 @@ ProC. IEEE Symposium on Security and Privacy, May 2006.
 Metric for Multi-Hop Wireless Routing" Proc. Mobicom, Sep. 2003.
 
 ［G704］ ITU， "General Aspects of Digital Transmission Systems: Synchronous
-
 Frame Structures Used at 1544, 6312, 2048k, 8488, and 44736 kbit/s Hierarchical
 Levels" ITU-T Recommendation G.704, July 1995.
 
 ［IANA-CHARSET］"Character Sets" http://www.iana.org/assignments/
-
 character-sets
 
 ［ISO3309］ International Organization for Standardization， "Information Process
@@ -4042,34 +2994,26 @@ Frame Structure"” IS 3309, 1984.
 
 ［ISO4335］ International Organization for Standardization， "Information Process
 ing Systems—Data Communication High-Level Data Link Control Procedure-
-
 Elements of Procedure” IS 4335, 1987.
 
 DF M. Mathis， "Raising the Internet MTU." http://www.psc.edu/~mathis/MTL
 ［MWLD］ "Long Distance Links with MadWiFi/" http://madwifi-project.org/
-
 wiki/UserDocs/LongDistance
 
 ［PPPnl http://www.ianaorg/assignments/ppp-numbers
 
 ［S08］ D. Skordoulis et al.，'TEEE 802.11n MAC Frame Aggregation Mechanisi
-
 for Next-Generation High-Throughput WLANS" IEEE Wireless Communicatil
-
 Feb.2008.
 
 ［S96］ B. Schneier, Applied Cryptography, Second Edition （John Wiley \& Sons, 19
 
 ［SAE］ D. Harkins， 'Simultaneous Authentication of Equals: A Secure, Passw
-
 Based Key Exchange for Mesh Networks，" Proc. SENSORCOMM, Aug. 2008.
 
 ［SC05］ S. Shalunov and R. Carlson， "Detecting Duplex Mismatch on Etherne
-
 Proc. Passive and Active Measurement Workshop, Mar. 2005.
 
 ［SHK07］ C. Sengul, A. Harris, and R. Kravets， "Reconsidering Power Manag
-
 ment/' Invited Paper, Proc. IEEE Broadnets, 2007.
-
 「WOLl http://wake-on-lan.sourceforge.net
