@@ -15,6 +15,9 @@
 \usepackage{listings}
 \usepackage{amsmath}
 
+
+% \usepackage{lipsum} % 用于生成示例文字
+
 \usepackage[sectionbib]{natbib}
 \usepackage{chapterbib}
 % \addbibresource{./bibs/16.bib}
@@ -228,7 +231,21 @@
 \dominitoc
 
 \pagenumbering{roman}
+% ===== 前置部分：使用罗马数字页码 =====
+\frontmatter
+
+% 插入各前置内容
+\include{chapters/publisher_note}
+\include{chapters/translator_preface}
+\include{chapters/review}
+\include{chapters/preface}
+\include{chapters/foreword}
+
+% ----- 目录 -----
 \tableofcontents
+
+% ===== 正文部分：使用阿拉伯数字页码 =====
+\mainmatter
 
 \clearpage
 \pagenumbering{arabic}
@@ -249,4 +266,5 @@
 \include{chapters/15}
 \include{chapters/16}
 \include{chapters/17}
+\include{chapters/18}
 \end{document}
