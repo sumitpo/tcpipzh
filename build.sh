@@ -16,5 +16,6 @@ bibtex chapters/14.aux
 bibtex chapters/15.aux
 bibtex chapters/16.aux
 bibtex chapters/17.aux
+bibtex chapters/18.aux
 xelatex titp.tex
 xelatex titp.tex

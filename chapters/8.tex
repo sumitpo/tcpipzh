@@ -1,5 +1,5 @@
 \chapter{ICMPv4 和 ICMPv6:Internet 控制报文协议}
-\minitoc
+
 \section{引言}
 IP 协议本身并没有终端系统提供直接的方法来发现那些发往目的地址失败的IP 数据
 包。此外，IP 没有提供直接的方式来获取诊断信息（例如，哪些路由器在沿途中被使用了或
@@ -1262,70 +1262,44 @@ R（路由器）字段表示该报文的发送者是一个路由器。这可能�
 在这里我们看到ICMPv6 回显请求/应答与ND一起使用的结果。发送者是一台启用了
 IPv6 的Windows XP 系统，在附近的Linux 系统上捕获数据包。为清晰起见，有些行已被隐藏。
 \begin{verbatim}
-    
-C：\> ping6 -s fe80：：210:18ff:fe00:100b fe8o：：211:11ff:fe6f:c603
+	C:\> ping6 -s fe80::210:18ff:fe00:100b fe80::211:11ff:fe6f:c603
 
-Pinging fe8O：：211:1lff:fe6f:c603
+	Pinging fe80::211:11ff:fe6f:c603
+	from fe80::210:18ff:fe00:100b with 32 bytes of data:
 
-from fe80：：210:18ff:fe00:100b with 32 bytes of data：
+	Reply from fe80::211:11ff:fe6f:c603: bytes=32 time<1ms
+	Reply from fe80::211:11ff:fe6f:c603: bytes=32 time<1ms
+	Reply from fe80::211:11ff:fe6f:c603: bytes=32 time<1ms
+	Reply from fe80::211:11ff:fe6f:c603: bytes=32 time<1ms
 
-Reply from fe80：：211:11ff:fe6f:c603: bytes=32 time<1ms
+	Ping statistics for fe80::211:11ff:fe6f:c603:
+		Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+	Approximate round trip times in milli-seconds:
+		Minimum = 0ms, Maximum = 0ms, Average = 0ms
 
-Reply from
 
-fe80：：211:11ff:fe6f:c603: bytes=32 time<1ms
+	Linux# tcpdump –i eth0 -s1500 -vv -p ip6
+	tcpdump: listening on eth0,
+			link-type EN10MB (Ethernet), capture size 1500 bytes
 
-Reply from fe8O：：211:11ff:fe6f:c603:bytes=32 time<1ms
+	1 21:22:01.389656 fe80::211:11ff:fe6f:c603 > ff02::1:ff00:100b:
+					[icmp6 sum ok] icmp6: neighbor sol: who has
+											fe80::210:18ff:fe00:100b
+											(src lladdr: 00:11:11:6f:c6:03)
+											(len 32, hlim 255)
+	2 21:22:01.389845 fe80::210:18ff:fe00:100b > fe80::211:11ff:fe6f:c603:
+					[icmp6 sum ok] icmp6: neighbor adv: tgt is
+											fe80::210:18ff:fe00:100b(SO)
+											(tgt lladdr: 00:10:18:00:10:0b)
+											(len 32, hlim 255)
 
-Reply from fe80：：211:11ff:fe6f:c603:bytes=32 time<1ms
-
-Ping statistics for fe80：：211:11ff:fe6f:c603：
-
-Packets: Sent = 4, Received = 4,Lost = 0 （08 10ss），
-
-Approximate round trip times in milli-seconds：
-
-Minimum = Oms,Maximum = 0ms,Average =0ms
-
-Linux# tcpdump -i etho -$1500 -w -P ip6
-
-tcpdump:1istening on ethO，
-
-1ink-type EN1 OMB （Ethernet），capture size 1500 bytes
-
-1 21:22:01.389656 fe80：：211:11ff:fe6f:c603 > Ef02：：1:ff00:100b：
-
-［icmp6 sum ok］icmp6:neighbor sol: who has
-
-fe80：：210:18ff:fe0o:100b
-
-（srC 1laddr: 00:11:11:6f:c6:03）
-
-（len 32,hlim 255）
-
-2 21:22:01.389845 fe80：：210:18ff:fe00:100b > fe80：：211:11ff:fe6f:c603：
-
-［icmp6 sum ok］ icmp6: neighbor adv:tgt is
-
-fe80：：210:18ff:fe00:100b（SO）
-
-（tgt 1laddr: 00:10:18:00:10:0b）
-
-（len 32,hlim 255）
-
-3 21:22:02.390713 fe80：：210:18ff:fe00:100b > fe80：：211:11ff:fe6f:c603：
-
-［icmp6 sum ok］icmp6: echo request seg 18
-
-（len 40,hlim 128）
-
-4 21:22:02.390780 fe80：：211:11ff:fe6f:c603 > fe80：：210:18ff:fe00:100b：
-
-［icmp6 sum ok］icmp6:echo reply seg 18
-
-（len 40,hlim 64）
-
-continues
+	3 21:22:02.390713 fe80::210:18ff:fe00:100b > fe80::211:11ff:fe6f:c603:
+					[icmp6 sum ok] icmp6: echo request seq 18
+											(len 40, hlim 128)
+	4 21:22:02.390780 fe80::211:11ff:fe6f:c603 > fe80::210:18ff:fe00:100b:
+					[icmp6 sum ok] icmp6: echo reply seq 18
+											(len 40, hlim 64)
+	... continues ...
 \end{verbatim}
 
 Windows XP 和 Linux 均提供了 ping6程序（最近版本的 Windows 将 IPv6功能纳人常规
@@ -1507,7 +1481,7 @@ SEND定义了请求和通告报文用来帮助主机确定构成一个证书路�
 告报文，该值被设置0。所有组件字段表示在整个证书路径中的组件总数，包括信任锚。
 需要注意的是推荐用一个单独的通告报文来避免分片，那么这样的报文只包含一个单一的组
 件。组件字段给出了在证书路径中相关证书的索引（提供一个附加的证书选项）。在一个N
-个组件的证书路径中发送通告的推荐顺序是（N-1，N-2，⋯，0）。组件N不必被发送，因
+个组件的证书路径中发送通告的推荐顺序是（N-1，N-2，\dots，0）。组件N不必被发送，因
 为它已经在信任锚中。
 
 \subsection{ICMPV6邻居发现选项}

@@ -1,5 +1,4 @@
 \chapter{防火墙和网络地址转换}
-\minitoc
 
 \section{引言}
 
@@ -1160,40 +1159,26 @@ DROP,QUEUE 和 RETURN。当一个数据包匹配上述之一的规则时，便�
 如 bash：
 
 \begin{verbatim}
-    
-EXTIF="exto"
+	EXTIF="ext0"
+	INTIF="eth0"
+	LOOPBACK_INTERFACE="lo"
+	ALL="0.0.0.0/0" 			# matches all
 
-INTIF="etho"
+	# set default filter table policies to drop
+	iptables -P INPUT DROP
+	iptables -P OUTPUT DROP
+	iptables -P FORWARD DROP
 
-LOOPBACK INTERFACE="10"
+	# all local traffic OK
+	iptables -A INPUT -i $LOOPBACK_INTERFACE -j ACCEPT
+	iptables -A OUTPUT -i $LOOPBACK_INTERFACE -j ACCEPT
 
-ALL="0.0.0.0/0"
+	# accept incoming DHCP requests on internal interface
+	iptables -A INPUT -i $INTIF -p udp -s 0.0.0.0 \
+			--sport 67 -d 255.255.255.255 --dport 68 -j ACCEPT
 
-# matches al1
-
-# set default filter table policies to drop
-
-iptables -P INPUT DROP
-
-iptables -P OUTPUT DROP
-
-iptables -P FORWARD DROP
-
-# all local traffic OK
-
-iptables -A INPUT -1 SLOOPBACK\_INTERFACE -j ACCEPT
-
-iptables -A OUTPUT -i SLOOPBACK\_INTERFACE -j ACCEPT
-
-# accept incoming DHCP requests on internal interface
-
-iptables -A INPUT -i $INTIF -p udp -s 0.0.0.0\
-
---sport 67 -d 255.255.255.255 --dport 68 -j ACCEPT
-
-# drop unusual/suspect rCP traffic with no flags set
-
-iptables -A INPUT -P tcP --tcP-flags ALL NONE -j DROP
+	# drop unusual/suspect TCP traffic with no flags set
+	iptables -A INPUT -p tcp --tcp-flags ALL NONE -j DROP
 \end{verbatim}
 
 这个例子说明了用户在设置一个过滤规则列表时的灵活性。初始时，所有的链都采用
@@ -1234,34 +1219,17 @@ iptables -A INPUT -P tcP --tcP-flags ALL NONE -j DROP
 单的方式来配置伪装。注意这种脚本是用来说明的，并不建议在产品中推荐使用。
 
 \begin{verbatim}
-    
-EXTIF="ext0"
+	EXTIF=”ext0”
+	echo "Default FORWARD policy: DROP"
+	iptables -P FORWARD DROP
 
-echo "Default FORWARD policy: DROP"
+	echo "Enabling NAT on $EXTIF for hosts 192.168.0.0/24"
+	iptables -t nat -A POSTROUTING -o $EXTIF -s 192.168.0.0/24 \
+			-j MASQUERADE
 
-iptables -P
-
-FORWARD DROP
-
-echo
-
-"Enabling NAT
-
-on $EXTIF for hosts 192.168.0.0/24"
-
-iptables -t nat -A POSTROUTING -O $EXTIF -s 192.168.0.0/24\
-
--j MASQUERADE
-
-echo "FORWARD policy: DROP unknown traffic"
-
-iptables
-
--A INPUT -i SEXTIF -m state
-
---state NEW, INVALID -j DROP
-
-iptables -A FORWARD -i $EXTIF -m state --state NEW, INVALID -j DROP
+	echo "FORWARD policy: DROP unknown traffic"
+	iptables -A INPUT -i $EXTIF -m state --state NEW,INVALID -j DROP
+	iptables -A FORWARD -i $EXTIF -m state --state NEW,INVALID -j DROP
 \end{verbatim}
 
 此处，filter 表格中FORWARDING链的默认策略被设置为DROP。在路由已经决定采
@@ -1744,7 +1712,3 @@ Apr.2008.
 ［XIDS］ Y. Goland, T. Cai, P. Leach, Y. Gu, and S. Albright， "Simple Service Discov-
 ery Protocol/1.0 Operating without an Arbiter/” Internet draft-cai-ssdp-V1-03.txt，
 work in progress （expired）， Oct. 1999.
-
-348
-
-B52

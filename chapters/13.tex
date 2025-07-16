@@ -1,5 +1,4 @@
 \chapter{TCP: 连接管理}
-\minitoc
 
 \section{引言}
 TCP 是一种面向连接的单播协议。在发送数据之前，通信双方必须在彼此间建立一条连接。本章将详细地介绍 TCP 连接的概念，以及它的建立与终止过程。如前文所述，TCP服
@@ -151,16 +150,13 @@ linux 4.4中使用的散列函数为\href{https://elixir.bootlin.com/linux/v4.4.
 前文介绍了一个 TCP 连接的建立和退出过程，本节将从数据包（分组）的角度进一步介绍相关细节。为此我们尝试对邻近的Web 服务器进行 TCP连接。该主机的IPv4地址为
 \verb|10.0.0.2|，而客户端则采用了基于 Windows 的\verb|telnet| 应用。
 
-\iffalse
-	C:\> telnet \verb|10.0.0.2| 80
-	Welcome to
-	Microsoft telnet Client
-	Escape Character is
-	' CTRI+]'
-	wait about
-	4.4 seconds
-	Microsoft telnet> quit
-\fi
+\begin{verbatim}
+	C:\> telnet 10.0.0.2 80
+	Welcome to Microsoft Telnet Client
+	Escape Character is 'CTRL+]'
+	... wait about 4.4 seconds ...
+	Microsoft Telnet> quit
+\end{verbatim}
 
 \verb|telnet|命令是建立在 TCP 连接的基础上的。在上述例子中，该TCP 连接必须与服务器的IPv4 地址\verb|10.0.0.2| 以及http或 Web 服务的端口号（80端口）相关联。当 \verb|telnet| 应用程序连接
 23（\verb|telnet| 协议的众所周知端口\href{https://www.rfc-editor.org/rfc/rfc0854}{[RFC0854]}）以外的端口，它将不能用于应用协议。它仅仅将自己的字节输入拷贝至TCP连接中，反之亦然。当一个 Web 服务器接收到进入的连接请求
@@ -191,18 +187,28 @@ ARP 表的情况下，上述做法会使客户端收到一个“无法到达主�
 法到达主机”的消息。如果我们能事先在 ARP 表中为这个不存在的主机添加一条记录，那么系统就不需要发送 ARP 请求，而会马上根据 TCPAIP 协议尝试与这个不存在的主机建立联
 系。相关的命令如下：
 
-\iffalse
-	Linux# arp -s 192.168.10.180 00:00:1a: 1b: 10:1đ
-	Linux8 date; \verb|telnet| 192.168.10.180 80; date
-	7 21:16:34 PDT 2009
+\begin{verbatim}
+	Linux# arp -s 192.168.10.180 00:00:1a:1b:1c:1d
+	Linux% date; telnet 192.168.10.180 80; date
+	Tue June 7 21:16:34 PDT 2009
 	Trying 192.168.10.180...
-	to address 192.168.10.180:
-	Connection timed out
-	7 21:19:43 PDT 2009
-\fi
+	telnet: connect to address 192.168.10.180: Connection timed out
+	Tue June 7 21:19:43 PDT 2009
+	Linux%
+\end{verbatim}
 
 上述例子选择的 MAC地址 00:00:1a:1b:1c:1d 不能与局域网中其他主机的MAC冲突，除此之外并无特别。超时发生在发送初始命令后的3.2分钟。由于没有主机响应，例子中所
 有的报文段都是由客户端产生的。清单 13-1 显示了使用 \verb|Wireshark| 软件在摘要模式下获得的输出结果。
+
+\begin{verbatim}
+	No. Time 		Source 			Destination 	Protocol 	Info
+	1 	0.000000 	192.168.10.144 	192.168.10.180 	TCP 		32787 > http
+	2 	2.997928 	192.168.10.144 	192.168.10.180 	TCP 		32787 > http
+	3 	8.997962 	192.168.10.144 	192.168.10.180 	TCP 		32787 > http
+	4 	20.997942 	192.168.10.144 	192.168.10.180 	TCP 		32787 > http
+	5 	44.997936 	192.168.10.144 	192.168.10.180 	TCP 		32787 > http
+	6 	92.997937 	192.168.10.144 	192.168.10.180 	TCP 		32787 > http
+\end{verbatim}
 
 有趣的是这些输出结果显示了客户端 TCP 为了建立连接频繁地发送 SYN 报文段。在首个报文段发送后仅3秒第二个报文段就被发送出去，第三个报文段则是这之后的6秒，而第
 四个报文段则在第三个报文段发送12秒以后被发送出去，以此类推。这一行为被称作指数回退。在讨论以太网CSMA/CD 介质访问控制协议时（参见第3章）我们也曾见过这样的行

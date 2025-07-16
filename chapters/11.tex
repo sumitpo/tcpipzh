@@ -1,5 +1,4 @@
 \chapter{名称解析和域名系统}
-\minitoc
 
 \section{引言}
 
@@ -88,7 +87,6 @@ NATO）。表11-1总结了截止到2011年年中来自［GTLD］的22个gTLD摘�
 	\end{tabular}
 \end{table}
 
-① 
 \footnotetext{图11-1还显示了 11个仍在使用的测试 IDN 域名。}
 
 ccTLD 包含ISO 3166标准［ISO3166］指定的两个字母的国家代码，以及另外5个：u、
@@ -679,7 +677,15 @@ editor.org 相关的任意类型的记录：
     ;rfc-editor.org.			IN	ANY
 
     ;; ANSWER SECTION:
-    \dots
+    ...
+    rfc-editor.org. 1654 IN AAAA 2001:1890:1112:1::2f
+    rfc-editor.org. 1654 IN A 64.170.98.47
+    rfc-editor.org. 1654 IN NS ns0.ietf.org.
+    rfc-editor.org. 1654 IN NS ns1.hkg1.afilias-nst.info.
+    ...
+    ;; ADDITIONAL SECTION:
+    ns0.ietf.org. 756 IN A      64.170.98.2
+    ns0.ietf.org. 756 IN AAAA   2001:1890:1112:1::14
 \end{verbatim}
 
 在命令的输出中，前两行显示了正在使用的dig程序的版本、向它提供的参数，以及
@@ -724,39 +730,23 @@ editor.org 相关的任意类型的记录：
 存的DNS数据。然后，我们执行对域名 berkeley.edu 的地址（A记录类型）的查询：
 
 \begin{verbatim}
-    C：\> ipconfig /flushdns
-    
+    C:\> ipconfig /flushdns
     Windows IP Configuration
-    
+
     Successfully flushed the DNS Resolver Cache.
     
-    C：\> nslookup
-    
-    Default Server：
-    
-    gw
-    
-    Address：
-    
-    > set type=a
-    
-    > berkeley.edu.
-    
-    Server：
-    
-    gW
-    
+    C:\> nslookup
+    Default Server: gw
     Address: 10.0.0.1
     
-    Non-authoritative answer：
+    > set type=a
+    > berkeley.edu.
+    Server: gw
+    Address: 10.0.0.1
     
-    Name：
-    
-    berkeley.edu
-    
-    Address：
-    
-    169.229.131.81
+    Non-authoritative answer:
+    Name: berkeley.edu
+    Address: 169.229.131.81
 \end{verbatim}
 
 第一个命令是特定于 Windows的，能够删除由客户端的解析器软件缓存的数据。在
@@ -915,81 +905,25 @@ IPv4 地址，如128.32.112.208。在分类的地址结构中（见第2章），
 持这些类型名称和逆向DNS 查找的PTR（“指针”）RR 连接起来。例如，考虑下面的命令：
 
 \begin{verbatim}
-    
-C：\> nslookup
+    C:\> nslookup
+    Default Server: gw
+    Address: 10.0.0.1
+    > server c.in-addr-servers.arpa
+    Default Server: c.in-addr-servers.arpa
+    Address: 196.216.169.10
+    > set type=ptr
+    > 81.131.229.169.in-addr.arpa.
+    Server: c.in-addr-servers.arpa
+    Address: 196.216.169.10
 
-Default Server：
-
-gw
-
-Address：
-
-\subsection{.1}
-> server c.in-addr-servers.arpa
-
-Default Server: c.in-addr-servers.arpa
-
-Address：
-
-196.216.169.10
-
-> set typemptr
-
-> 81.131.229.169.in-addr.arpa.
-
-Server：
-
-c.in-addr-servers.arpa
-
-Address：
-
-196.216.169.10
-
-169.in-addr.arpa
-
-169.in-addr.arpa
-
-169.in-addr.arpa
-
-169.in-addr.arpa
-
-169.in-addr.arpa
-
-169.in-addr.arpa
-
-169.in-addr.arpa
-
-169.in-addr.arpa
-
-nameserver = w.arin.net
-
-nameserver
-
-= t.arin.net
-
-nameserver
-
-= dill.arin.net
-
-nameserver
-
-= x.arin.net
-
-nameserver
-
-z.arin.net
-
-nameserver
-
-Y.arin.net
-
-nameserver
-
-= u.arin.net
-
-nameserver
-
-= v.arin.net
+    169.in-addr.arpa nameserver = w.arin.net
+    169.in-addr.arpa nameserver = t.arin.net
+    169.in-addr.arpa nameserver = dill.arin.net
+    169.in-addr.arpa nameserver = x.arin.net
+    169.in-addr.arpa nameserver = z.arin.net
+    169.in-addr.arpa nameserver = y.arin.net
+    169.in-addr.arpa nameserver = u.arin.net
+    169.in-addr.arpa nameserver = v.arin.net
 \end{verbatim}
 
 这个例子显示了如何设置.in-addr.arpa 域。根据\href{https://www.rfc-editor.org/rfc/rfc5855}{[RFC5855]}，域 in-addr-servers.arpa 和
@@ -1033,6 +967,7 @@ X.ip6-servers.arpa，其中X是任意a 到f（包括）的字母。
     > 81.131.229.169.in-addr.arpa.
     Server：adnsl.berkeley.edu
     Address: 128.32.136.3#53
+
     81.131.229.169.in-addr.arpa name = webfarm.Berkeley.EDU
 \end{verbatim}
 
@@ -1077,7 +1012,6 @@ RR，可能由站点的ISP 维护：
 \begin{verbatim}
     128.136.17.12.in-addr.arpa. canonical name =
                                 128.128/25.136.17.12.in-addr.arpa.
-
     129.136.17.12.in-addr.arpa. canonical name =
                                 129.128/25.136.17.12.in-addr.arpa.
     ...
@@ -1091,90 +1025,41 @@ RR，可能由站点的ISP 维护：
 方式跟踪委托：
 
 \begin{verbatim}
-    
-C：\> nslookup
+    C:\> nslookup
+    Default Server: gw
+    Address: 10.0.0.1
+    > server f.in-addr-servers.arpa
+    Default Server: f.in-addr-servers.arpa
+    Addresses: 193.0.9.1
+    > set type=ptr
+    > 129.128/25.136.17.12.in-addr.arpa.
+    Server: f.in-addr-servers.arpa
+    Address: 193.0.9.1
+    12.in-addr.arpa nameserver = dbru.br.ns.els-gms.att.net
+    12.in-addr.arpa nameserver = cbru.br.ns.els-gms.att.net
+    12.in-addr.arpa nameserver = cmtu.mt.ns.els-gms.att.net
+    12.in-addr.arpa nameserver = dmtu.mt.ns.els-gms.att.net
+    > server dbru.br.ns.els-gms.att.net.
+    Default Server: dbru.br.ns.els-gms.att.net
+    Address: 199.191.128.106
 
-Default Server：
+    > 129.128/25.136.17.12.in-addr.arpa.
+    128/25.136.17.12.in-addr.arpa nameserver = ns2.intel-research.net
+    128/25.136.17.12.in-addr.arpa nameserver= ns1.intel-research.net
 
-gW
+    > server ns1.intel-research.net.
+    Server: ns1.intel-research.net
+    Address: 12.155.161.131
+    > 129.128/25.136.17.12.in-addr.arpa.
 
-Address: 10.0.0.1
-
-> server f.in-addr-servers.arpa
-
-Default Server: f.in-addr-servers.arpa
-
-Addresses: 193.0.9.1
-
-> set type=ptr
-
-> 129.128/25.136.17.12.in-addr.arpa.
-
-Server：
-
-f.in-addr-servers.arpa
-
-Address: 193.0.9.1
-
-12.in-addr.arpa nameserver = dbru.br.ns.els-gms.att.net
-
-12.in-addr.arpa nameserver = cbru.br.ns.els-gms.att.net
-
-12.in-addr.arpa nameserver = cmtu.mt.ns.els-gms.att.net
-
-12.in-addr.arpa nameserver = dmtu.mt.ns.els-gms.att.net
-
-> server dbru.br.ns.els-gms.att.net.
-
-Default Server：
-
-dbru.br.ns.els-gms.att.net
-
-Address: 199.191.128.106
-
-> 129.128/25.136.17.12.in-addr.arpa.
-
-128/25.136.17.12.in-addr.arpa
-
-128/25.136.17.12.in-addr.arpa
-
-nameserver = ns2.intel-research.net
-
-nameserver= ns1.intel-research.net
-
->
-
-SerVer
-
-n81.intel-research.net.
-
-Server：
-
-nsl.intel-research.net
-
-Address: 12.155.161.131
-
-> 129.128/25.136.17.12.in-addr.arpa.
-
-129.128/25.136.17.12.in-addr.arpa
-
-name
-
-= dmz.slouter.seattle.intel-research.net
-
-128/25.136.17.12.in-addr.arpa
-
-nameserver = bldmzsvr.berkeley.intel-research.net
-
-128/25.136.17.12.in-addr.arpa
-
-nameserver
-
-= Sldmzsvr.intel-research.net
-
-bldmzsvr.berkeley.intel-research.net internet address = 12.155.161.131
-
-sldmzsvr.intel-research.net internet address = 12.17.136.131
+    129.128/25.136.17.12.in-addr.arpa
+                        name = dmz.slouter.seattle.intel-research.net
+    128/25.136.17.12.in-addr.arpa
+                    nameserver = bldmzsvr.berkeley.intel-research.net
+    128/25.136.17.12.in-addr.arpa
+                    nameserver = sldmzsvr.intel-research.net
+    bldmzsvr.berkeley.intel-research.net internet address = 12.155.161.131
+    sldmzsvr.intel-research.net internet address = 12.17.136.131
 \end{verbatim}
 
 在这个例子中，我们希望找出与IPv4地址12.17.136.129相关的主机名称。我们已
@@ -1204,162 +1089,60 @@ e-mail 地址（“.”用来代替@）、区域更新参数和默认 TTL。默�
 IPv6 的 Windows 主机上的 nslookup）：
 
 \begin{verbatim}
-    
-C：\> n8lookup
-
-Default Server：
-
-gw
-
-Address：
-
-fe80：：204:5aff:fe9f:9e80
-
-> set type=8oa
-
-> berkeley.edu.
-
-Server：
-
-gW
-
-Address：
-
-fe80：：204:5aff:fe9f:9e80
-
-Non-authoritative answer：
-
-berkeley.edu
-
-primary name server = ns-masterl.berkeley.edu
-
-responsible
-
-mail
-
-addr
-
-hostmaster.berkelev.edu
-serial = 2009050116
-
-refresh = 10800 （3 hours）
-
-retry
-
-= 1800 （30 mins）
-
-expire = 3600000 （41 days 16 hours）
-
-default TTL = 300 （5 mins）
-
-> server adnsl.berkeley .edu.
-
-Default Server：
-
-adnsl.berkeley.edu
-
-Addresses: 2607:f140:ffff:fffe：：3
-
-128.32.136.3
-
-> berkeler.edu.
-
-Server：
-
-adns1.berkeley.edu
-
-Addresses: 2607：£140:ffff:fffe：：3
-
-128.32.136.3
-
-berkeleyedu
-
-Primary name server = ns-masterl.berkeley .edu
-
-responsible mail addr = hostmaster.berkeley.edu
-
-serial
-
-= 2009050116
-
-refresh = 10800 （3 hours）
-
-retry
-
-= 1800 （30 mins）
-
-expire = 3600000 （41 days 16 hours）
-
-default TTL = 300 （5 mins）
-
-berkeley.edu
-
-nameserver = ns.v6.berkeley.edu
-
-berkeley.edu
-
-nameserver = aodnsl.berkeley.edu
-
-berkeley.edu
-
-nameserver = adns2.berkeley.edu
-
-berkeley.edu
-
-nameserver = phloem.uoregon.edu
-
-berkeley.edu
-
-nameserver = adnsl.berkeley.edu
-
-berkeley.edu
-
-nameserver = ucb-ns .NYU.edu
-
-ns.v6.berkeley.edu
-
-internet address = 128.32.136.6
-
-ns.v6.berkeley.edu
-
-AAAA IPv6 address = 2607:f140:ffff:fffe：：6
-
-adnsl.berkeley.edu
-
-internet address = 128.32.136.3
-
-adnsl.berkeley.edu
-
-AAAA IPV6 address = 2607:f140:ffff:fffe：：3
-
-adns2.berkeley.edu
-
-internet address = 128.32.136.14
-
-adns2.berkeley.edu
-
-AAAA IPV6 address = 2607:f140:ffff:fffe：：e
-
-aodnsl.berkeley.edu
-
-internet address = 192.35.225.133
-
-aodns1.berkeley.edu
-
-AAAA IPV6 address =
-
-2607:f010:3E8:8000:214:4fff:fe45:e6a2
-
-phloem.uoregon.edu
-
-phloem.uoregon.edu
-
-internet address = 128.223.32.35
-
-AAAAA
-
-IPv6 address = 2001:468:d01:20：：80df:2023
-
+    C:\> nslookup
+    Default Server: gw
+    Address: fe80::204:5aff:fe9f:9e80
+
+    > set type=soa
+    > berkeley.edu.
+    Server: gw
+    Address: fe80::204:5aff:fe9f:9e80
+
+    Non-authoritative answer:
+    berkeley.edu
+            primary name server = ns-master1.berkeley.edu
+            responsible mail addr = hostmaster.berkeley.edu
+            serial = 2009050116
+            refresh = 10800 (3 hours)
+            retry = 1800 (30 mins)
+            expire = 3600000 (41 days 16 hours)
+            default TTL = 300 (5 mins)
+
+    > server adns1.berkeley.edu.
+    Default Server: adns1.berkeley.edu
+    Addresses: 2607:f140:ffff:fffe::3
+            128.32.136.3
+
+    > berkeley.edu.
+    Server: adns1.berkeley.edu
+    Addresses: 2607:f140:ffff:fffe::3
+            128.32.136.3
+
+    berkeley.edu
+            primary name server = ns-master1.berkeley.edu
+            responsible mail addr = hostmaster.berkeley.edu
+            serial = 2009050116
+            refresh = 10800 (3 hours)
+            retry = 1800 (30 mins)
+            expire = 3600000 (41 days 16 hours)
+            default TTL = 300 (5 mins)
+    berkeley.edu nameserver = ns.v6.berkeley.edu
+    berkeley.edu nameserver = aodns1.berkeley.edu
+    berkeley.edu nameserver = adns2.berkeley.edu
+    berkeley.edu nameserver = phloem.uoregon.edu
+    berkeley.edu nameserver = adns1.berkeley.edu
+    berkeley.edu nameserver = ucb-ns.NYU.edu
+    ns.v6.berkeley.edu  internet address = 128.32.136.6
+    ns.v6.berkeley.edu  AAAA IPv6 address = 2607:f140:ffff:fffe::6
+    adns1.berkeley.edu  internet address = 128.32.136.3
+    adns1.berkeley.edu  AAAA IPv6 address = 2607:f140:ffff:fffe::3
+    adns2.berkeley.edu  internet address = 128.32.136.14
+    adns2.berkeley.edu  AAAA IPv6 address = 2607:f140:ffff:fffe::e
+    aodns1.berkeley.edu internet address = 192.35.225.133
+    aodns1.berkeley.edu AAAA IPv6 address =
+                                2607:f010:3f8:8000:214:4fff:fe45:e6a2
+    phloem.uoregon.edu  internet address = 128.223.32.35
+    phloem.uoregon.edu  AAAA IPv6 address = 2001:468:d01:20::80df:2023
 \end{verbatim}
 这里我们可以看到，我们不仅收到SOA记录，而且也收到了6个授权域名服务器的列
 表，以及其中5个（NYU服务器的地址没有给出，因为NYU.edu 的胶记录可能在由不同服
@@ -1765,33 +1548,15 @@ pearson.com 是一个使用方案（关键字）http 的URI,URN urn:foo:foospace
 DNS，可以看到一些方案已经填充到 uri.arpa TLD：
 
 \begin{verbatim}
-    Linux8 host -t naptr http.uri.arpa
+    Linux% host –t naptr http.uri.arpa
+    http.uri.arpa has NAPTR record 0 0 "" "" "!^http://([^:/?#]*).*$!\\1!i" .
+    Linux% host –t naptr ftp.uri.arpa
+    ftp.uri.arpa has NAPTR record 0 0 "" "" "!^ftp://([^:/?#]*).*$!\\1!i" .
     
-    http.uri.arpa has NAPTR record oo"" ：
-    
-    "！^http://（［^：/？#］*）.*$！\\1！i"
-    
-    Linux8 host -t naptr ftp.uri.arpa
-    
-    ftp.uri.arpa has NAPTR record 00""
-    
-    "！^ftp://（［^：/？#］*）*$！\11！i"
-    
-    Linux8 host -t naptr mailto.uri.arpa
-    
-    mailto.uri.arpa has NAPTR record 00""
-    
-    "！^mailto：（.*）@（.*）$！112!i" .
-    
-    Linux& host
-    
-    -t naptr urn.uri.arpa
-    
-    urn.uri.arpa has
-    
-    NAPTR record 00""
-    
-    """/urn：（［^：］+）八\\1/i"
+    Linux% host –t naptr mailto.uri.arpa
+    mailto.uri.arpa has NAPTR record 0 0 "" "" "!^mailto:(.*)@(.*)$!\\2!i" .
+    Linux% host –t naptr urn.uri.arpa
+    urn.uri.arpa has NAPTR record 0 0 "" "" "/urn:([^:]+)/\\1/i" .
 \end{verbatim}
 
 前三个 NAPTR记录包含了重写规则，没有任何标志。因此，它们本质上表明，应用

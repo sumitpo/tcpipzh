@@ -1,7 +1,5 @@
 \chapter{广播和本地组播（IGMP 和 MLD）}
-\minitoc
 
-\minitoc
 \section{引言}
 第2章中我们提到有4种IP 地址：单播（unicast）、任播（anycast）、组播（multicast）
 和广播（broadcast）。IPv4 可以使用所有这些地址，而IPv6可以使用除了最后一种形式的所
@@ -74,32 +72,19 @@ ND 等。虽然IP 组播支持曾经是 “插件”，要求用户给系统打�
 在Linux 中，与每个接口相关的1Pv4 定向子网广播地址可以通过ifconfg命令查看或设
 置。我们可以看到它显示如下：
 \begin{verbatim}
-Linux& ifconfig etho
-ethO    Link encap: Ethernet    HWaddr 00:08:74:93:C8:3C
-        inet addr:10.0.0.13     Bcast:10.0.0.127   Mask:255.255.255.128
-        inet6 addr: 2001:5c0:9ae2:0:208:74ff:fe93:c83c/64
-                Scope:global
-        inet6 addr：fe80：：208:74ff:fe93:c83c/64
-                Scope:Link
-        UP BROADCAST RUNNING MULTICAST MTU:1500
-
-Metric:1
-
-RX packets: 426469 errors:0 dropped:0 overruns:1 frame:0
-
-TX packets: 779338 errors:0 dropped:0 overruns:0
-
-carrier:0
-
-collisions:298048 txgueuelen:1000
-
-RX bytes:44414543 （42.3 MiB）
-
-TX bytes:1094425223（1.0GiB）
-
-Interrupt:19 Base
-
-address:0xec0O
+    Linux% ifconfig eth0
+    eth0        Link encap:Ethernet HWaddr 00:08:74:93:C8:3C
+                inet addr:10.0.0.13 Bcast:10.0.0.127 Mask:255.255.255.128
+                inet6 addr: 2001:5c0:9ae2:0:208:74ff:fe93:c83c/64
+                            Scope:Global
+                inet6 addr: fe80::208:74ff:fe93:c83c/64
+                            Scope:Link
+                UP BROADCAST RUNNING MULTICAST MTU:1500 Metric:1
+                RX packets:426469 errors:0 dropped:0 overruns:1 frame:0
+                TX packets:779338 errors:0 dropped:0 overruns:0 carrier:0
+                collisions:298048 txqueuelen:1000
+                RX bytes:44414543 (42.3 MiB) TX bytes:1094425223 (1.0 GiB)
+                Interrupt:19 Base address:0xec00
 \end{verbatim}
 
 这里，地址 10.0.0.127是设备 etho所连接的网络上使用的（定向子网）广播地址。它是
@@ -111,16 +96,16 @@ address:0xec0O
 的广播地址 10.0.0.127 发送一个ICMPv4 回显请求报文：
 
 \begin{verbatim}
-Linux# ping -b 10.0.0.127
-WARNING: pinging broadcast address
-PING 10.0.0.127（10.0.0.127）56（84）bytes of data.
-64 bytes from 10.0.0.6: icmp\_seq=1 tt1=64 time=1.05 ms
-64 bytes from 10.0.0.113: icmp\_seq=1 tt1=64 time=1.55 ms
-64 bytes from 10.0.0.120:icmp\_seq=1 tt1=64 time=3.09 ms
+    Linux# ping -b 10.0.0.127
+    WARNING: pinging broadcast address
+    PING 10.0.0.127（10.0.0.127）56（84）bytes of data.
+    64 bytes from 10.0.0.6: icmp\_seq=1 tt1=64 time=1.05 ms
+    64 bytes from 10.0.0.113: icmp\_seq=1 tt1=64 time=1.55 ms
+    64 bytes from 10.0.0.120:icmp\_seq=1 tt1=64 time=3.09 ms
 
---- 10.0.0.127 ping statistics ---
-1 packets transmitted,1 received，+2 duplicates，
-0% packet loss,time 0ms
+    --- 10.0.0.127 ping statistics ---
+    1 packets transmitted,1 received，+2 duplicates，
+    0% packet loss,time 0ms
 \end{verbatim}
 
 我们在第8章中提到过，在这种类型的广播中，本地LAN（或 VLAN）上的所有主机都
@@ -166,6 +151,31 @@ Windows Vista 路由表的一个例子（更高版本的Windows 使用完全相�
 列表和广播相关的路由信息（为清楚起见，其他信息已被移除）：
 
 \begin{verbatim}
+    C:\> netstat -rn
+    =======================================================================
+    Interface List
+     10 ...02 00 4c 4f 4f 50 ...... Microsoft Loopback Adapter
+      9 ...00 13 02 20 b9 18 ...... Intel(R) PRO/Wireless 3945ABG Network
+                                    Connection
+      8 ...00 14 22 f4 19 5f . .... Broadcom 440x 10/100 Integrated
+                                    Controller
+      1 . ......................... Software Loopback Interface 1
+     12 ...00 00 00 00 00 00 00 e0 Microsoft ISATAP Adapter
+     13 ...00 00 00 00 00 00 00 e0 Microsoft ISATAP Adapter #2
+     11 ...00 00 00 00 00 00 00 e0 isatap.
+                                    {2523E0D6-A8E2-42F1-8188-6AA108FEA1EA}
+    =======================================================================
+    IPv4 Route Table
+    =======================================================================
+    Active Routes:
+    Network Destination Netmask         Gateway     Interface       Metric
+    0.0.0.0             0.0.0.0         10.0.0.1    10.0.0.57       25
+    10.0.0.127          255.255.255.255 On-link     10.0.0.57       281
+    127.255.255.255     255.255.255.255 On-link     127.0.0.1       306
+    169.254.255.255     255.255.255.255 On-link     169.254.57.240  286
+    255.255.255.255     255.255.255.255 On-link     127.0.0.1       306
+    255.255.255.255     255.255.255.255 On-link     169.254.57.240  286
+    255.255.255.255     255.255.255.255 On-link     10.0.0.57       281
 \end{verbatim}
 
 输出的第一部分显示了7个不同的网络接口，它们可用于承载网络流量。第1个是虚拟
@@ -270,7 +280,7 @@ IPV4 地址到它们对应的IEEE 802 形式的链路层地址的映射如图9-2
 的268 435 456个组播组ID 需要被映射到只包含22=8388608个唯一条目的链路层地址空
 间。因此，映射是非唯一的（nonunique）。即多个 IPv4组ID 被映射到相同MAC层组地址。
 具体来说，22/22=2’=32个不同的IPv4组播组ID 被映射到每个组地址。例如，组播地址
-224.128.64.32（十六进制 e0.80.40.20）和224.0.64.32（十六进制为€0.00.40.20）都被映射
+224.128.64.32（十六进制 e0.80.40.20）和224.0.64.32（十六进制为e0.00.40.20）都被映射
 到以太网地址 01:00:5e:00:40:20。
 
 对于 IPv6，16位的OUI 十六进制前缀是 33:33。这意味着，IPv6地址的最后32位可以
@@ -290,15 +300,15 @@ MAC层地址
 ICMPv4 回显请求报文。
 
 \begin{verbatim}
-Linux% ping 224.0.0.251
-PING 224.0.0.251（224.0.0.251）56（84）bytes of data.
-64 bytes from 10.0.0.2:icmp\_seq=1 tt1=60 time=1.10 ms
-64 bytes from 10.0.0.11:icmp\_seq=1 tt1=60 time=1.60 ms （DUP！）
-64 bytes from 10.0.0.120:icmp\_seg=1 tt1=64 time=2.59 ms （DUP！）
---- 224.0.0.251 ping statistics ---
-1 packets transmitted,1 received，+2 duplicates，
-0% packet loss,time 0ms
-rtt min/avg/max/mdev = 1.109/1.767/2.590/0.615 ms
+    Linux% ping 224.0.0.251
+    PING 224.0.0.251（224.0.0.251）56（84）bytes of data.
+    64 bytes from 10.0.0.2:icmp\_seq=1 tt1=60 time=1.10 ms
+    64 bytes from 10.0.0.11:icmp\_seq=1 tt1=60 time=1.60 ms （DUP！）
+    64 bytes from 10.0.0.120:icmp\_seg=1 tt1=64 time=2.59 ms （DUP！）
+    --- 224.0.0.251 ping statistics ---
+    1 packets transmitted,1 received，+2 duplicates，
+    0% packet loss,time 0ms
+    rtt min/avg/max/mdev = 1.109/1.767/2.590/0.615 ms
 \end{verbatim}
 
 在这里，主机 10.0.0.2、10.0.0.11和10.0.0.120全部响应，表明它们订阅了mDNS组。
@@ -351,140 +361,34 @@ ethO 相关的本地链路地址。
 出情况。
 
 \begin{verbatim}
-    C：\> netstat -rn
-    
-    ... interface 1ist
-    
-    
-    
+    C:\> netstat -rn
+    ... interface list ...
+
     IPv4 Route Table
-    
-    Active Routes：
-    
-    Network Destination
-    
-    0.0.0.0
-    
-    224.0.0.0
-    
-    224.0.0.0
-    
-    224.0.0.0
-    
-    255.255.255.255
-    
-    255.255.255.255
-    
-    255.255.255.255
-    
-    Netmask
-    
-    0.0.0.0
-    
-    240.0.0.0
-    
-    240.0.0.0
-    
-    240.0.0.0
-    
-    255.255.255.255
-    
-    255.255.255.255
-    
-    255.255.255.255
-    
-    Gateway
-    
-    10.0.0.1
-    
-    On-link
-    
-    0n-1ink
-    
-    On-link
-    
-    on-link
-    
-    On-Link
-    
-    On-link
-    
-    Interface
-    
-    10.0.0.57
-    
-    127.0.0.1
-    
-    169.254.57.240
-    
-    10.0.0.57
-    
-    127.0.0.1
-    
-    169.254.57.240
-    
-    10.0.0.57
-    
-    Metric
-    
-    25
-    
-    306
-    
-    286
-    
-    281
-    
-    306
-    
-    286
-    
-    281
-    
-    Persistent Routes：
-    
-    None
-    
+    =======================================================================
+    Active Routes:
+    Network Destination Netmask         Gateway    Interface       Metric
+    0.0.0.0             0.0.0.0         10.0.0.1   10.0.0.57       25
+    224.0.0.0           224.0.0.0       On-link    127.0.0.1       306
+    224.0.0.0           224.0.0.0       On-link    169.254.57.240  286
+    224.0.0.0           224.0.0.0       On-link    10.0.0.57       281
+    255.255.255.255     255.255.255.255 On-link    127.0.0.1       306
+    255.255.255.255     255.255.255.255 On-link    169.254.57.240  286
+    255.255.255.255     255.255.255.255 On-link    10.0.0.57       281
+    =======================================================================
+    Persistent Routes:
+        None
+
     IPv6 Route Table
-    
-    Active Routes：
-    
-    If Metric Network Destination
-    
-    9
-    
-    281
-    
-    ：：/0
-    
-    1
-    
-    306 EE00：：/8
-    
-    10
-    
-    286
-    
-    Ef00：：/8
-    
-    9
-    
-    281
-    
-    E£00：：/8
-    
-    Gateway
-    
-    fe80：：204:5aff:fe9f:9e80
-    
-    On-link
-    
-    On-link
-    
-    On-link
-    
-    Persistent Routes：
-    
+    =======================================================================
+    Active Routes:
+    If Metric Network Destination   Gateway
+     9    281 ::/0                  fe80::204:5aff:fe9f:9e80
+     1    306 ff00::/8              On-link
+    10    286 ff00::/8              On-link
+     9    281 ff00::/8              On-link
+    =======================================================================
+    Persistent Routes:
     None
 \end{verbatim}
 
@@ -504,8 +408,8 @@ IPv6，所有的组播地址以ff开始，没有广播地址，所以接口1、9
 \begin{verbatim}
     Linux% netstat -rn -A inet6
     Kernel IPv6 routing table
-    Destination                    Next Hop                   Flag Met Ref  Use If
-    ff00::/8                       ::                         U    256 1      0 eth0
+    Destination  Next Hop                   Flags Metric Ref  Use Iface
+    ff00::/8     ::                         U        256  0    0  eth0
 \end{verbatim}
 
 在这种情况下，没有直接的“下一跳”，所以未指定地址（：：）在表中列出，但我们可以
@@ -527,65 +431,20 @@ IPv6，所有的组播地址以ff开始，没有广播地址，所以接口1、9
 命令是 netsh 包的一部分。对于 IPv6，它按如下方式工作（对于IPv4，使用ip 替代 ipv6）：
 
 \begin{verbatim}
-    C：\> netsh interface ipv6 show joins
-    
+    C:\> netsh interface ipv6 show joins
     Interface 1: Loopback Pseudo-Interface 1
-    
-    scope
-    
-    References
-    
-    Last Address
-    
-    0
-    
-    1
-    
-    Yes
-    
-    £f02：：c
-    
+    Scope       References Last     Address
+    -------     ---------- -----    -----------------------------------------
+    0                   1  Yes      ff02::c
+
     Interface 8: Local Area Connection
-    
-    scope
-    
-    References
-    
-    Las
-    
-    Address
-    
-    0
-    
-    0
-    
-    0
-    
-    0
-    
-    0
-    
-    1
-    
-    Yes
-    
-    Yes
-    
-    Yes
-    
-    Yes
-    
-    Yes
-    
-    £f01：：1
-    
-    E£02：：1
-    
-    ff02：：c
-    
-    ff02：：1:3
-    
-    Ff02：：1:ffdc: fc85
+    Scope       References Las      Address
+    -------     ---------- -----    -----------------------------------------
+    0                   0  Yes      ff01::1
+    0                   0  Yes      ff02::1
+    0                   1  Yes      ff02::c
+    0                   1  Yes      ff02::1:3
+    0                   1  Yes      ff02::1:ffdc:fc85
 \end{verbatim}
 
 在这里我们可以看到，IPv6是如何使用在每个接口上的几个组播地址的。第一个接口

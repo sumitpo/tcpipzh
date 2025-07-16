@@ -1,5 +1,5 @@
 \chapter{用户数据报协议和 IP 分片}
-\minitoc
+
 
 \section{引言}
 UDP是一种保留消息边界的简单的面向数据报的传输层协议。它不提供差错纠正、队
@@ -791,8 +791,8 @@ ARP 请求/应答在完成之前会有多少个分片要处理？（IPv6 ND 也�
 下两条命令来查看答案，使用1500字节 MTU返回到我们的主机和 LAN：
 
 \begin{verbatim}
-Linux% sock -u -i -n1 -w8192 10.0.0.20 echo
-Linux% sock -u -i -n1 -w8192 10.0.0.3 echo
+    Linux% sock -u -i -n1 -w8192 10.0.0.20 echo
+    Linux% sock -u -i -n1 -w8192 10.0.0.3 echo
 \end{verbatim}
 
 这些参数使得我们的 sock 程序产生了一个带有8192字节用户数据的UDP数据报。在
@@ -940,11 +940,11 @@ DNS服务器是对目的IP地址敏感的一种服务器类型。它会使用这
 清单 10-8
 
 \begin{verbatim}
-Linux& netstat -1 --udp -n
-Active Internet connections（only servers）
-Proto Recv-Q Send-Q Local Address    Foreign Address
-udp        0      0 *:7777           0.0.0.0：*
-netstat 列出了使用通配符地址绑定的IPv4 UDP 服务器
+    Linux& netstat -1 --udp -n
+    Active Internet connections（only servers）
+    Proto Recv-Q Send-Q Local Address    Foreign Address
+    udp        0      0 *:7777           0.0.0.0：*
+    netstat 列出了使用通配符地址绑定的IPv4 UDP 服务器
 \end{verbatim}
 
 输出中我们删除了几行，只留下我们感兴趣的。-l选项输出所有监听套接字（服务器）。
@@ -1019,36 +1019,11 @@ netstat 输出显示了服务器正在监听的地址和端口号。
 
 清单10-10 相同UDP端口上的受限的和带通配符的UDP服务器
 \begin{verbatim}
-    
-    Active Internet
-    
-    connections （only servers）
-    
-    Proto Recv-Q
-    
-    Local Address
-    
-    udp
-    
-    udp
-    
-    0
-    
-    0
-    
-    0
-    
-    0
-    
-    0.0.0.0:8888
-    
-    Foreign Address
-    
-    0.0.0.0：*
-    
-    0.0.0.0：*
-    
-    0.0.0.0：*
+    Active Internet connections (only servers)
+    Proto   Recv-Q Send-Q Local Address     Foreign Address
+    udp         0       0 10.0.2.13:8888    0.0.0.0:*
+    udp         0       0 0.0.0.0:8888      0.0.0.0:*
+    udp         0       0 10.0.2.14:8888    0.0.0.0:*
 \end{verbatim}
 
 在这个场景里，只有那些目的地是10.0.0.30、直接广播地址（如，10.255.255.255）、受
@@ -1080,26 +1055,10 @@ IPv4地址和端口号的 UDP 数据报。}注意，一旦服务器收到了某�
 限制远端地址导致的本地地址分配
 
 \begin{verbatim}
-    
-Linux& netstat
-
---udp -n
-
-Active Internet connections （w/o servers）
-
-Proto Recv-O Send-0 Local Address
-
-Foreign Address
-
-udp
-
-0
-
-010.0.0.30:5555 10.0.0.14:4444
-
-State
-
-ESTABLISHED
+    Linux% netstat --udp -n
+    Active Internet connections (w/o servers)
+    Proto   Recv-Q Send-Q Local Address     Foreign Address     State
+    udp         0       0 10.0.0.30:5555    10.0.0.14:4444      ESTABLISHED
 \end{verbatim}
 
 这是指定远端IP 地址和远端端口的一个典型的副作用：如果指定远端地址而没选择本
@@ -1154,9 +1113,9 @@ IPv6），同一时间只允许一个应用程序端点与任何一个（本地I
 动另一个使用相同地址族、有相同通配符本地地址和相同端口的服务器时，则是行不通的：
 
 \begin{verbatim}
-Linux% sock -u -8 12.46.129.3 8888 &
-Linux% sock -u -s 12.46.129.3 8888
-can't bind local address: Address already in use
+    Linux% sock -u -8 12.46.129.3 8888 &
+    Linux% sock -u -s 12.46.129.3 8888
+    can't bind local address: Address already in use
 \end{verbatim}
 
 为了支持组播（见第9章），可允许多个端点使用相同的（本地IP 址，UDP端口号）对，

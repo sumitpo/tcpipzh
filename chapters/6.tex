@@ -1,5 +1,5 @@
 \chapter{系统配置：DHCP 和自动配置}
-\minitoc
+
 \section{引言}
 为了使用TCP/IP协议族，每台主机和路由器需要一定的配置信息。配置信息用于为系
 统指定本地名称，以及为接口指定标识符（例如IP 地址）。它还用于提供或使用各种网络服
@@ -416,94 +416,22 @@ Linux# dhclient
 选项来查看。下面是来自该命令的一段输出：
 
 \begin{verbatim}
-    
-C：> ipconfig /a11
-
-Wireless LAN adapter Wireless Network Connection：
-
-Connection-specific DNS Suffix
-
-Description
-
-：home
-
- ：Intel（R）PRO/Wireless 3945ABG
-
-Network Connection
-
-Physical Address... .
-
-：00-13-02-20-B9-18
-
-DHCP Enabled.
-
-Yes
-
-Autoconfiguration Enabled
-
-：Yes
-
-IPV4 Address.....
-
-：10.0.0.57（Preferred）
-
-Subnet Mask
-
-
-
-：255.255.255.128
-
-Lease Obtained...
-
-
-
-
-
-．．．
-
-：Sunday，December
-
-21,2008
-
-11:31:48 PM
-
-249
-
-250
-
-Lease Expires
-
-：Monday,December 22,2008
-
-11:31:40 AM
-
-Default Gateway
-
-：10.0.0.1
-
-DHCP Server..
-
-
-
-
-
-
-
-
-
-：10.0.0.1
-
-DNS Servers..
-
-：10.0.0.1
-
-NetBIOS over Tcpip. 
-
-
-
-： Enabled
-
-Connection-specific DNS Suffix Search List :home
+    C:\> ipconfig /all
+    ...
+    Wireless LAN adapter Wireless Network Connection:
+        Connection-specific DNS Suffix . : home
+        Description . . . . . . . . . . . : Intel(R) PRO/Wireless 3945ABG
+                                            Network Connection
+        Physical Address. . . . . . . . . : 00-13-02-20-B9-18
+        DHCP Enabled. . . . . . . . . . . : Yes
+        Autoconfiguration Enabled . . . . : Yes
+        IPv4 Address. . . . . . . . . . . : 10.0.0.57(Preferred)
+        Subnet Mask . . . . . . . . . . . : 255.255.255.128
+        Lease Obtained. . . . . . . . . . : Sunday, December 21, 2008
+                                            11:31:48 PM
+        Lease Expires . . . . . . . . . . : Monday, December 22, 2008
+                                            11:31:40 AM
+        Default Gateway . . . . . . . . . : 10.0.0.1
 \end{verbatim}
 
 这个命令非常有用，可查看通过DHCP 或其他手段为主机分配的配置信息。
@@ -1022,80 +950,31 @@ DHCPv6 和DNS之间的交互（见6.4节中的DHCP 和DNS交互）。这个选�
 通过 DHCP 获得并分配给本地接口的信息类型，可使用之前看过的该命令的另一个选项
 来查看。下面是其输出的一部分：
 \begin{verbatim}
-    C：\> ipconfig /a11
+    C:\> ipconfig /all
+    ...
+    Wireless LAN adapter Wireless Network Connection:
 
-Wireless LAN adapter Wireless Network Connection：
-
-Connection-specific DNS Suffix  ：home
-
-Description .
-
-： Intel（R） PRO/Wireless 3945ABG
-
-Network Connection
-
-Physical Address.
-
-DHCP Enabled.
-
-Autoconfiguration Enabled
-
-IPv6 Address.
-
-Lease Obtained.
-
-：00-13-02-20-B9-18
-
-： Yes
-
-：Yes
-
- ： 2001:db8:0:f101：：12cd（Preferred）
-
-：Sunday,December 21,2008
-
-11:30:45 PM
-
-Lease Expires
-
-：Sunday,December 21,2008
-
-11:37:04 PM
-
-Link-local IPv6 Address
-
-：
-
-fe80：：fd26:de93:5ab7:405a89（Preferred）
-
-Default Gateway .
-
-DHCPv6 IAID
-
-
-
-DHCPv6 Client DUID.
-
-： fe80：：204:5aff:fe9f:9e8089
-
-：150999810
-
-：
-
-00-01-00-01-0D-D1-4B-2E-00-14-22-F4-19-5F
-
-DNS Servers
-
-：2001:db8:0:f101：：1
-
-NetBIOS over Tcpip. .
-
-： Disabled
-
-Connection-specific DNS Suffix Search List ：
-
-home
-
+        Connection-specific DNS Suffix . : home
+        Description . . . . . . . . . . . : Intel(R) PRO/Wireless 3945ABG
+                                            Network Connection
+        Physical Address. . . . . . . . . : 00-13-02-20-B9-18
+        DHCP Enabled. . . . . . . . . . . : Yes
+        Autoconfiguration Enabled . . . . : Yes
+        IPv6 Address. . . . . . . . . . . : 2001:db8:0:f101::12cd(Preferred)
+        Lease Obtained. . . . . . . . . . : Sunday, December 21, 2008
+                                            11:30:45 PM
+        Lease Expires . . . . . . . . . . : Sunday, December 21, 2008
+                                            11:37:04 PM
+        Link-local IPv6 Address . . . . . :
+                                        fe80::fd26:de93:5ab7:405a%9(Preferred)
+        Default Gateway . . . . . . . . . : fe80::204:5aff:fe9f:9e80%9
+        DHCPv6 IAID . . . . . . . . . . . : 150999810
+        DHCPv6 Client DUID. . . . . . . . :
+                                00-01-00-01-0D-D1-4B-2E-00-14-22-F4-19-5F
+        DNS Servers . . . . . . . . . . . : 2001:db8:0:f101::1
+        NetBIOS over Tcpip. . . . . . . . : Disabled
+        Connection-specific DNS Suffix Search List :
+                                            home
 \end{verbatim}
 这里，我们可以看到该系统的链路层地址（00:13:02:20:b9:18）。注意，在这个例子中，
 该地址从未作形成IPv6 地址的基础而使用。

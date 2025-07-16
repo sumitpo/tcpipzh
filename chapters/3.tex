@@ -1,5 +1,4 @@
 \chapter{链路层}
-\minitoc
 
 \section{引言}
 
@@ -836,157 +835,38 @@ STP 的另一个重要工作是处理拓扑变化。虽然可用前面所述的�
 执行该命令的结果如下：
 
 \begin{verbatim}
-    Linux# brctl showstr bro
-    
-    bro
-    
-    bridge id
-    
-    designated root
-    
-    root port
-    
-    max age
-    
-    hello time
-    
-    forward delay
-    
-    ageing time
-    
-    hel10 timer
-    
-    topology change timer
-    
-    8000.0007e914a9c1
-    
-    8000.0007e914a9c1
-    
-    0
-    
-    19.99
-    
-    1.99
-    
-    14.99
-    
-    0.99
-    
-    1.26
-    
-    3.37
-    
-    path cost
-    
-    bridge max age
-    
-    bridge hello time
-    
-    bridge forward delay
-    
-    tcn timer
-    
-    gc timer
-    
-    0
-    
-    19.99
-    
-    1.99
-    
-    14.99
-    
-    0.00
-    
-    3.26
-    
-    flaas
-    
-    TOPOLOGY CHANGE TOPOLOGY CHANGE DETECTED
-    
-    etho （0）
-    
-    port id
-    
-    designated root
-    
-    designated bridge
-    
-    designated port
-    
-    designated cost
-    
-    0000
-    
-    8000.0007e914a9c1
-    
-    8000.0007e914a9c1
-    
-    8001
-    
-    o
-    
-    state
-    
-    forwarding
-    
-    path cost
-    
-    100
-    
-    message age timer
-    
-    0.00
-    
-    forward delay timer 0.00
-    
-    hold timer
-    
-    0.26
-    
-    flags
-    
-    ethi （0）
-    
-    port id
-    
-    designated root
-    
-    designated bridge
-    
-    designated port
-    
-    designated cost
-    
-    0000
-    
-    8000.0007e914a9c1
-    
-    8000.0007e914a9c1
-    
-    8002
-    
-    0
-    
-    state
-    
-    Eorwarding
-    
-    path cost
-    
-    19
-    
-    message age timer
-    
-    0.00
-    
-    forward delay timer 0.00
-    
-    hold timer
-    
-    0.26
-    
-    flags
+    Linux# brctl showstp br0
+
+    br0
+
+        bridge id           8000.0007e914a9c1
+        designated root     8000.0007e914a9c1
+        root port               0       path cost               0
+        max age                 19.99   bridge max age          19.99
+        hello time              1.99    bridge hello time       1.99
+        forward delay           14.99   bridge forward delay    14.99
+        ageing time             0.99
+        hello timer             1.26    tcn timer               0.00
+        topology change timer   3.37    gc timer                3.26
+
+        flags               TOPOLOGY_CHANGE TOPOLOGY_CHANGE_DETECTED
+
+    eth0 (0)
+        port id             0000                state       forwarding
+        designated root     8000.0007e914a9c1   path cost           100
+        designated bridge   8000.0007e914a9c1   message age timer   0.00
+        designated port     8001                forward delay timer 0.00
+
+        designated cost     0                   hold timer          0.26
+        flags
+
+    eth1 (0)
+        port id             0000                state       forwarding
+        designated root     8000.0007e914a9c1   path cost           19
+        designated bridge   8000.0007e914a9c1   message age timer   0.00
+        designated port     8002                forward delay timer 0.00
+        designated cost     0                   hold timer          0.26
+        flags
 \end{verbatim}
 
 我们看到一个简单的桥接网络的STP设置。网桥设备br0保存网桥的整体信息。这些信
@@ -1367,7 +1247,7 @@ ACK 知道数据被接收（或没有接收）后启动。在传输不成功的�
 前需计算和等待一个退避时间。退避时间等于一个随机数和时隙的乘积（除非该站已有一个
 非零的退避时间尝试传输，在这种情况下无须重新计算）。时隙依赖于 PHY，通常是几十微
 秒。随机数是一个在区间［0,CW］ 中均匀分布的数值，竞争窗口（CW）是一个整数，其中
-包含许多等待时隙，且aCWmin ≤ CW ≤ aCWmax（该限制由PHY定义）。CW值的集合从
+包含许多等待时隙，且$aCWmin \leq CW \leq aCWmax$（该限制由PHY定义）。CW值的集合从
 PHY指定的常数aCWmin 开始，以2的幂（减1）增加，直到每个连续传输尝试次数的常数
 aCWmax 为止。这样做与以太网中由冲突检测事件引发的退避过程相似。
 
@@ -2403,7 +2283,7 @@ TCP/IP）与同一计算机上的服务器通信。为了实现这个目标，�
 在Linux 中，环回接口被称为1o。
 
 \begin{verbatim}
-    Linux8 ifconfig lo
+    Linux% ifconfig lo
     lo Link encap:Local Loopback
                 inet addr:127.0.0.1 Mask:255.0.0.0
                 inet6 addr：：：1/128 Scope:Host
@@ -2430,143 +2310,62 @@ Windows 7，在命令提示符下运行程序 hdwwiz，并手动添加 Microsoft
 上述操作后，ipconfig 命令显示如下（这个例子来自 Windows Vista 环境）：
 
 \begin{verbatim}
-    C：\> ipconfig /a11
-    
-    Ethernet adapter Local Area Connection 2：
-    
-    Connection-specific
-    
-    DNS Suffix：
-    
-    Description .
-    
-    Physical Address.
-    
-    DHCP Enabled.
-    
-    Autoconfiguration Enabled
-    
-    
-    
-    ： Microsoft Loopback Adapter
-    
-    02-00-4C-4F-4F-50
-    
-    Yes
-    
-    ：
-    
-    Yes
-    
-    Link-local IPv6 Address
-    
-    fe80：：9cod:77a:52b8:39f0818（Preterred）
-    
-    Autoconfiguration IPv4 Address.  ： 169.254.57.240（Preferred）
-    
-    Subnet Mask..
-    
-    255.255.0.0
-    
-    Default Gateway. 
-    
-    DHCPv6 IAID
-    
+    C:\> ipconfig /all
     ...
-    DNS Servers
-    
-    ：302121036
-    
-    fec0:0:0:ffff：：181
-    
-    fec0:0:0:ffff：：281
-    
-    fecO:0:0:ffff：：381
-    
-    NetBIOS over rcpip.： Enabled
+    Ethernet adapter Local Area Connection 2:
+        Connection-specific DNS Suffix . :
+        Description . . . . . . . . . . . : Microsoft Loopback Adapter
+        Physical Address. . . . . . . . . : 02-00-4C-4F-4F-50
+        DHCP Enabled. . . . . . . . . . . : Yes
+        Autoconfiguration Enabled . . . . : Yes
+        Link-local IPv6 Address . . . . . :
+                fe80::9c0d:77a:52b8:39f0%18(Preferred)
+        Autoconfiguration IPv4 Address. . : 169.254.57.240(Preferred)
+        Subnet Mask . . . . . . . . . . . : 255.255.0.0
+        Default Gateway . . . . . . . . . :
+        DHCPv6 IAID . . . . . . . . . . . : 302121036
+        DNS Servers . . . . . . . . . . . : fec0:0:0:ffff::1%1
+                fec0:0:0:ffff::2%1
+                fec0:0:0:ffff::3%1
+        NetBIOS over Tcpip. . . . . . . . : Enabled
 \end{verbatim}
 
 这里，我们可看到该接口已被创建，分配了IPv4 和IPv6地址，并显示为一系列的虚拟
 以太网设备。现在，这台计算机具有以下环回地址：
 \begin{verbatim}
-    
-    C：> ping 127.1.2.3
-    
-    Pinging 127.1.2.3 with 32 bytes of data：
-    
-    Reply from 127.1.2.3:bytes=32 time<1ms TTL=128
-    
-    Reply from 127.1.2.3:bytes=32 time<1ms TTL=128
-    
-    Reply from 127.1.2.3:bytes=32 time<1ms TTL=128
-    
-    Reply from 127.1.2.3：
-    
-    bytes=32 time<1ms TTL=128
-    
-    Ping statistics for 127.1.2.3：
-    
-    Packets: Sent = 4,Received = 4,Lost = 0 （08 10SS），
-    
-    Approximate round trip times in milli-seconds：
-    
-    Minimum =
-    
-    0ms.
-    
-    Maximum =
-    
-    0ms，
-    
-    Average =
-    
-    0ms
-    
-    C：\> ping ：：1
-    
-    Pinging ：：1 from ：：1 with 32 bytes of data：
-    
-    Reply from ：：1:time<lms
-    
-    Reply from ：：1:time<1ms
-    
-    Reply from ：：1: time<1ms
-    
-    Reply from
-    
-    ：：1：time<1ms
-    
-    Ping statistics for ：：1：
-    
-    Packets: Sent = 4,Received = 4, Lost =0 （08 108S），
-    
-    Approximate round trip times in milli-seconds：
-    
-    Minimum = 0ms,Maximum = 0ms,Average = 0ms
-    
-    C：\> ping 169.254.57.240
-    
-    Pinging 169.254.57.240127.1.2.3 with 32 bytes
-    
-    of data：
-    
-    Reply from 169.254.57.240:bytes=32 time<1ms TTL=128
-    
-    Reply from 169.254.57.240:bytes=32 time<1ms TTL=128
-    
-    Reply from 169.254.57.240:bytes=32 time<1ms TTL=128
-    
-    Reply from 169.254.57.240:bytes=32 time<1ms TTL=128
-    
-    Ping
-    
-    statistics for 169.254.57.240：
-    
-    Packets: Sent = 4,Received = 4,Lost =0 （08 10SS），
-    
-    Approximate round trip times in milli-seconds：
-    
-    Minimum = 0ms,Maximum = 0ms,Average = 0ms
+    C:\> ping 127.1.2.3
+    Pinging 127.1.2.3 with 32 bytes of data:
+    Reply from 127.1.2.3: bytes=32 time<1ms TTL=128
+    Reply from 127.1.2.3: bytes=32 time<1ms TTL=128
+    Reply from 127.1.2.3: bytes=32 time<1ms TTL=128
+    Reply from 127.1.2.3: bytes=32 time<1ms TTL=128
+    Ping statistics for 127.1.2.3:
+            Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+    Approximate round trip times in milli-seconds:
+            Minimum = 0ms, Maximum = 0ms, Average = 0ms
+
+    C:\> ping ::1
+    Pinging ::1 from ::1 with 32 bytes of data:
+    Reply from ::1: time<1ms
+    Reply from ::1: time<1ms
+    Reply from ::1: time<1ms
+    Reply from ::1: time<1ms
+    Ping statistics for ::1:
+            Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+    Approximate round trip times in milli-seconds:
+
+            Minimum = 0ms, Maximum = 0ms, Average = 0ms
+
+    C:\> ping 169.254.57.240
+    Pinging 169.254.57.240127.1.2.3 with 32 bytes of data:
+    Reply from 169.254.57.240: bytes=32 time<1ms TTL=128
+    Reply from 169.254.57.240: bytes=32 time<1ms TTL=128
+    Reply from 169.254.57.240: bytes=32 time<1ms TTL=128
+    Reply from 169.254.57.240: bytes=32 time<1ms TTL=128
+    Ping statistics for 169.254.57.240:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+    Approximate round trip times in milli-seconds:
+            Minimum = 0ms, Maximum = 0ms, Average = 0ms
 \end{verbatim}
 
 我们可以看到，IPv4 中以127开始的目的地址被环回。但是，对于 IPv6，只有地址：：1

@@ -1,5 +1,4 @@
 \chapter{地址解析协议}
-\minitoc
 
 \section{引言}
 
@@ -118,46 +117,25 @@ ARP高效运行的关键是维护每个主机和路由器上的ARP缓存（或�
 统的缓存中的所有条目。在 Linux 中，运行 arp 会产生以下输出：
 
 \begin{verbatim}
-Linux& arp
-Address                  HWtype  HWaddress           Flags Mask            Iface
-gw.home                  ether   00:OD:66:4F:60:00   C                     eth1
-printer.home             ether   00:0A:95:87:38:6A   C                     eth1
+        Linux& arp
+        Address                  HWtype  HWaddress           Flags Mask            Iface
+        gw.home                  ether   00:OD:66:4F:60:00   C                     eth1
+        printer.home             ether   00:0A:95:87:38:6A   C                     eth1
 
-Linux8 arp
-
-一a
-
-printer.home（10.0.0.4）at
-
-00:0A:95:87:38:6A ［ether］on eth1
-
-gw.home （10.0.0.1）
-
-at 00:0D:66:4F:60:00 ［ether］ on eth1
+        Linux% arp -a
+        printer.home (10.0.0.4) at      00:0A:95:87:38:6A [ether] on eth1
+        gw.home (10.0.0.1) at 00:0D:66:4F:60:00 [ether] on eth1
+\end{verbatim}
 
 在 Windows 中，运行 arp 会产生以下类似的输出：
 
-c：> arp -a
+\begin{verbatim}
+        c:\> arp -a
 
-Interface: \verb|10.0.0.56| --- 0x2
-
-Internet Address
-
-10.0.0.1
-
-10.0.0.4
-
-Physical Address
-
-00-0d-66-4£-60-00
-
-00-0a-95-87-38-6a
-
-TyPe
-
-dynamic
-
-dynamic
+        Interface: 10.0.0.56 --- 0x2
+          Internet Address      Physical Address          Type
+          10.0.0.1              00-0d-66-4f-60-00       dynamic
+          10.0.0.4              00-0a-95-87-38-6a       dynamic
 \end{verbatim}
 
 这里，我们看到的是IPv4到硬件地址的缓存。在第一个（Linux）例子中，每个映射是
@@ -300,21 +278,21 @@ MAC地址 0:0:c0:6f:2d:40。因此，ARP应答是直接发送到请求主机，�
 这个例子中，我们使用IPv4地址10.0.0.99。
 
 \begin{verbatim}
-Linux% date ; telnet 10.0.0.99 ; date
-Fri Jan 29 14:46:33 PST 2010
-Trying 10.0.0.99.
-telnet: connect to address 10.0.0.99: No route to host
-Fri Jan 29 14:46:36 PST 2010        3s after previous date
+        Linux% date ; telnet 10.0.0.99 ; date
+        Fri Jan 29 14:46:33 PST 2010
+        Trying 10.0.0.99.
+        telnet: connect to address 10.0.0.99: No route to host
+        Fri Jan 29 14:46:36 PST 2010        3s after previous date
 
-Linux% arp -a
-? （10.0.0.99）at <incomplete> on eth0
+        Linux% arp -a
+        ? （10.0.0.99）at <incomplete> on eth0
 \end{verbatim}
 这是 tcpdump 的输出：
 \begin{verbatim}
-Linux# tcpdump -n arp
-1 21:12:07.440845 arp who-has 10.0.0.99 tel1 10.0.0.56
-2 21:12:08.436842 arp who-has 10.0.0.99 tell 10.0.0.56
-3 21:12:09.436836 arp who-has 10.0.0.99 tel1 10.0.0.56
+        Linux# tcpdump -n arp
+        1 21:12:07.440845 arp who-has 10.0.0.99 tel1 10.0.0.56
+        2 21:12:08.436842 arp who-has 10.0.0.99 tell 10.0.0.56
+        3 21:12:09.436836 arp who-has 10.0.0.99 tel1 10.0.0.56
 \end{verbatim}
 
 由于我们已知使用广播地址发送ARP 请求，因此本次并没有指定-e选项。ARP 请求的
@@ -376,7 +354,7 @@ ARP 请求字段而言，发送方协议地址和目的协议地址相同：\ver
 \begin{enumerate}
     \item 允许一台主机确定另一台主机是否配置相同的IPv4地址。发送免费ARP 的主机并不
     期望它的请求获得应答。但是，如果它接收到一个应答，通常显示的是错误消息“从以太网
-    地址⋯发送的重复IP 地址”。这是对系统管理员和用户的警告，在同一广播域（例如局域
+    地址 \dots 发送的重复IP 地址”。这是对系统管理员和用户的警告，在同一广播域（例如局域
     网或 VLAN）中有一个系统配置出错。
     
     \item 如果发送免费ARP的主机已改变硬件地址（关闭主机或替换接口卡，然后重新启动
