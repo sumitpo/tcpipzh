@@ -1,6 +1,5 @@
 \chapter{用户数据报协议和 IP 分片}
 
-
 \section{引言}
 UDP是一种保留消息边界的简单的面向数据报的传输层协议。它不提供差错纠正、队
 列管理、重复消除、流量控制和拥塞控制。它提供差错检测，包含我们在传输层中碰到的第
@@ -20,8 +19,8 @@ UDP是一种保留消息边界的简单的面向数据报的传输层协议。�
 自己的重传单元的能力是一项重要的考虑（例如，见 ［CT90］）。
 % \begin{figure}[ht]
 %     \centering
-% 	\includegraphics[width=0.7\textwidth]{imgs/10/10-1.png}
-% 	\caption{单个 IPv4数据报中的UDP数据报封装（通常情况下没有IPv4选项）。IPv6 封装是类似的，UDP头部跟随在头部链之后}
+%   \includegraphics[width=0.7\textwidth]{imgs/10/10-1.png}
+%   \caption{单个 IPv4数据报中的UDP数据报封装（通常情况下没有IPv4选项）。IPv6 封装是类似的，UDP头部跟随在头部链之后}
 % \end{figure}
 
 图10-1显示了一个 UDP数据报作为单个 IPv4 数据报的封装。IPv6的封装是类似的，
@@ -36,7 +35,9 @@ UDP 数据报大小超过MTU 时会发生什么，数据报必须被分片成多
 端口号相当于邮箱（mailbox），帮助协议辨认发送和接收进程（见第1章）。它们纯属抽
 象的（abstract）—-它们不与主机上的任何物理实体相关。在UDP 中，端口号是正的16比
 特的数字，源端口号是可选的；\emph{如果数据报的发送者不要求对方回复的话，它可被置成0。}
-传输协议，如 TCP、UDP 和SCTP\href{https://www.rfc-editor.org/rfc/rfc4960}{[RFC4960]}，使用目的端口来帮助分离从IP 层进入的数据。
+传输协议，如 TCP、UDP
+和SCTP\href{https://www.rfc-editor.org/rfc/rfc4960}{[RFC4960]}，使用目的端口来帮助分离从IP
+层进入的数据。
 因为IP 层根据IPv4头部中的协议字段或IPv6头部中的下一个头部字段的值将进入的IP 数
 据报分离到特定的传输协议，这意味着端口号在不同的传输协议之间是独立的。也就是说，
 TCP端口号只能被 TCP使用，UDP 端口号只能被 UDP使用，如此类推。这样的分离导致的
@@ -47,10 +48,10 @@ TCP端口号只能被 TCP使用，UDP 端口号只能被 UDP使用，如此类�
 源（Source）和目的 IP 地址 （Destination Address）字段的UDP伪头部计算得到的。因此，任
 何对这些字段的修改（如，由 NAT）都需要对 UDP 校验和进行修改
 
-\begin{tcolorbox}    
-    尽管有这种独立性，但是如果某个众所周知的服务可同时由TCP 和UDP提
-    供（或者可信服地提供），那么这两个传输协议的端口号通常被分配成一样的。关
-    于如何规范地分配端口号，详见［IPORT］。
+\begin{tcolorbox}
+  尽管有这种独立性，但是如果某个众所周知的服务可同时由TCP 和UDP提
+  供（或者可信服地提供），那么这两个传输协议的端口号通常被分配成一样的。关
+  于如何规范地分配端口号，详见［IPORT］。
 \end{tcolorbox}
 
 参考图 10-2，UDP 长度（Length）字段是UDP头部和 UDP数据的总长度，以字节
@@ -67,7 +68,7 @@ UDP 校验和是我们遇到的第一个端到端的传输层校验和（ICMP有
 和，但它不是一个真正的传输协议）。它覆盖了 UDP头部、UDP 数据和一个伪头部（在本节
 稍后有定义）。它由初始的发送方计算得到，由最终的目的方校验。它在传送中不会被修改
 （除非它通过一个 NAT，如第7章所述）。回想一下\emph{ IPv4 头部中的校验和只覆盖整个头部（即
-它并不覆盖IP 分组中的任何数据），它在每个IP 跳都要被重新计算（因为 IPv4 TTL字段的
+  它并不覆盖IP 分组中的任何数据），它在每个IP 跳都要被重新计算（因为 IPv4 TTL字段的
 值在数据报转发时会被路由器减少）。}传输协议（如 TCP、UDP）使用校验和来覆盖它们的
 头部和数据。对于UDP来说，校验和是可选的（尽管强烈推荐使用），而其他的则是强制的。
 当UDP在IPv6 中使用时，校验和的计算与使用是强制的，因为在IP 层没有头部校验和。
@@ -92,13 +93,12 @@ UDP 校验和是我们遇到的第一个端到端的传输层校验和（ICMP有
 字节长，它会被填充一个值为0的字节以计算校验和。伪头部和任何填充的数据不会与数据
 报一起被传送出去
 
-
-\begin{tcolorbox}    
-    细心的读者会发现这会导致所谓的“违反分层”（layering violation）规则。
-    即，UDP 协议（传输层）直接操作IP（网络层）的比特。没错，但这只对协议实现
-    产生微小的影响，因为一般来说，当数据传递到（或来自于）UDP 时，IP 层的信息
-    已经是现成的了。相比之下，更应该关注 NAT（见第7章），特别是当 UDP 数据报
-    被分片时。
+\begin{tcolorbox}
+  细心的读者会发现这会导致所谓的“违反分层”（layering violation）规则。
+  即，UDP 协议（传输层）直接操作IP（网络层）的比特。没错，但这只对协议实现
+  产生微小的影响，因为一般来说，当数据传递到（或来自于）UDP 时，IP 层的信息
+  已经是现成的了。相比之下，更应该关注 NAT（见第7章），特别是当 UDP 数据报
+  被分片时。
 \end{tcolorbox}
 
 图10-3显示了一个数据是奇数长度的数据报需要一个填充字节来完成校验和的计算。
@@ -109,7 +109,8 @@ UDP 校验和是我们遇到的第一个端到端的传输层校验和（ICMP有
 更新，但却没有差错消息产生。（这就是一个 IPv4 头部校验差错被检测到时会发生的事情。）
 
 尽管UDP数据报校验和在原始UDP规范中是可选的，目前它们还是被要求在主机中
-默认使用\href{https://www.rfc-editor.org/rfc/rfc1122}{[RFC1122]}。在20世纪80年代，一些计算机供应商默认关闭了 UDP校验和功能
+默认使用\href{https://www.rfc-editor.org/rfc/rfc1122}{[RFC1122]}。在20世纪80年代，一些计算机供应商默认关闭了
+UDP校验和功能
 以加速其 Sun 网络文件系统（NFS）的实现，该网络文件系统使用了 UDP。因为有第2层的
 CRC保护（这要比互联网校验和更强壮，见第3章），在许多情况下这可能不会产生问题，
 然而默认关闭校验和功能被认是一种不好的方法（也是违反 RFC规范的）。早期的互联网
@@ -120,16 +121,17 @@ CRC保护（这要比互联网校验和更强壮，见第3章），在许多情�
 修改而检测不到的可能性，除非引人另一种校验和。
 
 \begin{tcolorbox}
-    \href{https://www.rfc-editor.org/rfc/rfc1122}{[RFC1122]}要求UDP校验和被默认使用。它也指出如果发送方计算了校验
-    和（也就是说，如果接收到的校验和不是0），那么必须要有一种实现来验证接收到
-    的校验和。
+  \href{https://www.rfc-editor.org/rfc/rfc1122}{[RFC1122]}要求UDP校验和被默认使用。它也指出如果发送方计算了校验
+  和（也就是说，如果接收到的校验和不是0），那么必须要有一种实现来验证接收到
+  的校验和。
 \end{tcolorbox}
 
 考虑到伪头部这样的结构，可以很清楚地看到，当一个 UDP/IPv4数据报穿过一个 NAT
 时，不仅IP 层头部的校验和要被修改，而且UDP 伪头部的校验和也必须被正确地修改，因
 为IP 层的地址和/或UDP层的端口号可能会改变。因此 NAT通常因同时修改分组中协议的
 多层而违反分层规则。当然，考虑到伪头部本身就是违反分层规则的，NAT没有选择。UDP
-流量被 NAT处理时的一些特定规则由\href{https://www.rfc-editor.org/rfc/rfc4784}{[RFC4784]}给出。在第7章我们也简单地讨论过它们。
+流量被
+NAT处理时的一些特定规则由\href{https://www.rfc-editor.org/rfc/rfc4784}{[RFC4784]}给出。在第7章我们也简单地讨论过它们。
 
 近来已有兴趣关注于对 UDP校验和的松懈使用，主要是一些对差错不完全看重的应用
 （多媒体应用是典型的例子）。这些讨论关系到是否有部分校验和（partial checksum），这是
@@ -204,9 +206,9 @@ tcpdump 输出显示了来自主机（服务器已关闭）的ICMP 目标不可�
 \begin{verbatim}
     1 22:55:07.223094 10.0.0.5.46294> 10.0.0.3.9：
                     [udp sum ok] udp 1024 （DF）（tt1 64,id 37874,len 1052）
-    
+
     2 22:55:07.223134 10.0.0.3>10.0.0.5: icmp：
-    
+
                     10.0.0.3 udp port 9 unreachable for
                         1O.0.0.5.46294 > 10.0.0.3.9:
                                 udP 1024 (DF)（tt1 64,id 37874,len 1052）
@@ -225,9 +227,9 @@ tcpdump 输出显示了来自主机（服务器已关闭）的ICMP 目标不可�
 用的短暂端口号建议位于 49152 到65535 的范围，因此这里我们观察到非规范行为。
 
 \begin{tcolorbox}
-    对于Linux，本机端口参数范围可以很容易地通过改变文件 \verb|/proc/sys/net/ipv4/ip_local_port_range|
-    的内容进行修改。在 Windows Vista及之后版本中，可以使用 netsh 命令设置动态端口范围［KB929851］。
-    当前端口号见［IPORT］。
+  对于Linux，本机端口参数范围可以很容易地通过改变文件 \verb|/proc/sys/net/ipv4/ip_local_port_range|
+  的内容进行修改。在 Windows Vista及之后版本中，可以使用 netsh 命令设置动态端口范围［KB929851］。
+  当前端口号见［IPORT］。
 \end{tcolorbox}
 
 \section{UDP 和 IPV6}
@@ -235,13 +237,15 @@ tcpdump 输出显示了来自主机（服务器已关闭）的ICMP 目标不可�
 同就是IPv6使用128位的地址和由此产生的对伪头部的结构带来的影响。一个相关却更细
 致的不同在于，在IPv6 里不存在IP 层头部校验和。因此，如果 UDP 不使用校验和去运行，
 就没有端到端检测任何（no end-to-end check whatsoever）IP 层地址信息的正确性。鉴于此，
-当UDP用于IPv6 时，无论是 UDP 还是TCP，伪头部校验和都是必需的（由\href{https://www.rfc-editor.org/rfc/rfc2460}{[RFC2460]}第
+当UDP用于IPv6 时，无论是 UDP
+还是TCP，伪头部校验和都是必需的（由\href{https://www.rfc-editor.org/rfc/rfc2460}{[RFC2460]}第
 8节规定）。伪头部的结构由图10-4给出。注意到长度字段已经从它的IPv4 相应字段扩展到
 32位。回想之前所述，这个字段对UDP来说是冗余的，但是我们可以从第13 章看到，对
 TCP（无论是TCP/IPv4还是TCP/IPv6）来说它不是冗余的，因此在 UDP/IPv6 和 TCP/IPv6
 中都保留了该字段。
 
-图10-4 使用IPv6的UDP（以及TCP）伪头部（\href{https://www.rfc-editor.org/rfc/rfc2460}{[RFC2460]}）。这个伪头部包含了源和目的IPv6地址
+图10-4
+使用IPv6的UDP（以及TCP）伪头部（\href{https://www.rfc-editor.org/rfc/rfc2460}{[RFC2460]}）。这个伪头部包含了源和目的IPv6地址
 以及一个更大的32位的长度字段值。UDP 用于IPv6 时，伪头部校验和是必需的，因为IPv6
 头部缺少校验和。下一个头部字段拷贝于链中的最后一个 IPv6头部
 
@@ -249,7 +253,9 @@ TCP（无论是TCP/IPv4还是TCP/IPv6）来说它不是冗余的，因此在 UDP
 里，最小MTU 大小是1280字节（与IPv4要求的需要所有主机支持的最小大小576字节不
 同）。第二，IPv6 支持超长数据报（大于65 535字节的分组）。如果我们仔细查看IPv6 头部
 和选项集（见第5章），可以观察到使用超长数据报，32位是能够表示负载长度的。这意味
-着单个 UDP/IPv6数据报确实可以非常大。如\href{https://www.rfc-editor.org/rfc/rfc2675}{[RFC2675]}所述，对于 UDP头部中的只有16
+着单个
+UDP/IPv6数据报确实可以非常大。如\href{https://www.rfc-editor.org/rfc/rfc2675}{[RFC2675]}所述，对于
+UDP头部中的只有16
 位长的UDP 长度字段会产生一个问题。这样的话，超过65 535字节的UDP/IPv6 数据报被
 封装在IPv6时，它的UDP 长度字段值会被置成0。注意到伪头部里的长度字段的大小仍然
 足够大（32位）。对IPv6超长数据报计算这个字段的值，涉及取UDP 头部加上数据的总长
@@ -261,14 +267,19 @@ Payload选项存在的“意外的”情况下，UDP 长度可以从不等于零
 
 \subsection{Teredo：通过IPv4 网络隧道传输IPv6}
 虽然以前人们认为全世界过渡到IPv6会很快发生，但是事实并不像预料的那样。结果
-是，不少（理论上是暂时的）过渡机制（transition mechanism）\href{https://www.rfc-editor.org/rfc/rfc4213}{[RFC4213]}\href{https://www.rfc-editor.org/rfc/rfc5969}{[RFC5969]}被提
-出来缓解过渡负担。其中一个叫 6to4 的机制\href{https://www.rfc-editor.org/rfc/rfc3056}{[RFC3056]}，把在主机使用的IPv6分组封装在
+是，不少（理论上是暂时的）过渡机制（transition
+mechanism）\href{https://www.rfc-editor.org/rfc/rfc4213}{[RFC4213]}\href{https://www.rfc-editor.org/rfc/rfc5969}{[RFC5969]}被提
+出来缓解过渡负担。其中一个叫 6to4
+的机制\href{https://www.rfc-editor.org/rfc/rfc3056}{[RFC3056]}，把在主机使用的IPv6分组封装在
 IPv4 分组里以在只支持 IPv4 的基础设施中传送。与其他互联网上的应用程序遇到过的问题
 一样，6t04也遇到 NAT 穿越问题。另一个众所周知的扩展性问题使得人们不太愿意继续使
-用它 \href{https://www.rfc-editor.org/rfc/rfc6343}{[RFC6343]}。尽管我们已经看到一些像ICE（见第7章）的方法可以很好地解决这个问
+用它
+\href{https://www.rfc-editor.org/rfc/rfc6343}{[RFC6343]}。尽管我们已经看到一些像ICE（见第7章）的方法可以很好地解决这个问
 题，但是一个名叫 Teredo（原来叫 “shipworm（船蛆）”，但是为了避免与计算机蠕虫混淆，
 根据“船蛆”的常见类属的拉丁名字而重新命名）的专门协议已被设计出来专门解决这个问
-题 \href{https://www.rfc-editor.org/rfc/rfc4380}{[RFC4380]}\href{https://www.rfc-editor.org/rfc/rfc5991}{[RFC5991]}\href{https://www.rfc-editor.org/rfc/rfc6081}{[RFC6081]}。它之所以流行，是因为它在微软 Windows 的当代版本
+题
+\href{https://www.rfc-editor.org/rfc/rfc4380}{[RFC4380]}\href{https://www.rfc-editor.org/rfc/rfc5991}{[RFC5991]}\href{https://www.rfc-editor.org/rfc/rfc6081}{[RFC6081]}。它之所以流行，是因为它在微软
+Windows 的当代版本
 中得到了广泛的应用。
 
 Teredo（也叫Teredo隧道）为没有其他IPv6连接选项的系统传送IPv6 数据报，方法是把
@@ -323,7 +334,8 @@ IPv4 地址、16位标志（用于标识用到的 NAT类型和随机位以帮助
 NAT）不需要扩展的支持就可以工作。一开始，C（cone NAT）位字段是用于标识是否碰到一
 个锥形 NAT并给予合适的支持，但现在这种用法被弃用，这个字段应该置成0（客户机忽略
 这个字段，服务器检查它以寻找过时的客户机）。下一个位字段置成O。U（Universal）和G
-（Group）位字段留给未来使用，但现在被置成0。根据\href{https://www.rfc-editor.org/rfc/rfc5991}{[RFC5991]}选择 Randoml 和 Random2
+（Group）位字段留给未来使用，但现在被置成0。根据\href{https://www.rfc-editor.org/rfc/rfc5991}{[RFC5991]}选择
+Randoml 和 Random2
 字段的随机值，从而使得 Teredo地址很难被猜到（一种安全的措施就是尽量减少潜在攻击者
 的随机试探）。
 
@@ -338,7 +350,8 @@ NAT）不需要扩展的支持就可以工作。一开始，C（cone NAT）位�
 通信的目的地。这个IPv6 分组包含一个没有负载和附加扩展（下一个头部字段被置为0x3b，
 表示为空）的IPv6头部。对于在IPv4 互联网中的客户机，回想一下 Teredo IPv6地址包含了
 IPv4 映射地址和端口号，因此，客户机可直接发送Teredo封装的分组到其他客户机的NAT。
-对于受限的 NAT，Teredo 使用气泡来打孔和建立 UDP NAT 映射（见第7章和\href{https://www.rfc-editor.org/rfc/rfc6081}{[RFC6081]}）。
+对于受限的 NAT，Teredo 使用气泡来打孔和建立 UDP NAT
+映射（见第7章和\href{https://www.rfc-editor.org/rfc/rfc6081}{[RFC6081]}）。
 
 当一个已取得资格认证的客户机有一个分组要发送到一台IPv6 主机（即一台没使用
 Teredo 地址的主机）时，它首先判断是否已经知道一个负责该分组的目的地的Teredo 中继
@@ -349,7 +362,8 @@ Teredo 地址的主机）时，它首先判断是否已经知道一个负责该�
 这个中继器的IPv4地址，并更新缓存以指明后续的目的地为该IPv6 主机的分组应该使用这
 个刚确定下来的中继器。
 
-在\href{https://www.rfc-editor.org/rfc/rfc6081}{[RFC6081]}中，Teredo可以支持许多扩展选项，它们中的一些有助于支持 Teredo对
+在\href{https://www.rfc-editor.org/rfc/rfc6081}{[RFC6081]}中，Teredo可以支持许多扩展选项，它们中的一些有助于支持
+Teredo对
 对称NAT的操作。这些扩展对协议特性进行了改动，包括以下方面：对称 NAT 支持（SNS），
 带 UPnP 的对称 NAT （UP），端口保留对称 NAT （PP），顺序端口对称 NAT（SP），发夹（HP），
 以及服务器负载减免（SLR）。除了 UP 和PP 两个扩展都依赖于 SNS扩展以外，其他扩展都
@@ -363,88 +377,88 @@ ND选项（图8-41）一样的基本格式，追踪符被编码成一个有序�
 都表示未知的追踪符应被忽略，而其他的则应按顺序处理。追踪符类型的值的官方列表由
 IANA［TTYPES］维护。当前被定义的追踪符如表10-1所示。
 \begin{verbatim}
-    
+
     表10-1
-    
+
     类型
-    
+
     0x00
-    
+
     Teredo追踪符被携带在封装于UDP/IPv4数据报里的IPV6负载之后。每个追踪符都有一个
     类型值、名称和对应的诠释。某些情况下，长度值是一个常数
-    
+
     长度
-    
+
     名称
-    
+
     用途
-    
+
     备注
-    
+
     保留
-    
+
     未分配
-    
+
     未分配
-    
+
     0x01
-    
+
     0x02
-    
+
     0x03
-    
+
     0x04
-    
+
     保留
-    
+
     ［8,26］
-    
+
     随机数（Nonce）
-    
+
     未分配
-    
+
     SNS,UP,PP,SP,HP
-    
+
     未分配
-    
+
     替换地址
-    
+
     HP
-    
+
     0x04
-    
+
     0x05
-    
+
     0x04
-    
+
     0×02
-    
+
     ND（邻居发现）选项
-    
+
     随机端口
-    
+
     SLR
-    
+
     PP
-    
+
     未分配
-    
+
     32位的随机数，用于防止重放攻
-    
+
     击（见第18章）
-    
+
     未分配
-    
+
     位于同一个NAT后面的 Teredo
-    
+
     客户机使用的额外的地址/端口
-    
+
     允许 NAT使用直接气泡（带 NS
-    
+
     消息）来进行更新
-    
+
     发送方的预测映射端口
-    
+
 \end{verbatim}
 随机数追踪符包含一个32位的随机值，该值对每个消息都是唯一的。它是一种安全措
 施，防止重放攻击（见第18章），且与HP或SNS的（IPv4地址，端口）对一起使用。每个
@@ -464,7 +478,8 @@ Advertisement类型就是应答。这个追踪符用于支持SLR 扩展，它有
 有些应用程序可以容忍在发送和接收的数据里引人的比特差错。通常，为了避免建立
 连接的开销或者为了使用广播或组播地址，这类应用程序会选择使用UDP，但是UDP 使
 用的校验和要么覆盖整个负载，要么就一点也没有（比如，发送方不计算校验和）。一个称
-为UDP-Lite 或UDPLite\href{https://www.rfc-editor.org/rfc/rfc3828}{[RFC3828]}的协议通过修改传统的UDP协议，提供了部分校验和来
+为UDP-Lite
+或UDPLite\href{https://www.rfc-editor.org/rfc/rfc3828}{[RFC3828]}的协议通过修改传统的UDP协议，提供了部分校验和来
 解决这个问题。这些校验和只覆盖每个 UDP数据报里的一部分负载。UDP-Lite 有它自己的
 IPv4 协议和IPv6 下一个头部字段值（136），因此它实际上算是一种独立的传输协议。UDP-
 Lite 用一个校验和覆盖范围（Checksum Coverage） 字段取代了（冗余的）长度字段来修改
@@ -496,7 +511,7 @@ RECV\_CSCOV 选项）。
 当一个 IP 数据报被分片了，直到它到达最终目的地才会被重组。对此有两个原因，第
 二个要比第一个重要。第一个原因，在网络中不进行重组要比重组更能减轻路由器转发软件
 （或硬件）的负担。第二个原因，\emph{同一数据报的不同分片可能经由不同的路径到达相同的目的
-地。如果发生这种情况，路径上的路由器通常没有能力来重组原始的数据报，因为它们都只
+  地。如果发生这种情况，路径上的路由器通常没有能力来重组原始的数据报，因为它们都只
 能看到所有分片的一个子集。}考虑到路由器当前的性能级别，表面上，第一个原因并不是很
 令人信服，但是当想到大多数路由器最终无论怎样都会具备终端主机一样的功能时（如，当
 它们被管理或配置时），这就更不能令人信服了。所以第二个原因仍然是主要的。
@@ -532,7 +547,7 @@ RECV\_CSCOV 选项）。
 一个分片丢失了，整个数据报就丢失了。要理解什么会这样，我们知道IP 自身没有差错
 纠正机制。像超时和重传这些机制是更高层的责任。（TCP 有超时和重传操作，UDP 则没有。
 一些基于 UDP 的应用程序自己实现超时和重传，但这在UDP 之上的某层进行。）\emph{当TCP报
-文段的一个分片丢失了，TCP 会重传整个 TCP报文段，这涉及整个 IP数据报。只重发数据
+  文段的一个分片丢失了，TCP 会重传整个 TCP报文段，这涉及整个 IP数据报。只重发数据
 报的一个分片是不可能的。}确实，如果分片由中间的路由器来做，而不是原始系统，那么原
 始系统就又不知道数据报是怎样被分片的了。如此看来，通常是要避免分片的。［KM87］提
 出了避免分片的一些讨论。
@@ -632,13 +647,13 @@ ICMPv4 超时（代码1）消息，告诉发送方数据报已丢失，包括第
 的分片也不会被重置。因此，计时器给出了同一数据报分片之间可被分隔的最大间隔时间的
 限度。
 
-\begin{tcolorbox}    
-    历史上，大多数衍生自 Berkeley-Unix 的IP 实现方案从不产生这个错误。然
-    而这些实现确实用了计时器，也确实在计时器超时的时候丢弃了所有分片，但是都
-    从不产生ICMP 错误。有时会碰到另一个细节：除非接收到了第一个分片（比如分
-    片偏移字段为0的分片），否则没必要产生ICMP 错误。原因是这些ICMP错误的
-    接收者会因传输层头部不可用而无法知道哪个用户进程发送的数据报丢弃了。假设
-    更高层协议最终将会超时，并在必要时重传它。
+\begin{tcolorbox}
+  历史上，大多数衍生自 Berkeley-Unix 的IP 实现方案从不产生这个错误。然
+  而这些实现确实用了计时器，也确实在计时器超时的时候丢弃了所有分片，但是都
+  从不产生ICMP 错误。有时会碰到另一个细节：除非接收到了第一个分片（比如分
+  片偏移字段为0的分片），否则没必要产生ICMP 错误。原因是这些ICMP错误的
+  接收者会因传输层头部不可用而无法知道哪个用户进程发送的数据报丢弃了。假设
+  更高层协议最终将会超时，并在必要时重传它。
 \end{tcolorbox}
 
 \section{采用 UDP 的路径 MTU 发现}
@@ -699,10 +714,10 @@ IPv4 头部（及最前面的8个数据字节）。在这个例子里，我们�
 快（小于1ms），以至于在任何ICMP 消息被返回和处理前，它就完成了运行。
 
 \begin{tcolorbox}
-    现在在互联网服务提供商（ISP）中，1500字节的MTU是它们通用的最小
-    MTU。有些ISP引入了可支持地址分配和管理的 PPPOE，它们使用更小的1492字
-    节MTU。PPPOE 头部（见第3章）由6字节和随后的2字节PPP头部组成，剩下
-    1500-6-2=1492 字节用于封装数据报。
+  现在在互联网服务提供商（ISP）中，1500字节的MTU是它们通用的最小
+  MTU。有些ISP引入了可支持地址分配和管理的 PPPOE，它们使用更小的1492字
+  节MTU。PPPOE 头部（见第3章）由6字节和随后的2字节PPP头部组成，剩下
+  1500-6-2=1492 字节用于封装数据报。
 \end{tcolorbox}
 
 如果我们使用另外一台目标主机（一台我们没有路径MTU 历史的主机），同时在多次写
@@ -711,9 +726,9 @@ IPv4 头部（及最前面的8个数据字节）。在这个例子里，我们�
 
 \begin{verbatim}
     Linux8 sock -u -i -n 3 -w1473 -P 2 www.wisc.edu echo
-    
+
     write returned -1, expected 1473: Message too 1ong
-    
+
     Linuxa sock -u -i -n 3 -w1473 -p 2 www.wisc.edu echo
 \end{verbatim}
 
@@ -726,36 +741,36 @@ IPv4 头部（及最前面的8个数据字节）。在这个例子里，我们�
     1 17:22:16.331023 IP （tos 0x0,ttl 64,id 58648,offset O,flags ［DE］，
         Proto: UDP （17），length:1501）
         12.46.129.28.33955 > 144.92.9.185.7: UDP,length 1473
-    
+
     2 17:22:16.331581 IP （tos 0x0,tt1 255,id 38518,offset 0，
         flags ［none］，proto: ICMP（1），length:56）
         12.46.129.1> 12.46.129.28: ICMP
         144.92.9.185 unreachable - need to frag （mtu 1500），length 36
-    
+
             IP （tos Ox0，ttl 63,id 58648,offset 0, flags [DF]，
             Proto: UDP（17），length: 1501）
             12.46.129.28.33955 > 144.92.9.185.7: UDP,length 1473
-    
+
     3 17:22:24.284866 IP （tos 0x0,tt1 64,id 53776,offset O,flags ［+］，
         proto: UDP（17）、length: 1500）
         12.46.129.28.33955 > 144.92.9.185.7: UDP,length 1473
-    
+
     4 17:22:24.284873 IP （tos 0x0,tt1 64,id 53776,offset 1480，
         flags ［nonel,proto: UDP （17），length:21）
         12.46.129.28 > 144.92.9.185: udp
-    
+
     5 17:22:26.293554 IP （tos Ox0,ttl 64,id 53777,offset 0,flags ［+］，
         proto: UDP （17），length:1500）
         12.46.129.28.33955 > 144.92.9.185.7:UDP,length 1473
-    
+
     6 17:22:26.293559 IP （tos Ox0,tt1 64,id 53777,offset 1480，
         flags ［none］，Proto: UDP （17），length:21）
         12.46.129.28> 144.92.9.185:udp
-    
+
     7 17:22:28.301469 IB （tos 0x0,tt1 64,id 53778,offset 0,flags ［+］，
         proto: UDP （17），Length:1500）
         12.46.129.28.33955 > 144.92.9.185.7:UDE,length 1473
-    
+
     8 17:22:28.301474 IP （tos 0x0,tt1 64,id 53778,offset 1480，
         flags ［nonel,proto:UDP （17），length:21）
         12.46.129.28> 144.92.9.185:udp
@@ -771,14 +786,15 @@ MTU 信息被认为是过时的，数据报没被分片发送，另一条ICMPv4 
 
 \iffalse
 \begin{tcolorbox}
-\href{https://www.rfc-editor.org/rfc/rfc1191}{[RFC1191]}推荐一个由PMTUD得到的PMTU 值在10分钟后过时。路
-径MTU 发现有时会因为防火墙和网关过滤可能不加选择地丢弃ICMP 流量而
-出现问题，这会损害 PMTU 发现算法。因为这点，从基于系统范畴或有更好保
-证来看，可能要关闭PMTU发现。在Linux 中，文件/proc/sys/net/ipv4/ip\_no\_
-Pmtu\_disc 可以置成1以关闭PMTU发现。在 Windows 中，可以编辑注册表入口
-\verb|HKEY_LOCAL_MACHINE\System CurrentControl Set Services Topip Parameters
-EnablePMTUDiscovery| 的值0。一个不使用ICMP 的、传统 PMTUD 的替代品已
-经被开发出来\href{https://www.rfc-editor.org/rfc/rfc4821}{[RFC4821]}，我们将在第15 章介绍它。
+  \href{https://www.rfc-editor.org/rfc/rfc1191}{[RFC1191]}推荐一个由PMTUD得到的PMTU
+  值在10分钟后过时。路
+  径MTU 发现有时会因为防火墙和网关过滤可能不加选择地丢弃ICMP 流量而
+  出现问题，这会损害 PMTU 发现算法。因为这点，从基于系统范畴或有更好保
+  证来看，可能要关闭PMTU发现。在Linux 中，文件/proc/sys/net/ipv4/ip\_no\_
+  Pmtu\_disc 可以置成1以关闭PMTU发现。在 Windows 中，可以编辑注册表入口
+  \verb|HKEY_LOCAL_MACHINE\System CurrentControl Set Services Topip Parameters
+  EnablePMTUDiscovery| 的值0。一个不使用ICMP 的、传统 PMTUD 的替代品已
+  经被开发出来\href{https://www.rfc-editor.org/rfc/rfc4821}{[RFC4821]}，我们将在第15 章介绍它。
 \end{tcolorbox}
 \fi
 
@@ -827,15 +843,16 @@ ARP请求和应答（见清单10-7。为了简洁，某些行已被整理）。
 （Linux），最后一个分片首先被发送。
 
 \begin{tcolorbox}
-    历史上，分片和ARP 之间的交互一直都是有问题的。例如，在某些情况下
-    每一个分片都得发送一个ARP请求，而在某些情况下只有分片中的一个要排队
-    等候 ARP应答（从而使数据报丢失了，因为除了一个分片外的所有分片都被丢弃
-    了）。第一个问题在\href{https://www.rfc-editor.org/rfc/rfc1122}{[RFC1122]}里被解决了，那需要一种实现来阻止这种ARP 洪
-    泛。建议的最大速率是每秒一个。第二个问题也在\href{https://www.rfc-editor.org/rfc/rfc1122}{[RFC1122]}里被讨论，但它只
-    指出，对每一个分组集，其中的分组的目的地是相同的未解析的IP 地址，链路层
-    “应该保存（而不是丢弃）其中的至少一个（最新的）分组”’。这种方法会引起不必
-    要的分组丢失，不过已经在具体实现里解决了，方法是给那些ARP请求还在挂起
-    的分组提供一个更大的队列。
+  历史上，分片和ARP 之间的交互一直都是有问题的。例如，在某些情况下
+  每一个分片都得发送一个ARP请求，而在某些情况下只有分片中的一个要排队
+  等候 ARP应答（从而使数据报丢失了，因为除了一个分片外的所有分片都被丢弃
+  了）。第一个问题在\href{https://www.rfc-editor.org/rfc/rfc1122}{[RFC1122]}里被解决了，那需要一种实现来阻止这种ARP
+  洪
+  泛。建议的最大速率是每秒一个。第二个问题也在\href{https://www.rfc-editor.org/rfc/rfc1122}{[RFC1122]}里被讨论，但它只
+  指出，对每一个分组集，其中的分组的目的地是相同的未解析的IP 地址，链路层
+  “应该保存（而不是丢弃）其中的至少一个（最新的）分组”’。这种方法会引起不必
+  要的分组丢失，不过已经在具体实现里解决了，方法是给那些ARP请求还在挂起
+  的分组提供一个更大的队列。
 \end{tcolorbox}
 
 \section{最大 UDP 数据报长度}
@@ -872,12 +889,12 @@ UDP/IP 能发送和接收一个给定大小的（大）数据报并不意味着�
 统把这些数据报的超额数据放到后续的读操作中，另一些则通知调用者有多少数据被截断了
 （或有些情况是通知有一些数据被截断但不知具体是多少）。
 
-\begin{tcolorbox}    
-    在Linux 中，MSG\_TRUNC 选项可被套接字API 用来查看有多少数据被截
-    断。在 HP-UX上，MSG\_TRUNC 却是一个标志，当一个读操作返回“有数据被截
-    断时”就进行设置。SVR4（包括 Solaris 2.x）的套接字 API 不会截断数据报。任何
-    超额的数据都被返回给后续的读操作。对一个UDP数据报进行的多次读操作是不
-    会通知应用程序的。
+\begin{tcolorbox}
+  在Linux 中，MSG\_TRUNC 选项可被套接字API 用来查看有多少数据被截
+  断。在 HP-UX上，MSG\_TRUNC 却是一个标志，当一个读操作返回“有数据被截
+  断时”就进行设置。SVR4（包括 Solaris 2.x）的套接字 API 不会截断数据报。任何
+  超额的数据都被返回给后续的读操作。对一个UDP数据报进行的多次读操作是不
+  会通知应用程序的。
 \end{tcolorbox}
 
 在我们讨论 TCP 时会发现，它给应用程序提供连续的字节流，没有任何消息边界。因
@@ -885,7 +902,8 @@ UDP/IP 能发送和接收一个给定大小的（大）数据报并不意味着�
 等待）。
 
 \section{UDP 服务器的设计}
-UDP 的一些特点对要使用它的网络应用程序的设计和实现有影响\href{https://www.rfc-editor.org/rfc/rfc5405}{[RFC5405]}。服务器一
+UDP
+的一些特点对要使用它的网络应用程序的设计和实现有影响\href{https://www.rfc-editor.org/rfc/rfc5405}{[RFC5405]}。服务器一
 般与操作系统交互，大多数需要一种方案来处理并发的多客户机。客户机设计与实现通常更
 简单，因此我们将不在这里讨论它们。
 
@@ -908,13 +926,14 @@ TCP 服务器的细节。）虽然我们描述的特性有点依赖被使用的 
 为多址、IP 地址别名，以及 IPv6多范围使用，一台主机可能有多个IP地址，单个服务器可
 使用它们中的任何一个来接收进入的数据报（实际情况通常是这样的）。任何想要根据客户
 机选择的目的IP地址来有分别地执行任务的服务器都需要得到目的IP 地址信息。另外，如
-果目的地址是广播或组播的（如，主机需求（Host Requirements） RFC\href{https://www.rfc-editor.org/rfc/rfc1122}{[RFC1122]} 指出 TFTP
+果目的地址是广播或组播的（如，主机需求（Host Requirements）
+RFC\href{https://www.rfc-editor.org/rfc/rfc1122}{[RFC1122]} 指出 TFTP
 服务器应忽略接收到的发送给一个广播地址的数据报），那么有些服务则可能会有不同的
 回应。
 
-\begin{tcolorbox}    
-DNS服务器是对目的IP地址敏感的一种服务器类型。它会使用这个信息来对
-它返回的地址映射表排列特定的次序。DNS的这种行为在第11章有更详细的描述。
+\begin{tcolorbox}
+  DNS服务器是对目的IP地址敏感的一种服务器类型。它会使用这个信息来对
+  它返回的地址映射表排列特定的次序。DNS的这种行为在第11章有更详细的描述。
 \end{tcolorbox}
 
 这里得到的教训是，即使一个 API 可以得到传输层数据报里的所有数据，但是额外的来
@@ -951,9 +970,9 @@ DNS服务器是对目的IP地址敏感的一种服务器类型。它会使用这
 --udp 选项只输出与UDP 协议相关的数据。-n选项指明只打印IP 地址，而非全打展主机名。
 
 \begin{tcolorbox}
-    并非所有系统的 netstat 都有这些（Linux）选项，大多数是使用 netstat 命令
-    加上一些选项的组合来获取类似的结果。在BSD 上，-1和-P udp 选项是被支持的。
-    在 Windows 上，-n、-a和-P udp 选项都可被使用。
+  并非所有系统的 netstat 都有这些（Linux）选项，大多数是使用 netstat 命令
+  加上一些选项的组合来获取类似的结果。在BSD 上，-1和-P udp 选项是被支持的。
+  在 Windows 上，-n、-a和-P udp 选项都可被使用。
 \end{tcolorbox}
 
 本地地址被打印成*：7777，这里的星号代表本地IP地址已被通配符化。当服务器建立
@@ -992,8 +1011,8 @@ DNS服务器是对目的IP地址敏感的一种服务器类型。它会使用这
 是可能的。然而，通常应用程序应该告诉系统允许这样重用相同的端口。
 
 \begin{tcolorbox}
-    使用套接字API时，\verb|SO_REUSEADDR| 套接字选项必须指定。在我们的
-    sock 程序里通过指明-A 选项即可。
+  使用套接字API时，\verb|SO_REUSEADDR| 套接字选项必须指定。在我们的
+  sock 程序里通过指明-A 选项即可。
 \end{tcolorbox}
 
 即使我们只有一个真实的网络接口，我们还是可以建立额外的IP 地址来供使用。这里，
@@ -1071,31 +1090,31 @@ IPv4地址和端口号的 UDP 数据报。}注意，一旦服务器收到了某�
 
 \begin{verbatim}
     本地地址
-    
+
     local\_IP.local\_port
-    
+
     local\_IP.local\_port
-    
+
     *.local\_port
-    
+
     表10-2 UPD 服务器的三种地址绑定方式
-    
+
     远端地址
-    
+
     foreign\_IP.foreign\_port
-    
+
     **（wildcard）
-    
+
     **（wildcard）
-    
+
     描
-    
+
     述
-    
+
     限制只有一台客户机可用
-    
+
     限制本地 IP 地址和端口（但对所有客户机开放）
-    
+
     只限制本地端口
 \end{verbatim}
 
@@ -1146,10 +1165,10 @@ IPv6），同一时间只允许一个应用程序端点与任何一个（本地I
 IPv4 地址进行编码，所以IPv6里的通配符绑定方式可能会接收到进入的IPv4流量。
 
 \begin{tcolorbox}
-    情況要针对具体实现。在Linux 里，所有端口空间都是共享的，所有的通配
-    符 IPv6绑定意味着对应的IPv4绑定。在 FreeBSD 里，IPV6\_V6ONLY 套接字选
-    项可用于保证只在 IPv6 空间进行绑定。程序员应该查阅其支持的那个操作环境的
-    IPV6的套接字接口。\href{https://www.rfc-editor.org/rfc/rfc3493}{[RFC3493]} 描述了C语言绑定。
+  情況要针对具体实现。在Linux 里，所有端口空间都是共享的，所有的通配
+  符 IPv6绑定意味着对应的IPv4绑定。在 FreeBSD 里，IPV6\_V6ONLY 套接字选
+  项可用于保证只在 IPv6 空间进行绑定。程序员应该查阅其支持的那个操作环境的
+  IPV6的套接字接口。\href{https://www.rfc-editor.org/rfc/rfc3493}{[RFC3493]} 描述了C语言绑定。
 \end{tcolorbox}
 
 \section{流量和拥塞控制的缺失}
@@ -1209,9 +1228,9 @@ checksum-neutral）的地址映射的话（见第7章），包含非零校验和
 它在当时是拓扑测量的重要部分。
 
 \begin{tcolorbox}
-    500字节MTU与以太网的原生可用负载大小有关。大小1484是由数字设
-    备公司(Digital Equipment Coxporation)的GigaSwitch (现在已不存在)产生的,
-    它在当时是拓扑测量的重要部分。
+  500字节MTU与以太网的原生可用负载大小有关。大小1484是由数字设
+  备公司(Digital Equipment Coxporation)的GigaSwitch (现在已不存在)产生的,
+  它在当时是拓扑测量的重要部分。
 \end{tcolorbox}
 
 分片出现的原因来自两个因素：粗糙封装和路径 MTU 发现的缺失，以及采用可能使用
@@ -1244,7 +1263,8 @@ Smurf 攻击（见第8章）很接近。
 攻击利用IPv4重组程序代码的一个漏洞，可导致系统崩溃。另一种在IPv4 重组层的攻击是
 泪滴（teardrop）攻击，涉及使用可使某些系统崩溃或严重受影响的重叠分片偏移（Fragment
 Offset）字段来精心构造一系列分片。这种攻击的一个变种涉及可覆盖前一分片 UDP头部
-的重叠分片偏移。现在，重叠分片在 IPv6 中被禁止使用\href{https://www.rfc-editor.org/rfc/rfc5722}{[RFC5722]}。最后，还有与之相关
+的重叠分片偏移。现在，重叠分片在 IPv6
+中被禁止使用\href{https://www.rfc-editor.org/rfc/rfc5722}{[RFC5722]}。最后，还有与之相关
 的Ping of Death 攻击（一般由ICMPv4 回显请求构建，也适合于 UDP），它通过产生一个在
 重组时会超过最大限制的IPv4数据报来进行。这是相当直接的，因分片偏移字段可设置
 的值最大只能到8191，代表了65 528字节的偏移。任何长度超过7字节的这样的分片都会
@@ -1252,7 +1272,8 @@ Offset）字段来精心构造一系列分片。这种攻击的一个变种涉�
 分片攻击的应对技术在\href{https://www.rfc-editor.org/rfc/rfc3128}{[RFC3128]}给出。
 
 \section{总结}
-UDP是一个简单的协议。它的正式规范\href{https://www.rfc-editor.org/rfc/rfc0768}{[RFC0768]} 只有3页（包括参考文献！）。它给
+UDP是一个简单的协议。它的正式规范\href{https://www.rfc-editor.org/rfc/rfc0768}{[RFC0768]}
+只有3页（包括参考文献！）。它给
 用户进程（在IP 层之上）提供的服务是端口号和校验和。它没有流量控制，没有拥塞控制和
 差错纠正。它有差错检测（对 UDP/IPv4 可选，但对UDP/IPv6强制使用）和消息边界保留。
 我们使用了 UDP 来检查互联网校验和以及观察IP 分片如何进行。我们也见到了UDP 的其
@@ -1261,7 +1282,8 @@ UDP是一个简单的协议。它的正式规范\href{https://www.rfc-editor.org
 当要避免建立连接的开销时，当要使用多端点传送时（组播，广播），或者当不需要TCP
 的相对“笨重”的可靠语义（例如排序、流量控制以及重传）时，最常用的就是UDP了。多
 亏了多媒体和点对点应用程序，UDP 正得到越来越多的使用，同时它也是支持VoIP 的主要
-协议\href{https://www.rfc-editor.org/rfc/rfc3550}{[RFC3550]}\href{https://www.rfc-editor.org/rfc/rfc3261}{[RFC3261]}。它还是那些要必须经过 NAT 而不引入太多额外开销（只为 UDP
+协议\href{https://www.rfc-editor.org/rfc/rfc3550}{[RFC3550]}\href{https://www.rfc-editor.org/rfc/rfc3261}{[RFC3261]}。它还是那些要必须经过
+NAT 而不引入太多额外开销（只为 UDP
 头部提供8字节）的封装流量的传统方法。在支持一种 IPv6过渡机制（Teredo）和帮助 NAT
 穿越STUN（见第7章）方面，我们已经看到了这种用法，同时我们将会在第18章再次看到
 它被用于 IPsec NAT 穿越。UDP 其他主要用途之一是支持DNS。下一步我们在第11 章就探

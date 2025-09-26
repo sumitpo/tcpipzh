@@ -43,11 +43,14 @@ DHCP「RFC21311是一种流行的客户机/ 服务器协议，它用于为主机
 路由器的IP 地址、DNS服务器的IP 地址。其他服务的相关信息（例如使用VOIP 的SIP 服务
 器）也可通过DHCP传输。由于 DHCP的最初设想是供IPv4 使用，因此本章中讨论它及其
 与IP 的关系时都指的是IPv4版本，除非另外加以说明。IPv6使用的 DHCP 版本是 DHCPV6
-\href{https://www.rfc-editor.org/rfc/rfc3315}{\href{https://www.rfc-editor.org/rfc/rfc3315}{[RFC3315]}}，我们将在6.2.5节加以讨论，但IPv6 还支持自己的自动程序来确定配置信息。
+\href{https://www.rfc-editor.org/rfc/rfc3315}{\href{https://www.rfc-editor.org/rfc/rfc3315}{[RFC3315]}}，我们将在6.2.5节加以讨论，但IPv6
+还支持自己的自动程序来确定配置信息。
 在一种混合配置模式中，IPv6 自动配置和 DHCPv6可结合使用。
 
-DHCP 的设计基于一种早期协议——称为 Internet 引导程序协议 （BOOTP）\href{https://www.rfc-editor.org/rfc/rfc0951}{\href{https://www.rfc-editor.org/rfc/rfc0951}{[RFC0951]}}
-\href{https://www.rfc-editor.org/rfc/rfc1542}{\href{https://www.rfc-editor.org/rfc/rfc1542}{[RFC1542]}}，它目前已过时。BOOTP 为客户提供有限的配置信息，并且没有提供一种机制
+DHCP 的设计基于一种早期协议——称为 Internet 引导程序协议
+（BOOTP）\href{https://www.rfc-editor.org/rfc/rfc0951}{\href{https://www.rfc-editor.org/rfc/rfc0951}{[RFC0951]}}
+\href{https://www.rfc-editor.org/rfc/rfc1542}{\href{https://www.rfc-editor.org/rfc/rfc1542}{[RFC1542]}}，它目前已过时。BOOTP
+为客户提供有限的配置信息，并且没有提供一种机制
 来支持改变已提供的信息。DHCP 使用租用的概念来扩展BOOTP 模型［GC89］，并且可提
 供主机操作所需的所有信息。租用允许客户机使用一个商定的时间来配置信息。客户机可向
 DHCP服务器请求续订租约，并继续操作。在这个意义上，BOOTP 和DHCP 是向后兼容的，
@@ -92,12 +95,16 @@ BOOTP 客户机仍可使用DHCP服务器和BOOTP 中继代理（见6.2.6节）�
 消息格式包括一个固定长度的初始部分和一个可变长度的尾部（见图6-1）。
 
 图 6-1
-BOOTP 消息格式，包括来自\href{https://www.rfc-editor.org/rfc/rfc0951}{\href{https://www.rfc-editor.org/rfc/rfc0951}{[RFC0951]}}、\href{https://www.rfc-editor.org/rfc/rfc1542}{\href{https://www.rfc-editor.org/rfc/rfc1542}{[RFC1542]}}和\href{https://www.rfc-editor.org/rfc/rfc2131}{\href{https://www.rfc-editor.org/rfc/rfc2131}{[RFC2131]}}的字段名。BOOTP 消息格
+BOOTP
+消息格式，包括来自\href{https://www.rfc-editor.org/rfc/rfc0951}{\href{https://www.rfc-editor.org/rfc/rfc0951}{[RFC0951]}}、\href{https://www.rfc-editor.org/rfc/rfc1542}{\href{https://www.rfc-editor.org/rfc/rfc1542}{[RFC1542]}}和\href{https://www.rfc-editor.org/rfc/rfc2131}{\href{https://www.rfc-editor.org/rfc/rfc2131}{[RFC2131]}}的字段名。BOOTP
+消息格
 式采用适当的分配方案保存DHCP 消息。通过这种方式，BOOTP 中继代理可处理DHCP 消息，
 BOOTP 客户机可使用 DHCP服务器。如果有必要，服务器名和引导文件名字段可携带 DHCP选项
 
-图6-1所示的消息格式由BOOTP 和DHCP定义在几个 RFC（\href{https://www.rfc-editor.org/rfc/rfc0951}{\href{https://www.rfc-editor.org/rfc/rfc0951}{[RFC0951]}}、\href{https://www.rfc-editor.org/rfc/rfc1542}{\href{https://www.rfc-editor.org/rfc/rfc1542}{[RFC1542]}}和
-\href{https://www.rfc-editor.org/rfc/rfc2131}{\href{https://www.rfc-editor.org/rfc/rfc2131}{[RFC2131]}}）中。Op（操作）字段标识消息是请求（1）或应答（2）。HW 类型（htype）字段
+图6-1所示的消息格式由BOOTP 和DHCP定义在几个
+RFC（\href{https://www.rfc-editor.org/rfc/rfc0951}{\href{https://www.rfc-editor.org/rfc/rfc0951}{[RFC0951]}}、\href{https://www.rfc-editor.org/rfc/rfc1542}{\href{https://www.rfc-editor.org/rfc/rfc1542}{[RFC1542]}}和
+\href{https://www.rfc-editor.org/rfc/rfc2131}{\href{https://www.rfc-editor.org/rfc/rfc2131}{[RFC2131]}}）中。Op（操作）字段标识消息是请求（1）或应答（2）。HW
+类型（htype）字段
 的分配基于 ARP（见第4章）使用的值，并定义在相应的IANAARP 参数页中［IARP］，最常
 见的值是1（以太网）。HW 长度（hlen）字段用于存放硬件（MAC）地址，对于类似以太网
 的网络，该值通常为6。跳步字段用于保存消息传输过程中的中继次数。消息发送方将该值
@@ -110,10 +117,10 @@ BOOTP 客户机可使用 DHCP服务器。如果有必要，服务器名和引导
 通过设置该位通知服务器和中继代理，广播地址可用于响应中。
 
 \begin{tcolorbox}
-    在 Windows 环境中使用广播标志曾遇到一些困难。Windows XP 和 Windows 7
-    的DHCP客户机不能设置该标志，但Windows Vista 的客户机可设置它。在实际使
-    用中，有些DHCP服务器不能正确处理该标志，这导致在支持 Vista 客户机时出现
-    明显的困难，即使 Vista 实现是 RFC 兼容的。更多信息见［MKB928233］。
+  在 Windows 环境中使用广播标志曾遇到一些困难。Windows XP 和 Windows 7
+  的DHCP客户机不能设置该标志，但Windows Vista 的客户机可设置它。在实际使
+  用中，有些DHCP服务器不能正确处理该标志，这导致在支持 Vista 客户机时出现
+  明显的困难，即使 Vista 实现是 RFC 兼容的。更多信息见［MKB928233］。
 \end{tcolorbox}
 
 接下来的四个字段是不同的IP地址。客户机 IP 地址（ciaddr）字段包括请求者的IP地
@@ -140,7 +147,8 @@ DHCP是对BOOTP的扩展，DHCP 需要的有些字段BOOTP设计之初是不存�
 1字节包含选项值长度（不包括标签或长度），紧接着是包含选项值自身的可变数量的字节。
 
 大量选项对于 DHCP 是有效的，其中一些选项也被BOOTP 支持。当前列表由B0OTP/
-DHCP参数页［IBDP］ 提供。前77个选项包括最常见的选项，它们由\href{https://www.rfc-editor.org/rfc/rfc2132}{\href{https://www.rfc-editor.org/rfc/rfc2132}{[RFC2132]}}定义。常见
+DHCP参数页［IBDP］
+提供。前77个选项包括最常见的选项，它们由\href{https://www.rfc-editor.org/rfc/rfc2132}{\href{https://www.rfc-editor.org/rfc/rfc2132}{[RFC2132]}}定义。常见
 选项包括填充（0）、子网掩码（1）、路由器地址（3）、域名服务器（6）、域名（15）、请求
 的IP地址（50）、地址租用期（51）、DHCP 消息类型（53）、服务器标识符（54）、参数请求
 列表（55）、DHCP 错误消息（56）、租约更新时间（58）、租约重新绑定时间（59）、客户机
@@ -149,7 +157,9 @@ DHCP参数页［IBDP］ 提供。前77个选项包括最常见的选项，它们
 DHCP 消息类型选项（53）是1字节长的选项，DHCP 消息一定会使用它，它有以下这些
 可能值：DHCPDISCOVER（1）、DHCPOFFER（2）、DHCPREQUEST（3）、DHCPDECLINE（4）、
 DHCPACK（5）、DHCPNAK（6）、DHCPRELEASE（7）、DHCPINFORM（8）、DHCPFORCE-
-RENEW （9）\href{https://www.rfc-editor.org/rfc/rfc3203}{\href{https://www.rfc-editor.org/rfc/rfc3203}{[RFC3203]}}、DHCPLEASEQUERY（10）、DHCPLEASEUNASSIGNED （11）、
+RENEW
+（9）\href{https://www.rfc-editor.org/rfc/rfc3203}{\href{https://www.rfc-editor.org/rfc/rfc3203}{[RFC3203]}}、DHCPLEASEQUERY（10）、DHCPLEASEUNASSIGNED
+（11）、
 DHCPLEASEUNKNOWN（12）和 DHCPLEASEACTIVE（13）。最后四个值由「RFC43881定义。
 
 选项可由 DHCP 消息中的选项字段携带，也可以由前面提到的服务器名和引导文件名字
@@ -162,9 +172,12 @@ DHCPLEASEUNKNOWN（12）和 DHCPLEASEACTIVE（13）。最后四个值由「RFC43
 选项通常提供相对简单的配置信息，或者支持一些其他协商协议。例如，\href{https://www.rfc-editor.org/rfc/rfc2132}{\href{https://www.rfc-editor.org/rfc/rfc2132}{[RFC2132]}}定
 义了大多数传统配置信息的选项，传统配置信息指的是 TCP/IP 节点所需的信息（地址信息、
 服务器地址、初始TTL 值，以及布尔值指定的配置信息，例如启用IP转发）。下列规范分别
-描述了 NetWare 简单配置信息\href{https://www.rfc-editor.org/rfc/rfc2241}{\href{https://www.rfc-editor.org/rfc/rfc2241}{[RFC2241]}}\href{https://www.rfc-editor.org/rfc/rfc2242}{\href{https://www.rfc-editor.org/rfc/rfc2242}{[RFC2242]}}、用户类\href{https://www.rfc-editor.org/rfc/rfc3004}{\href{https://www.rfc-editor.org/rfc/rfc3004}{[RFC3004]}}、FQDN\href{https://www.rfc-editor.org/rfc/rfc4702}{\href{https://www.rfc-editor.org/rfc/rfc4702}{[RFC4702]}}、
-Internet 存储名称服务器（iSNS，用于存储网络）\href{https://www.rfc-editor.org/rfc/rfc4174}{\href{https://www.rfc-editor.org/rfc/rfc4174}{[RFC4174]}}、广播和组播服务控制器
-（BCMCS，用于3G蜂窝网络）\href{https://www.rfc-editor.org/rfc/rfc4280}{\href{https://www.rfc-editor.org/rfc/rfc4280}{[RFC4280]}}、时区 \href{https://www.rfc-editor.org/rfc/rfc4833}{\href{https://www.rfc-editor.org/rfc/rfc4833}{[RFC4833]}}、自动配置\href{https://www.rfc-editor.org/rfc/rfc2563}{\href{https://www.rfc-editor.org/rfc/rfc2563}{[RFC2563]}}、子网
+描述了 NetWare
+简单配置信息\href{https://www.rfc-editor.org/rfc/rfc2241}{\href{https://www.rfc-editor.org/rfc/rfc2241}{[RFC2241]}}\href{https://www.rfc-editor.org/rfc/rfc2242}{\href{https://www.rfc-editor.org/rfc/rfc2242}{[RFC2242]}}、用户类\href{https://www.rfc-editor.org/rfc/rfc3004}{\href{https://www.rfc-editor.org/rfc/rfc3004}{[RFC3004]}}、FQDN\href{https://www.rfc-editor.org/rfc/rfc4702}{\href{https://www.rfc-editor.org/rfc/rfc4702}{[RFC4702]}}、
+Internet
+存储名称服务器（iSNS，用于存储网络）\href{https://www.rfc-editor.org/rfc/rfc4174}{\href{https://www.rfc-editor.org/rfc/rfc4174}{[RFC4174]}}、广播和组播服务控制器
+（BCMCS，用于3G蜂窝网络）\href{https://www.rfc-editor.org/rfc/rfc4280}{\href{https://www.rfc-editor.org/rfc/rfc4280}{[RFC4280]}}、时区
+\href{https://www.rfc-editor.org/rfc/rfc4833}{\href{https://www.rfc-editor.org/rfc/rfc4833}{[RFC4833]}}、自动配置\href{https://www.rfc-editor.org/rfc/rfc2563}{\href{https://www.rfc-editor.org/rfc/rfc2563}{[RFC2563]}}、子网
 选择\href{https://www.rfc-editor.org/rfc/rfc3011}{\href{https://www.rfc-editor.org/rfc/rfc3011}{[RFC3011]}}、域名服务选择（见第11章）\href{https://www.rfc-editor.org/rfc/rfc2937}{\href{https://www.rfc-editor.org/rfc/rfc2937}{[RFC2937]}}以及网络接入认证信息承载协议
 （PANA）服务器（见第18章）\href{https://www.rfc-editor.org/rfc/rfc5192}{\href{https://www.rfc-editor.org/rfc/rfc5192}{[RFC5192]}}。这些选项用于支持后面（6.2.7节开始介绍）描述
 的其他协议和功能。
@@ -182,7 +195,8 @@ DHCP消息是带有一组特殊选项的BOOTP 消息。当一台新的客户机�
 地址，该协议可简化为仅使用 REOUEST 和 ACK 消息
 
 发送请求的客户机将 BOOTP的Op 字段设置 BOOTREQUEST，并将选项字段的前4
-字节分别设置为十进制值99、130、83和99（来自\href{https://www.rfc-editor.org/rfc/rfc2132}{\href{https://www.rfc-editor.org/rfc/rfc2132}{[RFC2132]}}的魔术cookie 值）。客户机向
+字节分别设置为十进制值99、130、83和99（来自\href{https://www.rfc-editor.org/rfc/rfc2132}{\href{https://www.rfc-editor.org/rfc/rfc2132}{[RFC2132]}}的魔术cookie
+值）。客户机向
 服务器发送消息，使用 UDP/IP数据报，其中包含一个 BOOTP 的 BOOTREQUEST 操作和
 相应的DHCP 消息类型（通常 DHCPDISCOVER或 DHCPREQUEST）。这种消息从地址
 0.0.0.0（端口 68）发送到受限广播地址 255.255.255.255（端口67）。其他方向（从服务器到
@@ -229,18 +243,18 @@ ISCOVER/DHCPOFFER 消息。取而代之的是，客户机通过一个 DHCPREQUES
 续使用该地址（见图6-3）。
 
 \begin{tcolorbox}
-    现在有一个检测网络附件（DNA）的协商过程，分别针对 IPV4\href{https://www.rfc-editor.org/rfc/rfc4436}{\href{https://www.rfc-editor.org/rfc/rfc4436}{[RFC4436]}}和
-    IPv6\href{https://www.rfc-editor.org/rfc/rfc6059}{\href{https://www.rfc-editor.org/rfc/rfc6059}{[RFC6059]}}加以规范。这些规范不包含新的协议，而是建议将单播ARP（针对
-    IPv4）和单播或多播邻居请求/ 路由器发现消息（针对IPv6，见第8章）相组合，
-    它们可在一台主机切换网络链接时减少获取配置信息的延迟。由于这些规范相对较
-    新（特别是针对 IPv6），因此并非所有系统都实现了它们。
+  现在有一个检测网络附件（DNA）的协商过程，分别针对
+  IPV4\href{https://www.rfc-editor.org/rfc/rfc4436}{\href{https://www.rfc-editor.org/rfc/rfc4436}{[RFC4436]}}和
+  IPv6\href{https://www.rfc-editor.org/rfc/rfc6059}{\href{https://www.rfc-editor.org/rfc/rfc6059}{[RFC6059]}}加以规范。这些规范不包含新的协议，而是建议将单播ARP（针对
+  IPv4）和单播或多播邻居请求/ 路由器发现消息（针对IPv6，见第8章）相组合，
+  它们可在一台主机切换网络链接时减少获取配置信息的延迟。由于这些规范相对较
+  新（特别是针对 IPv6），因此并非所有系统都实现了它们。
 \end{tcolorbox}
 
-
 \begin{figure}[H]
-    \centering
-	\includegraphics[scale=0.5]{imgs/6/6-4.png}
-	\caption{一台客户机已切换网络，但它尝试通过 DHCPREQUEST 消息向新网络中的DHCP 服务器请求自己的旧地址 172.16.1.34}
+  \centering
+  \includegraphics[scale=0.5]{imgs/6/6-4.png}
+  \caption{一台客户机已切换网络，但它尝试通过 DHCPREQUEST 消息向新网络中的DHCP 服务器请求自己的旧地址 172.16.1.34}
 \end{figure}
 
 在图6-3中，我们可看到用链路层广播帧发送的DHCP 请求（目的地为ff:ff:ff:ff:ff.ff），
@@ -258,9 +272,10 @@ ISCOVER/DHCPOFFER 消息。取而代之的是，客户机通过一个 DHCPREQUES
 因此，服务器将会发送一个 DHCPNAK 消息，拒绝客户机的请求（见图 6-4）。
 
 \begin{figure}[H]
-    \centering
-	\includegraphics[scale=0.5]{imgs/6/6-4.png}
-	\caption{DHCP服务器发送一个 DHCPNAK 消息，表示客户机不应尝试使用 IP 地址 172.16.1.34。事务ID 使客户机知道该消息对应的地址请求}
+  \centering
+  \includegraphics[scale=0.5]{imgs/6/6-4.png}
+  \caption{DHCP服务器发送一个 DHCPNAK 消息，表示客户机不应尝试使用 IP 地址 172.16.1.34。事务ID
+  使客户机知道该消息对应的地址请求}
 \end{figure}
 
 图6-4所示的DHCPNAK消息是服务器发送的一个广播BOOTP响应。它包括
@@ -278,19 +293,21 @@ DHCPDISCOVER 消息（见图6-5）重新寻找它能找到的服务器和地址�
 个选项的子类型。
 
 图6-6给出了BOOTP请求消息中包含的选项。第一个选项表示该消息是一个
-DHCPDISCOVER 消息。第二个选项表示客户机是否采用地址自动配置\href{https://www.rfc-editor.org/rfc/rfc2563}{\href{https://www.rfc-editor.org/rfc/rfc2563}{[RFC2563]}}（见 6.3
+DHCPDISCOVER
+消息。第二个选项表示客户机是否采用地址自动配置\href{https://www.rfc-editor.org/rfc/rfc2563}{\href{https://www.rfc-editor.org/rfc/rfc2563}{[RFC2563]}}（见
+6.3
 节）。如果不能通过DHCP 获取地址，则允许它自己决定是否作为 DHCP服务器使用。
 
 \begin{figure}[H]
-    \centering
-	\includegraphics[scale=0.5]{imgs/6/6-5.png}
-	\caption{DHCPDISCOVER 消息表明在之前的 DHCPREQUEST 消息失败后，客户机正在重新尝试获得一个地址}
+  \centering
+  \includegraphics[scale=0.5]{imgs/6/6-5.png}
+  \caption{DHCPDISCOVER 消息表明在之前的 DHCPREQUEST 消息失败后，客户机正在重新尝试获得一个地址}
 \end{figure}
 
 \begin{figure}[H]
-    \centering
-	\includegraphics[scale=0.5]{imgs/6/6-6.png}
-	\caption{DHCPDISCOVER 消息可能包含丰富的参数请求，说明客户机需要哪些配置信息}
+  \centering
+  \includegraphics[scale=0.5]{imgs/6/6-6.png}
+  \caption{DHCPDISCOVER 消息可能包含丰富的参数请求，说明客户机需要哪些配置信息}
 \end{figure}
 
 下一个选项表示客户机标识符（ID）选项设置为0100130220B918（未显示）。DHCP服
@@ -301,14 +318,15 @@ DHCPDISCOVER 消息。第二个选项表示客户机是否采用地址自动配�
 字节的硬件类型标识符（在这种情况下，该字节的值为1，表示以太网）。
 
 \begin{tcolorbox}
-    这里出现使用客户机标识符的举动，该标识符并非基于MAC地址。这
-    样做的目的是希望一台客户机拥有一个持久的标识符，它使用不变的IPV4或
-    IPv6地址，即使系统中的网络接口硬件改变（通常会导致其MAC地址改变）。
-    \href{https://www.rfc-editor.org/rfc/rfc4361}{\href{https://www.rfc-editor.org/rfc/rfc4361}{[RFC4361]}}指定了用于IPV4节点的标识符，它使用一种最初为IPV6定义的方
-    菜。它涉及使用DHCP 唯一标识（DUID）和身份关联标识符（IAID），它们是为
-    DHCPv6\href{https://www.rfc-editor.org/rfc/rfc3315}{\href{https://www.rfc-editor.org/rfc/rfc3315}{[RFC3315]}}（见6.2.5.3节和6.2.5.4节）定义的，但可用于传统 DHCPV4 中。
-    它不支持在 DHCP 消息中使用客户机硬件地址（chaddr）字段。但是，这种方案还
-    没有被广泛应用。
+  这里出现使用客户机标识符的举动，该标识符并非基于MAC地址。这
+  样做的目的是希望一台客户机拥有一个持久的标识符，它使用不变的IPV4或
+  IPv6地址，即使系统中的网络接口硬件改变（通常会导致其MAC地址改变）。
+  \href{https://www.rfc-editor.org/rfc/rfc4361}{\href{https://www.rfc-editor.org/rfc/rfc4361}{[RFC4361]}}指定了用于IPV4节点的标识符，它使用一种最初为IPV6定义的方
+  菜。它涉及使用DHCP 唯一标识（DUID）和身份关联标识符（IAID），它们是为
+  DHCPv6\href{https://www.rfc-editor.org/rfc/rfc3315}{\href{https://www.rfc-editor.org/rfc/rfc3315}{[RFC3315]}}（见6.2.5.3节和6.2.5.4节）定义的，但可用于传统
+  DHCPV4 中。
+  它不支持在 DHCP 消息中使用客户机硬件地址（chaddr）字段。但是，这种方案还
+  没有被广泛应用。
 \end{tcolorbox}
 
 下一个（请求的IP 地址）选项表示客户机请求的IP 地址172.16.1.34。这是它在以前
@@ -324,11 +342,11 @@ Windows 2000及更高版本系统使用）和一个参数请求列表。参数�
 以及是否在启动时将静态转发表项添加在客户机的转发表中（见第5章）。
 
 \begin{tcolorbox}
-    存在三种静态路由参数是地址发展过程造成的。在全面采用子网掩码和网络
-    前缀之前，一个地址的网络部分是需要单独检测的地址（“分类地址”），这是与静
-    态路由（33）参数共同使用的路由形式。随着无类路由的使用，DHCP 更新以保持
-    掩码可用，这导致了\href{https://www.rfc-editor.org/rfc/rfc3442}{\href{https://www.rfc-editor.org/rfc/rfc3442}{[RFC3442]}}定义的无分类静态路由（CSR）参数（121）的出
-    现。微软的改进方案（使用代码249）与之相似。
+  存在三种静态路由参数是地址发展过程造成的。在全面采用子网掩码和网络
+  前缀之前，一个地址的网络部分是需要单独检测的地址（“分类地址”），这是与静
+  态路由（33）参数共同使用的路由形式。随着无类路由的使用，DHCP 更新以保持
+  掩码可用，这导致了\href{https://www.rfc-editor.org/rfc/rfc3442}{\href{https://www.rfc-editor.org/rfc/rfc3442}{[RFC3442]}}定义的无分类静态路由（CSR）参数（121）的出
+  现。微软的改进方案（使用代码249）与之相似。
 \end{tcolorbox}
 
 最后一个参数（43）是针对特定供应商的信息。它通常与供应商类别标识符选项（60）
@@ -344,11 +362,11 @@ NetBoot 服务和引导服务器发现协议（BSDP） ［F07］。
 DHCP 服务器（它也是路由器和 DNS服务器）。
 
 \begin{figure}[H]
-    \centering
-	\includegraphics[scale=0.5]{imgs/6/6-7.png}
-	\caption{10.0.0.1的DHCP服务器发送的 DHCPOFFER 提供有效期长达12小时的IP 地址10.0.0.57。其
+  \centering
+  \includegraphics[scale=0.5]{imgs/6/6-7.png}
+  \caption{10.0.0.1的DHCP服务器发送的 DHCPOFFER 提供有效期长达12小时的IP 地址10.0.0.57。其
     他信息包括 DNS服务器地址、域名、默认路由器的IP 地址、子网掩码和广播地址。在这个例
-    子中，该系统是 IP 地址10.0.0.1 的默认路由器、DHCP 服务器和 DNS服务器}
+  子中，该系统是 IP 地址10.0.0.1 的默认路由器、DHCP 服务器和 DNS服务器}
 \end{figure}
 
 在图6-7所示的DHCPOFFER 消息中，我们再次看到消息格式中包含BOOTP 部分，以
@@ -393,15 +411,15 @@ C：\> ipconfig /release
 C：> ipconfig /renew
 
 \begin{figure}
-    \centering
-    \includegraphics[scale=0.6]{imgs/6/6-9.png}
-    \caption{DHCPACK 消息为客户机（和其他服务器）分配地址 10.0.0.57，其有效期长达12小时}
+  \centering
+  \includegraphics[scale=0.6]{imgs/6/6-9.png}
+  \caption{DHCPACK 消息为客户机（和其他服务器）分配地址 10.0.0.57，其有效期长达12小时}
 \end{figure}
 
 在Linux 中，以下命令可获得同样结果：
 
 \begin{verbatim}
-    
+
 Linux# dhclient -r
 \end{verbatim}
 
@@ -460,7 +478,8 @@ DHCP 协议在客户机和服务器中运行一个状态机。状态用于指出
 
 \subsection{DHCPV6}
 虽然IPv4和IPv6的DHCP 协议希望实现类似目标，但它们各自的协议设计和部署选项
-不同。DHCPv6\href{https://www.rfc-editor.org/rfc/rfc3315}{\href{https://www.rfc-editor.org/rfc/rfc3315}{[RFC3315]}} 可使用一种“有状态” 模式，其工作原理非常像DHCPV4，它也
+不同。DHCPv6\href{https://www.rfc-editor.org/rfc/rfc3315}{\href{https://www.rfc-editor.org/rfc/rfc3315}{[RFC3315]}}
+可使用一种“有状态” 模式，其工作原理非常像DHCPV4，它也
 可以使用一种“无状态”模式，并结合无状态地址自动配置（见6.3节）。在无状态模式下，
 IPv6 客户机认为自己能配置IPv6地址，但需要通过DHCPv6 获得额外信息（例如 DNS服
 务器地址）。另一种选择可使用ICMPv6 路由通告消息（见第8章、第11章和「RFC61061）
@@ -486,7 +505,8 @@ IPv6地址的生命周期。临时地址仅用于 DAD，直至被验证为唯一
 可能仅用于IPv6邻居发现协议（见第8章）。这时，它不可用作任何其他目的的源或目的地
 址。同时，该状态的地址要检测重复，看看同一网络中的其他节点是否已使用该地址。这个
 过程称为重复地址检测（DAD），我们将在6.3.2.1 节详细介绍。常规 DAD 的替代方案称
-乐观 DAD\href{https://www.rfc-editor.org/rfc/rfc4429}{\href{https://www.rfc-editor.org/rfc/rfc4429}{[RFC4429]}}，通过它选择的地址可用于一组有限的用途，直至DAD完成。因为一
+乐观
+DAD\href{https://www.rfc-editor.org/rfc/rfc4429}{\href{https://www.rfc-editor.org/rfc/rfc4429}{[RFC4429]}}，通过它选择的地址可用于一组有限的用途，直至DAD完成。因为一
 个乐观状态的地址实际上仅是针对 DAD 的一组特殊规则，它不是一个真正完整的状态。乐
 观地址对大多数目的而言是废弃的。特别是，一个地址可能同时是乐观的和废弃的，这取决
 于首选和有效生命周期。
@@ -778,9 +798,9 @@ DUID。当前列表由IANA维护［ID6PARAM］。在 DUID-LLT 和 DUID-LL 中，
 来自［RFCO826］的16位的硬件类型；在DUID-EN 中，则是一个32位的专用企业编号。
 
 \begin{tcolorbox}
-    专用企业编号（PEN）是一个32位的值，它由IANA 分配给一个企业。它通
-    常与 SNMP 协议共同用于网络管理目的。到2011年中期，已分配大约38000个编
-    号。当前列表可从IANA 获得［IEPARAM］。
+  专用企业编号（PEN）是一个32位的值，它由IANA 分配给一个企业。它通
+  常与 SNMP 协议共同用于网络管理目的。到2011年中期，已分配大约38000个编
+  号。当前列表可从IANA 获得［IEPARAM］。
 \end{tcolorbox}
 
 第一种格式的 DUID（即 DUID-LLT）是推荐的格式。在硬件类型之后，它包括一个32
@@ -797,7 +817,8 @@ DHCPv6协议操作与 DHCPv4 的对应部分相似。一台客户机是否启用
 台主机接收的ICMPv6路由器通告消息中的配置选项（见第8章）。路由器通告包括两个重要
 的位字段。M位是可管理地址配置标志，表示IPv6地址可使用DHCPv6 获得。0位是其他
 配置标志，表示 IPv6地址之外的其他信息可使用DHCPv6 获得。这两个字段和其他字段定
-义在\href{https://www.rfc-editor.org/rfc/rfc5175}{\href{https://www.rfc-editor.org/rfc/rfc5175}{[RFC5175]}}中。M 和O位字段可以任意组合，但M启用和O关闭可能是最不实用的组
+义在\href{https://www.rfc-editor.org/rfc/rfc5175}{\href{https://www.rfc-editor.org/rfc/rfc5175}{[RFC5175]}}中。M
+和O位字段可以任意组合，但M启用和O关闭可能是最不实用的组
 合。如果两者都关闭，则不使用DHCPv6，并在分配地址时使用无状态地址自动分配（见6.3
 节）。M关闭和O启用表示客户机使用无状态 DHCPv6，并使用无状态地址自动配置获得地
 址。DHCPv6协议操作使用表6-1定义的消息，如图6-14所示。
@@ -835,28 +856,26 @@ DAD。）分组发送到对应的目的节点地址 ff02：：1:ffb7:405a。它�
 步怎样做。
 
 \begin{tcolorbox}
-    这个例子显示了从乐观地址发送的一个路由器请求，其中包括一个源链路层
-    地址选项（SLLAO），这违反了\href{https://www.rfc-editor.org/rfc/rfc4429}{\href{https://www.rfc-editor.org/rfc/rfc4429}{[RFC4429]}}中的规定。这里的问题是对任何处于侦
-    听状态的IPv6路由器邻居缓存的潜在污染。它们将处理这个选项，并在自己的邻
-    居缓存中建立临时地址和链路层地址之间的映射，这可能重复。但是，这种情况通
-    常很少发生，并且不怎么被关注。尽管如此，如果待定的“乐观”选项［IDDN］是
-    标准的，将允许路田器请求包含一个用于避免此问题的 SLLAO。
+  这个例子显示了从乐观地址发送的一个路由器请求，其中包括一个源链路层
+  地址选项（SLLAO），这违反了\href{https://www.rfc-editor.org/rfc/rfc4429}{\href{https://www.rfc-editor.org/rfc/rfc4429}{[RFC4429]}}中的规定。这里的问题是对任何处于侦
+  听状态的IPv6路由器邻居缓存的潜在污染。它们将处理这个选项，并在自己的邻
+  居缓存中建立临时地址和链路层地址之间的映射，这可能重复。但是，这种情况通
+  常很少发生，并且不怎么被关注。尽管如此，如果待定的“乐观”选项［IDDN］是
+  标准的，将允许路田器请求包含一个用于避免此问题的 SLLAO。
 \end{tcolorbox}
 
-
 \begin{figure}[H]
-    \centering
-	\includegraphics[scale=0.5]{imgs/6/6-15.png}
-	\caption{10.0.0.1的DHCP服务器发送的 DHCPOFFER 提供有效期长达12小时的IP 地址10.0.0.57。其
+  \centering
+  \includegraphics[scale=0.5]{imgs/6/6-15.png}
+  \caption{10.0.0.1的DHCP服务器发送的 DHCPOFFER 提供有效期长达12小时的IP 地址10.0.0.57。其
     他信息包括 DNS服务器地址、域名、默认路由器的IP 地址、子网掩码和广播地址。在这个例
-    子中，该系统是 IP 地址10.0.0.1 的默认路由器、DHCP 服务器和 DNS服务器}
+  子中，该系统是 IP 地址10.0.0.1 的默认路由器、DHCP 服务器和 DNS服务器}
 \end{figure}
 
-
 \begin{figure}[H]
-    \centering
-	\includegraphics[scale=0.5]{imgs/6/6-16.png}
-	\caption{路由器请求导致一台临近的路由器发送了一个路由器通告。请求消息被发送到所有路由器地址（ff02::2）}
+  \centering
+  \includegraphics[scale=0.5]{imgs/6/6-16.png}
+  \caption{路由器请求导致一台临近的路由器发送了一个路由器通告。请求消息被发送到所有路由器地址（ff02::2）}
 \end{figure}
 
 图6-17中的RA表示一台路由器存在，包括00:04:5a:9f:9e:80的 SLLAO，它对客户
@@ -865,11 +884,11 @@ DAD。）分组发送到对应的目的节点地址 ff02：：1:ffb7:405a。它�
 过程通过请求一台 DHCPv6服务器来完成（见图6-18）。
 
 \begin{figure}[H]
-    \centering
-	\includegraphics[scale=0.5]{imgs/6/6-17.png}
-	\caption{一个路由器通告指出地址可被管理（可使用DHCPv6分配），以及可使用DHCPv6 获得的
+  \centering
+  \includegraphics[scale=0.5]{imgs/6/6-17.png}
+  \caption{一个路由器通告指出地址可被管理（可使用DHCPv6分配），以及可使用DHCPv6 获得的
     其他信息（例如DNS服务器）。这个网络使用有状态 DHCPv6。IPv6路由器通告消息使用
-    ICMPv6（见第8章）}
+  ICMPv6（见第8章）}
 \end{figure}
 
 图6-18中显示了 DHCPv6 SOLICIT 消息，其中包括事务 ID（与DHCPv4 相似）、经历
@@ -886,17 +905,18 @@ DHCPv6 和DNS之间的交互（见6.4节中的DHCP 和DNS交互）。这个选�
 更新）。这个选项的第二部分包含一个域名，它可能是完全限定域名，也可能不是。
 
 \begin{tcolorbox}
-    Wireshark 工具显示图6-18中记录的FQDN名称异常，并推测该分组可能是
-    由一个 MS Vista 客户机生成的。字段异常的原因是这个选项的最初规范允许使用
-    ASCII 字符编码的简单域名。这种方法在\href{https://www.rfc-editor.org/rfc/rfc4704}{\href{https://www.rfc-editor.org/rfc/rfc4704}{[RFC4704]}}中已被废弃，并且两种编码不
-    直接兼容。微软提供了一个修补程序，为 Vista 系统解决这个问题。微软 Windows
-    7系统的行为符合「RFC47041。
+  Wireshark 工具显示图6-18中记录的FQDN名称异常，并推测该分组可能是
+  由一个 MS Vista 客户机生成的。字段异常的原因是这个选项的最初规范允许使用
+  ASCII
+  字符编码的简单域名。这种方法在\href{https://www.rfc-editor.org/rfc/rfc4704}{\href{https://www.rfc-editor.org/rfc/rfc4704}{[RFC4704]}}中已被废弃，并且两种编码不
+  直接兼容。微软提供了一个修补程序，为 Vista 系统解决这个问题。微软 Windows
+  7系统的行为符合「RFC47041。
 \end{tcolorbox}
 
 \begin{figure}[H]
-    \centering
-	\includegraphics[scale=0.5]{imgs/6/6-18.png}
-	\caption{DHCPv6 SOLICIT 消息请求一个或多个 DHCPv6服务器的位置，以及用于识别客户机的信息和它感兴趣的选项}
+  \centering
+  \includegraphics[scale=0.5]{imgs/6/6-18.png}
+  \caption{DHCPv6 SOLICIT 消息请求一个或多个 DHCPv6服务器的位置，以及用于识别客户机的信息和它感兴趣的选项}
 \end{figure}
 
 请求消息中的其他信息包括供应商类别标识符和请求选项列表。在这种情况下，供应商
@@ -908,7 +928,8 @@ DHCPv6 和DNS之间的交互（见6.4节中的DHCP 和DNS交互）。这个选�
 来标识服务器。IA拥有一个IAID值09001302（由客户机提供），并包括一个全球地址
 2001:db8:0:f101:10fd，其首选生命周期和有效生命周期分别为130s和200s（超时时间相
 当短）。状态码为0表示成功。与DHCPv6通告一起提供的还有DNS递归名称服务器选项
-\href{https://www.rfc-editor.org/rfc/rfc3646}{\href{https://www.rfc-editor.org/rfc/rfc3646}{[RFC3646]}}，它指出一个服务器地址 2001:db8:0:f101：：1 和一个包含home 字符串的域名搜索
+\href{https://www.rfc-editor.org/rfc/rfc3646}{\href{https://www.rfc-editor.org/rfc/rfc3646}{[RFC3646]}}，它指出一个服务器地址
+2001:db8:0:f101：：1 和一个包含home 字符串的域名搜索
 列表选项。注意，服务器并不包括FQDN 选项，这是由于它不需要执行这个选项。
 
 下面两个分组是常规的邻居请求和邻居通告消息，它们在客户机与路由器之间交
@@ -916,16 +937,16 @@ DHCPv6 和DNS之间的交互（见6.4节中的DHCP 和DNS交互）。这个选�
 2001:db8:0:f101：：10fd（见图6-20）。
 
 \begin{figure}[H]
-    \centering
-	\includegraphics[scale=0.5]{imgs/6/6-19.png}
-	\caption{DHCPv6 ADVERTISE 消息包括地址、租约，以及 DNS服务器的IPv6地址和域名搜索列表}
+  \centering
+  \includegraphics[scale=0.5]{imgs/6/6-19.png}
+  \caption{DHCPv6 ADVERTISE 消息包括地址、租约，以及 DNS服务器的IPv6地址和域名搜索列表}
 \end{figure}
 
 \begin{figure}[H]
-    \centering
-	\includegraphics[scale=0.5]{imgs/6/6-20.png}
-	\caption{DHCPV6 REQUEST 消息与SOLICIT 消息相似，但它包含从
-    服务器 ADVERTISE 消息中学习到的信息}
+  \centering
+  \includegraphics[scale=0.5]{imgs/6/6-20.png}
+  \caption{DHCPV6 REQUEST 消息与SOLICIT 消息相似，但它包含从
+  服务器 ADVERTISE 消息中学习到的信息}
 \end{figure}
 
 图6-20所示的 REQUEST 消息与SOLICIT 消息相似，但它包含来自服务器的 ADVERTISE
@@ -982,7 +1003,8 @@ DHCPv6 和DNS之间的交互（见6.4节中的DHCP 和DNS交互）。这个选�
 \subsubsection{DHCPv6 前缀委托（DHCPV6-PD 和ord）}
 目前为止的讨论围绕着配置主机，但 DHCPv6也可用于配置路由器。这通过一台路由器
 向另一台路由器委托一个地址空间范围来实现。这个地址范围可描述为一个 IPv6地址前缀。
-这个前缀在\href{https://www.rfc-editor.org/rfc/rfc3633}{\href{https://www.rfc-editor.org/rfc/rfc3633}{[RFC3633]}}定义的DHCP 前缀选项中。这用于路由器委托的情况，它现在可像一
+这个前缀在\href{https://www.rfc-editor.org/rfc/rfc3633}{\href{https://www.rfc-editor.org/rfc/rfc3633}{[RFC3633]}}定义的DHCP
+前缀选项中。这用于路由器委托的情况，它现在可像一
 个 DHCPv6 服务器那样工作，而不需要前缀网络的详细拓扑信息。这种情况可能发生，例如
 ISP给出了一个可由潜在客户重新分配的地址范围。在这种情况下，ISP 可能使用 DHCPV6-
 PD 向客户设备委托一个前缀。
@@ -992,7 +1014,9 @@ PD 向客户设备委托一个前缀。
 有用，它也可用于移动路由器（及其连接的子网）［RFC62761。
 
 目前，已创建一种特殊格式的PD（6rd，见\href{https://www.rfc-editor.org/rfc/rfc5569}{\href{https://www.rfc-editor.org/rfc/rfc5569}{[RFC5569]}}）以支持服务提供商快速部署
-IPv6。在 OPTION\_6RD（212）选项\href{https://www.rfc-editor.org/rfc/rfc5969}{\href{https://www.rfc-editor.org/rfc/rfc5969}{[RFC5969]}}中保存IPv6 6rd前缀，它用于根据客户已分
+IPv6。在
+OPTION\_6RD（212）选项\href{https://www.rfc-editor.org/rfc/rfc5969}{\href{https://www.rfc-editor.org/rfc/rfc5969}{[RFC5969]}}中保存IPv6
+6rd前缀，它用于根据客户已分
 配的IPv4地址为客户网站分配IPv6地址。IPv6地址是通过算法来分配的，它将服务提供商
 提供的6rd前缀作为前n位（推荐n小于32）。客户分配的单播IPv4 地址作为后面的32（或
 更少）位，这种IPv6 6rd 委托前缀同样可用DHCPv6-PD 处理，并推荐64位或更短长度用于
@@ -1020,16 +1044,20 @@ DHCP 中继代理将 DHCP 操作扩展到一个网段之外。中继和 DHCPv4�
 在讨论第3层中继的基本知识后，我们将简要介绍在第2层的可替代操作。
 
 \subsubsection{中继代理信息选项}
-在BOOTP或DHCP 中继的最初概念中\href{https://www.rfc-editor.org/rfc/rfc2131}{\href{https://www.rfc-editor.org/rfc/rfc2131}{[RFC2131]}}，中继代理的目的只是将一个消息
+在BOOTP或DHCP
+中继的最初概念中\href{https://www.rfc-editor.org/rfc/rfc2131}{\href{https://www.rfc-editor.org/rfc/rfc2131}{[RFC2131]}}，中继代理的目的只是将一个消息
 从一个子网中继到另一个，而不需要经过一台路由器。这允许系统从一个集中位置不执行
 间接传递就获得一个地址。它对于企业基于管理权限进行网络操作是有利的，但在客户采
 用DHCP和其他地方（例如 ISP）提供DHCP 基础设施的情况下，这样做有可能需要更多的
 信息。这里有很多可能的原因。例如，ISP 可能不完全信任用户，或计费和日志可能与基本
 DHCP 协议中没有的其他信息相关。因此，在中继和服务器之间传递的消息中包含额外信息
-变得有用。中继代理信息选项（针对 DHCPv4，简称 RAIO）\href{https://www.rfc-editor.org/rfc/rfc3046}{\href{https://www.rfc-editor.org/rfc/rfc3046}{[RFC3046]}}提供了使IPv4 网络
+变得有用。中继代理信息选项（针对 DHCPv4，简称
+RAIO）\href{https://www.rfc-editor.org/rfc/rfc3046}{\href{https://www.rfc-editor.org/rfc/rfc3046}{[RFC3046]}}提供了使IPv4
+网络
 包括这种信息的方法。IPv6 的工作方式不同，我们将在以后章节中介绍。
 
-DHCPv4的RAIO 定义在\href{https://www.rfc-editor.org/rfc/rfc3046}{\href{https://www.rfc-editor.org/rfc/rfc3046}{[RFC3046]}}中，它实际是一个元选项，从某种意义上来说，它
+DHCPv4的RAIO
+定义在\href{https://www.rfc-editor.org/rfc/rfc3046}{\href{https://www.rfc-editor.org/rfc/rfc3046}{[RFC3046]}}中，它实际是一个元选项，从某种意义上来说，它
 仅定义了一个框架，其中可定义许多子选项。很多这样的子选项已被定义，包括几个被ISP
 用于标识一个请求来自哪个用户、链路或网络的选项。在很多情况下，我们看到DHCPv4信
 息选项中的每个子选项都有对应的IPv6选项。
@@ -1043,14 +1071,16 @@ MDS 算法（见第18章）。
 中继的共同需求是通过超出客户机自身提供的信息之外的信息来标识发送 DHCP 请求的
 客户机。中继代理信息选项的一个子选项称为远程ID 子选项，它提供了一种标识发送请求
 的DHCP 客户机的方法，即采用一系列本地解释的命名方法（例如呼叫方 ID、用户名、调制
-解调器ID、一条点到点链路的远程IP 地址）。DHCPv6中继代理远程ID 选项\href{https://www.rfc-editor.org/rfc/rfc4649}{\href{https://www.rfc-editor.org/rfc/rfc4649}{[RFC4649]}}提
+解调器ID、一条点到点链路的远程IP 地址）。DHCPv6中继代理远程ID
+选项\href{https://www.rfc-editor.org/rfc/rfc4649}{\href{https://www.rfc-editor.org/rfc/rfc4649}{[RFC4649]}}提
 供了相同的功能，它还包括一个额外的字段（企业编号），以表明与供应商相关的识别信息。
 这种远程ID 信息格式后来以一种基于企业编号的特定供应商方式定义。一种常用的方法是
 将 DUID 用于远程ID。
 
 \subsubsection{服务器标识符覆盖}
 在某些情况下，中继可能希望干预 DHCP 客户机和服务器之间的操作。这可采用一个
-特殊的服务器标识符覆盖子选项来实现\href{https://www.rfc-editor.org/rfc/rfc5107}{\href{https://www.rfc-editor.org/rfc/rfc5107}{[RFC5107]}}。这个子选项是前面提到的 RAIO的一个
+特殊的服务器标识符覆盖子选项来实现\href{https://www.rfc-editor.org/rfc/rfc5107}{\href{https://www.rfc-editor.org/rfc/rfc5107}{[RFC5107]}}。这个子选项是前面提到的
+RAIO的一个
 选项。
 
 在通常情况下，一个中继会转发SOLICIT消息，并在消息从客户机传递到服务器的过
@@ -1062,14 +1092,16 @@ MDS 算法（见第18章）。
 允许中继为不同类型的消息（例如除了 SOLICT 外的 REQUEST）提供不同选项（例如
 RAIO携带一个电路ID），这通常是有用的。这种选项包括一个4字节的值，以指定服务器
 生成的 DHCPREPLY 消息中的服务器标识符选项中使用的IPv4地址。服务器标识符覆盖选
-项建议与中继代理标志子选项一起使用\href{https://www.rfc-editor.org/rfc/rfc5010}{\href{https://www.rfc-editor.org/rfc/rfc5010}{[RFC5010]}}。这个 RAIO 的子选项是一组标志，它们
+项建议与中继代理标志子选项一起使用\href{https://www.rfc-editor.org/rfc/rfc5010}{\href{https://www.rfc-editor.org/rfc/rfc5010}{[RFC5010]}}。这个
+RAIO 的子选项是一组标志，它们
 可携带从中继到服务器的信息。到目前为止，只有一个关于这种标志的定义：客户机是否使
 用广播或单播地址作为初始消息中的目的地址。服务器可能根据这个标志设置做出不同的地
 址分配决定。
 
 \subsubsection{租约查询和大批量租约查询}
 在某些环境下，允许第三方系统（如中继或接人集中器）学习一个特定DHCP客
-户机的地址绑定是有用的。这个功能由DHCP 租约查询（针对 DHCPV4的\href{https://www.rfc-editor.org/rfc/rfc4388}{\href{https://www.rfc-editor.org/rfc/rfc4388}{[RFC4388]}}
+户机的地址绑定是有用的。这个功能由DHCP 租约查询（针对
+DHCPV4的\href{https://www.rfc-editor.org/rfc/rfc4388}{\href{https://www.rfc-editor.org/rfc/rfc4388}{[RFC4388]}}
 \href{https://www.rfc-editor.org/rfc/rfc6148}{\href{https://www.rfc-editor.org/rfc/rfc6148}{[RFC6148]}}，或针对DHCPv6的\href{https://www.rfc-editor.org/rfc/rfc5007}{\href{https://www.rfc-editor.org/rfc/rfc5007}{[RFC5007]}}）来提供。在DHCPv6中，它也可为委托前缀提
 供租约信息。在图6-21中，中继代理可能从经过的DHCP 分组中“搜集”信息，以影响那
 些提供给 DHCP服务器的信息。这些信息可能由中继保存，但也可能在中继失败时丢弃。
@@ -1106,7 +1138,8 @@ BL 提供了对基本租约查询的几个扩展。首先，它使用 TCP/IP（�
 
 DHCPv6 中继ID选项和DHCPv4 中继ID 子选项［ID4RI］可能包括一个用于标识中继代
 理的DUID。中继可在自己转发的消息中插人这个选项，服务器可用它关联自己接收的由特定
-中继提供的绑定。BL 支持基于地址和DUID 的查询（定义在\href{https://www.rfc-editor.org/rfc/rfc5007}{\href{https://www.rfc-editor.org/rfc/rfc5007}{[RFC5007]}}和\href{https://www.rfc-editor.org/rfc/rfc4388}{\href{https://www.rfc-editor.org/rfc/rfc4388}{[RFC4388]}}中），也
+中继提供的绑定。BL 支持基于地址和DUID
+的查询（定义在\href{https://www.rfc-editor.org/rfc/rfc5007}{\href{https://www.rfc-editor.org/rfc/rfc5007}{[RFC5007]}}和\href{https://www.rfc-editor.org/rfc/rfc4388}{\href{https://www.rfc-editor.org/rfc/rfc4388}{[RFC4388]}}中），也
 支持基于中继ID、链路地址和远程ID 的查询。这些新查询只被基于TCP/IP 并支持BL 的服
 务器所支持。相反，BL 服务器仅支持 LEASEQUERY 消息，而不是整套的普通 DHCP 消息。
 
@@ -1156,7 +1189,8 @@ DHCP认证选项包括重放检测，可使用不同方法
 进行认证。在2001年制定规范时，这个选项没有
 像今天这样广泛使用
 
-为了缓解这些问题，\href{https://www.rfc-editor.org/rfc/rfc3118}{\href{https://www.rfc-editor.org/rfc/rfc3118}{[RFC3118]}}规定了一种认证 DHCP 消息的方法。它定义了一个 DHCP选项，即认证
+为了缓解这些问题，\href{https://www.rfc-editor.org/rfc/rfc3118}{\href{https://www.rfc-editor.org/rfc/rfc3118}{[RFC3118]}}规定了一种认证
+DHCP 消息的方法。它定义了一个 DHCP选项，即认证
 选项，采用如图6-22 所示的格式。
 
 认证选项的目的是确定 DHCP
@@ -1181,11 +1215,13 @@ DHCP认证选项包括重放检测，可使用不同方法
 
 DHCP 认证没有广泛使用（至少）有两个原因。第一，这种方法需要在 DHCP 服务器和
 每个需要认证的客户机之间分发共享密钥。第二，认证选项的定义出现在DHCP 已广泛使用
-之后。尽管如此，\href{https://www.rfc-editor.org/rfc/rfc4030}{\href{https://www.rfc-editor.org/rfc/rfc4030}{[RFC4030]}}建立在这个规范之上，以帮助DHCP 消息通过中继代理安全转
+之后。尽管如此，\href{https://www.rfc-editor.org/rfc/rfc4030}{\href{https://www.rfc-editor.org/rfc/rfc4030}{[RFC4030]}}建立在这个规范之上，以帮助DHCP
+消息通过中继代理安全转
 发（见6.2.6节）。
 
 \subsection{重新配置扩展}
-在普通操作中，DHCP 客户机启动对地址绑定的更新。\href{https://www.rfc-editor.org/rfc/rfc3203}{\href{https://www.rfc-editor.org/rfc/rfc3203}{[RFC3203]}}定义了重新配置扩
+在普通操作中，DHCP
+客户机启动对地址绑定的更新。\href{https://www.rfc-editor.org/rfc/rfc3203}{\href{https://www.rfc-editor.org/rfc/rfc3203}{[RFC3203]}}定义了重新配置扩
 展和相关的 DHCPFORCERENEW消息。这个扩展允许服务器引发一个客户机改变更新状
 态，并通过别的普通操作（即 DHCPREQUEST）尝试更新租约。一台不希望更新租约的服务
 器可能响应一个 DHCPNAK，导致客户机重新启动为 INIT 状态。这台客户机稍后使用一个
@@ -1197,7 +1233,9 @@ DHCPDISCOVER 消息重新开始。
 证没有得到广泛使用，因此重新配置扩展同样没有流行起来。
 
 \subsection{快速确认}
-DHCP 快速确认选项\href{https://www.rfc-editor.org/rfc/rfc4039}{\href{https://www.rfc-editor.org/rfc/rfc4039}{[RFC4039]}}允许一台 DHCP服务器通过一个 DHCPACK 来响应
+DHCP
+快速确认选项\href{https://www.rfc-editor.org/rfc/rfc4039}{\href{https://www.rfc-editor.org/rfc/rfc4039}{[RFC4039]}}允许一台
+DHCP服务器通过一个 DHCPACK 来响应
 DHCPDISCOVER 消息，从而有效跳过DHCPREQUEST消息，并最终使用两消息交换
 来代替四消息交换。这个选项的设计目的是快速配置可能频繁改变其网络接人点的主机
 （例如移动主机）。当仅有一台可用的DHCP服务器并且地址充足时，我们可以不关注这
@@ -1212,8 +1250,10 @@ DHCPDISCOVER 消息，从而有效跳过DHCPREQUEST消息，并最终使用两�
 \subsection{位置信息（LCI 和 LoST）}
 
 在某些情况下，将主机配置为知道自己的位置是有用的。这样的信息可编码使用，例如
-纬度、经度和海拔高度。IETF 的一个众所周知的成果是 Geoconf（“地理配置”）\href{https://www.rfc-editor.org/rfc/rfc6225}{\href{https://www.rfc-editor.org/rfc/rfc6225}{[RFC6225]}}，
-\href{https://www.rfc-editor.org/rfc/rfc6225}{\href{https://www.rfc-editor.org/rfc/rfc6225}{[RFC6225]}}规定了如何使用GeoConf（123）和 GeoLoc（144）的DHCP选项，为客户机提供
+纬度、经度和海拔高度。IETF 的一个众所周知的成果是
+Geoconf（“地理配置”）\href{https://www.rfc-editor.org/rfc/rfc6225}{\href{https://www.rfc-editor.org/rfc/rfc6225}{[RFC6225]}}，
+\href{https://www.rfc-editor.org/rfc/rfc6225}{\href{https://www.rfc-editor.org/rfc/rfc6225}{[RFC6225]}}规定了如何使用GeoConf（123）和
+GeoLoc（144）的DHCP选项，为客户机提供
 这种地理空间位置配置信息（LCI）。地理空间LCI 不仅包括纬度、经度和高度坐标，也为每
 个信息提供分辦率指标。LCI 可用于一系列目的，包括紧急服务。如果一个呼叫者使用IP 电
 话请求紧急援助，LCI 可指示发生紧急情况的位置。
@@ -1221,23 +1261,29 @@ DHCPDISCOVER 消息，从而有效跳过DHCPREQUEST消息，并最终使用两�
 尽管刚提到的物理位置信息对找到特定的个人或系统是有用的，但有时知道一个实体的
 市政位置也是重要的。市政位置根据行政地理表示位置，例如国家、城市、区、街道，以及
 其他类似的参数。市政位置信息可通过DHCP以物理位置所采用的方式提供，使用的LCI
-结构与地理空间LCI 中使用的一样。\href{https://www.rfc-editor.org/rfc/rfc4776}{\href{https://www.rfc-editor.org/rfc/rfc4776}{[RFC4776]}}定义了携带市政位置的GEOCONF\_CIVIC
+结构与地理空间LCI
+中使用的一样。\href{https://www.rfc-editor.org/rfc/rfc4776}{\href{https://www.rfc-editor.org/rfc/rfc4776}{[RFC4776]}}定义了携带市政位置的GEOCONF\_CIVIC
 （99）选项。这种格式的LCI 比地理空间信息更麻烦，这是因为各个国家在行政地理上命名
 位置的方法不同。由于这种名称除了需要 DHCP 常用的英语、ASCII语言和字符集外，可能
 还需要其他语言和字符集的支持，这会带来额外的复杂性。不仅是 DHCP 方面，这里还存
-在位置的隐私问题。IETF 在 Geopriv 框架中讨论了这个问题。例如，参见\href{https://www.rfc-editor.org/rfc/rfc3693}{\href{https://www.rfc-editor.org/rfc/rfc3693}{[RFC3693]}}了解
+在位置的隐私问题。IETF 在 Geopriv
+框架中讨论了这个问题。例如，参见\href{https://www.rfc-editor.org/rfc/rfc3693}{\href{https://www.rfc-editor.org/rfc/rfc3693}{[RFC3693]}}了解
 更多信息。
 
-一个可供选择的高层协议称为启用 HTTP 的位置投递（HELD）协议\href{https://www.rfc-editor.org/rfc/rfc5985}{\href{https://www.rfc-editor.org/rfc/rfc5985}{[RFC5985]}}，它可用
+一个可供选择的高层协议称为启用 HTTP
+的位置投递（HELD）协议\href{https://www.rfc-editor.org/rfc/rfc5985}{\href{https://www.rfc-editor.org/rfc/rfc5985}{[RFC5985]}}，它可用
 于提供位置信息。代替在 DHCP 消息中直接编码LCI，而是采用DHCP 选项 OPTION\_V4
 ACCESS\_DOMAIN（213）和 OPTION\_V6\_ACCESS\_DOMAIN（57）分别 IPv4 和 IPv6提
-供一台 HELD 服务器的 FQDN \href{https://www.rfc-editor.org/rfc/rfc5986}{\href{https://www.rfc-editor.org/rfc/rfc5986}{[RFC5986]}}。
+供一台 HELD 服务器的 FQDN
+\href{https://www.rfc-editor.org/rfc/rfc5986}{\href{https://www.rfc-editor.org/rfc/rfc5986}{[RFC5986]}}。
 
 当一台主机知道自己的位置时，它可能需要使用该位置的相关服务（例如位置最近的医
-院）。IETF 的位置到服务转换（LoST）框架\href{https://www.rfc-editor.org/rfc/rfc5222}{\href{https://www.rfc-editor.org/rfc/rfc5222}{[RFC5222]}}通过一个使用位置相关URI访问的应
+院）。IETF
+的位置到服务转换（LoST）框架\href{https://www.rfc-editor.org/rfc/rfc5222}{\href{https://www.rfc-editor.org/rfc/rfc5222}{[RFC5222]}}通过一个使用位置相关URI访问的应
 用层协议来实现上述功能。DHCP 选项 OPTION\_V4\_LOST （137）和 OPTION\_V6\_LOST（S1）
 为一个FQDN 提供可变长度的编码，FQDN 分别为DHCPv4 和DHCPv6 指定一台LoST服务
-器的名称\href{https://www.rfc-editor.org/rfc/rfc5223}{\href{https://www.rfc-editor.org/rfc/rfc5223}{[RFC5223]}}。这个编码与 DNS 的域名编码采用相同格式（见第11章）。
+器的名称\href{https://www.rfc-editor.org/rfc/rfc5223}{\href{https://www.rfc-editor.org/rfc/rfc5223}{[RFC5223]}}。这个编码与
+DNS 的域名编码采用相同格式（见第11章）。
 
 \subsection{移动和切換信息（MoS 和 ANDSF）}
 随着使用移动计算机和智能手机通过蜂窝技术访问 Internet 的用户逐渐增多，定义了有
@@ -1247,17 +1293,21 @@ ACCESS\_DOMAIN（213）和 OPTION\_V6\_ACCESS\_DOMAIN（57）分别 IPv4 和 IPv
 的组织之一。
 
 IEEE 802.21标准［802.21-2008］规定了一个不同类型网络之间的介质无关切换（MIH）的
-框架，包括那些由 IEEE（802.3、802.11、802.16）、3GPP 和3GPP2定义的类型。\href{https://www.rfc-editor.org/rfc/rfc5677}{\href{https://www.rfc-editor.org/rfc/rfc5677}{[RFC5677]}}
+框架，包括那些由 IEEE（802.3、802.11、802.16）、3GPP
+和3GPP2定义的类型。\href{https://www.rfc-editor.org/rfc/rfc5677}{\href{https://www.rfc-editor.org/rfc/rfc5677}{[RFC5677]}}
 中提供了IETF 背景下设计的这种框架。MoS提供了3种类型的服务：信息服务、命令服务
 和事件服务。粗略地说，这些服务提供了有关可用网络、控制链路参数功能和链路状态变化
-通知的信息。MoS发现DHCP 选项\href{https://www.rfc-editor.org/rfc/rfc5678}{\href{https://www.rfc-editor.org/rfc/rfc5678}{[RFC5678]}}移动节点获得地址或域名提供了一种手段，
+通知的信息。MoS发现DHCP
+选项\href{https://www.rfc-editor.org/rfc/rfc5678}{\href{https://www.rfc-editor.org/rfc/rfc5678}{[RFC5678]}}移动节点获得地址或域名提供了一种手段，
 无论提供这些服务的服务器使用 DHCPv4 还是 DHCPV6。对于 IPv4，OPTION-IPV4\_Address-
 MoS选项（139）包含一个子选项的向量，其中包含提供每种服务的服务器的IP地址。
 OPTION-IPv4\_FODN-MoS 选项（140）的一个子选项为每种服务的服务器提供了一个 FQDN
 向量。其他类似选项有 OPTION-IPv6\_Address-MoS （54）和 OPTION-IPV6\_FQDN （5S），它
 们为 IPv6 提供了同等功能。
 
-基于3GPP的ANDSF 规范，\href{https://www.rfc-editor.org/rfc/rfc6153}{\href{https://www.rfc-editor.org/rfc/rfc6153}{[RFC6153]}}定义了携带 ANDSF 信息的DHCPv4 和 DHCPV6
+基于3GPP的ANDSF
+规范，\href{https://www.rfc-editor.org/rfc/rfc6153}{\href{https://www.rfc-editor.org/rfc/rfc6153}{[RFC6153]}}定义了携带
+ANDSF 信息的DHCPv4 和 DHCPV6
 选项。特别是，它定义了移动设备发现ANDSF 服务器地址的选项。ANDSF 服务器由蜂窝基
 础设施运营商来配置，并可能保存多种传输网络（例如同时使用3G和Wi-Fi）的可用性和访
 问策略等信息。
@@ -1266,7 +1316,8 @@ ANDSF IPv4地址选项（142）包含一个ANDSF服务器的IPv4地址向量。�
 优先顺序（第一个是最合适的）提供。ANDSF IPv6 地址选项（143）包含一个 ANDSF 服务
 器的IPv6地址向量。要使用DHCPv4请求 ANDSF 信息，移动节点可在参数请求列表中包括
 ANDSF IPv4地址选项。要使用 DHCPv6 请求 ANDSF 信息，客户机可在选项请求选项（ORO）
-中包含 ANDSF IPv6地址选项（见\href{https://www.rfc-editor.org/rfc/rfc3315}{\href{https://www.rfc-editor.org/rfc/rfc3315}{[RFC3315]}}的22.7节）。
+中包含 ANDSF
+IPv6地址选项（见\href{https://www.rfc-editor.org/rfc/rfc3315}{\href{https://www.rfc-editor.org/rfc/rfc3315}{[RFC3315]}}的22.7节）。
 
 \subsection{DHCP 嗅探}
 DHCP “嗅探”是某些交换机厂商在其产品中提供的一种能力，可用于检查DHCP 消息
@@ -1286,16 +1337,19 @@ MAC地址，因此这种技术只能提供有限的保护。
 
 \subsection{IPv4 链路本地地址的动态配置}
 在一台主机没有任何手工配置的地址，并且所在网络没有DHCP 服务器的情况下，基
-于IP 的通信是不可能发生的，除非主机使用某种方式生成IP 地址。\href{https://www.rfc-editor.org/rfc/rfc3927}{\href{https://www.rfc-editor.org/rfc/rfc3927}{[RFC3927]}}描述了一种
+于IP 的通信是不可能发生的，除非主机使用某种方式生成IP
+地址。\href{https://www.rfc-editor.org/rfc/rfc3927}{\href{https://www.rfc-editor.org/rfc/rfc3927}{[RFC3927]}}描述了一种
 机制，主机通过该机制可自动从链路本地范围 169.254.1.1 至169.254.254.254使用16位子网
-掩码 255.255.0.0生成自己的IPv4地址（见\href{https://www.rfc-editor.org/rfc/rfc5735}{\href{https://www.rfc-editor.org/rfc/rfc5735}{[RFC5735]}}）。这种方法称为链路本地地址的动态
+掩码
+255.255.0.0生成自己的IPv4地址（见\href{https://www.rfc-editor.org/rfc/rfc5735}{\href{https://www.rfc-editor.org/rfc/rfc5735}{[RFC5735]}}）。这种方法称为链路本地地址的动态
 配置或自动专用IP 寻址（APIPA）。从本质上来说，就是一台主机从一个范围中随机选择
 个地址，并检查该地址是否已在本子网中被其他系统使用。这种检查通过IPv4 ACD来实现
 （见第4章）。
 
 \subsection{链路本地地址的 IPV6 SLAAC}
 
-IPv6 SLAAC 的目标是允许节点自动（和自主）分配链路本地IPv6地址。\href{https://www.rfc-editor.org/rfc/rfc4862}{\href{https://www.rfc-editor.org/rfc/rfc4862}{[RFC4862]}}中
+IPv6 SLAAC
+的目标是允许节点自动（和自主）分配链路本地IPv6地址。\href{https://www.rfc-editor.org/rfc/rfc4862}{\href{https://www.rfc-editor.org/rfc/rfc4862}{[RFC4862]}}中
 描述了 IPv6 SLAAC。它包括3个主要步骤：获得一个链路本地地址，使用无状态自动配置
 获取全球地址，检测链路本地地址是否已在链路中使用。无状态自动配置可用于没有路由器
 的环境，在这种情况下只分配链路本地地址。当路由器存在时，由一个路由器通告的前缀和
@@ -1315,7 +1369,8 @@ IPv6 SLAAC 的目标是允许节点自动（和自主）分配链路本地IPv6�
 \subsubsection{IPv6 重复地址检测 （DAD）}
 IPv6 DAD 使用ICMPv6邻居请求和邻居通告消息（见第8章），以确定一个特定（临
 时或乐观）IPv6地址是否已在连接链路上使用。本次讨论只针对临时地址，但DAD也适用
-于乐观地址。\href{https://www.rfc-editor.org/rfc/rfc4862}{\href{https://www.rfc-editor.org/rfc/rfc4862}{[RFC4862]}}中定义了DAD，并建议在为一个接口分配 IPv6地址时使用，无论
+于乐观地址。\href{https://www.rfc-editor.org/rfc/rfc4862}{\href{https://www.rfc-editor.org/rfc/rfc4862}{[RFC4862]}}中定义了DAD，并建议在为一个接口分配
+IPv6地址时使用，无论
 手动分配还是自动配置或 DHCPv6 分配。如果发现地址重复，将不使用该临时地址。如果
 DAD成功，临时地址转换为优先状态，并可不受限制地使用。
 
@@ -1326,10 +1381,10 @@ DAD按以下步骤执行：一个节点首先加入临时地址的所有节点�
 消息，说明DAD失败，并放弃被检查的地址。
 
 \begin{tcolorbox}
-    加入组播组的结果之一是发送MLD 消息（见第9章），但其传输延迟了一个
-    随机时间（根据\href{https://www.rfc-editor.org/rfc/rfc4862}{\href{https://www.rfc-editor.org/rfc/rfc4862}{[RFC4862]}}确定），以避免很多节点同时加入所有主机组（例如在
-    一次电源恢复后）引起网络拥塞。对于DAD，这些 MLD 消息用于在必要时通知
-    MLD 嗅探交换机转发组播流量。
+  加入组播组的结果之一是发送MLD 消息（见第9章），但其传输延迟了一个
+  随机时间（根据\href{https://www.rfc-editor.org/rfc/rfc4862}{\href{https://www.rfc-editor.org/rfc/rfc4862}{[RFC4862]}}确定），以避免很多节点同时加入所有主机组（例如在
+  一次电源恢复后）引起网络拥塞。对于DAD，这些 MLD 消息用于在必要时通知
+  MLD 嗅探交换机转发组播流量。
 \end{tcolorbox}
 
 当一个地址未成功完成DAD 时，任何针对它的邻居请求被视为一种特殊情况，说明其
@@ -1365,12 +1420,14 @@ SLAAC 共同形成全球地址。如果是，这个前缀与接口标识符（�
 因此连接的所有系统都可看见（见图 6-25）。
 
 图6-25中所示的RA从路由器的链路本地地址 fe80：：204:5aff:fe9f:9e80发送到所有系
-统组播地址 ff02:1。RA 中的标志字段可能包含几个配置选项和扩展\href{https://www.rfc-editor.org/rfc/rfc5175}{\href{https://www.rfc-editor.org/rfc/rfc5175}{[RFC5175]}}，标志字段
+统组播地址 ff02:1。RA
+中的标志字段可能包含几个配置选项和扩展\href{https://www.rfc-editor.org/rfc/rfc5175}{\href{https://www.rfc-editor.org/rfc/rfc5175}{[RFC5175]}}，标志字段
 设置0表示该地址在这条链路上不是由DHCPv6来“管理”。前缀选项表示这个全球前缀
 2001:db8：：/64用于这条链路上。这里没有携带64位的前缀长度，而是根据\href{https://www.rfc-editor.org/rfc/rfc4291}{\href{https://www.rfc-editor.org/rfc/rfc4291}{[RFC4291]}}中定
 义的值确定。与前缀选项相关的标志字段值为 0xcO，表示前缀用于链路（可与路由器一起使
 用）和设置了自动标志，这意味着主机可用该前缀自动配置其他地址。它也包含递归DNS服
-务器（RDNSS）选项\href{https://www.rfc-editor.org/rfc/rfc6106}{\href{https://www.rfc-editor.org/rfc/rfc6106}{[RFC6106]}}，表示可用的 DNS服务器地址为2001：：db8：：1。 SLLAO 指出
+务器（RDNSS）选项\href{https://www.rfc-editor.org/rfc/rfc6106}{\href{https://www.rfc-editor.org/rfc/rfc6106}{[RFC6106]}}，表示可用的
+DNS服务器地址为2001：：db8：：1。 SLLAO 指出
 路由器MAC地址为00:04:5a:9f:9e:80。这个信息可用于任何节点填充自己的邻居高速缓存
 （IPv4 ARP缓存与IPv6 中等价；邻居发现将在第8章中讨论）。
 
@@ -1383,37 +1440,37 @@ de93:5ab7:405a。这个地址中的低序位采用的随机数与配置其链路
 复后，客户机分配另一个地址，并对它执行 DAD（见图6-27）。
 
 \begin{figure}[H]
-    \centering
-	\includegraphics[scale=0.5]{imgs/6/6-23.png}
-	\caption{路由器请求导致一台临近的路由器发送了一个路由器通告。请求消息被发送到所有路由器地址（ff02::2）}
+  \centering
+  \includegraphics[scale=0.5]{imgs/6/6-23.png}
+  \caption{路由器请求导致一台临近的路由器发送了一个路由器通告。请求消息被发送到所有路由器地址（ff02::2）}
 \end{figure}
 
 \begin{figure}[H]
-    \centering
-	\includegraphics[scale=0.5]{imgs/6/6-24.png}
-	\caption{ ICMPv6 RS消息导致一台临近的路由器提供配置信息,例如它所在网络上的全球网络前缀}
+  \centering
+  \includegraphics[scale=0.5]{imgs/6/6-24.png}
+  \caption{ ICMPv6 RS消息导致一台临近的路由器提供配置信息,例如它所在网络上的全球网络前缀}
 \end{figure}
 
 \begin{figure}[H]
-    \centering
-	\includegraphics[scale=0.5]{imgs/6/6-25.png}
-	\caption{ICMPv6 RA 消息提供了网络中的默认路由器和全局地址前缀的位置以及是否可用的信息。它
+  \centering
+  \includegraphics[scale=0.5]{imgs/6/6-25.png}
+  \caption{ICMPv6 RA 消息提供了网络中的默认路由器和全局地址前缀的位置以及是否可用的信息。它
     也包括一个 DNS 服务器的位置，并表明该路由器是否可像移动 IPv6 家乡代理（本例中没有）
-    那样发送通告。客户机在配置操作中可能使用部分或全部信息}
+  那样发送通告。客户机在配置操作中可能使用部分或全部信息}
 \end{figure}
 
 \begin{figure}[H]
-    \centering
-	\includegraphics[scale=0.5]{imgs/6/6-26.png}
-	\caption{ICMPv6 RA 消息提供了网络中的默认路由器和全局地址前缀的位置以及是否可用的信息。它
+  \centering
+  \includegraphics[scale=0.5]{imgs/6/6-26.png}
+  \caption{ICMPv6 RA 消息提供了网络中的默认路由器和全局地址前缀的位置以及是否可用的信息。它
     也包括一个 DNS 服务器的位置，并表明该路由器是否可像移动 IPv6 家乡代理（本例中没有）
-    那样发送通告。客户机在配置操作中可能使用部分或全部信息}
+  那样发送通告。客户机在配置操作中可能使用部分或全部信息}
 \end{figure}
 
 \begin{figure}[H]
-    \centering
-	\includegraphics[scale=0.5]{imgs/6/6-27.png}
-	\caption{对地址 2001:db8：：9cf4:f812:816d:5c97 的 DAD}
+  \centering
+  \includegraphics[scale=0.5]{imgs/6/6-27.png}
+  \caption{对地址 2001:db8：：9cf4:f812:816d:5c97 的 DAD}
 \end{figure}
 
 图6-27中的DAD操作针对地址 2001:db8：：9cf4:f812:816d:5c97。这个地址是一个临时
@@ -1424,7 +1481,6 @@ IPv6地址，出于隐私保护的原因，它的低序位使用一个不同的�
 成后，客户机对自己的链路本地地址和两个全球地址执行 SLAAC。通过这些地址信息足以
 进行本地或全球通信。临时地址将定期更改，以协助增强隐私保护。在不需要隐私保护的情
 况下，可使用以下命令在 Windows 中禁用该功能：
-
 
 \begin{verbatim}
 c:l> netsh interface ipv6 Bet privacy state=disabled
@@ -1446,7 +1502,8 @@ Linux# sysctl -w net.ipv6.conf.default.use\_tempaddr=0
 \subsubsection{无状态 DHCP}
 我们已提到 DHCPv6 可用于一种“无状态”模式，在这种模式下，DHCPv6服务器不
 指定地址（或保留任何一台客户机的状态），但提供其他配置信息。无状态 DHCPv6定义在
-\href{https://www.rfc-editor.org/rfc/rfc3736}{\href{https://www.rfc-editor.org/rfc/rfc3736}{[RFC3736]}} 中，并将SLAAC 和 DHCPv6 相结合。有人认为这种结合是一种有吸引力的部署
+\href{https://www.rfc-editor.org/rfc/rfc3736}{\href{https://www.rfc-editor.org/rfc/rfc3736}{[RFC3736]}}
+中，并将SLAAC 和 DHCPv6 相结合。有人认为这种结合是一种有吸引力的部署
 方案，网络管理员在部署 DHCPv4 时不必直接关心地址池。
 
 在一个无状态 DHCPv6 部署方案中，假设节点采用DHCPv6之外的方法获得自己的地
@@ -1475,17 +1532,17 @@ IP 地址自动配置的用途通常是有限的，这是由于路由器可能�
 个IP地址（相对容易检测），相对于获得一个实际不能有效使用的IP 地址，前者通常更有用。
 
 \begin{tcolorbox}
-    其他可能用于链路本地编址的名字服务包括Bonjour/ZeroConf （Apple）、
-    LLMNR 和 NetBIOS（Microsoft）。随着时间推移，这些来自不同厂商的服务没有成
-    为IETF标准，在本地环境中将名称映射到地址时的行为有很大差别。关于DNS本
-    地替代者的详细信息见第11章。
+  其他可能用于链路本地编址的名字服务包括Bonjour/ZeroConf （Apple）、
+  LLMNR 和 NetBIOS（Microsoft）。随着时间推移，这些来自不同厂商的服务没有成
+  为IETF标准，在本地环境中将名称映射到地址时的行为有很大差别。关于DNS本
+  地替代者的详细信息见第11章。
 \end{tcolorbox}
 
 我们可以禁止使用 APIPA，防止系统自己分配一个 IP地址。在Windows 中，这是通过
 创建以下注册表项（注册表项是一行，这里为了说明而换了行）来完成：
 
 \begin{verbatim}
-    
+
 HKLM\SYSTEM\CurrentControlSet \Services \Tcpip\Parameters\
 IPAutoconfigurationEnabled
 \end{verbatim}
@@ -1506,7 +1563,7 @@ NOZEROCONE=YeS
 
 在一台 Linux 客户机中禁用 SLAAC，可使用以下命令：
 
-\begin{verbatim}    
+\begin{verbatim}
 Linux# sysct1 -w net.ipv6.conf.all.autoconf=0
 \end{verbatim}
 
@@ -1850,30 +1907,32 @@ IPCP 用于获取和配置 IP 地址。注意，这时可能需要额外的配�
 到一个特定网络的未授权客户机数量。
 
 IETF 致力于IPv6邻居发现提供安全性，哪个邻居、什么时间或是否已部署SLAAC，
-这些因素将直接影响网络运行的安全性。\href{https://www.rfc-editor.org/rfc/rfc3756}{\href{https://www.rfc-editor.org/rfc/rfc3756}{[RFC3756]}} 概括了2004年以米的信任及威胁假设，
-\href{https://www.rfc-editor.org/rfc/rfc3971}{\href{https://www.rfc-editor.org/rfc/rfc3971}{[RFC3971]}}定义了安全邻居发现（SEND）协议。SEND 将 IPsec（见第18章）用于邻居发现
+这些因素将直接影响网络运行的安全性。\href{https://www.rfc-editor.org/rfc/rfc3756}{\href{https://www.rfc-editor.org/rfc/rfc3756}{[RFC3756]}}
+概括了2004年以米的信任及威胁假设，
+\href{https://www.rfc-editor.org/rfc/rfc3971}{\href{https://www.rfc-editor.org/rfc/rfc3971}{[RFC3971]}}定义了安全邻居发现（SEND）协议。SEND
+将 IPsec（见第18章）用于邻居发现
 数据包，并结合使用加密生成的地址（CGA）\href{https://www.rfc-editor.org/rfc/rfc3972}{\href{https://www.rfc-editor.org/rfc/rfc3972}{[RFC3972]}}。这种地址由密钥散列函数而获得
 所以它们只能由系统保存的适当关键信息生成。
 
 \begin{figure}[H]
-    \centering
-	\includegraphics[scale=0.5]{imgs/6/6-31.png}
-	\caption{对地址 2001:db8：：9cf4:f812:816d:5c97 的 DAD}
+  \centering
+  \includegraphics[scale=0.5]{imgs/6/6-31.png}
+  \caption{对地址 2001:db8：：9cf4:f812:816d:5c97 的 DAD}
 \end{figure}
 
 \begin{figure}[H]
-    \centering
-	\includegraphics[scale=0.5]{imgs/6/6-32.png}
-	\caption{PPPoE的PADS消息用于确认客户机和接人集中器之间的关联。这个消息
-    还将会话ID设置为Oxecbd,它用于后续PPP会话数据包中}
+  \centering
+  \includegraphics[scale=0.5]{imgs/6/6-32.png}
+  \caption{PPPoE的PADS消息用于确认客户机和接人集中器之间的关联。这个消息
+  还将会话ID设置为Oxecbd,它用于后续PPP会话数据包中}
 \end{figure}
 
 \begin{figure}[H]
-    \centering
-	\includegraphics[scale=0.5]{imgs/6/6-33.png}
-	\caption{PPPOE 会话的第一个 PPP消息是一个配置请求。以太网类型更改为Ox8864，表示这是一？
+  \centering
+  \includegraphics[scale=0.5]{imgs/6/6-33.png}
+  \caption{PPPOE 会话的第一个 PPP消息是一个配置请求。以太网类型更改为Ox8864，表示这是一？
     动的PPP会话，并且会话ID 设置为Oxecbd。在这个例子中，PPP客户机使用相对不安
-    密码认证协议进行身份认证}
+  密码认证协议进行身份认证}
 \end{figure}
 
 \section{总结}
@@ -1929,7 +1988,8 @@ IARP http://www.iana.org/assignments/arp-parameters
 
 ［IBDP］ http://www.iana.org/assignments/bootp-dhcp-parameters
 
-［ID4LQ］ K. Kinnear, B. Volz, M. Stapp, D. Rao, B. Joshi, N. Russell, and P. Kurapati，
+［ID4LQ］ K. Kinnear, B. Volz, M. Stapp, D. Rao, B. Joshi, N. Russell,
+and P. Kurapati，
 
 “Bulk DHCPV Lease Query" Internet draft-ietf-dhc-dhcpv4-bulk-leasequery，
 

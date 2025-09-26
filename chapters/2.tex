@@ -23,6 +23,7 @@
 
 \section{表示 IP 地址}
 
+% tex-fmt: off
 \begin{table}[H]
     \centering
     \label{tab:2.1}
@@ -37,6 +38,7 @@
         \verb|255.255.255.255| & \verb|11111111 11111111 11111111 11111111| \\ \hline
     \end{tabular}
 \end{table}
+% tex-fmt: on
 
 大多数 \verb|Internet|用户熟悉 \verb|IP| 地址，并且了解最流行的地址类型：\verb|\verb|IPv4||地址。这些地址
 通常采用所谓的点分四组或点分十进制表示法，例如 \verb|165.195.130.107|。点分四组表示法由
@@ -73,6 +75,7 @@
 
 表2-2介绍了一些\verb|IPv6|地址的例子以及它们的二进制表示。
 
+% tex-fmt: off
 \begin{table}[H]
     \centering
     \caption{IPv6地址和它的二进制表示的几个例子}
@@ -84,6 +87,7 @@
         \verb|::1.2.240.1|或\verb|::102:f001| & \begin{tabular}[c]{@{}c@{}}\verb|0000000000000000 0000000000000000|\\ \verb|0000000000000000 0000000000000000|\\ \verb|0000000000000000 0000000000000000|\\ \verb|0000000100000010 1111000000000001|\end{tabular} \\ \hline
     \end{tabular}
 \end{table}
+% tex-fmt: on
 
 在某些情况下（例如表示一个包含地址的URL 时），\verb|IPv6|地址中的冒号分隔符可能与其
 他分隔符混淆，例如IP 地址和端口号之间使用的冒号。在这种情况下，用括号字符［和］包
@@ -142,6 +146,7 @@
 如果我们仔细看这些地址结构，可看到不同类的相对大小，以及在实际使用中的地址范围。
 表2-3给出了这种类结构（有时被称分类地址结构）。
 
+% tex-fmt: off
 \begin{table}[H]
     \centering
     \caption{最初（“分类”）的IPv4地址空间划分}
@@ -155,6 +160,7 @@
         E	&	240.0.0.0 ~255.255.255.255	&	1111	&	保留	&	1/16	&	N/A	&	N/A \\ \hline
     \end{tabular}
 \end{table}
+% tex-fmt: on
 
 该表显示了分类地址结构的主要使用方式，如何将不同大小的单播地址块分配给用
 户。类划分基于给定大小的可用网络数和给定网络中的可分配主机数之间的折中。例如，某
@@ -231,6 +237,7 @@ C类的网络号，保留一些剩余主机号进一步用于站点内分配。�
 码，只需给出一些连续位的1（左起）的掩码。这种格式是当前最常见的格式，有时也被称
 为前缀长度。表2-4列出了\verb|IPv4|的一些例子。
 
+% tex-fmt: off
 \begin{table}[H]
     \centering
     \caption{各种格式的IPv4子网掩码的例子}
@@ -259,6 +266,7 @@ C类的网络号，保留一些剩余主机号进一步用于站点内分配。�
         ff00::                & \textbackslash 8           & \begin{tabular}[c]{@{}c@{}}0000000000000000 0000000000000000\\ 0000000000000000 0000000000000000\\ 0000000000000000 0000000000000000\\ 0000000000000000 0000000000000000\end{tabular} \\ \hline
     \end{tabular}
 \end{table}
+% tex-fmt: on
 
 掩码由路由器和主机使用，以确定一个 IP 地址的网络/子网部分的结束和主机部分的开
 始。子网掩码中的一位设为1表示一个IP地址的对应位与一个地址的网络/子网部分的对应
@@ -588,6 +596,7 @@ Kamoun 发表的分层路由研究［KK77］。他们发现，如果将网络拓
 \verb|IPv4| 和 \verb|IPv6|地址空间中都包括几个地址范围，它们被用于特殊用途（因此不能用于单
 播地址分配）。对于 \verb|IPv4|，这些地址显示在表2-7中\href{https://www.rfc-editor.org/rfc/rfc5735}{[RFC5735]}。
 
+% tex-fmt: off
 \begin{table}[H]
     \centering
     \caption{IPv4特殊用途地址（定义于2010年1月）}
@@ -611,9 +620,11 @@ Kamoun 发表的分层路由研究［KK77］。他们发现，如果将网络拓
         255.255.255.255/32	&	本地网络（受限的）广播地址	&	\href{https://www.rfc-editor.org/rfc/rfc0919}{[RFC0919]} \href{https://www.rfc-editor.org/rfc/rfc0922}{[RFC0922]}  \\ \hline
     \end{tabular}
 \end{table}
+% tex-fmt: on
 
 在\verb|IPv6| 中，许多地址范围和个别地址用于特定用途，它们都列在表2-8中\href{https://www.rfc-editor.org/rfc/rfc5156}{[RFC5156]}。
 
+% tex-fmt: off
 \begin{table}[H]
     \centering
     \caption{IPv6 特殊用途地址（定义于2008年4月）}
@@ -636,6 +647,7 @@ Kamoun 发表的分层路由研究［KK77］。他们发现，如果将网络拓
         ff00::/8	&	\verb|IPv6|组播地址，仅作为目的IP 地址使用	&	\href{https://www.rfc-editor.org/rfc/rfc4291}{[RFC4291]}  \\ \hline
     \end{tabular}
 \end{table}
+% tex-fmt: on
 
 对于 \verb|IPv4| 和\verb|IPv6|，没有指定作为特殊、组播或保留地址的地址范围可供单播使用。一
 些单播地址空间（\verb|IPv4| 的前缀10/8、172.16/12 和 192.168/16，以及 \verb|IPv6|的前缀 fc00:/7）被
@@ -701,6 +713,7 @@ Kamoun 发表的分层路由研究［KK77］。他们发现，如果将网络拓
 味着可提供228 =268 435 456个主机组（每个组是一个IP 地址）。这个地址空间被分为几个
 主要部分，它建立在对路由分配和处理的基础上［IP4MA］。表2-9列出了这些主要部分。
 
+% tex-fmt: off
 \begin{table}[H]
     \centering
     \caption{用于支持组播的IPv4的D类地址空间的主要部分}
@@ -732,6 +745,7 @@ Kamoun 发表的分层路由研究［KK77］。他们发现，如果将网络拓
         239.0.0.0 ~ 239.255.255.255	    &	管理范围    &	\href{https://www.rfc-editor.org/rfc/rfc2365}{[RFC2365]}  \\ \hline
     \end{tabular}
 \end{table}
+% tex-fmt: on
 
 到224.255.255.255的地址块被分配给某些应用协议或组织使用。这些分配工作由IANA
 或IETF完成。本地网络控制块限制为发送方的本地网络；发送到这些地址的数据报不会被
@@ -830,6 +844,7 @@ P设置1，无须基于每个组的全球性许可，对组播地址有两个可
 地址是基于主机的IID。为了了解这些不同格式如何工作，首先要了解\verb|IPv6| 组播地址中位字
 段的使用细节。它们被定义在表2-12中。
 
+% tex-fmt: off
 \begin{table}[H]
     \centering
     \caption{IPv6组播地址标志}
@@ -841,6 +856,7 @@ P设置1，无须基于每个组的全球性许可，对组播地址有两个可
         T	&	临时标志（0，永久分配的；1，临时的）	       &	\href{https://www.rfc-editor.org/rfc/rfc4291}{[RFC4291]}  \\ \hline
     \end{tabular}
 \end{table}
+% tex-fmt: on
 
 当T位字段被设置时，表示组地址是临时或动态分配的；它不是［IP6MA］ 中定义的标
 准地址。当P位字段被设置为1，T位也必须被设置为1。当这种情况发生时，使用基于单
@@ -903,6 +919,7 @@ RP关联的地址。RP被用于组播路由系统，以协调不在同一子网�
 与\verb|IPv4|相似，\verb|IPv6| 也有一些保留的组播地址。除了前面提到的可变范围地址，这些地
 址还根据范围划分成组。表2-13给出了一个 \verb|IPv6| 组播空间中的保留列表。［IP6MA］提供了
 更多的信息。
+% tex-fmt: off
 \begin{table}[H]
     \centering
     \caption{IPv6组播地址空间中的保留地址}
@@ -938,6 +955,7 @@ RP关联的地址。RP被用于组播路由系统，以协调不在同一子网�
         ff3x::/32	&	（特殊的）	&	SSM 块	&	\href{https://www.rfc-editor.org/rfc/rfc4607}{[RFC4607]} \\ \hline
     \end{tabular}
 \end{table}
+% tex-fmt: on
 
 \subsection{任播地址}
 任播地址是一个单播\verb|IPv4|或\verb|IPv6|地址，这些地址根据它所在的网络确定不同的主机。

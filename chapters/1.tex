@@ -4,14 +4,16 @@
 的。当一种语言用于一组行为时，需要使用一种协议。根据《新牛津美国辞典》，对协议的
 第一定义是：
 \begin{center}
-    \emph{国家事务或外交场合的正式程序或规则系统。}
+  \emph{国家事务或外交场合的正式程序或规则系统。}
 \end{center}
 
 我们每天执行很多协议：询问和回答问题、谈判商业交易、协同工作等。计算机也会执
 行各种协议。一系列相关协议的集合称为一个协议族。指定一个协议族中的各种协议之间的
 相互关系并划分需要完成的任务的设计，称协议族的体系结构或参考模型。TCP/IP 是一个
-实现 Internet 体系结构的协议族，它来源于 ARPANET 参考模型（ARM）\href{https://www.rfc-editor.org/rfc/rfc0871}{[RFC0871]}。 ARM
-受到了早期分组交换工作的影响，这些工作包括美国的 Paul Baran［B64］ 和 Leonard Kleinrock
+实现 Internet 体系结构的协议族，它来源于 ARPANET
+参考模型（ARM）\href{https://www.rfc-editor.org/rfc/rfc0871}{[RFC0871]}。 ARM
+受到了早期分组交换工作的影响，这些工作包括美国的 Paul Baran\cite{baran1964distributed} 和
+Leonard Kleinrock
 ［K64］、英国的 Donald Davies ［DBSW66］、法国的 Louis Pouzin ［P73］。虽然数年之后制定了
 其他协议体系结构（例如，ISO 协议体系结构 ［Z80］、Xerox 的 XNS ［X85］ 和 IBM 的 SNA
 ［196］），但TCP/P 已成为最流行的协议族。这里有几本有趣的书籍，它们关注计算机通信的
@@ -51,18 +53,18 @@ TCP/IP 协议族允许计算机、智能手机和嵌人式设备之间通信，�
 是可互换的术语，但我们通常认为因特网在计算机之间提供了消息通信能力，而万维网是一
 种使用因特网来通信的具体应用。在20世纪90年代早期，万维网恐怕是最重要的因特网应
 用，并使因特网技术得到全世界的重视。
-Internet 体系结构在几个目标的指导下建立。在［C88］中，Clark 描述首要目标是“发展
+Internet 体系结构在几个目标的指导下建立。在\cite{clark1988design}中，Clark 描述首要目标是“发展
 一种重复利用已有的互联网络的技术”。这句话的本质是 Internet 体系结构应将多种网络互联
 起来，并在互联的网络上同时运行多个应用。基于这个首要目标，Clark 提供了以下的二级
 目标列表：
 \begin{itemize}
-    \item Internet通信在网络或网关失效时必须能持续。
-    \item Internet 必须支持多种类型的通信服务。
-    \item Internet 体系结构必须兼容多种网络。
-    \item Internet体系结构必须允许对其资源的分布式管理。
-    \item Internet体系结构必须是经济有效的。
-    \item Internet 体系结构必须允许低能力主机的连接。
-    \item Internet 中使用的资源必须是可统计的。
+  \item Internet通信在网络或网关失效时必须能持续。
+  \item Internet 必须支持多种类型的通信服务。
+  \item Internet 体系结构必须兼容多种网络。
+  \item Internet体系结构必须允许对其资源的分布式管理。
+  \item Internet体系结构必须是经济有效的。
+  \item Internet 体系结构必须允许低能力主机的连接。
+  \item Internet 中使用的资源必须是可统计的。
 \end{itemize}
 上面列出的很多目标将被最终的设计决策所采纳。但是，在制定这些体系结构原则时，
 这些原则影响到设计者所做的选择，最后少数几种设计方案脱颖而出。我们将提到其中几种
@@ -80,7 +82,7 @@ Internet 体系结构在几个目标的指导下建立。在［C88］中，Clark
 使在并不繁忙的情况下。关于电话网络的常识是：在一次通话期间，即使我们没有说任何话，
 也要为这段时间而付费。
 
-20世纪60年代出现的一个重要概念（如［B64］中）是分组交换思想。在分组交换中，
+20世纪60年代出现的一个重要概念（如\cite{baran1964distributed}中）是分组交换思想。在分组交换中，
 包含一定字节数的数字信息“块”（分组）独立通过网络。来自不同来源或发送方的块可以
 组合，而且以后可以分解，这称为“（多路）复用”。这些块在到达目的地的过程中，需要在
 交换设备之间传输，并且路径可以改变。这样做有两个潜在的优点：网络更有弹性（设计者
@@ -147,7 +149,7 @@ CYCLADES［P73］系统，它是一个特定类型的分组，有关来源和最
 端到端论点倾向于支持一种使用“哑”网络和连接到网络的“智能”系统的设计方案。
 这是我们在TCP/IP 设计中所看到的，很多功能（例如，保证数据不丢失、发送方控制发送
 速率）在端主机的应用程序中实现。选择哪些功能在同一计算机、网络或软件栈中实现，这
-是另一个称为命运共享的相关原则［C88］。
+是另一个称为命运共享的相关原则\cite{clark1988design}。
 
 命运共享建议将所有必要的状态放在通信端点，这些状态用于维护一个活动的通信关联
 （例如虚拟连接）。由于这个原因，导致通信失效的情况也会导致一个或更多端点失效，这样
@@ -471,7 +473,8 @@ TCP发送到IP的PDU称为TCP段。
 
 这里还有两个传输层协议，它们相对比较新，并被用于某些系统中。由于它们的使用还
 不是很广泛，所以我们没对它们进行太多讨论，但它们是值得注意的。首先是数据报拥塞控制
-协议（DCCP），它在\href{https://www.rfc-editor.org/rfc/rfc4340}{[RFC4340]} 中定义。它提供了一种介于TCP 和 UDP之间的服务类型：面
+协议（DCCP），它在\href{https://www.rfc-editor.org/rfc/rfc4340}{[RFC4340]}
+中定义。它提供了一种介于TCP 和 UDP之间的服务类型：面
 向连接、不可靠的数据报交换，但具有拥塞控制功能。拥塞控制包括发送方控制发送速率的多
 种技术，以避免流量堵塞整个网络。我们将在第16章中结合 TCP详细介绍拥塞控制。
 
@@ -534,12 +537,12 @@ IPv6）的含义是有趣的，因为它表示一个 IP数据报可能出现在�
 安全（TLS）与基础的应用层协议共同使用（见第18章）。
 
 \begin{tcolorbox}
-    如果我们测试这些标准服务和其他 TCP/IP 服务（Telnet、FTP、SMTP 等）
-    使用的端口号，会发现它们大多数是奇数。这是有历史原因的，这些端口号从
-    NCP 端口号派生而来（NCP 是网络控制协议，在 TCP 之前作为 ARPANET 的传输
-    层协议）。NCP虽然简单，但不是全双工的，因此每个应用需要两个连接，并为每
-    个应用保留奇偶成对的端口号。当TCP 和UDP 成为标准的传输层协议时，每个应
-    用只需要一个端口号，因此来自 NCP的奇数端口号被使用。
+  如果我们测试这些标准服务和其他 TCP/IP 服务（Telnet、FTP、SMTP 等）
+  使用的端口号，会发现它们大多数是奇数。这是有历史原因的，这些端口号从
+  NCP 端口号派生而来（NCP 是网络控制协议，在 TCP 之前作为 ARPANET 的传输
+  层协议）。NCP虽然简单，但不是全双工的，因此每个应用需要两个连接，并为每
+  个应用保留奇偶成对的端口号。当TCP 和UDP 成为标准的传输层协议时，每个应
+  用只需要一个端口号，因此来自 NCP的奇数端口号被使用。
 \end{tcolorbox}
 注册端口号提供给有特殊权限的客户机或服务器，但IANA会维护一个为特定用途而
 保留的注册表，开发新应用时通常应避免使用这些端口号，除非你已购买某些IANA 分配的
@@ -561,7 +564,8 @@ Web 浏览器）通常会频繁使用域名，因此如果 DNS不能正常工作
 （或地址）对应到一个主机名。同样，另一个函数提供反向查找功能，为一个给定的IP地址
 查找对应的主机名。大多数应用程序将主机名作为输人，但是经常也需要一个 IP 地址。Web
 浏览器支持这种功能。例如，在浏览器中输入统一资源定位（URL），http://131.243.2.201/
-index.html 和 http://［2001:400:610:102:C9］/index.html，它们等效于 htp://ee.lbl.gov/index.
+index.html 和 http://［2001:400:610:102:C9］/index.html，它们等效于
+htp://ee.lbl.gov/index.
 html（在写作时，第二个例子需要成功建立 IPv6 连接）。
 
 \section{Internet、内联网和外联网}
@@ -581,10 +585,10 @@ TCP/IP 通信的世界范围的主机集合。Internet 是一个 internet，但�
 点链路、DSL、电缆 Internet服务等。
 
 \begin{tcolorbox}
-    这些设备又被称为IP 路由器，但我们将使用路由器这个术语。这些设备在
-    历史上曾被称为网关，这个术语用于很多比较旧的TCP/IP文献中。当前的网关术
-    语用于表示应用层网关（ALG），它为一个特定应用（通常是电子邮件或文件传输）
-    连接两个不同协议族（TCP/IP 和IBM 的 SNA）。
+  这些设备又被称为IP 路由器，但我们将使用路由器这个术语。这些设备在
+  历史上曾被称为网关，这个术语用于很多比较旧的TCP/IP文献中。当前的网关术
+  语用于表示应用层网关（ALG），它为一个特定应用（通常是电子邮件或文件传输）
+  连接两个不同协议族（TCP/IP 和IBM 的 SNA）。
 \end{tcolorbox}
 近年来，一些其他术语已被采用 TCP/IP 协议的各种互联网络所采纳。内联网是一个用
 于描述专用互联网络的术语，它通常由一个商业机构或其他企业来运行。大多数情况下，内
@@ -608,20 +612,20 @@ TCP/IP 通信的世界范围的主机集合。Internet 是一个 internet，但�
 服务，例如访问服务器主机中的文件。我们可以将服务器分为两类：选代和并发。迭代服务
 器经过以下步骤：
 \begin{enumerate}
-    \item I1. 等待客户机请求到达。
-    \item I2. 处理客户机请求。
-    \item I3.将响应发送给请求的客户机。
-    \item I4. 回到步骤I1。
+  \item I1. 等待客户机请求到达。
+  \item I2. 处理客户机请求。
+  \item I3.将响应发送给请求的客户机。
+  \item I4. 回到步骤I1。
 \end{enumerate}
 迭代服务器的问题是步骤12 需要经过较长时间。在此期间，无法为其他客户机服务。
 并发服务器经过以下步骤：
 
 \begin{enumerate}
-    \item C1.等待客户机请求到达。
-    \item C2. 启用一个新服务器实例来处理客户机请求。这可能涉及创建一个新的进程、任务或
+  \item C1.等待客户机请求到达。
+  \item C2. 启用一个新服务器实例来处理客户机请求。这可能涉及创建一个新的进程、任务或
     线程，它依赖于底层操作系统的支持。这个新的服务器处理一个客户机的全部请求。当请求
     的任务完成后，这个新的服务器终止。同时，原有服务器实例继续执行C3。
-    \item C3.回到步骤C1。
+  \item C3.回到步骤C1。
 \end{enumerate}
 并发服务器的优点是服务器只产生其他服务器实例，并由它们来处理客户机请求。本质
 上，每个客户都有自己的服务器。假设操作系统支持多个程序（目前所有操作系统基本都支
@@ -686,10 +690,14 @@ RFC被赋予更大的数字。它们可以从一些站点免费获得，包括 h
 于历史原因，下载的RFC通常是基本的文本文件，虽然有些RFC已使用更先进的文件格式
 来格式化或撰写。
 
-许多 RFC具有特妹意义，它们总结、澄清或解释其他一些特殊标准。例如，\href{https://www.rfc-editor.org/rfc/rfc5000}{[RFC5000]}
+许多
+RFC具有特妹意义，它们总结、澄清或解释其他一些特殊标准。例如，\href{https://www.rfc-editor.org/rfc/rfc5000}{[RFC5000]}
 定义了一组其他RFC（这个RFC最近正在撰写中），它们在2008年中期被视为官方标准。
-一个更新列表见当前标准站点［OIPSW］。主机需求 RFC（\href{https://www.rfc-editor.org/rfc/rfc1122}{[RFC1122]}和 \href{https://www.rfc-editor.org/rfc/rfc1123}{[RFC1123]}）定义
-Internet 中IPv4主机的协议实现，路由器需求 RFC\href{https://www.rfc-editor.org/rfc/rfc1812}{[RFC1812]}对路由器进行相同定义。节点
+一个更新列表见当前标准站点［OIPSW］。主机需求
+RFC（\href{https://www.rfc-editor.org/rfc/rfc1122}{[RFC1122]}和
+\href{https://www.rfc-editor.org/rfc/rfc1123}{[RFC1123]}）定义
+Internet 中IPv4主机的协议实现，路由器需求
+RFC\href{https://www.rfc-editor.org/rfc/rfc1812}{[RFC1812]}对路由器进行相同定义。节点
 需求 RFC\href{https://www.rfc-editor.org/rfc/rfc4294}{[RFC4294]}对IPv6 系统进行上述定义。
 \subsection{其他标准}
 虽然IETF 负责我们在书中讨论的大部分协议的标准化，但是其他SDO负责定义的协议
@@ -838,18 +846,14 @@ Dos 攻击可能涉及以很多流量堵塞网络，导致其无法发送其他�
 
 \section{参考文献}
 \iffalse
-［B64］ P. Baran， "On Distributed Communications: 1. Introduction to Distributed
-Communications Networks" RAND Memorandum RM-3420-PR, Aug. 1964.
 
 ［BT］ http://www.bittorrent.com
-【C88］ D. Clark，
-"The Design Philosophy of the DARPA Internet Protocols” Proc.
-ACM SIGCOMM, Aug. 1988.
 
 ［CK74］ V. Cerf and R. Kahn， "A Protocol for Packet Network Intercommunica-
 tion" IEEE Transactions on Communications, COM-22（5）， May 1974.
 
-［D08］J. Day, Patterns in Network Architecture: A Return to Fundamentals （Prentice
+［D08］J. Day, Patterns in Network Architecture: A Return to
+Fundamentals （Prentice
 Hall, 2008）.
 
 ［D68］ E. Dijkstra， "The Structure of the 'THE'-Multiprogramming System” Com-
@@ -904,3 +908,4 @@ Manal, XNSG 068504, 1985.
 for Open Systems Interconnection，" IEEE Transactions on Cormunications, COM-
 28（4），Apr. 1980.
 \fi
+\bibliography{1}

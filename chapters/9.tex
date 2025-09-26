@@ -5,7 +5,9 @@
 和广播（broadcast）。IPv4 可以使用所有这些地址，而IPv6可以使用除了最后一种形式的所
 有其他形式的地址。在本章中，我们讨论广播和组播更多的细节，包括链路层地址如何有效
 地用于从一台计算机向其他几台计算机发送组播或广播流量。我们也查看互联网组管理协议
-（IGMP） \href{https://www.rfc-editor.org/rfc/rfc3376}{[RFC3376]}和 IPv6组播侦听发现（MLD）\href{https://www.rfc-editor.org/rfc/rfc3810}{[RFC3810]}协议，它们用来通知IPv4 和
+（IGMP） \href{https://www.rfc-editor.org/rfc/rfc3376}{[RFC3376]}和
+IPv6组播侦听发现（MLD）\href{https://www.rfc-editor.org/rfc/rfc3810}{[RFC3810]}协议，它们用来通知IPv4
+和
 IPv6 组播路由器子网中哪些组播地址在使用中。本章（或本书）中，我们没有涉及的一个主
 题是在诸如全球互联网的广域网中，组播路由是如何实现的。目前，组播在企业和本地网络
 中的使用超过在广域网中的使用。尽管我们在本章中讨论的这些协议是为了完全理解广域组
@@ -16,10 +18,10 @@ IPv6 组播路由器子网中哪些组播地址在使用中。本章（或本书
 求/发现服务器。
 
 \begin{itemize}
-    \item 交付至多个目的地。有许多应用程序将信息交付至多个收件方，例如，互动式会议、
+  \item 交付至多个目的地。有许多应用程序将信息交付至多个收件方，例如，互动式会议、
     邮件或新闻分发至多个收件方。没有广播或组播，这些类型的服务往往倾向于使用现
     在的TCP（将一个单独的副本交付至每一个目的地，这是非常低效的）。
-    \item 通过客户端请求服务器。使用广播或组播，应用程序可以向一个服务器发送一个请
+  \item 通过客户端请求服务器。使用广播或组播，应用程序可以向一个服务器发送一个请
     求，而不用知道任何特定服务器的IP 地址。当本地网络环境的信息了解得很少时，
     这种功能在配置过程中非常有用。例如，一台笔记本电脑可能需要使用 DHCP，获取
     它的初始IP地址，找到其最近的路由器（见第6章）。
@@ -31,20 +33,20 @@ IPv6 组播路由器子网中哪些组播地址在使用中。本章（或本书
 兴趣的主机。当我们探讨广播和组播的详细情况后，这些概念将变得更加清晰。现在，请记
 住，在广播的更高开销和简单性以及组播的效率改善和更多的复杂性之间存在一种平衡。
 
-广播自出现以来，就一直受到 IPv4 协议的支持，而随着\href{https://www.rfc-editor.org/rfc/rfc1112}{[RFC1112]}的出版，组播被添
+广播自出现以来，就一直受到 IPv4
+协议的支持，而随着\href{https://www.rfc-editor.org/rfc/rfc1112}{[RFC1112]}的出版，组播被添
 加进来。IPv6 支持组播但不支持广播。一般来说，只有使用 UDP 传输协议（第10章）的用
 户应用程序利用广播和组播，此时应用程序发送单个报文到多个收件方才是有意义的。TCP
 是一个面向连接的协议，这意味着两台主机（由IP地址指定）和每台主机上的一个进程（由
 端口号指定）之间的一个连接。TCP 可以使用单播和任播地址（回想一下，任播地址可以像
 单播地址一样），但是不能使用广播或组播地址。
 
-
 \begin{tcolorbox}
-    广播和组播也被一些重要的系统进程使用，如路由协议、ARP、IPV6 中的
-ND 等。虽然IP 组播支持曾经是 “插件”，要求用户给系统打补丁以使用它，但是
-现代的操作系统默认地包括这种功能。组播是重要的，但在 IPv4 中是可选的功能，
-而在IPV6中，因为ND 中使用它，所以是强制性的。ND 对单播通信来说是关键的
-服务。
+  广播和组播也被一些重要的系统进程使用，如路由协议、ARP、IPV6 中的
+  ND 等。虽然IP 组播支持曾经是 “插件”，要求用户给系统打补丁以使用它，但是
+  现代的操作系统默认地包括这种功能。组播是重要的，但在 IPv4 中是可选的功能，
+  而在IPV6中，因为ND 中使用它，所以是强制性的。ND 对单播通信来说是关键的
+  服务。
 \end{tcolorbox}
 
 \section{广播}
@@ -114,9 +116,9 @@ ND 等。虽然IP 组播支持曾经是 “插件”，要求用户给系统打�
 来研究该活动（见图9-1）。
 
 \begin{figure}[ht]
-    \centering
-	\includegraphics[width=0.7\textwidth]{imgs/9/9-1.png}
-	\caption{发送到本地子网定向广播地址的ICMPv4 回显请求报文被封装在一个链路层广播帧中，并且该帧的目的地址全部为1}
+  \centering
+  \includegraphics[width=0.7\textwidth]{imgs/9/9-1.png}
+  \caption{发送到本地子网定向广播地址的ICMPv4 回显请求报文被封装在一个链路层广播帧中，并且该帧的目的地址全部为1}
 \end{figure}
 
 回显请求报文被发送到地址 10.0.0.127。IPv4 的实现通过咨询本地路由表中的信息和接
@@ -180,7 +182,8 @@ Windows Vista 路由表的一个例子（更高版本的Windows 使用完全相�
 
 输出的第一部分显示了7个不同的网络接口，它们可用于承载网络流量。第1个是虚拟
 环回接口，下一个是 Wi-Fi无线接口，第3个是有线以太网接口（断开的），第4个是另一个
-环回接口，随后的三个用作非标准站内自动隧道寻址协议（ISATAP）\href{https://www.rfc-editor.org/rfc/rfc5214}{[RFC5214]} \href{https://www.rfc-editor.org/rfc/rfc5579}{[RFC5579]}
+环回接口，随后的三个用作非标准站内自动隧道寻址协议（ISATAP）\href{https://www.rfc-editor.org/rfc/rfc5214}{[RFC5214]}
+\href{https://www.rfc-editor.org/rfc/rfc5579}{[RFC5579]}
 的一部分。ISATAP 用于支持由 IPv4 网络隔断的IPv6 主机。
 
 转移到路由表中，我们可以看到有7个项目能够用于确定广播流量应发送到的地址。第
@@ -200,8 +203,8 @@ Gateway 列 On-link，所以使用直接交付（见第5章）将流量交付至
 RFC \href{https://www.rfc-editor.org/rfc/rfc1122}{[RFC1122]} 的3.3.6 节提供了很少的指导：
 
 \begin{tcolorbox}
-    目标地址为有限广播地址的数据报是否应该从多宿主主机的所有接口发送，对
-    此已有讨论。此规范对该问题不持任何观点。
+  目标地址为有限广播地址的数据报是否应该从多宿主主机的所有接口发送，对
+  此已有讨论。此规范对该问题不持任何观点。
 \end{tcolorbox}
 
 因此，到有限广播地址传出流量的处理方式是特定于操作系统的。大多数系统都选取一
@@ -264,8 +267,8 @@ IANA分配一半的组地址块用于识别 IEEE 802 LAN上的IPv4 组播流量�
 应到IPv4组播的以太网地址范围为 01:00:5e:00:00:00 到 01:00:5e:7f:ff:ff。
 
 \begin{tcolorbox}
-    此处我们使用互联网标准位序来表示，即内存中位出现的顺序。这是大多数
-    程序员和系统管理员处理的方式。IEEE 文档中使用位的传输顺序。
+  此处我们使用互联网标准位序来表示，即内存中位出现的顺序。这是大多数
+  程序员和系统管理员处理的方式。IEEE 文档中使用位的传输顺序。
 \end{tcolorbox}
 
 IPV4 地址到它们对应的IEEE 802 形式的链路层地址的映射如图9-2所示。
@@ -316,11 +319,12 @@ ICMPv4 回显请求报文。
 因为不是所有的主机都支持mDNS 协议。
 
 \begin{tcolorbox}
-    组播DNS（mDNS的）是一个服务，它旨在支持零配置（容易的系统和
-    设备配置）。mDNS已经由苹果系统支持，它作为Bonjour的一部分。微软已经
-    推出的一种替代协议也有类似的功能，被称为链路本地组播名称解析（LLMINR）
-    \href{https://www.rfc-editor.org/rfc/rfc4795}{[RFC4795]}。目前这两个协议都不是IETF 内的互联网标准，但现在，mDNS具有
-    比LLMNR 更长的历史。有关详细信息请参阅第11章。
+  组播DNS（mDNS的）是一个服务，它旨在支持零配置（容易的系统和
+  设备配置）。mDNS已经由苹果系统支持，它作为Bonjour的一部分。微软已经
+  推出的一种替代协议也有类似的功能，被称为链路本地组播名称解析（LLMINR）
+  \href{https://www.rfc-editor.org/rfc/rfc4795}{[RFC4795]}。目前这两个协议都不是IETF
+  内的互联网标准，但现在，mDNS具有
+  比LLMNR 更长的历史。有关详细信息请参阅第11章。
 \end{tcolorbox}
 
 对于 IPv6，我们可以使用ICMPv6 回显请求报文执行相同的操作。
@@ -341,9 +345,10 @@ Windows XP 中选择合适的传出IPv6地址。在图9-4中我们可以看到�
 ethO 相关的本地链路地址。
 
 \begin{figure}[ht]
-    \centering
-	\includegraphics[width=1\textwidth]{imgs/9/9-4.png}
-	\caption{ICMP 回显请求报文由与ethO网络接口相关的本地链路单播地址发送到组播地址ff02::fb。应答包含发送方的IPv6 本地链路IPv6地址}
+  \centering
+  \includegraphics[width=1\textwidth]{imgs/9/9-4.png}
+  \caption{ICMP
+  回显请求报文由与ethO网络接口相关的本地链路单播地址发送到组播地址ff02::fb。应答包含发送方的IPv6 本地链路IPv6地址}
 \end{figure}
 
 被识别为ICMPv6 回显请求/应答报文的数据分组中的标识符（Identifier）字段设置为
@@ -452,8 +457,8 @@ IPv6，所有的组播地址以ff开始，没有广播地址，所以接口1、9
 （SSDP） 组播地址，如我们在第7章中所看到的。
 
 \begin{tcolorbox}
-    SSDP 在一个由微软和惠普开发的互联网草案（已过期）［GCLG99］中描述。
-    SSDP 也运行在 IPV4 中，使用地址 239.255.255.250 和UDP端口1900。
+  SSDP 在一个由微软和惠普开发的互联网草案（已过期）［GCLG99］中描述。
+  SSDP 也运行在 IPV4 中，使用地址 239.255.255.250 和UDP端口1900。
 \end{tcolorbox}
 
 在其他网络接口中，地址 f01：：1（本地节点所有节点地址）和 ff02：：1（本地链路所有节
@@ -481,14 +486,14 @@ IPv4 中使用的 ARP机制相对应。
 接口的本地链路范围所有节点的绑定。最后，请求节点地址是 ffO2：：1:ff2a:1988。
 
 \begin{tcolorbox}
-    使用IP组播，一个进程可以向一个组播组发送而不用加入它。更常见的是，
-    进程加入它们在一个或多个特定接口上正在交互的组播组。在套接字 API 中有一
-    个特殊的选项（IP\_MULTICAST\_LOOP） 来改变相同主机上进程之间的组播流量被
-    处理的方式，该主机是相同接口上同一组的成员。在UNIX中，此选项用于发送路
-    径，这意味着，如果启用该选项，在同一台主机上的其他进程接收组播数据报，即
-    使它们禁用该选项。相反，在 Windows 中，该选项适用于接收路径，这意味着启
-    用该选项的任何进程接收来自同一主机上的其他应用程序的组播流量，即使它们禁
-    用该选项。
+  使用IP组播，一个进程可以向一个组播组发送而不用加入它。更常见的是，
+  进程加入它们在一个或多个特定接口上正在交互的组播组。在套接字 API 中有一
+  个特殊的选项（IP\_MULTICAST\_LOOP） 来改变相同主机上进程之间的组播流量被
+  处理的方式，该主机是相同接口上同一组的成员。在UNIX中，此选项用于发送路
+  径，这意味着，如果启用该选项，在同一台主机上的其他进程接收组播数据报，即
+  使它们禁用该选项。相反，在 Windows 中，该选项适用于接收路径，这意味着启
+  用该选项的任何进程接收来自同一主机上的其他应用程序的组播流量，即使它们禁
+  用该选项。
 \end{tcolorbox}
 
 \subsection{主机地址过滤}
@@ -571,7 +576,9 @@ routing）应该由一个或多个组播路由器启动。这种情况更加复�
 机，它们可能只对特定组的组播流量感兴趣。
 
 随着时间的推移，IGMP已经演变了，并且\href{https://www.rfc-editor.org/rfc/rfc3376}{[RFC3376]}定义了第3版（到写作的时候
-最新的版本）。MLD 在并行发展，其目前版本（2）在\href{https://www.rfc-editor.org/rfc/rfc3810}{[RFC3810]}中定义。IGMPv3和/ 或
+最新的版本）。MLD
+在并行发展，其目前版本（2）在\href{https://www.rfc-editor.org/rfc/rfc3810}{[RFC3810]}中定义。IGMPv3和/
+或
 MLDv2被要求支持SSM。可以查看\href{https://www.rfc-editor.org/rfc/rfc4604}{[RFC4604]}获取每个组播组只使用一个单一源时这些协
 议是如何受限制的更多详细情况。
 
@@ -595,16 +602,15 @@ MLDvI 支持）的能力。IGMPv3和 MLDv2 添加了选择组播流量源的能�
 MLDv2侦听 IPv6 组播地址 ff02：：16。需要注意的是，当组播路由器加入组播组时，组播路
 由器本身也作成员。
 
-
 \begin{tcolorbox}
-    在IGMPVI 和IGMPV2 中，主机在收到查询后不立即做出响应，而是等待一
-    个小的随机时间，以查看是否有其他主机响应同一组。如果有，主机的响应被抑制
-    （不发送）。这是通过在问题中将报告发送到组组播地址来完成的。\href{https://www.rfc-editor.org/rfc/rfc3376}{[RFC3376]}的附录
-    A 说明了为什么该操作在IGMPV3中删除了。总之，组播路由器可能希望跟踪记录
-    单个主机的订阅，在使用IGMP探听（见9.4.7节）的桥接LAN 中抑制不能很好地
-    工作，处理抑制使得协议实现更为复杂，并且IGMPV3报告包含多个组的信息，使
-    抑制成功的可能性更小。注意IGMPV3和MLDV2 都要求后向兼容它们的早期版本，
-    并恢复使用在同一子网中检测到的较旧的主机或路由器的旧版本的协议报文。
+  在IGMPVI 和IGMPV2 中，主机在收到查询后不立即做出响应，而是等待一
+  个小的随机时间，以查看是否有其他主机响应同一组。如果有，主机的响应被抑制
+  （不发送）。这是通过在问题中将报告发送到组组播地址来完成的。\href{https://www.rfc-editor.org/rfc/rfc3376}{[RFC3376]}的附录
+  A 说明了为什么该操作在IGMPV3中删除了。总之，组播路由器可能希望跟踪记录
+  单个主机的订阅，在使用IGMP探听（见9.4.7节）的桥接LAN 中抑制不能很好地
+  工作，处理抑制使得协议实现更为复杂，并且IGMPV3报告包含多个组的信息，使
+  抑制成功的可能性更小。注意IGMPV3和MLDV2 都要求后向兼容它们的早期版本，
+  并恢复使用在同一子网中检测到的较旧的主机或路由器的旧版本的协议报文。
 \end{tcolorbox}
 
 IGMP 和 MLD 的封装如图9-7所示。与ICMP类似，IGMP被认为是IP层的一部分。
@@ -622,7 +628,8 @@ IGMP和 MLD定义了两组协议处理规则：由组成员的主机执行的和
 兴趣改变，以及响应定期的查询。组播路由器发送查询，以确定连接链路上的对于任意组或
 是特定的组播组和源是否有兴趣。路由器也与广域组播协议（如PIM-SM 和 BIDIR-PIM）交
 互，将所需的流量带给有兴趣的主机或禁止流量流向不感兴趣的主机。想要了解这些协议的
-更多详细信息，请参见\href{https://www.rfc-editor.org/rfc/rfc4601}{[RFC4601]}和 \href{https://www.rfc-editor.org/rfc/rfc5015}{[RFC5015]}。
+更多详细信息，请参见\href{https://www.rfc-editor.org/rfc/rfc4601}{[RFC4601]}和
+\href{https://www.rfc-editor.org/rfc/rfc5015}{[RFC5015]}。
 
 \subsection{组成员的IGMP 和MLD 处理（“组成员部分”）}
 IGMP和 MLD组成员的部分被设计为允许主机指定它们对什么样的组有兴趣，以及从
@@ -648,77 +655,76 @@ IGMPv3成员资格报告包含N组的组记录。每个组记录表明一个组�
 模式滤波器。注意，当使用SSM时，类型0x02 和 0x04 不能使用，因为对于任意组，只有
 一个单一源是假定的。
 
-
 IGMPv3的组记录包括一个组播地址（组）和一个可选的源列表。源组或是由发送方允许（包
 含模式），或是过滤掉（排除模式）。以前版本的IGMP 报告不包括源列表
 \begin{verbatim}
-    
+
     表 9-1
-    
+
     IGMP 和 MLD 源列表的类型值指明过滤模式（包含或排除）以及源列表是否已经改变
-    
+
     类型
-    
+
     何时发送
-    
+
     0x01
-    
+
     名称和意义
-    
+
     MODE\_IS\_INCLUDE （IS\_IN） ：来自任意相关源地址的流量不
-    
+
     响应来自一个组播路由器的查询
-    
+
     0x02
-    
+
     0x03
-    
+
     0x04
-    
+
     0x05
-    
+
     0x06
-    
+
     会被过滤
-    
+
     MODE\_IS\_EXCLUDE （IS\_EX）：来自任意相关源地址的流量会
-    
+
     被过滤
-    
+
     CHANGE\_TO\_INCLUDE\_MODE （TO\_IN） ：来自排除模式的改
-    
+
     变；来自任意相关源地址的流量现在不应该被过滤
-    
+
     CHANGE\_TO\_EXCLUDE\_MODE （TO\_EX）：来自包含模式的
-    
+
     改变；来自任意相关源地址的流量现在应该被过滤
-    
+
     ALLOW\_NEW\_SOURCES （ALLOW）：源列表中的改变；来自
-    
+
     任意相关源地址的流量现在不应该被过滤
-    
+
     BLOCK\_OLD
-    
+
     \_SOURCES （BLOCK）：源列表甲的改变；来目任
-    
+
     意相关源地址的流量现在应该被过滤
-    
+
     响应来自一个组播路由器的查询
-    
+
     响应过滤器模式从排除变为包含
-    
+
     的本地动作
-    
+
     响应过滤器模式从包含变为排除
-    
+
     的本地动作
-    
+
     响应源列表变为允许新源的本地
-    
+
     动作
-    
+
     响应源列表变为禁止先前允许的
-    
+
     源的本地动作
 \end{verbatim}
 
@@ -741,7 +747,8 @@ IGMP 和 MLD 查询/ 报告本身从不过滤。MLD 报告使用类似于IGMP报
 链路IPv6地址。当主机在启动并尝试确定它自己的IPv6地址时，会同时出现一个问题。在
 此期间，它选择一个潜在的IPv6地址来使用并执行重复地址检测（DAD）过程（见第6章），
 以确定是否有任何其他的系统已经使用这个地址。因为DAD 涉及组播，一些源地址必须被
-分配为传出 MLD 报文。\href{https://www.rfc-editor.org/rfc/rfc3590}{[RFC3590]} 解决了这个问题，它允许未指定的地址（：：）在配置过程
+分配为传出 MLD 报文。\href{https://www.rfc-editor.org/rfc/rfc3590}{[RFC3590]}
+解决了这个问题，它允许未指定的地址（：：）在配置过程
 中被用来作为MLD 流量的源IPv6地址。
 
 \subsection{组播路由器的IGMP 和 MLD 处理（“组播路由器部分”）}
@@ -814,15 +821,15 @@ MLD 报文的类型（Type）、代码（Code）、校验和（Checksum）和最
 询的晌应。
 
 \begin{figure}[ht]
-    \centering
-	\includegraphics[width=1.0\textwidth]{imgs/9/9-12.png}
-	\caption{1GMPv2、 IGMPv3、 MLDvl和MLDv2,全部在同一个子网。高亮的数据分组是一个MLD查询}
+  \centering
+  \includegraphics[width=1.0\textwidth]{imgs/9/9-12.png}
+  \caption{1GMPv2、 IGMPv3、 MLDvl和MLDv2,全部在同一个子网。高亮的数据分组是一个MLD查询}
 \end{figure}
 
 \begin{figure}[ht]
-    \centering
-	\includegraphics[width=1.0\textwidth]{imgs/9/9-13.png}
-	\caption{通过使用没有源的排除类型的报文, MLDv2侦听报告报文表示了对组甜ff02::c的兴趣(SSDP本地链路范围组播地址)}
+  \centering
+  \includegraphics[width=1.0\textwidth]{imgs/9/9-13.png}
+  \caption{通过使用没有源的排除类型的报文, MLDv2侦听报告报文表示了对组甜ff02::c的兴趣(SSDP本地链路范围组播地址)}
 \end{figure}
 
 图9-13是一个MLDv2 报告，表示对组播地址 ff02：：c的兴趣（SSDP 的本地链路组找
@@ -835,15 +842,15 @@ MLD 报文的类型（Type）、代码（Code）、校验和（Checksum）和最
 ff02:2:7408:ff56。请注意，在MAC层，此目的地址映射到 33:33:74:08:ff:56。跟踪记录白
 随后部分，从图9-15中的分组6开始，显示了MLDv2如何报告多个兴趣。
 \begin{figure}[ht]
-    \centering
-	\includegraphics[width=1.0\textwidth]{imgs/9/9-14.png}
-	\caption{MLDvl报告报文表示了对组播地址ffO2‥:2:7408:ff56的兴趣,该地址也是目的地IPv6地址}
+  \centering
+  \includegraphics[width=1.0\textwidth]{imgs/9/9-14.png}
+  \caption{MLDvl报告报文表示了对组播地址ffO2‥:2:7408:ff56的兴趣,该地址也是目的地IPv6地址}
 \end{figure}
 
 \begin{figure}[ht]
-    \centering
-	\includegraphics[width=1.0\textwidth]{imgs/9/9-15.png}
-	\caption{MLDv2报告表达了对5个组播组的兴趣。每个组播地址记录通过指明没有源被排除，报告了对一个单一组的兴趣（即，模式为没有相关源的排除模式）}
+  \centering
+  \includegraphics[width=1.0\textwidth]{imgs/9/9-15.png}
+  \caption{MLDv2报告表达了对5个组播组的兴趣。每个组播地址记录通过指明没有源被排除，报告了对一个单一组的兴趣（即，模式为没有相关源的排除模式）}
 \end{figure}
 
 图9-15中的分组6是第一个 MLDv2报告，指明了对多个组播地址的兴趣。在这种情
@@ -863,15 +870,17 @@ IGMPv3的一般查询。该分组被发送到所有节点地址224.0.0.1，该�
 分组9（未详细说明，但和分组7和2相似）是一个散布的MLDv2 响应，指明对组播地址
 ff02：：1:3（LLMNR）的兴趣。最后7个分组如图9-17所示。
 \begin{figure}[ht]
-    \centering
-	\includegraphics[width=1.0\textwidth]{imgs/9/9-16.png}
-	\caption{一个IGMPv3一般成员资格查询，它被发送到所有节点组播地址 224.0.0.1。它的IPv4 头部包含一个值为0x30（类选择器6）的 DSCP 和IPv4 路由器警告选项}
+  \centering
+  \includegraphics[width=1.0\textwidth]{imgs/9/9-16.png}
+  \caption{一个IGMPv3一般成员资格查询，它被发送到所有节点组播地址 224.0.0.1。它的IPv4
+  头部包含一个值为0x30（类选择器6）的 DSCP 和IPv4 路由器警告选项}
 \end{figure}
 
 \begin{figure}[ht]
-    \centering
-	\includegraphics[width=1.0\textwidth]{imgs/9/9-17.png}
-	\caption{分组10和最后7个分组的详细情况，它们是 IGMPv2 和 IGMPv3成员资格报告的混合（除丁分组12）。IGMPv2 的报告中不包含特定源的信息}
+  \centering
+  \includegraphics[width=1.0\textwidth]{imgs/9/9-17.png}
+  \caption{分组10和最后7个分组的详细情况，它们是 IGMPv2 和
+  IGMPv3成员资格报告的混合（除丁分组12）。IGMPv2 的报告中不包含特定源的信息}
 \end{figure}
 在图9-17中的分组10是一个由10.0.0.14（连接到网络的打印机）发送到 224.0.1.60
 的IGMPv2成员资格报告，它是一种发现服务，适用于惠普生产的设备。与MLDV1一样，
@@ -893,7 +902,8 @@ IPv4地址为10.0.0.57的主机分别对组239.255.255.250 和 224.0.0.252 （LL
 一个组播路由器可以停止转发在每个接收方的排除列表中的主机发送的组播流量。实践经验
 证明，应用程序很少需要屏蔽特定源，并且支持此功能也比较复杂。然而，主机往往希望
 包含一个与一个组相关联的特定源，尤其是当SSM 在使用时。因此，简化版的IGMPV3和
-MLDv2已在\href{https://www.rfc-editor.org/rfc/rfc5790}{[RFC5790]}中定义，分别称为轻量级 IGMPv3（LW-IGMPv3）和轻量级 MLDV2
+MLDv2已在\href{https://www.rfc-editor.org/rfc/rfc5790}{[RFC5790]}中定义，分别称为轻量级
+IGMPv3（LW-IGMPv3）和轻量级 MLDV2
 （LW-MLDv2）。
 
 LW-IGMPv3 和LW-MLDv2是其正本的子集。它们支持ASM和SSM，并使用与
@@ -910,7 +920,6 @@ IGMPv3和 MLDv2 兼容的报文格式，但它们缺少特定阻塞源的功能�
 表9-2
 
 IGMPv3 和MLDv2的完整版本与它们的“轻量级”版本LW-IGMPv3 和 LW-MLDV2 的对比
-
 
 比较表9-2与表9-1中的值。显而易见，没有使用非空排除模式，状态指示符类型已被
 删除。此外，当前状态记录（IS\_EX 和IS\_EN）已对兼容的主机删除。轻量级组播路由器仍
@@ -984,108 +993,108 @@ IGMP 和 MLD是软状态的协议，它们也处理路由器的失效、协议�
 
 \begin{verbatim}
     名称和意义
-    
+
     默认值（限制）
-    
+
     鲁棒性变量（Robustness Variable,RV）——为一些状态改变报告/查询安排
-    
+
     2（不能为0；不应该为1）
-    
+
     多达 RV-1次的重传
-    
+
     查询间隔（Query Interval,QI）—当前查询器发送的一般查询之间的时间
-    
+
     125s
-    
+
     查询响应间隔（Query Response Interval,QRI） —等待产生报告的最大响
-    
+
     10s
-    
+
     应时间。该值编码形成最大响应字段
-    
+
     广播和本地组播（IGMP和MLD）
-    
+
     331
-    
+
     （续）
-    
+
     名称和意义
-    
+
     IGMP 中的组成员间隔（Group Membership Interval, GMI） 和 MLD 中的组
-    
+
     播地址侦听间隔（Multicast Address Listening Interval, MALI）—对于组播
-    
+
     路由器来说，没有看到一个报告所必须经过的时间，用以宣布对于一个组或是
-    
+
     源/组的组合没有兴趣了
-    
+
     IGMP 中的其他查询出现间隔 （Other Querier Present Interval） 和 MLD 中的
-    
+
     其他查询出现超时（Other Querier Present Timeout）—对于一个非查询器组
-    
+
     播路由器来说，没有看到一个一般查询所必须经过的时间，用以宣布没有活动
-    
+
     的查询器
-    
+
     启动查询间隔（Startup Query Interval）
-    
+
     -查询器刚启动时发送的一般查询
-    
+
     之间的时间间隔
-    
+
     启动查询数量（Startup Query Count）.
-    
+
     -查询器刚启动时发送的一般查询
-    
+
     的数量
-    
+
     IGMP 中的最后成员查询间隔（Last Member Query Interval, LMQI）和
     MLD 中的最后侦听方查询间隔（Last Listener Query Interval,L.LQI）—等
     待响应特定查询的报告产生的最大响应时间。该值编码形成特定查询中的最大
     响应字段
-    
+
     IGMP 中的最后成员查询数量（Last Member Query Count） 和 MLD 中的最
-    
+
     后侦听方查询数量（Last Listener Query Count）——发送特定查询而没有接收
-    
+
     到响应的数量，用以宣布没有感兴趣的主机
-    
+
     主动报告间隔（Unsolicited Report Interval）—
-    
+
     一主机初始状态改变报告重传
-    
+
     之间的时间
-    
+
     旧版本查询器出现超时（Older Version Querier Present Timeout）
-    
+
     一主机没
-    
+
     有接收到 IGMPvI或IGMPv2请求报告而恢复到IGMPv3所需要等待的时间
-    
+
     IGMP 中的旧主机出现间隔 （Older Host Present Interval） 和 MLD 中旧版本
-    
+
     主机出现超时 （Older Version Host Present Timeout）
-    
+
     一查询器没有接收到
-    
+
     IGMPv1或IGMPv2 报告报文而恢复到IGMPv3所需要等待的时间
-    
+
     默认值（限制）
-    
+
     RV *QI + QRI（不能改变）
-    
+
     RV *Q1+（0.5）*QRI（不能改变）
-    
+
     （0.25）* Q1
-    
+
     RV
-    
+
     1s
-    
+
     RV
-    
+
     RV *QI+ QRI（不能改变）
-    
+
     RV *Q1 +QRI（不能改变）
 \end{verbatim}
 
@@ -1115,7 +1124,8 @@ ICMPv6信息，并小心地从其他报文中分离出 MLD 报文。尤其是，
 
 其他非标准的专有协议已经被实现，可以进一步优化通过第2层设备运载的IP组播
 流量。例如，思科提出了路由器端口组管理协议（Router-port Group Management Protocol，
-RGMP） \href{https://www.rfc-editor.org/rfc/rfc3488}{[RFC3488]}。在RGMP 中采用了一种机制，这样主机不仅报告它们的组和感兴趣的
+RGMP） \href{https://www.rfc-editor.org/rfc/rfc3488}{[RFC3488]}。在RGMP
+中采用了一种机制，这样主机不仅报告它们的组和感兴趣的
 源（如在IGMP/MLD 中），而且组播路由器也这样做。该信息用来优化组播路由器（不仅仅
 是主机）之间的组播流量在第2层的转发。
 
